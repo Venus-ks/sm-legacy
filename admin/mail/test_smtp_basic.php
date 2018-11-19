@@ -1,0 +1,60 @@
+<html>
+<head>
+<title>PHPMailer - SMTP basic test with authentication</title>
+</head>
+<body>
+
+<?php
+
+//error_reporting(E_ALL);
+error_reporting(E_STRICT);
+
+date_default_timezone_set('Asia/Seoul');
+
+require_once('class.phpmailer.php');
+//include("class.smtp.php"); // optional, gets called from within class.phpmailer.php if not already loaded
+
+$mail             = new PHPMailer();
+
+$body             = file_get_contents('contents.html');
+$body             = eregi_replace("[\]",'',$body);
+
+$mail->IsSMTP(); // telling the class to use SMTP
+$mail->Host       = "smtp.1004pr.kr"; // SMTP server
+$mail->SMTPDebug  = 1;                     // enables SMTP debug information (for testing)
+                                           // 1 = errors and messages
+                                           // 2 = messages only
+$mail->SMTPAuth   = true;                  // enable SMTP authentication
+$mail->Host       = "smtp.1004pr.kr"; // sets the SMTP server
+$mail->Port       = 25;                    // set the SMTP port for the GMAIL server
+$mail->Username   = "notice@ksmer.or.kr"; // SMTP account username
+$mail->Password   = "noti9477";        // SMTP account password
+
+$mail->SetFrom('notice@ksmer.or.kr', '자원공학회');
+
+//$mail->AddReplyTo("dslee@docuhut.com","이대선");
+
+$mail->Subject    = "안녕하세요. 자원공학회입니다.";
+
+$mail->AltBody    = "To view the message, please use an HTML compatible email viewer!"; // optional, comment out and test
+
+$mail->MsgHTML($body);
+
+$address = "jssong@docuhut.com";
+$mail->AddAddress($address, "송준석");
+
+//$mail->AddAttachment("images/phpmailer.gif");      // attachment
+//$mail->AddAttachment("images/phpmailer_mini.gif"); // attachment
+
+if(!$mail->Send()) {
+  echo "Mailer Error: " . $mail->ErrorInfo;
+  //디비에 실패 로그 기록
+} else {
+  echo "Message sent!";
+  //디비에 성공 로그 기록
+}
+
+?>
+
+</body>
+</html>
