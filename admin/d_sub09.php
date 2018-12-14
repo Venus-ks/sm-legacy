@@ -67,7 +67,7 @@ while ($row = sql_fetch_array($result)){
 }
 
 ###
-$write_pages = get_paging(10, $page, $total_page, "./d_sub05.php?page=");
+$write_pages = get_paging(10, $page, $total_page, "./d_sub09.php?page=");
 ?>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr>

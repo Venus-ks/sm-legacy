@@ -270,9 +270,9 @@ if($_POST['mode']=="a_sub_reg"){
 	}
 
 	//================ 신규 추가 ======================
-	$step = 1;
+	if(!$_POST['seq']) $step = 1;
 	$md_qry = "";
-	if($_POST['step'] == 10){
+	if($_POST['step'] == 10 || ($_POST['step'] == 99 && $_POST['number'])){
 		$step = 11;
 		$md_qry = " , modify_date = now() ";
 	}
