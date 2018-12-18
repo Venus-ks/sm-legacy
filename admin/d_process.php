@@ -1181,7 +1181,8 @@ else if($_POST['mode']=="reject_article"){
 		}
 		$file_sql = " , reject_comment_file	= '/data/ddata/{$sfilename}' ";
 	}
-	$sql = "UPDATE ad_paper SET reject_date = now(), step = 99, reject_comment = '{$_POST['reject_comment']}' {$file_sql} WHERE seq = '{$_POST['seq']}'";
+	$step = 99 + $_POST['step'];
+	$sql = "UPDATE ad_paper SET reject_date = now(), step = {$step}, reject_comment = '{$_POST['reject_comment']}' {$file_sql} WHERE seq = '{$_POST['seq']}'";
 	sql_query($sql);
 	##############
 	$body = "

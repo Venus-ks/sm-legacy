@@ -272,7 +272,7 @@ if($_POST['mode']=="a_sub_reg"){
 	//================ 신규 추가 ======================
 	if(!$_POST['seq']) $step = 1;
 	$md_qry = "";
-	if($_POST['step'] == 10 || ($_POST['step'] == 99 && $_POST['number'])){
+	if($_POST['step'] == 10){
 		$step = 11;
 		$md_qry = " , modify_date = now() ";
 	}
@@ -282,6 +282,10 @@ if($_POST['mode']=="a_sub_reg"){
 	}
 	if($_POST['step'] == 32){
 		$step = 33;
+		$md_qry = " , modify_date = now() ";
+	}
+	if($_POST['step'] > 99){
+		$step = $_POST['step']-99;
 		$md_qry = " , modify_date = now() ";
 	}
 	$_chklist = implode('|',$_POST['chklist']);

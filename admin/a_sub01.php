@@ -3,7 +3,7 @@ include_once("./admin_head.php");
 ###
 $mlevel		= 2;
 $menu		= "a1";
-$where = "mb_id = '{$member['mb_id']}' and (step = 1 or step = 10 or step = 20 or step = 32 or step = 99)";
+$where = "mb_id = '{$member['mb_id']}' and (step = 1 or step = 10 or step = 20 or step = 32 or step > 99)";
 ### SEARCH
 if($_GET['sdate'] || $_GET['edate']){
 	if($_GET['sdate'] && $_GET['edate']){
