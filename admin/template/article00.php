@@ -1,8 +1,8 @@
-<? if(!$data['number'] && $_GET['seq'] && $data['reject_comment']):?>
+<? if($data['step']>=99 && $data['reject_comment']):?>
 	<table class="boardType01_write" style="margin-top:10px;">
 		<tr>
 			<th width="200" style="color:red">접수 보류 코멘트<br/>Reject Comments</th>
-			<td><?=$data['reject_comment']?></td>
+			<td><?=nl2br($data['reject_comment'])?></td>
 		</tr>
 	</table>
 <?php endif?>
