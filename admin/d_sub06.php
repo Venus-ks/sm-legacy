@@ -404,11 +404,11 @@ $write_pages = get_paging(10, $page, $total_page, "./d_sub06.php?sdate={$_GET['s
 							<?php if($list[$i]['regdate'] && $list[$i]['regdate'] != '0000-00-00'):?>
 								투고일(SD)<br/><?=substr($list[$i]['regdate'],0,10)?><br/><br/>
 							<?php endif?>
-							<?php if($list[$i]['submit_date'] && $list[$i]['submit_date'] != '0000-00-00'):?>
+							<!-- <?php if($list[$i]['submit_date'] && $list[$i]['submit_date'] != '0000-00-00'):?>
 								접수일(RD)<br/><?=substr($list[$i]['submit_date'],0,10)?><br/><br/>
-							<?php endif?>
+							<?php endif?> -->
 							<?php if($list[$i]['modify_date'] && $list[$i]['modify_date'] != '0000-00-00'):?>
-								수정일(VD)<br/><?=substr($list[$i]['modify_date'],0,10)?><br/><br/>
+								수정일(RD)<br/><?=substr($list[$i]['modify_date'],0,10)?><br/><br/>
 							<?php endif?>
 							<?php if($acptdate['regdate'] && $acptdate['regdate'] != '0000-00-00'):?>
 								완료일(AD)<br/><?=substr($acptdate['regdate'],0,10)?>
