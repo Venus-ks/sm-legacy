@@ -95,13 +95,13 @@ if($_SERVER['PHP_SELF']=="/admin/index.php"){
 </style>
 <ul class="nav nav-tabs">
 	<?php if($member['mb_level']>=2):?>
-		<li role="presentation" class="<?=($mode==1)?'active':''?>"><a href="./d_process.php?mode=switch_mode&mb_id=<?=$member['mb_id']?>&type=1">저자 모드</a></li>
+		<li role="presentation" class="nav-item <?=($mode==1)?'active':''?>"><a class="nav-link" href="./d_process.php?mode=switch_mode&mb_id=<?=$member['mb_id']?>&type=1">저자 모드</a></li>
 	<?php endif?>
 	<?php if($member['mb_level']>=4):?>
-		<li role="presentation" class="<?=($mode==2)?'active':''?>"><a href="./d_process.php?mode=switch_mode&mb_id=<?=$member['mb_id']?>&type=2">심사자 모드</a></li>
+		<li role="presentation" class="nav-item <?=($mode==2)?'active':''?>"><a class="nav-link" href="./d_process.php?mode=switch_mode&mb_id=<?=$member['mb_id']?>&type=2">심사자 모드</a></li>
 	<?php endif?>
 	<?php if($member['mb_level']>=10):?>
-		<li role="presentation" class="<?=($mode==3)?'active':''?>"><a href="./d_process.php?mode=switch_mode&mb_id=<?=$member['mb_id']?>&type=3">편집자 모드</a></li>
+		<li role="presentation" class="nav-item <?=($mode==3)?'active':''?>"><a class="nav-link" href="./d_process.php?mode=switch_mode&mb_id=<?=$member['mb_id']?>&type=3">편집자 모드</a></li>
 	<?php endif?>
 </ul>
 <div style="margin:0;line-height:20px;height:20px;background-color:#2977C9;color:#FFF;padding-left:5px;font-weight:600"></div>

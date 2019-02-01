@@ -51,7 +51,6 @@ while ($row = sql_fetch_array($result)){
 ###
 $write_pages = get_paging(10, $page, $total_page, "./d_sub01.php?page=");
 ?>
-<?php include_once("./template/list00.php");?>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr>
 	<td width="199" height="800" valign="top" background="/images/leftbg.png">
@@ -124,6 +123,7 @@ $write_pages = get_paging(10, $page, $total_page, "./d_sub01.php?page=");
 		<tr><td height="6"></td></tr>
 		<tr>
 			<td>
+				<?php include_once("./template/list00.php");?>
 			<table class="boardType01">
 			<tr>
 				<!--th><strong>No</strong></th>

@@ -143,7 +143,7 @@ $write_pages = get_paging(10, $page, $total_page, "./d_sub03.php?page=");
 		<tr><td height="6"></td></tr>
 		<tr>
 			<td>
-
+			<?php include_once("./template/list00.php");?>
 			<table class="boardType01">
 			<tr>
 				<!--th><strong>No</strong></th>
