@@ -78,22 +78,11 @@ if($_POST['mode']=="d_sub_reg"){
 	$modify_cnt = 0;
 	$total_result = 0;
 	$i = 0;
-	### REVIEW CHECK
-	if($_POST['step']==11 || $_POST['step']==21){
-		if($_POST['step']==11){
-			$sql = "select * from ad_paper_review where parent_seq = '{$_POST['seq']}' and rstep = '1' and result = '3' order by result asc";
-		}else if($_POST['step']==21){
-			$sql = "select * from ad_paper_review where parent_seq = '{$_POST['seq']}' and rstep = '2' and result = '3' order by result asc";
-		}
-		$res = sql_query($sql);
-		$review_3_count = mysql_num_rows($res);
-	}
 	## 편집위원장의 심사결과가 있는지 확인함. 여러번의 심사가 있을 경우 맨 마지막의 심사결과만 가져옴.
-	$fr_result	= sql_query("select * from ad_paper_review where parent_seq = '{$_POST['seq']}' and rstep = 4 order by rseq desc limit 1");
-	$fr_result2	= sql_fetch("select * from ad_paper_review where parent_seq = '{$_POST['seq']}' and rstep = 4 order by rseq desc limit 1");
+	$fr_result	= sql_fetch("select * from ad_paper_review where parent_seq = '{$_POST['seq']}' and rstep = 4 order by rseq desc limit 1");
 	## 심사 결과가 있으면...
 	// 편집위원장 메일 주소 가지고 오기. 편집위원장의 카테고리 분야에 따라 메일 주소를 가지고 와서 발송 함.
-	if((mysql_num_rows($fr_result) > 0 && $fr_result2['result'] == '3')) {
+	if($fr_result['result'] == '3' || $_POST['review_score'] == '2') {
 		sql_query("UPDATE ad_paper SET settle_date = now(), step = 34 {$file_sql} WHERE seq = '{$_POST['seq']}'");
 		## 수정 후 재심사는 편집위원장에게 메일 발송하고 편집위원장 심사 단계 진행. step 34
 		$body = "
@@ -118,7 +107,7 @@ if($_POST['mode']=="d_sub_reg"){
 		{$mail_footer}
 		";
 		$mail->sendInput($main_editor, '편집장', $body, "[{$info['journal_title']}] 최종논문 검토 요청");
-	}else if(mysql_num_rows($fr_result) > 0 && $fr_result2['result'] == '2') {
+	}else if($fr_result['result'] == '2') {
 		sql_query("UPDATE ad_paper SET settle_date = now(), step = 50 {$file_sql} WHERE seq = '{$_POST['seq']}'");
 		## 수정 후 게재가는 메일 발송 없이 최종 결과 등록으로 이동. step 50
 		$body = "
@@ -259,7 +248,7 @@ else if($_POST['mode']=="d_sub3_reg"){
 	$data	= sql_fetch($sql);
 	$step	= "";
 	$cnt	= 0;
-	if(($data['review_b_conf']!='Y' || $data['review_c_conf']!='Y' || $data['review_c_conf']!='Y') && $data['step']!='13') {
+	if(($data['review_a_conf']!='Y' || $data['review_b_conf']!='Y' || $data['review_c_conf']!='Y') && $data['step']!='13') {
 			$msg		= "심사위원을 3명 모두 선택바랍니다.";
 			$returnUrl	= "./d_sub03_write.php?seq={$_POST['seq']}";
 			alert($msg, $returnUrl);

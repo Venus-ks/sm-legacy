@@ -8,7 +8,7 @@ $menu		= "b1";
 ###
 if($_GET['mb_no']){
 	$sql	= "select * from g4_member where mb_no = '{$_GET['mb_no']}'";
-	$data	= sql_fetch($sql); 
+	$data	= sql_fetch($sql);
 }
 ?>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -42,8 +42,8 @@ if($_GET['mb_no']){
 		<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:12px;">
 		<tr>
 			<td>
-			
-			
+
+
 			<table width="100%" class="boardType01_write">
 			<tr>
 				<th width="200">아이디(이메일)</th>
@@ -72,29 +72,44 @@ if($_GET['mb_no']){
 				<th>분야</th>
 				<td colspan="3"><select name="field" id="field">
 						<option value="">= 선택해주세요 =</option>
-						<? 
-							$arr = get_category(); 
+						<?
+							$arr = get_category();
 							for($i=0;$i<count($arr);$i++){
 						?>
 							<option value="<?=$arr[$i]['cvalue']?>"  <? if($data['field']==$arr[$i]['cvalue']){ ?>selected<? } ?>><?=$arr[$i]['ctext']?></option>
 						<?
-							}	
+							}
 						?>
 					</select></td>
 			</tr>
 			<tr>
 				<th>우편물 수령주소</th>
 				<td colspan="3">
-					<input type="text" name="mb_zip1" id="mb_zip1" style="width:50px;" value="<?=$data['mb_zip1']?>"/>
-					-
-					<input type="text" name="mb_zip2" id="mb_zip2" style="width:50px;" value="<?=$data['mb_zip2']?>"/>
-					<a href="javascript:;" onclick="win_zip('fregisterform', 'mb_zip1', 'mb_zip2', 'mb_addr1', 'mb_addr2', 'mb_addr3', 'mb_addr_jibeon');"><img src="../images/btn_address.png"  align="top" /></a>
-					<br>
-					<input type="text" name="mb_addr1" id="mb_addr1" style="width:45%;" itemname="우편물 수령주소" required value="<?=$data['mb_addr1']?>"/>기본주소<br/>
-					<input type="text" name="mb_addr2" id="mb_addr2" style="width:45%;" value="<?=$data['mb_addr2']?>"/>상세주소<br/>
-					<input type="text" name="mb_addr3" id="mb_addr3" style="width:45%;" value="<?=$data['mb_addr3']?>"/>참고항목<br/>
-					<input type="hidden" name="mb_addr_jibeon"  id="mb_addr_jibeon" value="<?=$data['mb_addr_jibeon']?>">
-					<span id="mb_addr_jibeon">지번주소 : <?=$data['mb_addr_jibeon']?></span>
+					<input type="text" id="post1" name="mb_zip1" style="width:150px;" value="<?=$data['mb_zip1']?>"><!-- - <input type="text" id="post2" name="mb_zip2" style="width:50px;"-->
+					<img src="../images/btn_address.png" onclick="openDaumPostcode()" style="vertical-align: top;height: 26px;cursor:pointer"><br>
+					<input type="text" name="mb_addr1" style="width:100%;margin-top:3px;" id="addr" value="<?=$data['mb_addr1']?>"><br>
+					<input type="text" name="mb_addr2" style="width:100%;margin-top:3px;" id="addr2" value="<?=$data['mb_addr2']?>">
+					<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+					<script>
+						function openDaumPostcode() {
+							new daum.Postcode({
+								oncomplete: function(data) {
+									// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+									// 우편번호와 주소 정보를 해당 필드에 넣고, 커서를 상세주소 필드로 이동한다.
+									document.getElementById('post1').value = data.zonecode;
+									//document.getElementById('post2').value = data.postcode2;
+									document.getElementById('addr').value = data.roadAddress;
+
+									//전체 주소에서 연결 번지 및 ()로 묶여 있는 부가정보를 제거하고자 할 경우,
+									//아래와 같은 정규식을 사용해도 된다. 정규식은 개발자의 목적에 맞게 수정해서 사용 가능하다.
+									//var addr = data.address.replace(/(\s|^)\(.+\)$|\S+~\S+/g, '');
+									//document.getElementById('addr').value = addr;
+
+									document.getElementById('addr2').focus();
+								}
+							}).open();
+						}
+					</script>
 				</td>
 			</tr>
 			<tr>
@@ -144,7 +159,7 @@ if($_GET['mb_no']){
 			</tr>
 			</table>
 
-			
+
 			</td>
 		</tr>
 		</table>
@@ -161,7 +176,7 @@ if($_GET['mb_no']){
 <script type="text/javascript">
 function fwrite_submit(f){
 	if(!confirm("수정하시겠습니까?")) return false;
-	f.action = "./d_process.php"; 
+	f.action = "./d_process.php";
 	return true;
 }
 

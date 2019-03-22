@@ -188,7 +188,7 @@ $(document).ready(function() {
 </h2>
 <hr style="margin:0;height:8px;background-color:<?=$info['maincolor']?>">
 <br>
-<div class="row" style="">
+<div class="" style="">
 	<div class="" style="margin:0 auto;width:700px;">
 		<div class="alert alert-info" role="alert">
 		본인에게 해당되는 항목(저자 또는 심사위원) 선택 후, 아래 로그인하시길 바랍니다.
@@ -260,16 +260,16 @@ $(document).ready(function() {
 </div>
 <br>
 <div class="row" style="font-family:'Times New Roman'">
-	<div class="col-xs-12" style="background-color:#ccc;border:0x #aaa solid;border-radius:20px;">
+	<div class="col-12" style="background-color:#ccc;border:0x #aaa solid;border-radius:20px;">
 		<ul class="nav nav-justified">
-			<li>
-				<a href="<?=$info['site']?>"><?=$info['institute_title']?> 홈페이지</a>
+			<li class="nav-item">
+				<a href="<?=$info['site']?>" class="nav-link"><?=$info['institute_title']?> 홈페이지</a>
 			</li>
-			<li>
-				<a href="<?=$info['publish_rule_url']?>" target="_blank">학회지 발간규정</a>
+			<li class="nav-item">
+				<a href="<?=$info['publish_rule_url']?>" target="_blank" class="nav-link">학회지 발간규정</a>
 			</li>
-			<li>
-				<a href="<?=$info['ethic_rule_url']?>">연구윤리 규정</a>
+			<li class="nav-item">
+				<a href="<?=$info['ethic_rule_url']?>" class="nav-link">연구윤리 규정</a>
 			</li>
 		</ul>
 	</div>

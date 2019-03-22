@@ -12,7 +12,9 @@ $js = [
     <thead class="thead-dark">
         <tr>
             <?php foreach($js['header'] as $k=>$v): ?>
-                <th scope="col"><?=$v?><?=($js['header_eng'][$k])?"<br/>{$js['header_eng'][$k]}":''?></th>
+                <th scope="col">
+                    <?=$v?><?=($js['header_eng'][$k])?"<br/>{$js['header_eng'][$k]}":''?>
+                </th>
             <?php endforeach ?>
         </tr>
     </thead>

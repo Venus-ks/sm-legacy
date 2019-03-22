@@ -19,7 +19,7 @@ if($_SERVER['PHP_SELF']=="/admin/index.php"){
 	if($member['mb_level'] == 10){		// ### 10 // 편집간사
 		if($mode == '1'){
 		// 편집간사이면서 투고자 모드로 들어왔을 경우
-			goto_url("./a_sub02.php");
+			goto_url("./a_sub01.php");
 		}else if($mode == '2'){
 			// 편집간사이면서 심사위원 모드로 들어왔을 경우
 			goto_url("./b_sub01.php");
@@ -34,7 +34,7 @@ if($_SERVER['PHP_SELF']=="/admin/index.php"){
 	}else if($member['mb_level'] == 9){	// ### 9 // 임시대표간사
 		if($mode == '1'){
 			// 임시대표간사이면서 투고자 모드로 들어왔을 경우
-			goto_url("./a_sub02.php");
+			goto_url("./a_sub01.php");
 		}else if($mode == '2'){
 			// 임시대표간사이면서 심사위원 모드로 들어왔을 경우
 			 goto_url("./b_sub01.php");
@@ -49,7 +49,7 @@ if($_SERVER['PHP_SELF']=="/admin/index.php"){
 	}else if($member['mb_level'] == 8){	// ### 8 // 대표간사
 		if($mode == '1'){
 		// 대표간사이면서 투고자 모드로 들어왔을 경우
-			goto_url("./a_sub02.php");
+			goto_url("./a_sub01.php");
 		}else if($mode == '2'){
 			// 대표간사이면서 심사위원 모드로 들어왔을 경우
 			 goto_url("./b_sub01.php");
@@ -66,7 +66,7 @@ if($_SERVER['PHP_SELF']=="/admin/index.php"){
 	}else if($member['mb_level'] >= 4){	// ### 4,5 // 심사위원용
 		if($mode == '1'){
 		// 심사위원이면서 투고자 모드로 들어왔을 경우
-			goto_url("./a_sub02.php");
+			goto_url("./a_sub01.php");
 		}else if($mode == '2'){
 			// 심사위원이면서 심사위원 모드로 들어왔을 경우
 			goto_url("./b_sub01.php");
@@ -85,7 +85,7 @@ if($_SERVER['PHP_SELF']=="/admin/index.php"){
 ?>
 <h2 style="font-family:'Malgun gothic,맑은고딕';margin:0.5rem 1.5rem">
 	<?php if($info['logo_url']):?>
-		<img src="<?=$info['logo_url']?>">
+		<a href="<?=$info['banner']['href']?>"><img src="<?=$info['banner']['img']?>"/></a>
 	<?php else:?>
 		<b><?=$info['institute_title']?></b>
 	<?php endif?>
@@ -95,13 +95,13 @@ if($_SERVER['PHP_SELF']=="/admin/index.php"){
 </style>
 <ul class="nav nav-tabs">
 	<?php if($member['mb_level']>=2):?>
-		<li role="presentation" class="nav-item <?=($mode==1)?'active':''?>"><a class="nav-link" href="./d_process.php?mode=switch_mode&mb_id=<?=$member['mb_id']?>&type=1">저자 모드</a></li>
+		<li role="presentation" class="nav-item <?=($mode==1)?'active':''?>"><a href="./d_process.php?mode=switch_mode&mb_id=<?=$member['mb_id']?>&type=1" class="nav-link">저자 모드(Author mode)</a></li>
 	<?php endif?>
 	<?php if($member['mb_level']>=4):?>
-		<li role="presentation" class="nav-item <?=($mode==2)?'active':''?>"><a class="nav-link" href="./d_process.php?mode=switch_mode&mb_id=<?=$member['mb_id']?>&type=2">심사자 모드</a></li>
+		<li role="presentation" class="nav-item <?=($mode==2)?'active':''?>"><a href="./d_process.php?mode=switch_mode&mb_id=<?=$member['mb_id']?>&type=2" class="nav-link">심사자 모드(Reviewer mode)</a></li>
 	<?php endif?>
 	<?php if($member['mb_level']>=10):?>
-		<li role="presentation" class="nav-item <?=($mode==3)?'active':''?>"><a class="nav-link" href="./d_process.php?mode=switch_mode&mb_id=<?=$member['mb_id']?>&type=3">편집자 모드</a></li>
+		<li role="presentation" class="nav-item <?=($mode==3)?'active':''?>"><a href="./d_process.php?mode=switch_mode&mb_id=<?=$member['mb_id']?>&type=3" class="nav-link">편집자 모드(Editor mode)</a></li>
 	<?php endif?>
 </ul>
 <div style="margin:0;line-height:20px;height:20px;background-color:#2977C9;color:#FFF;padding-left:5px;font-weight:600"></div>

@@ -60,3 +60,5 @@ a.leftmenuofflink:active  {color:#333333;text-decoration:none;}
 .paging span {border-left:1px solid #e4e4e4;padding:3px 10px;font-size:14px;color:#323232;margin-right:2px;font-weight:bold;font-family:Tahoma;}
 .paging span.on {border-left:1px solid #e4e4e4;background:#2978ca;padding:3px 10px;font-size:14px;color:#ffffff;margin-right:2px;font-weight:bold;font-family:Tahoma;}
 .paging span.next {border:none;padding:5px 10px;font-size:14px;color:#323232;margin-right:2px;font-weight:bold;font-family:Tahoma;}
+
+a.nav-link:hover {background-color: #eee}
