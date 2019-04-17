@@ -1,7 +1,7 @@
 <?php
 include_once("./_common.php");
 error_reporting(E_ALL);
-### 메일 관련 코드 
+### 메일 관련 코드
 //id 발송시 PECERA 고유번호 발급시 년도 정보 생성
 $id_year=date('y');
 // 변수설정
@@ -9,13 +9,13 @@ $main_editor = $info['editor_email'];
 $mail_header = <<<HTML
 <html xmlns='http://www.w3.org/1999/xhtml'><head><meta http-equiv='Content-Type' content='text/html; charset=utf-8'/><title></title></head>
 <body>
-<table width='750' border='0' cellspacing='0' cellpadding='0'><tr><td height='85' align='center' valign='top'><img src='http://{$_SERVER['HTTP_HOST']}/images/mail_title.png' width='750' height='65' /></td></tr><tr><td height='15'></td></tr>
+<table width='750' border='0' cellspacing='0' cellpadding='0'><tr><td height='85' align='center' valign='top'><img src='{$info['logo_url']}' width='750' height='65' /></td></tr><tr><td height='15'></td></tr>
 <tr><td height='50' align='left' valign='top'>
 HTML;
 $mail_footer = <<<HTML
 <table width='750' border='0' cellspacing='0' cellpadding='0'>
 <tr>
-<td width='240' height='80'><img src='http://www.ekera.org/front/images/logo.gif' /></td>
+<td width='240' height='80'><img src='{$info['logo_url']}' /></td>
 <td width='10'></td><td align='left'>
 <p>{$info['institute_title']} 편집위원장 {$info['editor_name']}<br />
 {$info['address']}<br />
@@ -32,10 +32,10 @@ require_once('class/class.MailSender.php'); // phpmailer override class by hjshy
 $mysqlconn = new Mysqli($mysql_host, $mysql_user, $mysql_password, $mysql_db);
 // 메일 클래스 설정
 $mail = new GoogleTemplateMailer();
-$mail->SMTPDebug  = 1;                    
+$mail->SMTPDebug  = 1;
 // enables SMTP debug information (for testing)
 // 1 = errors and messages
-// 2 = messages only    
+// 2 = messages only
 $mail->Dbconn = $mysqlconn;
 $mail->Username = $info['smtp_id']; // SMTP account username
 $mail->Password = $info['smtp_pw']; // SMTP account password

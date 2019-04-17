@@ -9,13 +9,13 @@ $main_editor = $info['editor_email'];
 $mail_header = <<<HTML
 <html xmlns='http://www.w3.org/1999/xhtml'><head><meta http-equiv='Content-Type' content='text/html; charset=utf-8'/><title></title></head>
 <body>
-<table width='750' border='0' cellspacing='0' cellpadding='0'><tr><td height='85' align='center' valign='top'><img src='http://{$_SERVER['HTTP_HOST']}/images/mail_title.png' width='750' height='65' /></td></tr><tr><td height='15'></td></tr>
+<table width='750' border='0' cellspacing='0' cellpadding='0'><tr><td height='85' align='center' valign='top'><img src='{$info['logo_url']}'/></td></tr><tr><td height='15'></td></tr>
 <tr><td height='50' align='left' valign='top'>
 HTML;
 $mail_footer = <<<HTML
 <table width='750' border='0' cellspacing='0' cellpadding='0' style="background-color: #FFF;">
 <tr>
-<td width='240' height='80'><img src='http://{$_SERVER['HTTP_HOST']}/images/logo.png' /></td>
+<td width='240' height='80'><img src='{$info['logo_url']}' /></td>
 <td width='10'></td><td align='left'>
 <p>{$info['institute_title']} 편집위원장 {$info['editor_name']}<br />
 {$info['address']}<br />
