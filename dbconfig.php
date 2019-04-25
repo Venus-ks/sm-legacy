@@ -41,12 +41,10 @@ $info['review_form_url2'] = "javascript:alert('양식이 없습니다. 개별 �
 $info['review_form_url3'] = "javascript:alert('양식이 없습니다. 개별 요청바랍니다')";
 
 //상세설정
-$GLOBALS['rule']['category_target'] =
-array('분야1','분야2','분야3','분야4','분야5','분야6');
-$GLOBALS['rule']['get_result'] =
-array('게재가','수정 후 게재가','수정 후 재심사','게재불가');
-$GLOBALS['rule']['get_result_2nd'] =
-array('게재가','게재불가');
+$GLOBALS['rule']['manuscript_target'] = ['단독연구','공동연구'];
+$GLOBALS['rule']['category_target'] = ['분야1','분야2','분야3','분야4','분야5','분야6'];
+$GLOBALS['rule']['get_result'] = ['게재가','수정 후 게재가','수정 후 재심사','게재불가'];
+$GLOBALS['rule']['get_result_2nd'] = ['게재가','게재불가'];
 //file array
 $info['file_arr'] = [
     [

@@ -1544,8 +1544,9 @@ function is_utf8($str)
 
 ###
 function get_manuscript($num=null){
-	$arr[] = array("cvalue"=>1, "ctext"=>"단독연구");
-	$arr[] = array("cvalue"=>2, "ctext"=>"공동연구");
+    foreach($GLOBALS['rule']['manuscript_target'] as $k=>$v) {
+		if($v) $arr[] = array("cvalue"=>$k+1, "ctext"=>$v);
+	}
 
 	if($num){
 		foreach($arr as $v) {

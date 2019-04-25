@@ -124,8 +124,9 @@ if($_POST['mode']=="c_sub_review"){
 		if($chk['cnt']==$chk2['cnt']) $step = " step = 15 ";
 		else $step = " step = 14 ";
 	}else{
-		$cnt = $data['review_a_step'] + $data['review_b_step'] + $data['review_c_step'];
-		if($cnt > 1) $step = " step = 5 ";
+		$sql = "SELECT count(rseq) as cnt FROM `ad_paper_review` WHERE `parent_seq` = '{$_POST['seq']}' AND `rstep` = '1'";
+		$check_review_fin	= sql_fetch($sql);
+		if($check_review_fin['cnt'] == 3) $step = " step = 5 ";
 	}
 	if($step){
 		$sql = "update ad_paper set {$step} where seq = '{$_POST['seq']}'";
