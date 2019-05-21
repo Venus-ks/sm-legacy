@@ -50,6 +50,13 @@ if($_GET['mb_no']){
 				<td colspan="3"><?=$data['mb_id']?></td>
 			</tr>
 			<tr>
+				<th>비밀번호(변경)</th>
+				<td colspan="3">
+					<input type="password" name="mb_password" id="mb_password" style="width:50%;" itemname="비밀번호"/>
+					<input type="password" name="mb_password_confirm" id="mb_password_confirm" style="width:50%;margin-top:3px;" itemname="비밀번호 확인"/>
+				</td>
+			</tr>
+			<tr>
 				<th>회원명</th>
 				<td colspan="3"><input type="text" name="mb_name" id="mb_name" style="width:100%;" itemname="회원명" required value="<?=$data['mb_name']?>"/></td>
 			</tr>
@@ -151,7 +158,7 @@ if($_GET['mb_no']){
 			<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
 			<tr>
 				<td align="right" width="50%">
-					<input type="image" src="../images/btn_summit.png" alt="" style="width:89px;height:38px;border:0px;"/>
+					<input type="image" src="../images/btn_summit.png" alt="" style="border:0px;"/>
 				</td>
                 <td width="10px">&nbsp;</td>
 				<td align="left" width="50%">

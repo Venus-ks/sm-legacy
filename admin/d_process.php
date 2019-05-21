@@ -768,8 +768,12 @@ else if($_POST['mode']=="member_write"){
 ### 회원관리
 else if($_POST['mode']=="d_member"){
 	$pass_sql = "";
-	if($_POST['mb_password']){
+	if($_POST['mb_password'] && $_POST['mb_password'] == $_POST['mb_password_confirm']){
 		$pass_sql = "mb_password		= '".sql_password($_POST['mb_password'])."',";
+	}else {
+		$msg		= "비밀번호가 일치하지 않습니다.";
+		$returnUrl	= "./d_member_write.php?mb_no={$_POST['mb_no']}";
+		alert($msg, $returnUrl);
 	}
 	if($_POST['mb_level']==4){
 		$sql = "UPDATE g4_member SET
