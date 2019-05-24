@@ -38,6 +38,8 @@ if($_GET['seq']){
 				<input type="hidden" name="seq" value="<?=$data['seq']?>"/>
 				<input type="hidden" name="number" value="<?=$data['number']?>"/>
 				<input type="hidden" name="type" value="<?=$auth_type?>"/>
+				<input type="hidden" name="mb_id" value="<?=$member['mb_id']?>"/>
+				<input type="hidden" name="mb_name" value="<?=$member['mb_name']?>"/>
 				<table width="100%" border="0" cellspacing="0" cellpadding="0">
 					<tr><td background="../images/titlebg.png"><img src="../images/02_title01.png" /></td></tr>
 					<tr>

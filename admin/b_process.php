@@ -83,25 +83,25 @@ if($_POST['mode']=="c_sub_review"){
 				{$file_sql}
 				{$file_sql2}
 				{$file_sql3}
-				mb_id		= '{$member['mb_id']}',
-				mb_name		= '{$member['mb_name']}',
+				mb_id		= '{$_POST['mb_id']}',
+				mb_name		= '{$_POST['mb_name']}',
 				rstep		= '{$rstep}',
 				regdate		= now()";
 	/* 리뷰 중복 등록 방지 hjshyo 151030 */
-	$que = "SELECT rseq FROM ad_paper_review WHERE parent_seq='{$_POST['seq']}' AND mb_id='{$member['mb_id']}' AND rstep='{$rstep}'";
+	$que = "SELECT rseq FROM ad_paper_review WHERE parent_seq='{$_POST['seq']}' AND mb_id='{$_POST['mb_id']}' AND rstep='{$rstep}'";
 	$re = sql_fetch($que);
 	if(empty($re)) sql_query($sql);
 	/* 리뷰 중복 등록 방지 hjshyo 151030 끝*/
 	###
 	$sql = "select * from ad_paper where seq = '{$_POST['seq']}'";
 	$data	= sql_fetch($sql);
-	if($data['review_a_user']==$member['mb_id']){
+	if($data['review_a_user']==$_POST['mb_id']){
 		$qry = " review_a_step = '{$rstep}', review_a_result = '{$_POST['result']}' ";
 	}
-	if($data['review_b_user']==$member['mb_id']){
+	if($data['review_b_user']==$_POST['mb_id']){
 		$qry = " review_b_step = '{$rstep}', review_b_result = '{$_POST['result']}' ";
 	}
-	if($data['review_c_user']==$member['mb_id']){
+	if($data['review_c_user']==$_POST['mb_id']){
 		$qry = " review_c_step = '{$rstep}', review_c_result = '{$_POST['result']}' ";
 	}
 	$sql = "update ad_paper set {$qry} where seq = '{$_POST['seq']}'";
@@ -145,7 +145,7 @@ if($_POST['mode']=="c_sub_review"){
 		{$mail_header}
 		<p>{$info['institute_title']} {$rstep}차 논문 심사 완료 KJ-14-{$number}</p>
 		<p>편집간사님</p>
-		<p>심사위원 {$member['mb_name']}님이 다음의 논문에 대한 {$rstep}차 심사 결과를 등록하였습니다.</p>
+		<p>심사위원 {$_POST['mb_name']}님이 다음의 논문에 대한 {$rstep}차 심사 결과를 등록하였습니다.</p>
 		</td></tr>
 		<tr><td height='15'></td></tr>
 		<tr><td height='15'><a href='http://{$_SERVER['HTTP_HOST']}/admin/d_sub04_write.php?seq={$_POST['seq']}' target='_blank'>심사위원 검토 페이지로 이동</a></td></tr>

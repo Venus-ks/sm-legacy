@@ -7,8 +7,6 @@
 	</table>
 <?php endif?>
 <input type="hidden" name="title" value="<?=$data['title']?>">
-<input type="hidden" name="mb_id" value="<?=$data['mb_id']?>">
-<input type="hidden" name="mb_name" value="<?=$data['mb_name']?>">
 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:12px;">
 	<tr>
 		<td>
