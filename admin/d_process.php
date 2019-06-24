@@ -307,7 +307,7 @@ else if($_POST['mode']=="d_sub3_reg_email"){
 		$tmp_file  = $_FILES[$doctype][tmp_name];
 		$filesize  = $_FILES[$doctype][size];
 		$filename  = $_FILES[$doctype][name];
-		$filename  = preg_replace('/(\s|\<|\>|\=|\(|\)|,)/', '_', $filename);
+		$filename  = preg_replace('/[^a-zA-Z0-9가-힣.]/', '_', $filename);
 		$rfilename	= iconv("utf-8", "euc-kr", $filename);
 		//중복 파일 방지를 위해 타임스탬프를 붙인다.
 		$mcrtime = explode(' ',microtime());
@@ -423,7 +423,7 @@ else if($_POST['mode']=="d_sub5_reg"){
 		$tmp_file  = $_FILES['review_file'][tmp_name];
 		$filesize  = $_FILES['review_file'][size];
 		$filename  = $_FILES['review_file'][name];
-		$filename  = preg_replace('/(\s|\<|\>|\=|\(|\)|,)/', '_', $filename);
+		$filename  = preg_replace('/[^a-zA-Z0-9가-힣.]/', '_', $filename);
 		$rfilename	= iconv("utf-8", "euc-kr", $filename);
 		//중복 파일 방지를 위해 타임스탬프를 붙인다.
 		$mcrtime = explode(' ',microtime());
@@ -476,7 +476,7 @@ else if($_POST['mode']=="d_sub9_reg"){
 		$tmp_file  = $_FILES['review_file'][tmp_name];
 		$filesize  = $_FILES['review_file'][size];
 		$filename  = $_FILES['review_file'][name];
-		$filename  = preg_replace('/(\s|\<|\>|\=|\(|\)|,)/', '_', $filename);
+		$filename  = preg_replace('/[^a-zA-Z0-9가-힣.]/', '_', $filename);
 		$rfilename	= iconv("utf-8", "euc-kr", $filename);
 		//중복 파일 방지를 위해 타임스탬프를 붙인다.
 		$mcrtime = explode(' ',microtime());
@@ -699,6 +699,8 @@ else if($_POST['mode']=="d_sub7_reg"){
 				WHERE
 					mb_no = '{$_POST['mb_no']}'";
 	}else{
+		$member_registered = sql_fetch("SELECT * FROM g4_member WHERE mb_id='$email'");
+		if($member_registered) alert("이미 가입된 회원입니다. 회원관리에서 확인바랍니다.","./d_sub07.php");
 		$category_str = $_POST['field'];
 		$sql = "INSERT INTO g4_member SET
 					mb_id			= '{$email}',
@@ -1013,7 +1015,7 @@ else if($_POST['mode']=="publication_ok"){
 		$tmp_file  = $_FILES['publication_file_'.$seq][tmp_name];
 		$filesize  = $_FILES['publication_file_'.$seq][size];
 		$filename  = $_FILES['publication_file_'.$seq][name];
-		$filename  = preg_replace('/(\s|\<|\>|\=|\(|\)|,)/', '_', $filename);
+		$filename  = preg_replace('/[^a-zA-Z0-9가-힣.]/', '_', $filename);
 		$rfilename	= iconv("utf-8", "euc-kr", $filename);
 		//중복 파일 방지를 위해 타임스탬프를 붙인다.
 		$mcrtime = explode(' ',microtime());
@@ -1169,7 +1171,7 @@ else if($_POST['mode']=="reject_article"){
 		$tmp_file  = $_FILES['reject_comment_file'][tmp_name];
 		$filesize  = $_FILES['reject_comment_file'][size];
 		$filename  = $_FILES['reject_comment_file'][name];
-		$filename  = preg_replace('/(\s|\<|\>|\=|\(|\)|,)/', '_', $filename);
+		$filename  = preg_replace('/[^a-zA-Z0-9가-힣.]/', '_', $filename);
 		$rfilename	= iconv("utf-8", "euc-kr", $filename);
 		//중복 파일 방지를 위해 타임스탬프를 붙인다.
 		$mcrtime = explode(' ',microtime());

@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 class UploadFile 
 {
 	public function uploadByType($uploaded_file,$type)
@@ -6,9 +6,9 @@ class UploadFile
 		$tmp_file  = $uploaded_file['tmp_name'];
 		$filesize  = $uploaded_file['size'];
 		$filename  = $uploaded_file['name'];
-		$filename  = preg_replace('/(\s|\<|\>|\=|\(|\)|,)/', '_', $filename);
+		$filename  = preg_replace('/[^a-zA-Z0-9ê°€-í£.]/', '_', $filename);
 		$rfilename	= iconv("utf-8", "euc-kr", $filename);
-		//Áßº¹ ÆÄÀÏ ¹æÁö¸¦ À§ÇØ Å¸ÀÓ½ºÅÆÇÁ¸¦ ºÙÀÎ´Ù.
+		//ì¤‘ë³µ íŒŒì¼ ë°©ì§€ë¥¼ ìœ„í•´ íƒ€ì„ìŠ¤íƒ¬í”„ë¥¼ ë¶™ì¸ë‹¤.
 		$mcrtime = explode(' ',microtime());
 		$mcrtime[0] = substr($mcrtime[0],2,6);
 		$rfilename = time().$mcrtime[0]."^".$rfilename;

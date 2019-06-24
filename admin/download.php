@@ -5,7 +5,7 @@ $fileTmp = strstr($fileName, '^'); // 파일명 임시저장(앞의 '^'를 제�
 $DownFile = substr($fileTmp, 2);
  
 Header("Content-Type: file/unknown");
-Header("Content-Disposition: attachment; filename=". $DownFile;
+Header("Content-Disposition: attachment; filename=". $DownFile);
 Header("Content-Length: ".filesize("$DownloadPath"));
 header("Content-Transfer-Encoding: binary ");
 Header("Pragma: no-cache");

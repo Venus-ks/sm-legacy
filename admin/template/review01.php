@@ -53,19 +53,21 @@
 			</tr>
 		</table>
 	<?php endwhile?>
-	<table class="boardType01_write" style="margin-top:10px;">
-		<tr>
-			<th width="150">1차 종합심사결과<br/>Result</th>
-			<td>
-				<select name="result" id="result" style="width:100%;" disabled>
-					<?php $arr = get_result();?>
-					<?php for($i=0;$i<count($arr);$i++):?>
-						<option value="<?=$arr[$i]['cvalue']?>" <?=($data['review_score']==$arr[$i]['cvalue'])?'selected':''?>><?=$arr[$i]['ctext']?></option>
-					<?php endfor?>
-				</select>
-			</td>
-		</tr>
-	</table>
+	<?php if($data['review_score']):?>
+		<table class="boardType01_write" style="margin-top:10px;">
+			<tr>
+				<th width="150">1차 종합심사결과<br/>Result</th>
+				<td>
+					<select name="result" id="result" style="width:100%;" disabled>
+						<?php $arr = get_result();?>
+						<?php for($i=0;$i<count($arr);$i++):?>
+							<option value="<?=$arr[$i]['cvalue']?>" <?=($data['review_score']==$arr[$i]['cvalue'])?'selected':''?>><?=$arr[$i]['ctext']?></option>
+						<?php endfor?>
+					</select>
+				</td>
+			</tr>
+		</table>
+	<?php endif?>
 <?php endif?>
 <?php if($data['step']==4):?>
 	<br>

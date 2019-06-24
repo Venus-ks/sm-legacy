@@ -44,7 +44,8 @@ function get_paging($write_pages, $cur_page, $total_page, $url, $add="")
 
     if ($cur_page < $total_page) {
         //$str .= "[<a href='$url" . ($cur_page+1) . "'>다음</a>]";
-        $str .= " &nbsp;<a href='$url$total_page{$add}'>맨끝</a>";
+        //$str .= " &nbsp;<a href='$url$total_page{$add}'>맨끝</a>";
+        $str .= " &nbsp;<a href='{$url}{$next_page}'>맨끝</a>";
     }
     $str .= "";
 
