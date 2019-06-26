@@ -1574,17 +1574,12 @@ function get_category($num=null){
 		return $arr;
 	}
 }
-function get_category_target($num=null){
-	foreach($GLOBALS['rule']['category_target'] as $k=>$v) {
-		if($v) $arr[] = array("cvalue"=>$k+1, "ctext"=>$v);
-	}
 
-	if(!is_null($num)){
-		foreach($arr as $v) {
-			if($v['cvalue']==$num) return $v['ctext'];
-		}
+function get_category_target($num){
+	if(!empty($num)){
+        return $GLOBALS['rule']['category_target'][$num];
 	}else{
-		return $arr;
+		return '없음';
 	}
 }
 

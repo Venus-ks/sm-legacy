@@ -27,7 +27,6 @@ header("Pragma: no-cache"); // HTTP/1.0
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title><?=$g4['title']?></title>
-</head>
 <script language="javascript">
 // 자바스크립트에서 사용하는 전역변수 선언
 var g4_path      = "<?=$g4['path']?>";
@@ -49,6 +48,7 @@ var g4_is_ie     = navigator.userAgent.toLowerCase().indexOf("msie") != -1;
 <link href="/css/colorbox.css" rel="stylesheet" type="text/css" />
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link href="../css/css/all.css" rel="stylesheet"> <!--load all styles -->
 <script language="javascript" src="/js/common_html.js" type="text/javascript"></script>
 <script language="javascript" src="/js/flash.js" type="text/javascript"></script>
 <script language="JavaScript" src="/js/commonmenu.js"></script>
@@ -59,26 +59,5 @@ var g4_is_ie     = navigator.userAgent.toLowerCase().indexOf("msie") != -1;
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-<style type="text/css">
-/* body {
-	background-image: url(/images/bg.png);
-	background-repeat: repeat-x;
-	background-color: #ffffff;
-} */
-</style>
+</head>
 <body>
-<!--table width="100%" border="0" cellspacing="0" cellpadding="0">
-	<tr style="height: 60px;">
-		<td align="center">
-			<a href="/">
-				<!--img src="../images/login_logo.png" />
-				<span style="font-size:25px;font-family:맑은고딕,Malgun Gothic;letter-spacing:-3px"><?=$info['institute_title']?> 온라인논문투고시스템</span>
-			</a>
-		</td>
-	</tr>
-</table>
-<table width="100%" height="15px" border="0" cellpadding="0" cellspacing="1">
-	<tr>
-		<td bgcolor="<?=$info['maincolor']?>"></td>
-	</tr>
-</table-->

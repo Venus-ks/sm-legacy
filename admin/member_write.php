@@ -39,9 +39,9 @@ include_once("$g4[path]/lib/outlogin.lib.php");
 								<th width="150"><strong><span class="glyphicon glyphicon-ok-sign submit_color"></span>&nbsp;회원구분</strong></th>
 								<td  colspan="3" width="350">
 									<select name="mb_level" id="mb_level" itemname="회원구분" style="width: 170px;" required>
-										<option value="">====== 선택 ======</option>
+										<!-- <option value="">====== 선택 ======</option> -->
 										<option value="2">정회원</option>
-										<option value="0">미가입 또는 연회비 미납</option>
+										<!-- <option value="0">미가입 또는 연회비 미납</option> -->
 									</select>
 								</td>
 							</tr>

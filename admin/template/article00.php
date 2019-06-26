@@ -21,27 +21,27 @@
 		</tr>
 		<tr>
 			<th width="200">논문명(국문)<br/>Paper Title (Kor)</th>
-			<td><input type="text" name="title" value="<?=$data['title']?>" itemname="Title" required style="width:100%;" /></td>
+			<td><input type="text" name="title" value="<?=$data['title']?>" itemname="Title" placeholder="필수 입력" required style="width:100%;"/></td>
 		</tr>
 		<tr>
 			<th width="200">논문명(영문)<br/>Paper Title (Eng)</th>
-			<td><input type="text" name="title_eng" value="<?=$data['title_eng']?>" itemname="Title(ENG)" required style="width:100%;" /></td>
+			<td><input type="text" name="title_eng" value="<?=$data['title_eng']?>" itemname="Title(ENG)" placeholder="필수 입력" required style="width:100%;" /></td>
 		</tr>
 		<tr>
 			<th width="200">초록(국문)<br/>Abstract(KOR)</th>
-			<td><textarea cols="10" name="abstract" itemname="abstract" style="width:100%;height:100px"><?=$data['abstract']?></textarea><BR/></td>
+			<td><textarea cols="10" name="abstract" itemname="abstract" placeholder="필수 입력" required style="width:100%;height:100px"><?=$data['abstract']?></textarea><BR/></td>
 		</tr>
 		<tr>
 			<th width="200">초록(영문)<br/>Abstract(ENG)</th>
-			<td><textarea cols="10" name="abstract_eng" itemname="abstract_eng" style="width:100%;height:100px"><?=$data['abstract_eng']?></textarea><BR/></td>
+			<td><textarea cols="10" name="abstract_eng" itemname="abstract_eng" placeholder="필수 입력" required style="width:100%;height:100px"><?=$data['abstract_eng']?></textarea><BR/></td>
 		</tr>
 		<tr>
 			<th width="200">키워드(국문)<br/>Keywords(KOR)</th>
-			<td><input type="text" name="keyword" value="<?=$data['keyword']?>" itemname="keyword" style="width:100%;" /><BR/>※ 키워드 5개까지 입력가능합니다. 콤마(,)로 구분합니다.</td>
+			<td><input type="text" name="keyword" value="<?=$data['keyword']?>" itemname="keyword" placeholder="필수 입력" required style="width:100%;" /><BR/>※ 키워드 5개까지 입력가능합니다. 콤마(,)로 구분합니다.</td>
 		</tr>
 		<tr>
 			<th width="200">키워드(영문)<br/>Keywords(ENG)</th>
-			<td><input type="text" name="keyword_eng" value="<?=$data['keyword_eng']?>" itemname="keyword_eng" style="width:100%;" /><BR/>※ 키워드 5개까지 입력가능합니다. 콤마(,)로 구분합니다.</td>
+			<td><input type="text" name="keyword_eng" value="<?=$data['keyword_eng']?>" itemname="keyword_eng" placeholder="필수 입력" required style="width:100%;" /><BR/>※ 키워드 5개까지 입력가능합니다. 콤마(,)로 구분합니다.</td>
 		</tr>
 		</table>
 		<table class="boardType01_write" style="margin-top:20px;">
@@ -109,15 +109,15 @@
 			</td>
 		</tr>
 		<tr>
-			<th width="200">자가점검사항표<br/>Checklist</th>
+			<th width="200">저작권이양동의서<br/>Copyright Agreement</th>
 			<td>
 				<input type="file" name="submission_data3" style="width:100%;" <?=($data['submission_data3'])?'':'required'?>/>
 				<? if($data['step']>0 && $data['submission_data3']){ ?>
 					<div style="padding-top:5px;"><a href="/down.php?link=<?=$data['submission_data3']?>"><?=end(explode("/",substr(strstr($data['submission_data3'], '^'), 1)))?></a></div>
 				<? } ?>
-				<!--div style="padding-top:5px;"><a href="<?=$info['author_checklist_url']?>"><strong style="color:#B60000">양식 다운로드</strong></a>
+				<div style="padding-top:5px;"><a href="<?=$info['copyright_form_url']?>"><strong style="color:#B60000">양식 다운로드</strong></a>
 				</div>
-				<span>다운로드 받은 양식을 작성하여, 업로드(pdf 가능)해주시기 바랍니다.</span-->
+				<span>다운로드 받은 양식을 작성하여, 업로드(pdf 가능)해주시기 바랍니다.</span>
 			</td>
 		</tr>
 		<tr>

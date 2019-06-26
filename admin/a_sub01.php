@@ -66,7 +66,6 @@ $write_pages = get_paging(10, $page, $total_page, "./a_sub01.php?page=");
 		<tr>
 			<td valign="top" style="padding:20px;">
 				<!-- ### SEARCH -->
-				<form name="form1">
 				<table width="800" border="0" cellspacing="0" cellpadding="0">
 				<tr>
 					<td width="280">
@@ -111,10 +110,14 @@ $write_pages = get_paging(10, $page, $total_page, "./a_sub01.php?page=");
 					<td height="32">&nbsp;</td>
 				</tr>
 				<tr>
-					<td><a href="a_sub01_write.php"><img src="../images/btn_paper_registration.png" /></a></td>
+					<td>
+						<!-- <a href="a_sub01_write.php"><img src="../images/btn_paper_registration.png" /></a> -->
+						<form action="a_sub01_write.php">
+							<button type="submit" class="btn btn-info btn-lg"><i class="fas fa-plus-square"></i> Paper Submission</button>
+						</form>
+					</td>
 				</tr>
 				</table>
-				</form>
 				<!-- ### LIST -->
 				<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:12px;">
 				<tr>

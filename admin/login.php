@@ -266,7 +266,7 @@ $(document).ready(function() {
 				<a href="<?=$info['site']?>" class="nav-link"><?=$info['institute_title']?> 홈페이지</a>
 			</li>
 			<li class="nav-item">
-				<a href="<?=$info['publish_rule_url']?>" target="_blank" class="nav-link">학회지 발간규정</a>
+				<a href="<?=$info['submission_rule_url']?>" target="_blank" class="nav-link">학회지 발간규정</a>
 			</li>
 			<li class="nav-item">
 				<a href="<?=$info['ethic_rule_url']?>" class="nav-link">연구윤리 규정</a>

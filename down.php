@@ -15,6 +15,7 @@ $filepath = __DIR__.$filepath;
 $filepath = iconv("UTF-8","cp949//IGNORE", $filepath);
 $temp_arr		= explode("/", $filepath);
 $filename		= trim($temp_arr[count($temp_arr)-1]); // 다운로드 받을 파일이름
+$filename = urldecode($filename);
 try {
     $fileDownload = FileDownload::createFromFilePath($filepath);
     $fileDownload->sendDownload($filename);

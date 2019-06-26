@@ -21,18 +21,31 @@
 					<td colspan="3"><?=$article_code?></td>
 				</tr>
 				<tr>
-					<th>논문명(국문)<br/>Paper Title (Kor)</th>
+					<th>논문명(국문)<br/>Paper Title (KOR)</th>
 					<td colspan="3"><?=$data['title']?></td>
 					<input type="hidden" name="title" value="<?=$data['title']?>">
 				</tr>
 				<tr>
-					<th>논문명(영문)<br/>Paper Title (Eng)</th>
+					<th>논문명(영문)<br/>Paper Title (ENG)</th>
 					<td colspan="3"><?=$data['title_eng']?></td>
 				</tr>
 				<tr>
-					<th>키워드: 국문(영문)<br/>Keywords: KOR (Eng)<br /></th>
+					<th>초록(국문)<br/>Abstract(KOR)</th>
+					<td colspan="3"><?=$data['abstract']?></td>
+				</tr>
+				<tr>
+					<th>초록(영문)<br/>Abstract(ENG)</th>
+					<td colspan="3"><?=$data['abstract_eng']?></td>
+				</tr>
+				<tr>
+					<th>키워드(국문)<br/>Keywords(KOR)</th>
 					<td colspan="3"><?=$data['keyword']?></td>
 					<input type="hidden" name="keyword" value="<?=$data['keyword']?>">
+				</tr>
+				<tr>
+					<th>키워드(영문)<br/>Keywords(ENG)</th>
+					<td colspan="3"><?=$data['keyword_eng']?></td>
+					<input type="hidden" name="keyword_eng" value="<?=$data['keyword_eng']?>">
 				</tr>
 			</table>
 			<?php if($hidden_author!=TRUE && $loop):?>
@@ -66,15 +79,17 @@
 				</tr>
 				<tr>
 					<th width="150"><strong>심사요청분야<br/>Review Category</strong></th>
-					<td><? if($data['review_category_target']){ ?><?=get_category_target($data['review_category_target'])?><? } ?><? if($data['review_category']){ ?> / <?=get_category($data['review_category'])?><? } ?></td>
+					<td><?=get_category_target($data['review_category_target'])?></td>
 				</tr>
 				<tr>
 					<th width="150"><strong><?=($data['modify_file'])?'수정':''?>논문파일<br/><?=($data['modify_file'])?'Modified ':''?>Paper File</strong></th>
 					<td>
-						<? if($data['modify_file']){ ?>
+						<? if($data['modify_file']): ?>
 						<?=end(explode("/",substr(strstr($data['modify_file'], '^'), 1)))?>
 						<a href="/down.php?link=<?=$data['modify_file']?>"><img src="../images/btn_download.png"  align="absmiddle" /></a>
-						<? } ?>
+						<? else: ?>
+						접수중
+						<?php endif?>
 					</td>
 				</tr>
 				<?php if($data['step']>10 && $data['response_data']):?>
@@ -94,7 +109,7 @@
 					</td>
 				</tr>
 				<tr>
-					<th width="200">자가점검사항표<br/>Checklist</th>
+					<th width="200">저작권이양동의서<br/>Copyright Agreement</th>
 					<td>
 						<?=end(explode("/",substr(strstr($data['submission_data3'], '^'), 1)))?>
 						<a href="/down.php?link=<?=$data['submission_data3']?>"><img src="../images/btn_download.png"  align="absmiddle" /></a>
