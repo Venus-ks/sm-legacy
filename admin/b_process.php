@@ -107,6 +107,9 @@ if($_POST['mode']=="c_sub_review"){
 	$sql = "update ad_paper set {$qry} where seq = '{$_POST['seq']}'";
 	//echo $sql."<br>";
 	sql_query($sql);
+	//반영된 정보 re select
+	$sql = "select * from ad_paper where seq = '{$_POST['seq']}'";
+	$data	= sql_fetch($sql);
 	###
 	$step = "";
 	if($_POST['step'] == 24){

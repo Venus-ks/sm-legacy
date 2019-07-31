@@ -1,11 +1,8 @@
 <?
 include_once("./admin_head.php");
-
 ###
 $mlevel		= 8;
 $menu		= "a7";
-
-
 ### SEARCH
 if($_GET['sdate'] || $_GET['edate']){
 	if($_GET['sdate'] && $_GET['edate']){
@@ -17,36 +14,35 @@ if($_GET['sdate'] || $_GET['edate']){
 	}
 }
 ###
-if($_GET['sc_cate']=='category' && $_GET['category']){
-	$where .= " AND field = '{$_GET['category']}' ";
-}
-if($_GET['sc_cate']=='email' && $_GET['sc_text']){
-	$where .= " AND mb_id like '%{$_GET['sc_text']}%' ";
-}
-if($_GET['sc_cate']=='title' && $_GET['sc_text']){
-	$where .= " AND title  like '%{$_GET['sc_text']}%' ";
-}
-if($_GET['sc_cate']=='name' && $_GET['sc_text']){
-	$where .= " AND mb_name  like '%{$_GET['sc_text']}%' ";
-}
-
+if($_GET['sc_cate']=='email' && $_GET['sc_text']) $where .= " AND mb_id  like '%{$_GET['sc_text']}%' ";
+if($_GET['sc_cate']=='name' && $_GET['sc_text']) $where .= " AND mb_name  like '%{$_GET['sc_text']}%' ";
 ###
 $board[bo_page_rows] = 10;
 $tsql = " select distinct mb_no from g4_member where gb = 'review' {$where}";
 $result = sql_query($tsql);
 $total_count = mysql_num_rows($result);
-
 $total_page  = ceil($total_count / $board[bo_page_rows]);  // 전체 페이지 계산
 if (!$page) { $page = 1; } // 페이지가 없으면 첫 페이지 (1 페이지)
 $from_record = ($page - 1) * $board[bo_page_rows]; // 시작 열을 구함
-
 ### ORDER BY
-$sql_order = " order by mb_no desc ";
-
+switch($sort) {
+	case 'name':
+		$db_sort = 'mb_name';
+		break;
+	case 'email':
+		$db_sort = 'mb_id';
+		break;
+	case 'sosok':
+		$db_sort = 'mb_1';
+		break;
+	default:
+		$db_sort = 'mb_no';
+}
+$by = mysql_real_escape_string($by);
+$sql_order = " order by {$db_sort} {$by} ";
 ###
 $sql		= " select * from g4_member where gb = 'review' {$where} $sql_order limit $from_record, $board[bo_page_rows] ";
 $result		= sql_query($sql);
-
 $i = 0;
 $k = 0;
 while ($row = sql_fetch_array($result)){
@@ -55,20 +51,16 @@ while ($row = sql_fetch_array($result)){
 	$i++;
 	$k++;
 }
-
 ###
-$write_pages = get_paging(10, $page, $total_page, "./d_sub07.php?page=");
+$write_pages = get_paging(10, $page, $total_page, "./d_sub07.php?&sort={$sort}&by={$by}&page=");
 ?>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr>
 	<td width="199" height="800" valign="top" background="/images/leftbg.png">
-
 	<!-- ### LEFT MENU -->
 	<? include_once("./_menu.php"); ?>
-
 	</td>
     <td valign="top">
-
 	<!-- ### CONTENTS -->
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
@@ -76,8 +68,6 @@ $write_pages = get_paging(10, $page, $total_page, "./d_sub07.php?page=");
 	</tr>
 	<tr>
 		<td valign="top" style="padding:20px;">
-
-
 		<!-- ### SEARCH -->
 		<form name="form1">
 		<table width="700" border="0" cellspacing="0" cellpadding="0">
@@ -104,39 +94,13 @@ $write_pages = get_paging(10, $page, $total_page, "./d_sub07.php?page=");
 			</td>
 			<td>
 				<img src="../images/btn_search.png" align="absmiddle" /></td-->
-				<select name="sc_cate" id="sc_cate" style="width:100px;height:24px;line-height:21px;" onchange="cateChk(this);">
-					<option value="email" <? if($_GET['sc_cate']=='email'){ ?>selected<? } ?>>이메일</option>
-					<option value="name" <? if($_GET['sc_cate']=='name' || $_GET['sc_cate']==''){ ?>selected<? } ?>>심사위원명</option>
-					<option value="category" <? if($_GET['sc_cate']=='category'){ ?>selected<? } ?>>분야</option>
+				<select name="sc_cate" id="sc_cate" style="width:100px;line-height:21px;">
+					<option value="">= Select =</option>
+					<option value="email" <? if($_GET['sc_cate']=='email'){ ?>selected<? } ?>>Email</option>
+					<option value="name" <? if($_GET['sc_cate']=='name'){ ?>selected<? } ?>>Name</option>
 				</select>
-
-				<!-- <select name="journal" id="journal" style="width:100px;height:24px;line-height:21px;display:none;">
-					<option value="">= 선택 =</option>
-					<?
-					$jloop = get_journal_list();
-					for($i=0;$i<count($jloop);$i++){
-					?>
-						<option value="<?=$jloop[$i]['title']?>" <?if($_GET['journal']==$jloop[$i]['title']){?>selected<?}?>><?=$jloop[$i]['title']?></option>
-					<?
-					}
-					?>
-				</select> -->
-
-				<select name="category" id="category" style="width:100px;height:24px;line-height:21px;display:none;">
-					<option value="">= 선택 =</option>
-					<?
-						$arr = get_category();
-						for($i=0;$i<count($arr);$i++){
-					?>
-						<option value="<?=$arr[$i]['cvalue']?>"  <? if($_GET['category']==$arr[$i]['cvalue']){ ?>selected<? } ?>><?=$arr[$i]['ctext']?></option>
-					<?
-						}
-					?>
-				</select>
-
 				<input type="text" name="sc_text" id="sc_text" value="<?=$_GET['sc_text']?>"/>
-
-				<input type="image" src="../images/btn_search.png" align="absmiddle" style="width:60px;height:25px;border:0px;"/></td>
+				<input type="image" src="../images/btn_search.png" align="absmiddle" style="border:0px;"/></td>
 		</tr>
 		<tr>
 			<td height="32">&nbsp;</td>
@@ -146,8 +110,6 @@ $write_pages = get_paging(10, $page, $total_page, "./d_sub07.php?page=");
 		</tr>
 		</table>
 		</form>
-
-
 		<!-- ### LIST -->
 		<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:12px;">
 		<tr>
@@ -156,16 +118,30 @@ $write_pages = get_paging(10, $page, $total_page, "./d_sub07.php?page=");
 		<tr><td height="6"></td></tr>
 		<tr>
 			<td>
-
 			<table class="boardType01">
 			<tr>
 				<th><strong>No</strong></th>
-				<th><strong>심사위원명</strong><br /></th>
-				<th><strong>소속</strong><br /></th>
+				<th><strong>심사위원명</strong>
+					&nbsp;
+					<a href="?page=<?=$page?>&sort=name&by=<?=($by=='asc')?'desc':'asc'?>">
+						<span class="glyphicon glyphicon-sort" aria-hidden="true" style="color:#FFF"></span>					
+					</a>
+				</th>
+				<th><strong>소속</strong>
+					&nbsp;
+					<a href="?page=<?=$page?>&sort=sosok&by=<?=($by=='asc')?'desc':'asc'?>">
+						<span class="glyphicon glyphicon-sort" aria-hidden="true" style="color:#FFF"></span>					
+					</a>
+				</th>
 				<th><strong>분야</strong></th>
 				<th><strong>전화</strong></th>
 				<th><strong>핸드폰</strong></th>
-				<th><strong>이메일</strong></th>
+				<th><strong>이메일</strong>
+				&nbsp;
+					<a href="?page=<?=$page?>&sort=email&by=<?=($by=='asc')?'desc':'asc'?>">
+						<span class="glyphicon glyphicon-sort" aria-hidden="true" style="color:#FFF"></span>					
+					</a>				
+				</th>
 				<th><strong>심사중/심사완료</strong></th>
 				<th><strong>심사승인/심사거부</strong></th>
 				<th width="85"><strong>관리</strong></th>
@@ -181,7 +157,7 @@ $write_pages = get_paging(10, $page, $total_page, "./d_sub07.php?page=");
 				<td><strong><? if($list[$i]['field']){ ?><?=get_category($list[$i]['field'])?><? } ?></strong></td>
 				<td><?=$list[$i]['mb_tel']?></td>
 				<td><?=$list[$i]['mb_hp']?></td>
-				<td><?=$list[$i]['mb_email']?></td>
+				<td><?=$list[$i]['mb_id']?></td>
 				<td><?=get_review_type($list[$i]['mb_id'],"")?> / <?=get_review_type2($list[$i]['mb_id'],"")?></td>
 				<td><?=get_confirm_Y($list[$i]['mb_id'])?> / <?=get_confirm_N($list[$i]['mb_id'])?></td>
 				<td>
@@ -202,18 +178,13 @@ $write_pages = get_paging(10, $page, $total_page, "./d_sub07.php?page=");
 				}
 			?>
 			</table>
-
 			</td>
 		</tr>
 		</table>
-
-
-
 		</td>
 	</tr>
 	<tr>
 		<td align="center" class="paging">
-
 		<!-- ### PAGING -->
 		<?
 		$page_table		= $write_pages;
@@ -223,21 +194,12 @@ $write_pages = get_paging(10, $page, $total_page, "./d_sub07.php?page=");
 		$page_table		= preg_replace("/<b>([0-9]*)<\/b>/", "<span class=\"on\">$1</span>", $page_table);
 		echo $page_table;
 		?>
-
 		</td>
 	</tr>
 	</table>
-
-
-
-
-
 	</td>
 </tr>
 </table>
-
-
-
 <script type="text/javascript">
 function deleteMember(mb_no){
 	if(!confirm("정말 삭제하시겠습니까?\n삭제 된 데이터는 복구되지 않습니다.")) return;
@@ -262,15 +224,12 @@ function cateChk(obj){
 		$("#sc_text").show();
 	}
 }
-
 function excel_down(){
 	$("#hddFrame").attr("src", "d_sub06_excel.php");
 }
-
 <? if($_GET['sc_cate']=='journal'){ ?>
 cateChk(document.form1.sc_cate);
 <? } ?>
-
 <? if($_GET['sc_cate']=='category'){ ?>
 cateChk(document.form1.sc_cate);
 <? } ?>
