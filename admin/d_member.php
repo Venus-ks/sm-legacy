@@ -25,28 +25,14 @@ $board[bo_page_rows] = 10;
 //$tsql = " select distinct mb_no from g4_member where gb = 'normal' and mb_level < 4";
 $tsql = " select distinct mb_no from g4_member where mb_level < 11 {$where}";
 $result = sql_query($tsql);
-$total_count = mysql_num_rows($result);
+$total_count = mysqlI_num_rows($result);
 
 $total_page  = ceil($total_count / $board[bo_page_rows]);  // 전체 페이지 계산
 if (!$page) { $page = 1; } // 페이지가 없으면 첫 페이지 (1 페이지)
 $from_record = ($page - 1) * $board[bo_page_rows]; // 시작 열을 구함
 
 ### ORDER BY
-switch($sort) {
-	case 'name':
-		$db_sort = 'mb_name';
-		break;
-	case 'email':
-		$db_sort = 'mb_id';
-		break;
-	case 'sosok':
-		$db_sort = 'mb_1';
-		break;
-	default:
-		$db_sort = 'mb_no';
-}
-$by = mysql_real_escape_string($by);
-$sql_order = " order by {$db_sort} {$by} ";
+$sql_order = " order by mb_no desc ";
 
 ###
 //$sql		= " select * from g4_member where gb = 'normal' and mb_level < 4 $sql_order limit $from_record, $board[bo_page_rows] ";
@@ -63,7 +49,7 @@ while ($row = sql_fetch_array($result)){
 }
 
 ###
-$write_pages = get_paging(10, $page, $total_page, "./d_member.php?&sort={$sort}&by={$by}&page=");
+$write_pages = get_paging(10, $page, $total_page, "./d_member.php?page=");
 ?>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr>
@@ -150,25 +136,10 @@ $write_pages = get_paging(10, $page, $total_page, "./d_member.php?&sort={$sort}&
 			<table class="boardType01">
 			<tr>
 				<th><strong>No</strong></th>
-				<th><strong>이름</strong>
-					&nbsp;
-					<a href="?page=<?=$page?>&sort=name&by=<?=($by=='asc')?'desc':'asc'?>">
-						<span class="glyphicon glyphicon-sort" aria-hidden="true" style="color:#FFF"></span>					
-					</a>
-				</th>
-				<th><strong>아이디</strong>
-					&nbsp;
-					<a href="?page=<?=$page?>&sort=email&by=<?=($by=='asc')?'desc':'asc'?>">
-						<span class="glyphicon glyphicon-sort" aria-hidden="true" style="color:#FFF"></span>					
-					</a>
-				</th>
+				<th><strong>이름</strong></th>
+				<th><strong>아이디</strong></th>
 				<th><strong>등급</strong></th>
-				<th><strong>소속</strong>
-					&nbsp;
-					<a href="?page=<?=$page?>&sort=sosok&by=<?=($by=='asc')?'desc':'asc'?>">
-						<span class="glyphicon glyphicon-sort" aria-hidden="true" style="color:#FFF"></span>					
-					</a>
-				</th>
+				<th><strong>소속</strong></th>
 				<th><strong>분야</strong></th>
 				<th><strong>연락처</strong></th>
 				<!--th><strong>이메일</strong></th-->

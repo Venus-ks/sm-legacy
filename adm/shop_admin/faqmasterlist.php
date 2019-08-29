@@ -48,7 +48,7 @@ $result = sql_query($sql);
 </tr>
 <tr><td colspan=5 height=1 bgcolor=#CCCCCC></td></tr>
 <?
-for ($i=0; $row=mysql_fetch_array($result); $i++) 
+for ($i=0; $row = mysqli_fetch_array($result); $i++) 
 {
     $sql1 = " select COUNT(*) as cnt from $g4[yc4_faq_table] where fm_id = '$row[fm_id]' ";
     $row1 = sql_fetch($sql1);

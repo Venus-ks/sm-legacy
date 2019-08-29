@@ -78,7 +78,7 @@ $result = sql_query($sql);
 <tr><td colspan=10 height=1 bgcolor=#CCCCCC></td></tr>
 
 <?
-for ($i=0; $row=mysql_fetch_array($result); $i++) 
+for ($i=0; $row = mysqli_fetch_array($result); $i++) 
 {
     $s_mod = icon("수정", "./dialog_form.php?w=u&di_id=$row[di_id]");
     $s_del = icon("삭제", "javascript:del('./dialog_form_update.php?w=d&di_id=$row[di_id]');");

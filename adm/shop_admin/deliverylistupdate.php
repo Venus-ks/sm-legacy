@@ -50,7 +50,7 @@ for ($m=0; $m<count($_POST[od_id]); $m++)
                        where on_uid = '$on_uid' 
                          and ct_stock_use = '0' ";
             $result2 = sql_query($sql2);
-            for ($k=0; $row2=mysql_fetch_array($result2); $k++) 
+            for ($k=0; $row2 = mysqli__fetch_array($result2); $k++) 
             {
                 $sql3 =" update $g4[yc4_item_table] set it_stock_qty = it_stock_qty - '$row2[ct_qty]' where it_id = '$row2[it_id]' ";
                 sql_query($sql3);

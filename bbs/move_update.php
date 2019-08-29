@@ -83,7 +83,7 @@ while ($row = sql_fetch_array($result))
                             wr_10             = '".addslashes($row2[wr_10])."' ";
             sql_query($sql);
 
-            $insert_id = mysql_insert_id();
+            $insert_id = mysqlI_insert_id();
 
             // 코멘트가 아니라면
             if (!$row2[wr_is_comment]) 

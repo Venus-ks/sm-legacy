@@ -29,7 +29,7 @@ if ($od_send_mail)
               where a.on_uid = '$od[on_uid]'
               order by a.ct_id ";
     $result = sql_query($sql);
-    for ($i=0; $ct=mysql_fetch_array($result); $i++) {
+    for ($i=0; $ct = mysqli_fetch_array($result); $i++) {
         // 상품 옵션
         $s_option = "";
         $str_split = "";

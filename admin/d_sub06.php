@@ -69,7 +69,7 @@ if($_GET['sc_cate']=='result' && $_GET['result']){
 }
 //$tsql = " select distinct seq from ad_paper where {$where}";
 $result = sql_query($tsql);
-$total_count = mysql_num_rows($result);
+$total_count = mysqli_num_rows($result);
 $total_page  = ceil($total_count / $board[bo_page_rows]);  // 전체 페이지 계산
 if (!$page) { $page = 1; } // 페이지가 없으면 첫 페이지 (1 페이지)
 $from_record = ($page - 1) * $board[bo_page_rows]; // 시작 열을 구함

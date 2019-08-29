@@ -22,7 +22,7 @@ if ($w == "") {
     $sql = " insert $g4[yc4_delivery_table] $sql_common ";
     sql_query($sql);
 
-    $dl_id = mysql_insert_id();
+    $dl_id = mysqlI_insert_id();
 } else if ($w == "u") {
     $sql = " update $g4[yc4_delivery_table] $sql_common where dl_id = '$dl_id' ";
     sql_query($sql);

@@ -20,7 +20,7 @@ for ($i=0; $i<count($chk); $i++)
     $k = $chk[$i];
 
     // include 전에 $bo_table 값을 반드시 넘겨야 함
-    $tmp_bo_table = mysql_real_escape_string(trim($_POST['board_table'][$k]));
+    $tmp_bo_table = mysqlI_real_escape_string(trim($_POST['board_table'][$k]));
     include ("./board_delete.inc.php");
 }
 

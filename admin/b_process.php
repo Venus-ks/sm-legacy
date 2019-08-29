@@ -1,9 +1,6 @@
 <?
 include_once("./_common.php");
 ### 메일 관련 코드
-//error_reporting(E_STRICT);
-if(defined('__DEV__')) error_reporting(E_ALL);
-error_reporting(0);
 // 변수설정
 $main_editor = $info['editor_email'];
 $mail_header = <<<HTML
@@ -107,9 +104,6 @@ if($_POST['mode']=="c_sub_review"){
 	$sql = "update ad_paper set {$qry} where seq = '{$_POST['seq']}'";
 	//echo $sql."<br>";
 	sql_query($sql);
-	//반영된 정보 re select
-	$sql = "select * from ad_paper where seq = '{$_POST['seq']}'";
-	$data	= sql_fetch($sql);
 	###
 	$step = "";
 	if($_POST['step'] == 24){
@@ -208,7 +202,7 @@ if($_POST['mode']=="c_sub_review"){
 				WHERE rseq='{$_POST['rseq']}';
 	";
 	sql_query($que);
-	if(mysql_error()) {
+	if (mysqli_error()) {
 		$msg		= "에러가 발생되었습니다.";
 	}else {
 		$msg		= "처리 되었습니다.";

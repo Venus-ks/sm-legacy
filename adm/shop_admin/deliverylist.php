@@ -41,7 +41,7 @@ $sql_common = " from $g4[yc4_order_table] a
 if ($chk_misu) {
     $sql  = " select od_id, a.*, "._MISU_QUERY_." $sql_common group by od_id having  misu <= 0 ";
     $result = sql_query($sql);
-    $total_count = mysql_num_rows($result);
+    $total_count = mysqlI_num_rows($result);
 }
 else {
     $row = sql_fetch("select count(od_id) as cnt from {$g4['yc4_order_table']} $sql_search ");
@@ -136,7 +136,7 @@ if ($chk_misu)
 $sql .= "  order by $sort1 $sort2/* 김선용 심각한 트래픽으로 미사용, a.od_invoice asc*/
           limit $from_record, $config[cf_page_rows] ";
 $result = sql_query($sql);
-for ($i=0; $row=mysql_fetch_array($result); $i++) 
+for ($i=0; $row = mysqli_fetch_array($result); $i++) 
 {
     $invoice_time = $g4[time_ymdhis];
     if (!is_null_time($row[od_invoice_time])) 

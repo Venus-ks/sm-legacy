@@ -43,7 +43,7 @@ $result = sql_query($sql);
 </tr>
 <tr><td colspan=5 height=1 bgcolor=#CCCCCC></td></tr>
 <?
-for ($i=0; $row=mysql_fetch_array($result); $i++) 
+for ($i=0; $row = mysqli_fetch_array($result); $i++) 
 {
     $s_mod = icon("수정", "./itemeventform.php?w=u&ev_id=$row[ev_id]");
     $s_del = icon("삭제", "javascript:del('./itemeventformupdate.php?w=d&ev_id=$row[ev_id]');");

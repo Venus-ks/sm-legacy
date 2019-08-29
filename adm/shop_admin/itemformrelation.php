@@ -11,7 +11,7 @@ $sql = " select ca_id, it_id, it_name, it_amount
             and it_id <> '$it_id'
           order by ca_id, it_name ";
 $result = sql_query($sql);
-$num = @mysql_num_rows($result);
+$num =  mysqlI_num_rows($result);
 ?>
 <script>
 parent.document.getElementById('relation').length = <?=$num?>;

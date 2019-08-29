@@ -1107,7 +1107,7 @@ function sql_connect($host, $user, $pass)
 {
     global $g4;
 
-    return @mysql_connect($host, $user, $pass);
+    return  mysqlI_connect($host, $user, $pass);
 }
 
 
@@ -1116,19 +1116,19 @@ function sql_select_db($db, $connect)
 {
     global $g4;
 
-    if (strtolower($g4['charset']) == 'utf-8') @mysql_query(" set names utf8 ");
-    else if (strtolower($g4['charset']) == 'euc-kr') @mysql_query(" set names euckr ");
-    return @mysql_select_db($db, $connect);
+    if (strtolower($g4['charset']) == 'utf-8')  mysqlI_query(" set names utf8 ");
+    else if (strtolower($g4['charset']) == 'euc-kr')  mysqlI_query(" set names euckr ");
+    return  mysqlI_select_db($db, $connect);
 }
 
 
-// mysql_query 와 mysql_error 를 한꺼번에 처리
+// mysqlI_query 와 mysqlI_error 를 한꺼번에 처리
 function sql_query($sql, $error=TRUE)
 {
     if ($error)
-        $result = @mysql_query($sql) or die("<p>$sql<p>" . mysql_errno() . " : " .  mysql_error() . "<p>error file : $_SERVER[PHP_SELF]");
+        $result =  mysqlI_query($sql) or die("<p>$sql<p>" . mysqlI_errno() . " : " .  mysqlI_error() . "<p>error file : $_SERVER[PHP_SELF]");
     else
-        $result = @mysql_query($sql);
+        $result =  mysqlI_query($sql);
     return $result;
 }
 
@@ -1137,7 +1137,7 @@ function sql_query($sql, $error=TRUE)
 function sql_fetch($sql, $error=TRUE)
 {
     $result = sql_query($sql, $error);
-    //$row = @sql_fetch_array($result) or die("<p>$sql<p>" . mysql_errno() . " : " .  mysql_error() . "<p>error file : $_SERVER[PHP_SELF]");
+    //$row = @sql_fetch_array($result) or die("<p>$sql<p>" . mysqlI_errno() . " : " .  mysqlI_error() . "<p>error file : $_SERVER[PHP_SELF]");
     $row = sql_fetch_array($result);
     return $row;
 }
@@ -1146,7 +1146,7 @@ function sql_fetch($sql, $error=TRUE)
 // 결과값에서 한행 연관배열(이름으로)로 얻는다.
 function sql_fetch_array($result)
 {
-    $row = @mysql_fetch_assoc($result);
+    $row =  mysqlI_fetch_assoc($result);
     return $row;
 }
 
@@ -1156,7 +1156,7 @@ function sql_fetch_array($result)
 // 단, 결과 값은 스크립트(script) 실행부가 종료되면서 메모리에서 자동적으로 지워진다.
 function sql_free_result($result)
 {
-    return mysql_free_result($result);
+    return mysqlI_free_result($result);
 }
 
 

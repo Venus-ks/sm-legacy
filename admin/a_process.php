@@ -381,7 +381,7 @@ if($_POST['mode']=="a_sub_reg"){
 					mb_name		= '{$member['mb_name']}',
 					regdate		= now()";
 		sql_query($sql);
-		$parent_seq = mysql_insert_id();
+		$parent_seq = mysqlI_insert_id();
 		##############
 		$body = "
 		{$mail_header}
@@ -466,7 +466,7 @@ else if($_POST['mode']=="a_member"){
 	$mb_hp = preg_replace("/[^0-9]*/s", "", $_POST['mb_hp']);
 	$chksql = "select * from g4_member where mb_no = '{$_POST['mb_no']}' and mb_password = '".sql_password($_POST['mb_password'])."'";
 	$data = sql_query($chksql);
-	$total_count0 = mysql_num_rows($data);
+	$total_count0 = mysqlI_num_rows($data);
 	if($total_count0 != '0'){
 		$pass_sql = "";
 		if($_POST['new_mb_password'] != ''){
@@ -499,7 +499,7 @@ else if($_POST['mode']=="find_id"){
 	$fidsql = "select * from g4_member where mb_name = '{$_POST['mb_name']}' and mb_hp = '{$mb_hp}'";
 	$data	= sql_fetch($fidsql);
 	$result = sql_query($fidsql);
-	$total_count = mysql_num_rows($result);
+	$total_count = mysqlI_num_rows($result);
 	if($total_count == 1){
 		$msg = $_POST['mb_name']."님의 아이디는 ".$data['mb_id']." 입니다.";
 		$returnUrl	= "./login.php";
@@ -514,7 +514,7 @@ else if($_POST['mode']=="find_pwd"){
 	$data	= sql_fetch($fpwdsql);
 	$result = sql_query($fpwdsql);
 	$row = sql_fetch_array($result);
-	$total_count = mysql_num_rows($result);
+	$total_count = mysqlI_num_rows($result);
 	if($total_count == 1){
 		$enc_pw=md5($row['mb_password']);
 		$content = <<<MAIL

@@ -44,7 +44,7 @@ $result = sql_query($sql);
 </tr>
 <tr><td colspan=3 height=1 bgcolor=#CCCCCC></td></tr>
 <?
-for ($i=0; $row=mysql_fetch_array($result); $i++) {
+for ($i=0; $row = mysqli_fetch_array($result); $i++) {
     $s_mod = icon("수정", "./contentform.php?w=u&co_id=$row[co_id]");
     $s_del = icon("삭제", "javascript:del('./contentformupdate.php?w=d&co_id=$row[co_id]')");
     $s_vie = icon("보기", "$g4[shop_path]/content.php?co_id=$row[co_id]");

@@ -68,7 +68,7 @@ $qstr  = "$qstr1&sort1=$sort1&sort2=$sort2&page=$page";
         $event_option = "<option value=''>이벤트를 선택하세요";
         $sql1 = " select ev_id, ev_subject from $g4[yc4_event_table] order by ev_id desc ";
         $result1 = sql_query($sql1);
-        while ($row1=mysql_fetch_array($result1)) 
+        while ($row1 = mysqli__fetch_array($result1)) 
             $event_option .= "<option value='$row1[ev_id]'>".conv_subject($row1[ev_subject], 20,"…");
         
         echo "<select name='ev_id' onchange='this.form.submit();'>$event_option</select>";
@@ -82,7 +82,7 @@ $qstr  = "$qstr1&sort1=$sort1&sort2=$sort2&page=$page";
         <?
         $sql1 = " select ca_id, ca_name from $g4[yc4_category_table] order by ca_id ";
         $result1 = sql_query($sql1);
-        for ($i=0; $row1=mysql_fetch_array($result1); $i++) 
+        for ($i=0; $row1 = mysqli__fetch_array($result1); $i++) 
         {
             $len = strlen($row1[ca_id]) / 2 - 1;
             $nbsp = "";
@@ -129,7 +129,7 @@ $qstr  = "$qstr1&sort1=$sort1&sort2=$sort2&page=$page";
 </tr>
 <tr><td colspan=4 height=1 bgcolor=#CCCCCC></td></tr>
 <?
-for ($i=0; $row=mysql_fetch_array($result); $i++) 
+for ($i=0; $row = mysqli_fetch_array($result); $i++) 
 {
     $href = "{$g4[shop_path]}/item.php?it_id=$row[it_id]";
 

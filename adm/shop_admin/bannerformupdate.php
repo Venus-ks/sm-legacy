@@ -36,7 +36,7 @@ if ($w=="")
                     bn_order      = '$bn_order' ";
     sql_query($sql);          
 
-    $bn_id = mysql_insert_id();
+    $bn_id = mysqlI_insert_id();
 } 
 else if ($w=="u")
 {

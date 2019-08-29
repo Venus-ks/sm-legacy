@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <?
 include_once ("./_common.php");
 
@@ -11,24 +10,7 @@ header("Cache-Control: pre-check=0, post-check=0, max-age=0"); // HTTP/1.1
 header("Pragma: no-cache"); // HTTP/1.0
 
 ###
-### ORDER BY
-switch($sort) {
-	case 'name':
-		$db_sort = 'mb_name';
-		break;
-	case 'email':
-		$db_sort = 'mb_id';
-		break;
-	case 'sosok':
-		$db_sort = 'mb_1';
-		break;
-	default:
-		$db_sort = 'mb_name';
-}
-$by = mysql_real_escape_string($by);
-$sql_order = " order by {$db_sort} {$by} ";
-
-$sql		= " select * from g4_member where gb = 'review' {$sql_order}";
+$sql		= " select * from g4_member where gb = 'review' order by mb_no desc";
 $result		= sql_query($sql);
 
 $i = 0;
@@ -58,25 +40,10 @@ while ($row = sql_fetch_array($result)){
 	<table class="boardType01">
 	<tr>
 		<th><strong>No</strong></th>
-		<th width="130"><strong>심사위원명</strong>
-			&nbsp;
-			<a href="?page=<?=$page?>&sort=name&by=<?=($by=='asc')?'desc':'asc'?>">
-				<span class="glyphicon glyphicon-sort" aria-hidden="true" style="color:#FFF"></span>					
-			</a>
-		</th>
-		<th><strong>소속</strong>
-			&nbsp;
-			<a href="?page=<?=$page?>&sort=sosok&by=<?=($by=='asc')?'desc':'asc'?>">
-				<span class="glyphicon glyphicon-sort" aria-hidden="true" style="color:#FFF"></span>					
-			</a>
-		</th>
+		<th><strong>심사위원명</strong></th>
+		<th><strong>소속</strong></th>
 		<th><strong>분야</strong></th>
-		<th><strong>이메일</strong>
-		&nbsp;
-			<a href="?page=<?=$page?>&sort=email&by=<?=($by=='asc')?'desc':'asc'?>">
-				<span class="glyphicon glyphicon-sort" aria-hidden="true" style="color:#FFF"></span>					
-			</a>				
-		</th>
+		<th><strong>이메일</strong></th>
 		<th><strong>핸드폰</strong></th>
 	</tr>
 	<?

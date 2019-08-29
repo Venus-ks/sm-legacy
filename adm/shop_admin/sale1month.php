@@ -67,7 +67,7 @@ $sql = " select on_uid,
           where SUBSTRING(od_time,1,7) between '$fr_date' and '$to_date' 
           order by od_time desc ";
 $result = sql_query($sql);
-for ($i=0; $row=mysql_fetch_array($result); $i++)
+for ($i=0; $row = mysqli_fetch_array($result); $i++)
 {
     if ($i == 0)
         $save[od_date] = $row[od_date];

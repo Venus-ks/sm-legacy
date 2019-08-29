@@ -126,7 +126,7 @@ $tot_dc_amount     = 0;
 $tot_receiptamount = 0;
 $tot_receiptcancel = 0;
 $tot_misuamount    = 0;
-for ($i=0; $row=mysql_fetch_array($result); $i++) 
+for ($i=0; $row = mysqli_fetch_array($result); $i++) 
 {
     // 결제 수단
     $s_receipt_way = $s_br = "";

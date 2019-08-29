@@ -62,7 +62,7 @@ $qstr  = "$qstr1&sort1=$sort1&sort2=$sort2&page=$page";
             <?
             $sql1 = " select ca_id, ca_name from $g4[yc4_category_table] order by ca_id ";
             $result1 = sql_query($sql1);
-            for ($i=0; $row1=mysql_fetch_array($result1); $i++) {
+            for ($i=0; $row1 = mysqli__fetch_array($result1); $i++) {
                 $len = strlen($row1[ca_id]) / 2 - 1;
                 $nbsp = "";
                 for ($i=0; $i<$len; $i++) $nbsp .= "&nbsp;&nbsp;&nbsp;";
@@ -117,7 +117,7 @@ $qstr  = "$qstr1&sort1=$sort1&sort2=$sort2&page=$page";
 </tr>
 <tr><td colspan=9 height=1 bgcolor=#CCCCCC></td></tr>
 <?
-for ($i=0; $row=mysql_fetch_array($result); $i++) 
+for ($i=0; $row = mysqli_fetch_array($result); $i++) 
 {
     $href = "{$g4[shop_path]}/item.php?it_id=$row[it_id]";
 

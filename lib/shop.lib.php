@@ -163,7 +163,7 @@ function get_unique_id($len=32)
 {
     global $g4;
 
-    $result = @mysql_query(" LOCK TABLES $g4[yc4_on_uid_table] WRITE, $g4[yc4_cart_table] READ, $g4[yc4_order_table] READ ");
+    $result =  mysqlI_query(" LOCK TABLES $g4[yc4_on_uid_table] WRITE, $g4[yc4_cart_table] READ, $g4[yc4_order_table] READ ");
     if (!$result) {
         $sql = " CREATE TABLE `$g4[yc4_on_uid_table]` (
                     `on_id` int(11) NOT NULL auto_increment,
@@ -184,7 +184,7 @@ function get_unique_id($len=32)
 
     do {
         sql_query(" INSERT INTO $g4[yc4_on_uid_table] set on_uid = NOW(), on_datetime = NOW(), session_id = '".session_id()."' ", false);
-        $id = @mysql_insert_id();
+        $id =  mysqlI_insert_id();
         $uid = md5($id);
         sql_query(" UPDATE $g4[yc4_on_uid_table] set on_uid = '$uid' where on_id = '$id' ");
 
@@ -200,7 +200,7 @@ function get_unique_id($len=32)
         }
     } while (!$unique); // $unique 가 거짓인동안 실행
 
-    @mysql_query(" UNLOCK TABLES ");
+     mysqlI_query(" UNLOCK TABLES ");
 
     return $uid;
 }

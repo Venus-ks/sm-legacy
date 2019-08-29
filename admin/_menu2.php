@@ -21,7 +21,7 @@
 ";
 	$tsql1 = " select distinct seq from ad_paper where {$where}";
 	$result1 = sql_query($tsql1);
-	$total_count0 = mysql_num_rows($result1);
+	$total_count0 = mysqlI_num_rows($result1);
 	?>
 
 	<? if($menu=="a1"){ ?>

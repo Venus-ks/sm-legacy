@@ -44,7 +44,7 @@ $result = sql_query($sql);
 <tr><td colspan=5 height=1 bgcolor=#CCCCCC></td></tr>
 
 <?
-for ($i=0; $row=mysql_fetch_array($result); $i++)
+for ($i=0; $row = mysqli_fetch_array($result); $i++)
 {
     $s_mod = icon("수정", "./deliverycodeform.php?w=u&dl_id=$row[dl_id]");
     $s_del = icon("삭제", "javascript:del('./deliverycodeformupdate.php?w=d&dl_id=$row[dl_id]');");

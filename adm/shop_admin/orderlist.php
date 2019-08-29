@@ -32,7 +32,7 @@ $sql_common = " from $g4[yc4_order_table] a
 // 김선용 200805 : 조인 사용으로 전체카운트가 일정레코드 이상일 때 지연시간 문제가 심각하므로 변경
 /*
 $result = sql_query(" select DISTINCT od_id ".$sql_common);
-$total_count = mysql_num_rows($result);
+$total_count = mysqlI_num_rows($result);
 */
 $sql = " select count(distinct od_id) as cnt " . $sql_common;
 $row = sql_fetch($sql);
@@ -131,7 +131,7 @@ $tot_dc_amount     = 0;
 $tot_receiptamount = 0;
 $tot_receiptcancel = 0;
 $tot_misuamount    = 0;
-for ($i=0; $row=mysql_fetch_array($result); $i++) 
+for ($i=0; $row = mysqli_fetch_array($result); $i++) 
 {
     // 결제 수단
     $s_receipt_way = $s_br = "";

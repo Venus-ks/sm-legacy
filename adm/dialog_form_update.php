@@ -37,7 +37,7 @@ if($w == "")
     $sql = " insert $g4[dialog_table] set $sql_common ";
     sql_query($sql);
 
-    $di_id = mysql_insert_id();
+    $di_id = mysqlI_insert_id();
 } 
 else if ($w == "u") 
 {

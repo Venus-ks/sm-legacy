@@ -37,7 +37,7 @@ include_once ("$g4[admin_path]/admin.head.php");
         $result = sql_query($sql);
         for ($i=0; $row=sql_fetch_array($result); $i++)
             echo "<option value='$row[dl_id]'>$row[dl_company]\n";
-        mysql_free_result($result);
+        mysqlI_free_result($result);
         ?>
         </select>
     </td>

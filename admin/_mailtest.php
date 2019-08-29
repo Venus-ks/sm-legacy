@@ -82,4 +82,4 @@ $body = <<<BODY
 		<tr><td height='80' align='center' valign='top' bgcolor='#FFF'>
 		{$mail_footer}
 BODY;
-$mail->sendInput($_POST['writer_id_'.$seq], $_POST['writer_name_'.$seq], $body, "[] 최종원고 PDF 파일 확인 요청({$_POST['writer_name_'.$seq]} 귀하)");
+$mail->sendInput($_POST['writer_id_'.$seq], $_POST['writer_name_'.$seq], $body, "[교육학연구] 최종원고 PDF 파일 확인 요청({$_POST['writer_name_'.$seq]} 귀하)");

@@ -9,9 +9,9 @@ if (get_cookie('ck_visit_ip') != $_SERVER['REMOTE_ADDR']) {
     $vi_id = $tmp_row[max_vi_id] + 1;
 
     // $_SERVER 배열변수 값의 변조를 이용한 SQL Injection 공격을 막는 코드입니다. 110810
-    $remote_addr = mysql_real_escape_string($_SERVER['REMOTE_ADDR']);
-    $referer     = mysql_real_escape_string($_SERVER['HTTP_REFERER']);
-    $user_agent  = mysql_real_escape_string($_SERVER['HTTP_USER_AGENT']);
+    $remote_addr = mysqli_real_escape_string($_SERVER['REMOTE_ADDR']);
+    $referer     = mysqli_real_escape_string($_SERVER['HTTP_REFERER']);
+    $user_agent  = mysqli_real_escape_string($_SERVER['HTTP_USER_AGENT']);
     $sql = " insert $g4[visit_table] ( vi_id, vi_ip, vi_date, vi_time, vi_referer, vi_agent ) values ( '$vi_id', '$remote_addr', '$g4[time_ymd]', '$g4[time_his]', '$referer', '$user_agent' ) ";
     //$sql = " insert $g4[visit_table] ( vi_id, vi_ip, vi_date, vi_time, vi_referer, vi_agent ) values ( '$vi_id', '$_SERVER[REMOTE_ADDR]', '$g4[time_ymd]', '$g4[time_his]', '$_SERVER[HTTP_REFERER]', '$_SERVER[HTTP_USER_AGENT]' ) ";
 

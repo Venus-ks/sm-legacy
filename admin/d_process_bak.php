@@ -113,12 +113,12 @@ if($_POST['mode']=="d_sub_reg"){
 			$sql = "select * from ad_paper_review where parent_seq = '{$_POST['seq']}' and rstep = '2' and result = '3' order by result asc";
 		}
 		$res = sql_query($sql);
-		$review_3_count = mysql_num_rows($res);
+		$review_3_count = mysqlI_num_rows($res);
 	}
 	## 편집위원장의 심사결과가 있는지 확인함. 여러번의 심사가 있을 경우 맨 마지막의 심사결과만 가져옴.
 	$fr_sql = "select * from ad_paper_review where parent_seq = '{$_POST['seq']}' and rstep = 4 order by rseq desc limit 1";
 	$fr_result	= sql_query($fr_sql);
-	$tcount = mysql_num_rows($fr_result);
+	$tcount = mysqlI_num_rows($fr_result);
 	$fr_sql2 = "select * from ad_paper_review where parent_seq = '{$_POST['seq']}' and rstep = 4 order by rseq desc limit 1";
 	$fr_result2	= sql_fetch($fr_sql2);
 	if($tcount > 0){
@@ -695,7 +695,7 @@ else if($_POST['mode']=="d_sub5_reg"){
 		## 게재확정. 그러나 심사위원 중 게재불가를 선택 한 사람이 있으면 별도로 양해의 메일을 발송함.
 		/* $sql_deny = "select * from ad_paper_review where parent_seq = '{$_POST['seq']}' and result = '4'";
 		$mem	= sql_query($sql_deny);
-		$total_count = mysql_num_rows($mem);
+		$total_count = mysqlI_num_rows($mem);
 		if($total_count > 0){
 			// 메일을 발송합니다. $mem['mb_id']에게 메일 발송함.
 			##############
@@ -793,7 +793,7 @@ else if($_POST['mode']=="d_sub5_reg"){
 		## 게재불가. 그러나 심사위원 중 게재승인을 선택 한 사람이 있으면 별도로 양해의 메일을 발송함.
 		/* $sql_ok = "select * from ad_paper_review where parent_seq = '{$_POST['seq']}' and result != '4'";
 		$mem	= sql_query($sql_ok);
-		$total_count = mysql_num_rows($mem);
+		$total_count = mysqlI_num_rows($mem);
 		if($total_count > 0){
 			// 메일을 발송합니다.
 			##############

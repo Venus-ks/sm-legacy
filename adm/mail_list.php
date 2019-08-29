@@ -44,7 +44,7 @@ $colspan = 6;
 <tr><td colspan='<?=$colspan?>' class='line2'></td></tr>
 
 <?
-for ($i=0; $row=mysql_fetch_array($result); $i++) {
+for ($i=0; $row = mysqli_fetch_array($result); $i++) {
     $s_mod = icon("수정", "./mail_form.php?w=u&ma_id=$row[ma_id]");
     //$s_del = icon("삭제", "javascript:del('./mail_update.php?w=d&ma_id=$row[ma_id]');");
     $s_del = "<a href=\"javascript:post_delete('mail_update.php', '$row[ma_id]');\"><img src='img/icon_delete.gif' border=0 title='삭제' align='absmiddle'></a>";

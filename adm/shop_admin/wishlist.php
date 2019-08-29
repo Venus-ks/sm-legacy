@@ -30,7 +30,7 @@ if ($sel_ca_id)
 $sql .= " group by a.it_id, b.it_name
           order by $sort1 $sort2 ";
 $result = sql_query($sql);
-$total_count = mysql_num_rows($result);
+$total_count = mysqlI_num_rows($result);
 
 $rows = $config[cf_page_rows];
 $total_page  = ceil($total_count / $rows);  // 전체 페이지 계산
@@ -60,7 +60,7 @@ $qstr1 = "fr_date=$fr_date&to_date=$to_date&sel_ca_id=$sel_ca_id";
             <?
             $sql1 = " select ca_id, ca_name from $g4[yc4_category_table] order by ca_id ";
             $result1 = sql_query($sql1);
-            for ($i=0; $row1=mysql_fetch_array($result1); $i++) {
+            for ($i=0; $row1 = mysqli__fetch_array($result1); $i++) {
                 $len = strlen($row1[ca_id]) / 2 - 1;
                 $nbsp = "";
                 for ($i=0; $i<$len; $i++) $nbsp .= "&nbsp;&nbsp;&nbsp;";
@@ -87,7 +87,7 @@ $qstr1 = "fr_date=$fr_date&to_date=$to_date&sel_ca_id=$sel_ca_id";
 </tr>
 <tr><td colspan=20 height=1 bgcolor=#CCCCCC></td></tr>
 <?
-for ($i=0; $row=mysql_fetch_array($result); $i++) 
+for ($i=0; $row = mysqli_fetch_array($result); $i++) 
 {
     $s_mod = icon("수정", "./itemqaform.php?w=u&iq_id=$row[iq_id]&$qstr");
     $s_del = icon("삭제", "javascript:del('./itemqaupdate.php?w=d&iq_id=$row[iq_id]&$qstr');");

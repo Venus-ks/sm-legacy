@@ -33,7 +33,7 @@
 
 	$tsql1 = " select distinct seq from ad_paper where step = 2 {$fields}";
 	$result1 = sql_query($tsql1);
-	$total_count1 = mysql_num_rows($result1);
+	$total_count1 = mysqlI_num_rows($result1);
 	?>
 
 	<? if($menu=="a2"){ ?>
@@ -67,7 +67,7 @@
 
 	$tsql9 = " select distinct seq from ad_paper where (step = 31 or step = 34) {$fields9}";
 	$result9 = sql_query($tsql9);
-	$total_count9 = mysql_num_rows($result9);
+	$total_count9 = mysqlI_num_rows($result9);
 	?>
 
 	<? if($menu=="a9"){ ?>

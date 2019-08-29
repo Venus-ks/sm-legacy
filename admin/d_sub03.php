@@ -38,7 +38,7 @@ if($_GET['sc_cate']=='name' && $_GET['sc_text']){
 $board[bo_page_rows] = 10;
 $tsql = " select distinct seq from ad_paper where {$where}";
 $result = sql_query($tsql);
-$total_count = mysql_num_rows($result);
+$total_count = mysqlI_num_rows($result);
 
 $total_page  = ceil($total_count / $board[bo_page_rows]);  // 전체 페이지 계산
 if (!$page) { $page = 1; } // 페이지가 없으면 첫 페이지 (1 페이지)

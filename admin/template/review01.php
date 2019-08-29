@@ -2,14 +2,14 @@
 	$sql = "select * from ad_paper_review where parent_seq = '{$data['seq']}' and rstep = 1 order by type";
 	$res	= sql_query($sql);
 ?>
-<?php if(mysql_affected_rows()>0):?>
+<?php if(mysqli_affected_rows()>0):?>
 	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin:10px 0">
 		<tr>
 			<td class="font_16"><img src="../images/icon.png"  align="absmiddle" class="mr5" />Review Info 1</td>
 		</tr>
 	</table>
 
-	<?php while($row = mysql_fetch_array($res)):?>
+	<?php while($row = mysqlI_fetch_array($res)):?>
 		<input type="hidden" name="review_file_<?=strtolower($row['type'])?>_seq" value="<?=$row['rseq']?>">
 		<table class="boardType01_write" style="margin-top:10px;">
 			<tr>
@@ -76,7 +76,7 @@
 			<?php
 				$sql_memeber = "select mb_name, mb_1 from `g4_member` where mb_id = '{$data['review_'.$v.'_user']}'";
 				$res_memeber = sql_query($sql_memeber);
-				$row_member = mysql_fetch_array($res_memeber);
+				$row_member = mysqlI_fetch_array($res_memeber);
 			?>
 			<tr>
 				<th width="100">심사위원 <?=strtoupper($v)?></th>
@@ -89,13 +89,13 @@
 	$sql = "select * from ad_paper_review where parent_seq = '{$data['seq']}' and rstep = 2 order by type";
 	$res = sql_query($sql);
 ?>
-<?php if($data['step']>14 && mysql_num_rows($res)):?>
+<?php if($data['step']>14 && mysqlI_num_rows($res)):?>
 	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:20px">
 		<tr>
 			<td class="font_16"><img src="../images/icon.png"  align="absmiddle" class="mr5" />Review Info 2</td>
 		</tr>
 	</table>
-	<?php while($row = mysql_fetch_array($res)):?>
+	<?php while($row = mysqlI_fetch_array($res)):?>
 		<table class="boardType01_write" style="margin-top:10px;">
 			<tr>
 				<th width="100" rowspan="3">심사위원 <?=$row['type']?><br>(<?=($reviewer_hidden==TRUE)?'미공개':$row['mb_name']?>)</th>
@@ -119,7 +119,7 @@
 		$sql = "select * from ad_paper_review where parent_seq = '{$data['seq']}' and rstep = 4 order by regdate desc";
 		$freview1 = sql_query($sql);
 	?>
-	<?php if(mysql_num_rows($freview1)):?>
+	<?php if(mysqli_num_rows($freview1)):?>
 		<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:20px;">
 			<tr>
 				<td class="font_16"><img src="../images/icon.png"  align="absmiddle" class="mr5" />Final Review Sanction Info</td>

@@ -54,7 +54,7 @@ $sql = " select * from $g4[yc4_banner_table]
           order by bn_order, bn_id desc 
           limit $from_record, $rows  ";
 $result = sql_query($sql);
-for ($i=0; $row=mysql_fetch_array($result); $i++)
+for ($i=0; $row = mysqli_fetch_array($result); $i++)
 {
     // 테두리 있는지
     $bn_border  = $row[bn_border];

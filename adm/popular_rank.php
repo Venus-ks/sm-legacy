@@ -19,7 +19,7 @@ $sql = " select pp_word
          $sql_search
          $sql_group ";
 $result = sql_query($sql);
-$total_count = mysql_num_rows($result);
+$total_count = mysqlI_num_rows($result);
 
 $rows = $config[cf_page_rows];
 $total_page  = ceil($total_count / $rows);  // 전체 페이지 계산

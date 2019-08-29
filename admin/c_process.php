@@ -30,7 +30,7 @@ if($_POST['mode']=="c_sub_reg"){
 					mb_name		= '{$member['mb_name']}',
 					regdate		= now()";
 		sql_query($sql);
-		$parent_seq = mysql_insert_id();
+		$parent_seq = mysqlI_insert_id();
 	}
 	
 

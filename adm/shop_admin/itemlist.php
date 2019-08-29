@@ -143,7 +143,7 @@ $qstr  = "$qstr&sca=$sca&page=$page&save_stx=$stx";
 <input type=hidden name=stx  value="<?=$stx?>">
 <input type=hidden name=page value="<?=$page?>">
 <?
-for ($i=0; $row=mysql_fetch_array($result); $i++)
+for ($i=0; $row = mysqli_fetch_array($result); $i++)
 {
     $href = "{$g4[shop_path]}/item.php?it_id=$row[it_id]";
 

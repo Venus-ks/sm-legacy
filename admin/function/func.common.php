@@ -1107,8 +1107,9 @@ function html_symbol($str)
 function sql_connect($host, $user, $pass)
 {
     global $g4;
+    global $connect_db;
 
-    return @mysql_connect($host, $user, $pass);
+    $connect_db = @mysqli_connect($host, $user, $pass);
 }
 
 
@@ -1116,20 +1117,21 @@ function sql_connect($host, $user, $pass)
 function sql_select_db($db, $connect)
 {
     global $g4;
-
-    if (strtolower($g4['charset']) == 'utf-8') @mysql_query(" set names utf8 ");
-    else if (strtolower($g4['charset']) == 'euc-kr') @mysql_query(" set names euckr ");
-    return @mysql_select_db($db, $connect);
+    
+    if (strtolower($g4['charset']) == 'utf-8') mysqli_query($connect, " set names utf8 ");
+    else if (strtolower($g4['charset']) == 'euc-kr') mysqli_query($connect, " set names euckr ");
+    return mysqli_select_db($connect, $db);
 }
 
 
-// mysql_query 와 mysql_error 를 한꺼번에 처리
+// mysqli_query 와 mysqli_error 를 한꺼번에 처리
 function sql_query($sql, $error=TRUE)
 {
+    global $connect_db;
     if ($error)
-        $result = @mysql_query($sql) or die("<p>$sql<p>" . mysql_errno() . " : " .  mysql_error() . "<p>error file : $_SERVER[PHP_SELF]");
+        $result = @mysqli_query($connect_db,$sql) or die("<p>$sql<p>" . mysqli_errno($connect_db) . " : " .  mysqli_error($connect_db) . "<p>error file : $_SERVER[PHP_SELF]");
     else
-        $result = @mysql_query($sql);
+        $result = @mysqli_query($connect_db,$sql);
     return $result;
 }
 
@@ -1138,7 +1140,7 @@ function sql_query($sql, $error=TRUE)
 function sql_fetch($sql, $error=TRUE)
 {
     $result = sql_query($sql, $error);
-    //$row = @sql_fetch_array($result) or die("<p>$sql<p>" . mysql_errno() . " : " .  mysql_error() . "<p>error file : $_SERVER[PHP_SELF]");
+    //$row = @sql_fetch_array($result) or die("<p>$sql<p>" . mysqli_errno() . " : " .  mysqli_error() . "<p>error file : $_SERVER[PHP_SELF]");
     $row = sql_fetch_array($result);
     return $row;
 }
@@ -1147,7 +1149,7 @@ function sql_fetch($sql, $error=TRUE)
 // 결과값에서 한행 연관배열(이름으로)로 얻는다.
 function sql_fetch_array($result)
 {
-    $row = @mysql_fetch_assoc($result);
+    $row = @mysqli_fetch_assoc($result);
     return $row;
 }
 
@@ -1157,7 +1159,7 @@ function sql_fetch_array($result)
 // 단, 결과 값은 스크립트(script) 실행부가 종료되면서 메모리에서 자동적으로 지워진다.
 function sql_free_result($result)
 {
-    return mysql_free_result($result);
+    return mysqli_free_result($result);
 }
 
 
@@ -1574,12 +1576,17 @@ function get_category($num=null){
 		return $arr;
 	}
 }
+function get_category_target($num=null){
+	foreach($GLOBALS['rule']['category_target'] as $k=>$v) {
+		if($v) $arr[] = array("cvalue"=>$k+1, "ctext"=>$v);
+	}
 
-function get_category_target($num){
-	if(!empty($num)){
-        return $GLOBALS['rule']['category_target'][$num];
+	if(!is_null($num)){
+		foreach($arr as $v) {
+			if($v['cvalue']==$num) return $v['ctext'];
+		}
 	}else{
-		return '없음';
+		return $arr;
 	}
 }
 
@@ -1712,7 +1719,7 @@ function get_status($seq, $type=null){
 	while ($row = sql_fetch_array($ress)) $total[] = $row;
 	$sql = "select * from ad_paper_review where parent_seq = '{$seq}' and rstep = '1' and (result = '2' or result = '3') order by result asc";
 	$ress	= sql_query($sql);
-	$review_f_count = mysql_num_rows($ress);
+	$review_f_count = mysqli_num_rows($ress);
 
 	/*
 	if(count($total)){

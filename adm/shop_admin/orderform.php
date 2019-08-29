@@ -603,7 +603,7 @@ if ($od[od_receipt_point] > 0)
                 $result = sql_query($sql);
                 for ($i=0; $row=sql_fetch_array($result); $i++)
                     echo "<option value='$row[dl_id]'>$row[dl_company]\n";
-                mysql_free_result($result);
+                mysqlI_free_result($result);
                 ?>
                 </select>
         </tr>

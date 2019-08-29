@@ -188,7 +188,7 @@ if ($w == "c") // 코멘트 입력
                     wr_10 = '$wr_10' ";
     sql_query($sql);
 
-    $comment_id = mysql_insert_id();
+    $comment_id = mysqlI_insert_id();
 
     // 원글에 코멘트수 증가 & 마지막 시간 반영
     sql_query(" update $write_table set wr_comment = wr_comment + 1, wr_last = '$g4[time_ymdhis]' where wr_id = '$wr_id' ");

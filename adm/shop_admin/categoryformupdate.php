@@ -126,7 +126,7 @@ else if ($w == "d")
     $sql = " select it_id from $g4[yc4_item_table] where ca_id = '$ca_id' ";
     $result = sql_query($sql);
     $i=0;
-    while ($row = mysql_fetch_array($result)) 
+    while ($row = mysqlI_fetch_array($result)) 
     {
         $i++;
         if ($i % 10 == 0) $str .= "\\n";

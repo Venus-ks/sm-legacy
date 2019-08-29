@@ -13,8 +13,8 @@
 	<tr>
 		<th width="200">저자명*<br />Author Name*</th>
 		<td>한/Kor : <input type="text" name="auth_name[]" id="auth_name" style="width:100%;" value="<?=$v['auth_name']?>" required/><br/><br/>영/Eng : <input type="text" name="auth_name_eng[]" id="auth_name_eng" style="width:100%;" value="<?=$v['auth_name_eng']?>" required/></td>
-		<th width="200">전화<br />Tel</th>
-		<td><input type="text" name="auth_tel[]"  id="auth_tel" style="width:100%;" value="<?=$v['auth_tel']?>"/></td>
+		<th width="200">전화*<br />Tel</th>
+		<td><input type="text" name="auth_tel[]"  id="auth_tel" style="width:100%;" value="<?=$v['auth_tel']?>" required/></td>
 	</tr>
 	<tr>
 		<th width="200">이메일*<br />E-mail*</th>

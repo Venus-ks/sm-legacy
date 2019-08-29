@@ -29,7 +29,7 @@ if($w == "")
     $sql = " insert $g4[yc4_new_win_table] set $sql_common ";
     sql_query($sql);
 
-    $nw_id = mysql_insert_id();
+    $nw_id = mysqlI_insert_id();
 } 
 else if ($w == "u") 
 {

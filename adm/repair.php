@@ -54,7 +54,7 @@ while($row = sql_fetch_array($result))
     $tbl = $row['Name'];
 
     $sql1 = " SELECT COUNT(*) FROM `$tbl` ";
-    $result1 = @mysql_query($sql1);
+    $result1 =  mysqlI_query($sql1);
     if (!$result1)
     {
         // 테이블 복구

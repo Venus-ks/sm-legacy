@@ -13,22 +13,22 @@ sql_query(" ALTER TABLE `$g4[yc4_default_table]`	ADD `de_hp_use` TINYINT NOT NUL
 sql_query(" ALTER TABLE `$g4[yc4_default_table]`    ADD `de_escrow_use` TINYINT NOT NULL DEFAULT '0' ", false);
 
 // 쏜다넷 smskey 필드 추가 : 101201
-@mysql_query(" ALTER TABLE `$g4[yc4_default_table]`	ADD `de_xonda_smskey` VARCHAR( 255 ) NOT NULL ");
+ mysqlI_query(" ALTER TABLE `$g4[yc4_default_table]`	ADD `de_xonda_smskey` VARCHAR( 255 ) NOT NULL ");
 
 // 비회원에 대한 개인정보 수집에 대한 내용
-@mysql_query(" ALTER TABLE `$g4[yc4_default_table]`	ADD `de_guest_privacy` TEXT NOT NULL ");
+ mysqlI_query(" ALTER TABLE `$g4[yc4_default_table]`	ADD `de_guest_privacy` TEXT NOT NULL ");
 
 // 현금영수증 발급
-@mysql_query(" ALTER TABLE `$g4[yc4_default_table]`	ADD `de_taxsave_use` TINYINT NOT NULL ");
+ mysqlI_query(" ALTER TABLE `$g4[yc4_default_table]`	ADD `de_taxsave_use` TINYINT NOT NULL ");
 
-@mysql_query(" ALTER TABLE `$g4[yc4_default_table]`	ADD `de_kcp_site_key` VARCHAR( 255 ) NOT NULL ");
-@mysql_query(" ALTER TABLE `$g4[yc4_default_table]`	ADD `de_dacom_mertkey` VARCHAR( 255 ) NOT NULL ");
-@mysql_query(" ALTER TABLE `$g4[yc4_default_table]`	ADD `de_vbank_use` VARCHAR( 255 ) NOT NULL ");
+ mysqlI_query(" ALTER TABLE `$g4[yc4_default_table]`	ADD `de_kcp_site_key` VARCHAR( 255 ) NOT NULL ");
+ mysqlI_query(" ALTER TABLE `$g4[yc4_default_table]`	ADD `de_dacom_mertkey` VARCHAR( 255 ) NOT NULL ");
+ mysqlI_query(" ALTER TABLE `$g4[yc4_default_table]`	ADD `de_vbank_use` VARCHAR( 255 ) NOT NULL ");
 
-@mysql_query(" ALTER TABLE `$g4[yc4_order_table]` ADD `od_settle_case` VARCHAR( 255 ) NOT NULL ");
-@mysql_query(" ALTER TABLE `$g4[yc4_order_table]` ADD `od_escrow1`     VARCHAR( 255 ) NOT NULL ");
-@mysql_query(" ALTER TABLE `$g4[yc4_order_table]` ADD `od_escrow2`     VARCHAR( 255 ) NOT NULL ");
-@mysql_query(" ALTER TABLE `$g4[yc4_order_table]` ADD `od_escrow3`     VARCHAR( 255 ) NOT NULL ");
+ mysqlI_query(" ALTER TABLE `$g4[yc4_order_table]` ADD `od_settle_case` VARCHAR( 255 ) NOT NULL ");
+ mysqlI_query(" ALTER TABLE `$g4[yc4_order_table]` ADD `od_escrow1`     VARCHAR( 255 ) NOT NULL ");
+ mysqlI_query(" ALTER TABLE `$g4[yc4_order_table]` ADD `od_escrow2`     VARCHAR( 255 ) NOT NULL ");
+ mysqlI_query(" ALTER TABLE `$g4[yc4_order_table]` ADD `od_escrow3`     VARCHAR( 255 ) NOT NULL ");
 
 // SMS 아이코드 추가 (icodekorea.com)
 $sql = " ALTER TABLE `$g4[yc4_default_table]`	ADD `de_sms_use` VARCHAR( 255 ) NOT NULL ,

@@ -4,8 +4,8 @@ include_once("./_common.php");
 
 auth_check($auth[$sub_menu], "w");
 
-$target_table   = mysql_real_escape_string(trim($_POST['target_table']));
-$target_subject = mysql_real_escape_string(trim($_POST['target_subject']));
+$target_table   = mysqlI_real_escape_string(trim($_POST['target_table']));
+$target_subject = mysqlI_real_escape_string(trim($_POST['target_subject']));
 
 if (!preg_match("/[A-Za-z0-9_]{1,20}/", $target_table)) 
 { 

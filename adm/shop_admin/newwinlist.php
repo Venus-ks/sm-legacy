@@ -54,7 +54,7 @@ $result = sql_query($sql);
 <tr><td colspan=10 height=1 bgcolor=#CCCCCC></td></tr>
 
 <?
-for ($i=0; $row=mysql_fetch_array($result); $i++) 
+for ($i=0; $row = mysqli_fetch_array($result); $i++) 
 {
     $s_mod = icon("수정", "./newwinform.php?w=u&nw_id=$row[nw_id]");
     $s_del = icon("삭제", "javascript:del('./newwinformupdate.php?w=d&nw_id=$row[nw_id]');");

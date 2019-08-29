@@ -16,7 +16,7 @@
 	<?
 	$tsql = " select distinct seq from ad_paper where (step = 1 or step = 11 or step = 21 or step = 33)";
 	$result = sql_query($tsql);
-	$total_count0 = mysql_num_rows($result);
+	$total_count0 = mysqli_num_rows($result);
 	?>
 
 	<? if($menu=="a1"){ ?>
@@ -33,7 +33,7 @@
 	<?
 	$tsql2 = " select distinct seq from ad_paper where  ( step = 3 or step = 13 or step = 23 ) ";
 	$result2 = sql_query($tsql2);
-	$total_count2 = mysql_num_rows($result2);
+	$total_count2 = mysqli_num_rows($result2);
 	?>
 
 	<? if($menu=="a3"){ ?>
@@ -50,7 +50,7 @@
 	<?
 	$tsql3 = " select distinct seq from ad_paper where ( step = 5 or step = 15 or step = 25 ) ";
 	$result3 = sql_query($tsql3);
-	$total_count3 = mysql_num_rows($result3);
+	$total_count3 = mysqli_num_rows($result3);
 	?>
 
 	<? if($menu=="a4"){ ?>
@@ -67,7 +67,7 @@
 	<?
 	$tsql9 = " select distinct seq from ad_paper where (step = 31 or step = 34)";
 	$result9 = sql_query($tsql9);
-	$total_count9 = mysql_num_rows($result9);
+	$total_count9 = mysqli_num_rows($result9);
 	?>
 
 	<? if($menu=="a9"){ ?>
@@ -84,7 +84,7 @@
 	<?
 	$tsql4 = " select distinct seq from ad_paper where step = 50";
 	$result4 = sql_query($tsql4);
-	$total_count4 = mysql_num_rows($result4);
+	$total_count4 = mysqli_num_rows($result4);
 	?>
 
 	<? if($menu=="a5"){ ?>

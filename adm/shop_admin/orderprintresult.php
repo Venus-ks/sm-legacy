@@ -51,7 +51,7 @@ if ($csv == 'csv')
         $sql .= " and b.ct_status = '$ct_status' ";
     $sql .="  order by od_time asc ";
     $result = sql_query($sql);
-    $cnt = @mysql_num_rows($result);
+    $cnt =  mysqlI_num_rows($result);
     if (!$cnt)
         alert("출력할 내역이 없습니다.");
 
@@ -64,7 +64,7 @@ if ($csv == 'csv')
     header('Pragma: public');
     //echo "우편번호,주소,이름,전화1,전화2,상품명,수량,비고,전하실말씀\n";
     echo "우편번호,주소,이름,전화1,전화2,상품명,수량,상품코드,주문번호,운송장번호,전하실말씀\n";
-    for ($i=0; $row=mysql_fetch_array($result); $i++) 
+    for ($i=0; $row = mysqli_fetch_array($result); $i++) 
     {
         echo '"' . $row[od_b_zip1] . '-' . $row[od_b_zip2] . '"' . ',';
         echo '"' . $row[od_b_addr1] . ' ' . $row[od_b_addr2] . '"' . ',';
@@ -107,7 +107,7 @@ if ($csv == 'xls')
         $sql .= " and b.ct_status = '$ct_status' ";
     $sql .="  order by od_time asc ";
     $result = sql_query($sql);
-    $cnt = @mysql_num_rows($result);
+    $cnt =  mysqlI_num_rows($result);
     if (!$cnt)
         alert("출력할 내역이 없습니다.");
 
@@ -137,7 +137,7 @@ if ($csv == 'xls')
     echo "<td>운송장번호</td>";
     echo "<td>전하실말씀</td>";
     echo "</tr>";
-    for ($i=0; $row=mysql_fetch_array($result); $i++) 
+    for ($i=0; $row = mysqli_fetch_array($result); $i++) 
     {
         $it_name = stripslashes($row[it_name]) . "<br />";
         $it_name .= print_item_options($row[it_id], $row[it_opt1], $row[it_opt2], $row[it_opt3], $row[it_opt4], $row[it_opt5], $row[it_opt6]);
@@ -194,7 +194,7 @@ if ($ct_status)
     $sql .= " and b.ct_status = '$ct_status' ";
 $sql .= " order by a.od_id ";
 $result = sql_query($sql);
-if (mysql_num_rows($result) == 0) 
+if  (mysqli_num_rows($result) == 0) 
 {
     echo "<script>alert('출력할 내역이 없습니다.'); window.close();</script>";
     exit;

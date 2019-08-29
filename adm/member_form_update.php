@@ -13,7 +13,7 @@ if ($member[mb_password] != sql_password($_POST['admin_password'])) {
     alert("패스워드가 다릅니다.");
 }
 
-$mb_id = mysql_real_escape_string(trim($_POST['mb_id']));
+$mb_id = mysqlI_real_escape_string(trim($_POST['mb_id']));
 
 $sql_common = " mb_name         = '$_POST[mb_name]',
                 mb_nick         = '$_POST[mb_nick]',
