@@ -3,7 +3,6 @@
 ** 공통 변수, 상수, 코드
 *******************************************************************************/
 //error_reporting(E_ALL ^ E_NOTICE);
-error_reporting(0);
 
 // 보안설정이나 프레임이 달라도 쿠키가 통하도록 설정
 header('P3P: CP="ALL CURa ADMa DEVa TAIa OUR BUS IND PHY ONL UNI PUR FIN COM NAV INT DEM CNT STA POL HEA PRE LOC OTC"');
@@ -33,11 +32,11 @@ if( !get_magic_quotes_gpc() )
 {
 	if( is_array($_GET) )
 	{
-		while( list($k, $v) = each($_GET) )
+        foreach($_GET as $k=>$v)
 		{
 			if( is_array($_GET[$k]) )
 			{
-				while( list($k2, $v2) = each($_GET[$k]) )
+                foreach($_GET[$k] as $k2=>$v2)
 				{
 					$_GET[$k][$k2] = addslashes($v2);
 				}
@@ -53,11 +52,11 @@ if( !get_magic_quotes_gpc() )
 
 	if( is_array($_POST) )
 	{
-		while( list($k, $v) = each($_POST) )
+		foreach($_POST as $k=>$v)
 		{
 			if( is_array($_POST[$k]) )
 			{
-				while( list($k2, $v2) = each($_POST[$k]) )
+                foreach($_POST[$k] as $k2=>$v2)
 				{
 					$_POST[$k][$k2] = addslashes($v2);
 				}
@@ -73,11 +72,11 @@ if( !get_magic_quotes_gpc() )
 
 	if( is_array($_COOKIE) )
 	{
-		while( list($k, $v) = each($_COOKIE) )
+		foreach($_COOKIE as $k=>$v)
 		{
 			if( is_array($_COOKIE[$k]) )
 			{
-				while( list($k2, $v2) = each($_COOKIE[$k]) )
+                foreach($_COOKIE[$k] as $k2=>$v2)
 				{
 					$_COOKIE[$k][$k2] = addslashes($v2);
 				}
@@ -256,7 +255,8 @@ if (file_exists("$g4[path]/$dbconfig_file"))
     if (is_dir("$g4[path]/install")) die("<meta http-equiv='content-type' content='text/html; charset=$g4[charset]'><script type='text/javascript'> alert('install 디렉토리를 삭제하여야 정상 실행됩니다.'); </script>");
 
     include_once("$g4[path]/$dbconfig_file");
-    $connect_db = sql_connect($mysql_host, $mysql_user, $mysql_password);
+    sql_connect($mysql_host, $mysql_user, $mysql_password);
+    global $connect_db;
     $select_db = sql_select_db($mysql_db, $connect_db);
     if (!$select_db)
         die("<meta http-equiv='content-type' content='text/html; charset=$g4[charset]'><script type='text/javascript'> alert('DB 접속 오류'); </script>");
@@ -327,12 +327,12 @@ if (isset($bo_table))   $qstr .= 'bo_table=' . urlencode($bo_table);
 if (isset($wr_id))      $qstr .= '&wr_id=' . urlencode($wr_id);
 */
 if (isset($sca))  {
-    $sca = mysql_real_escape_string($sca);
+    $sca = mysqlI_real_escape_string($sca);
     $qstr .= '&sca=' . urlencode($sca);
 }
 
 if (isset($sfl))  {
-    $sfl = mysql_real_escape_string($sfl);
+    $sfl = mysqlI_real_escape_string($sfl);
     // 크롬에서만 실행되는 XSS 취약점 보완
     // 코드 $sfl 변수값에서 < > ' " % = ( ) 공백 문자를 없앤다.
     $sfl = preg_replace("/[\<\>\'\"\%\=\(\)\s]/", "", $sfl);
@@ -341,12 +341,12 @@ if (isset($sfl))  {
 }
 
 if (isset($stx))  { // search text (검색어)
-    $stx = mysql_real_escape_string($stx);
+    $stx = mysqlI_real_escape_string($stx);
     $qstr .= '&stx=' . urlencode($stx);
 }
 
 if (isset($sst))  {
-    $sst = mysql_real_escape_string($sst);
+    $sst = mysqlI_real_escape_string($sst);
     $qstr .= '&sst=' . urlencode($sst); // search sort (검색 정렬 필드)
 }
 
