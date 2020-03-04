@@ -60,10 +60,10 @@
 				<?php endforeach?>
 			<?php endif?>
 			<table class="boardType01_write" style="margin-top:20px;">
-				<tr>
+				<!-- <tr>
 					<th width="200">연구종류<br/>Type of Paper</th>
 					<td><? if($data['manuscript']){ ?><?=get_manuscript($data['manuscript'])?><? } ?></td>
-				</tr>
+				</tr> -->
 				<tr>
 					<th width="150"><strong>심사요청분야<br/>Review Category</strong></th>
 					<td><? if($data['review_category_target']){ ?><?=get_category_target($data['review_category_target'])?><? } ?><? if($data['review_category']){ ?> / <?=get_category($data['review_category'])?><? } ?></td>
@@ -93,15 +93,15 @@
 						<a href="/down.php?link=<?=$data['submission_data2']?>"><img src="../images/btn_download.png"  align="absmiddle" /></a>
 					</td>
 				</tr>
-				<tr>
-					<th width="200">자가점검사항표<br/>Checklist</th>
+				<!-- <tr>
+					<th width="200">저작권이양동의서<br/>Copyright Agreement</th>
 					<td>
 						<?=end(explode("/",substr(strstr($data['submission_data3'], '^'), 1)))?>
 						<a href="/down.php?link=<?=$data['submission_data3']?>"><img src="../images/btn_download.png"  align="absmiddle" /></a>
 					</td>
-				</tr>
+				</tr> -->
 				<tr>
-					<th width="200">연구윤리동의서<br/>Research Ethics Guidelines</th>
+					<th width="200">저작권이양동의서 & 연구윤리동의서<br/>Copyright Agreement & Research Ethics Guidelines</th>
 					<td>
 						<?=end(explode("/",substr(strstr($data['submission_data4'], '^'), 1)))?>
 						<a href="/down.php?link=<?=$data['submission_data4']?>"><img src="../images/btn_download.png"  align="absmiddle" /></a>

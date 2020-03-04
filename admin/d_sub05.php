@@ -147,7 +147,7 @@ $write_pages = get_paging(10, $page, $total_page, "./d_sub05.php?page=");
 				<th><strong>No</strong></th>
 			<th><strong>논문번호<br/>Paper Number</strong></th>
 			<th><strong>저널명<br/>Journal Title</strong></th>
-			<th><strong>원고종류<br/>Type of Paper</strong></th>
+			<!-- <th><strong>원고종류<br/>Type of Paper</strong></th> -->
 			<th><strong>심사요청분야<br/>Review Category</strong></th>
 			<th><strong>논문명<br/>Title</strong></th>
 			<th><strong>투고자<br/>Author</strong></th>
@@ -174,7 +174,7 @@ $write_pages = get_paging(10, $page, $total_page, "./d_sub05.php?page=");
 				?>
 				<td><?=$info['abbr']?>-<?=$cyear?>-<?=$number?></td>
 				<td><?=$list[$i]['journal']?></td>
-				<td><? if($list[$i]['manuscript']){ ?><?=get_manuscript($list[$i]['manuscript'])?><? } ?></td>
+				<!-- <td><? if($list[$i]['manuscript']){ ?><?=get_manuscript($list[$i]['manuscript'])?><? } ?></td> -->
 				<td><? if($list[$i]['review_category_target']){ ?><?=get_category($list[$i]['review_category_target'])?><? } ?></td>
 				<td><strong><?=$list[$i]['title']?></strong></td>
 				<td><?=$list[$i]['mb_name']?></td>
@@ -186,7 +186,7 @@ $write_pages = get_paging(10, $page, $total_page, "./d_sub05.php?page=");
 				}else{
 			?>
 			<tr>
-				<td colspan="10">
+				<td colspan="10" class="text-center">
 					해당하는 데이터가 없습니다.
 				</td>
 			</tr>

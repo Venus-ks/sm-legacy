@@ -167,7 +167,7 @@ $write_pages = get_paging(10, $page, $total_page, "./d_member.php?page=");
 				}else{
 			?>
 			<tr>
-				<td colspan="9">
+				<td colspan="9" class="text-center">
 					해당하는 데이터가 없습니다.
 				</td>
 			</tr>

@@ -94,7 +94,7 @@ echo "<meta http-equiv=\"Content-Type\" content=\"application/vnd.ms-excel;chars
 	}else{
 ?>
 <tr>
-	<td colspan="7">
+	<td colspan="7" class="text-center">
 		해당하는 데이터가 없습니다.
 	</td>
 </tr>

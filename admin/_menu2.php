@@ -13,11 +13,13 @@
 <tr>
 	<?
 	$where = "
+	(((review_a_user = '{$member['mb_id']}' and review_a_step = '0' and review_a_conf = 'Y') or (review_b_user = '{$member['mb_id']}' and review_b_step = '0' and review_b_conf = 'Y') or (review_c_user = '{$member['mb_id']}' and review_c_step = '0' and review_c_conf = 'Y')) and step = 3)
+	or
 	(((review_a_user = '{$member['mb_id']}' and review_a_step = '0') or (review_b_user = '{$member['mb_id']}' and review_b_step = '0') or (review_c_user = '{$member['mb_id']}' and review_c_step = '0')) and step = 4)
 	or
-	(((review_a_user = '{$member['mb_id']}' and review_a_step = '1' and review_a_conf = 'Y' and review_a_result = '3') or (review_b_user = '{$member['mb_id']}' and review_b_step = '1' and review_b_conf = 'Y' and review_b_result = '3') or (review_c_user = '{$member['mb_id']}' and review_c_step = '1' and review_c_conf = 'Y' and review_c_result = '3')) and step = 14)
+	(((review_a_user = '{$member['mb_id']}' and review_a_step = '1' and review_a_conf = 'Y' and (review_a_result = '2' OR review_a_result = '3')) or (review_b_user = '{$member['mb_id']}' and review_b_step = '1' and review_b_conf = 'Y' and (review_b_result = '2' OR review_b_result = '3')) or (review_c_user = '{$member['mb_id']}' and review_c_step = '1' and review_c_conf = 'Y' and (review_c_result = '2' OR review_c_result = '3'))) and step = 14)
 	or
-	(((review_a_user = '{$member['mb_id']}' and review_a_step = '2' and review_a_result = '2') or (review_b_user = '{$member['mb_id']}' and review_b_step = '2' and review_b_result = '2') or (review_c_user = '{$member['mb_id']}' and review_c_step = '2' and review_c_result = '2')) and step = 24)
+	(((review_a_user = '{$member['mb_id']}' and review_a_step = '2' and review_a_conf = 'Y' and (review_a_result = '2' OR review_a_result = '3')) or (review_b_user = '{$member['mb_id']}' and review_b_step = '2' and review_b_conf = 'Y' and (review_b_result = '2' OR review_b_result = '3')) or (review_c_user = '{$member['mb_id']}' and review_c_step = '2' and review_c_conf = 'Y' and (review_c_result = '2' OR review_c_result = '3'))) and step = 24)
 ";
 	$tsql1 = " select distinct seq from ad_paper where {$where}";
 	$result1 = sql_query($tsql1);
@@ -73,14 +75,14 @@
 </tr>
 </table>
 <div class="modal fade" id="manualModal" tabindex="-1" role="dialog" aria-labelledby="투고시스템 매뉴얼">
-  <div class="modal-dialog" role="document" style="width:90%">
+  <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">투고시스템 매뉴얼</h4>
       </div>
       <div class="modal-body">
-		  <embed src="<?=$info['reviewer_manual_url']?>" frameborder="0" width="100%" height="100%">
+		  <embed src="<?=$info['reviewer_manual_url']?>" frameborder="0" width="100%" height="790>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

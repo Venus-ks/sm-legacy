@@ -172,7 +172,7 @@ $write_pages = get_paging(10, $page, $total_page, "./a_sub02.php?page=");
 				<th rowspan="2"><strong>상태<br/>Status</strong></th>
 				<th rowspan="2"><strong>논문번호<br/>Paper Number</strong></th>
 				<th rowspan="2"><strong>저널명<br/>Journal Title</strong></th>
-				<th rowspan="2"><strong>원고종류<br/>Type of Paper</strong></th>
+				<!-- <th rowspan="2"><strong>원고종류<br/>Type of Paper</strong></th> -->
 				<!--th rowspan="2"><strong>심사성격<br/>Urgent Review</strong></th-->
 				<th rowspan="2"><strong>심사요청분야<br/>Review Category</strong></th>
 				<th rowspan="2"><strong>논문명<br/>Title</strong></th>
@@ -214,7 +214,7 @@ $write_pages = get_paging(10, $page, $total_page, "./a_sub02.php?page=");
 				?>
 				<td>KJ-<?=$cyear?>-<?=$number?></td>
 				<td><?=$list[$i]['journal']?></td>
-				<td><? if($list[$i]['manuscript']){ ?><?=get_manuscript($list[$i]['manuscript'])?><? } ?></td>
+				<!-- <td><? if($list[$i]['manuscript']){ ?><?=get_manuscript($list[$i]['manuscript'])?><? } ?></td> -->
 				<!--td><?=$list[$i]['express_publication']?></td-->
 				<!--td><? if($list[$i]['review_category']){ ?><?=get_category($list[$i]['review_category'])?><? } ?></td-->
 				<td><?=get_category_target($list[$i]['review_category_target'])?></td>
@@ -233,7 +233,7 @@ $write_pages = get_paging(10, $page, $total_page, "./a_sub02.php?page=");
 				}else{
 			?>
 			<tr>
-				<td colspan="12">
+				<td colspan="12" class="text-center">
 					해당하는 데이터가 없습니다.
 				</td>
 			</tr>

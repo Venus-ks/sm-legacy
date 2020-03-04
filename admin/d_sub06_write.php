@@ -80,6 +80,10 @@ if($_GET['seq']){
 								<? for($i=0;$i<count($review);$i++):?>
 									<table width="100%" class="boardType01_write" style="margin-top:5px;">
 										<tr>
+											<th width="230"><strong>최종결과</th>
+											<td><?=get_result_temp($review[$i]['result'])?></td>
+										</tr>
+										<tr>
 											<th width="230"><strong>최종심사 완료일<br/>Accepted Date</strong></th>
 											<td><?=$review[$i]['regdate']?></td>
 										</tr>

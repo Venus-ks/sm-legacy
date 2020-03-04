@@ -104,17 +104,19 @@ if($_POST['mode']=="c_sub_review"){
 	$sql = "update ad_paper set {$qry} where seq = '{$_POST['seq']}'";
 	//echo $sql."<br>";
 	sql_query($sql);
+	$sql = "select * from ad_paper where seq = '{$_POST['seq']}'";
+	$data	= sql_fetch($sql);
 	###
 	$step = "";
 	if($_POST['step'] == 24){
-		$sql = "select count(rseq) as cnt from ad_paper_review where parent_seq = '{$_POST['seq']}' and rstep = 2 and result = 3";
+		$sql = "select count(rseq) as cnt from ad_paper_review where parent_seq = '{$_POST['seq']}' and rstep = 2 and (result = 2 or result = 3)";
 		$chk	= sql_fetch($sql);
 		$sql = "select count(rseq) as cnt from ad_paper_review where parent_seq = '{$_POST['seq']}' and rstep = 3";
 		$chk2	= sql_fetch($sql);
 		//if($cnt > 7) $step = " , step = 25 ";
-		if($chk['cnt']<=$chk2['cnt']) $step = " step = 25 ";
+		if($chk['cnt']==$chk2['cnt']) $step = " step = 25 ";
 	}else if($_POST['step'] == 14){
-		$sql = "select count(rseq) as cnt from ad_paper_review where parent_seq = '{$_POST['seq']}' and rstep = 1 and result = 3";
+		$sql = "select count(rseq) as cnt from ad_paper_review where parent_seq = '{$_POST['seq']}' and rstep = 1 and (result = 2 or result = 3)";
 		$chk	= sql_fetch($sql);
 		$sql = "select count(rseq) as cnt from ad_paper_review where parent_seq = '{$_POST['seq']}' and rstep = 2";
 		$chk2	= sql_fetch($sql);
@@ -158,7 +160,7 @@ if($_POST['mode']=="c_sub_review"){
 		<tr><td height='80' align='center' valign='top' bgcolor='#FFF'>
 		{$mail_footer}
 		";
-	$body	 = eregi_replace("[\]",'',$body);
+	$body	 = preg_replace ("[\]",'',$body);
 	##############
 	$mail->MsgHTML($body);
 	//편집간사 이메일

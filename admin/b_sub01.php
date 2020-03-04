@@ -8,9 +8,9 @@ $where = "
 	or
 	(((review_a_user = '{$member['mb_id']}' and review_a_step = '0') or (review_b_user = '{$member['mb_id']}' and review_b_step = '0') or (review_c_user = '{$member['mb_id']}' and review_c_step = '0')) and step = 4)
 	or
-	(((review_a_user = '{$member['mb_id']}' and review_a_step = '1' and review_a_conf = 'Y' and review_a_result = '3') or (review_b_user = '{$member['mb_id']}' and review_b_step = '1' and review_b_conf = 'Y' and review_b_result = '3') or (review_c_user = '{$member['mb_id']}' and review_c_step = '1' and review_c_conf = 'Y' and review_c_result = '3')) and step = 14)
+	(((review_a_user = '{$member['mb_id']}' and review_a_step = '1' and review_a_conf = 'Y' and (review_a_result = '2' OR review_a_result = '3')) or (review_b_user = '{$member['mb_id']}' and review_b_step = '1' and review_b_conf = 'Y' and (review_b_result = '2' OR review_b_result = '3')) or (review_c_user = '{$member['mb_id']}' and review_c_step = '1' and review_c_conf = 'Y' and (review_c_result = '2' OR review_c_result = '3'))) and step = 14)
 	or
-	(((review_a_user = '{$member['mb_id']}' and review_a_step = '2' and review_a_result = '2') or (review_b_user = '{$member['mb_id']}' and review_b_step = '2' and review_b_result = '2') or (review_c_user = '{$member['mb_id']}' and review_c_step = '2' and review_c_result = '2')) and step = 24)
+	(((review_a_user = '{$member['mb_id']}' and review_a_step = '2' and review_a_conf = 'Y' and (review_a_result = '2' OR review_a_result = '3')) or (review_b_user = '{$member['mb_id']}' and review_b_step = '2' and review_b_conf = 'Y' and (review_b_result = '2' OR review_b_result = '3')) or (review_c_user = '{$member['mb_id']}' and review_c_step = '2' and review_c_conf = 'Y' and (review_c_result = '2' OR review_c_result = '3'))) and step = 24)
 ";
 ### SEARCH
 if($_GET['sdate'] || $_GET['edate']){
@@ -146,7 +146,7 @@ $write_pages = get_paging(10, $page, $total_page, "./b_sub01.php?page=");
 				<th><strong>No</strong></th>
 				<th><strong>논문번호<br/>Paper Number</strong></th>
 				<th><strong>저널명<br/>Journal Title</strong></th>
-				<th><strong>원고종류<br/>Type of Paper</strong></th>
+				<!-- <th><strong>원고종류<br/>Type of Paper</strong></th> -->
 				<!--th><strong>심사성격<br/>Urgent Review</strong></th-->
 				<th><strong>심사요청분야<br/>Review Category</strong></th>
 				<th><strong>논문명<br/>Title</strong></th>
@@ -183,7 +183,7 @@ $write_pages = get_paging(10, $page, $total_page, "./b_sub01.php?page=");
 				?>
 				<td>KJ-<?=$cyear?>-<?=$number?></td>
 				<td><?=$list[$i]['journal']?></td>
-				<td><? if($list[$i]['manuscript']){ ?><?=get_manuscript($list[$i]['manuscript'])?><? } ?></td>
+				<!-- <td><? if($list[$i]['manuscript']){ ?><?=get_manuscript($list[$i]['manuscript'])?><? } ?></td> -->
 				<!--td><?=$list[$i]['express_publication']?></td-->
 				<td><?=get_category_target($list[$i]['review_category_target'])?></td>
 				<td><strong><?=$list[$i]['title']?></strong></td>
@@ -208,7 +208,7 @@ $write_pages = get_paging(10, $page, $total_page, "./b_sub01.php?page=");
 				}else{
 			?>
 			<tr>
-				<td colspan="9">
+				<td colspan="9" class="text-center">
 					해당하는 데이터가 없습니다.
 				</td>
 			</tr>

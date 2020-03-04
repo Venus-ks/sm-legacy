@@ -342,7 +342,7 @@ $write_pages = get_paging(10, $page, $total_page, "./d_sub06.php?sdate={$_GET['s
 				<th width="78" rowspan="2" onClick="javascript:orderview('seq');" style="cursor:pointer;"><strong>논문번호<br/>
 				  Paper Number<br/><div id="column2"><?if ($_GET['orderColumn2']=='asc'){?>▲<?}else if($_GET['orderColumn2']=='desc'){?>▼<?}?></div></div></strong></th>
 				<!--th width="53" rowspan="2" onClick="javascript:orderview('jourmal');" style="cursor:pointer;"><strong>저널명<br/>Journal Title<br/><div id="column3"><?if ($_GET['orderColumn3']=='asc'){?>▲<?}else if($_GET['orderColumn3']=='desc'){?>▼<?}?></div></div></strong></th-->
-				<th width="65" rowspan="2" style="cursor:pointer;" onClick="javascript:orderview('manuscript');"><strong>원고종류<br/>Type of Paper<div id="column4"><?if ($_GET['orderColumn4']=='asc'){?>▲<?}else if($_GET['orderColumn4']=='desc'){?>▼<?}?></div></div></strong></th>
+				<!-- <th width="65" rowspan="2" style="cursor:pointer;" onClick="javascript:orderview('manuscript');"><strong>원고종류<br/>Type of Paper<div id="column4"><?if ($_GET['orderColumn4']=='asc'){?>▲<?}else if($_GET['orderColumn4']=='desc'){?>▼<?}?></div></div></strong></th> -->
 				<!--th rowspan="2"><strong>심사성격<br/>Urgent Review</strong></th-->
 				<th width="105" rowspan="2" style="cursor:pointer;" onClick="javascript:orderview('review_category');"><strong>심사요청분야<br/>Review Category<br/><div id="column5"><?if ($_GET['orderColumn5']=='asc'){?>▲<?}else if($_GET['orderColumn5']=='desc'){?>▼<?}?></div></div></strong></th>
 				<th rowspan="2" style="cursor:pointer;" onClick="javascript:orderview('title');"><strong>논문명<br/>Title<br/><div id="column6"><?if ($_GET['orderColumn6']=='asc'){?>▲<?}else if($_GET['orderColumn6']=='desc'){?>▼<?}?></div></div></strong></th>
@@ -371,7 +371,7 @@ $write_pages = get_paging(10, $page, $total_page, "./d_sub06.php?sdate={$_GET['s
 			<?php
 			if(count($list)){
 				for ($i=0; $i<count($list); $i++) {
-					$sql = "select * from ad_paper_review where parent_seq = '{$list[$i]['seq']}' order by rstep asc  limit 9";
+					$sql = "select * from ad_paper_review where parent_seq = '{$list[$i]['seq']}' order by rstep asc,type asc,rseq desc limit 9";
 					$ress = sql_query($sql);
 					unset($review);
 					while ($row = sql_fetch_array($ress)) $review[] = $row;
@@ -386,7 +386,7 @@ $write_pages = get_paging(10, $page, $total_page, "./d_sub06.php?sdate={$_GET['s
 						else $number = $list[$i]['number'];
 						?>
 						<td height="15"><?=$info['abbr']?>-<?=$cyear?>-<?=$number?></td>
-						<td height="15"><? if($list[$i]['manuscript']){ ?><?=get_manuscript($list[$i]['manuscript'])?><? } ?></td>
+						<!-- <td height="15"><? if($list[$i]['manuscript']){ ?><?=get_manuscript($list[$i]['manuscript'])?><? } ?></td> -->
 						<?php
 						$rv_category = str_replace("(", "<br/>", get_category($list[$i]['review_category']));
 						$rv_category = str_replace(")", " ", $rv_category);
@@ -422,7 +422,7 @@ $write_pages = get_paging(10, $page, $total_page, "./d_sub06.php?sdate={$_GET['s
 									if($k['rstep']=='1') $str = "1<sup>ST</sup>";
 									if($k['rstep']=='2') $str = "2<sup>ND</sup>";
 									if($k['rstep']=='3') $str = "3<sup>RD</sup>";
-									echo "<tr><td style='height:110px;border-color:#ffffff;'>".$str." ".$k['mb_name']."</td></tr>";
+									echo "<tr><td style='border-color:#ffffff;word-break: keep-all;'>".$str." ".$k['mb_name']."</td></tr>";
 								}
 							}
 							?>
@@ -436,7 +436,7 @@ $write_pages = get_paging(10, $page, $total_page, "./d_sub06.php?sdate={$_GET['s
 									if($k['rstep']=='1') $str = "1<sup>ST</sup>";
 									if($k['rstep']=='2') $str = "2<sup>ND</sup>";
 									if($k['rstep']=='3') $str = "3<sup>RD</sup>";
-									echo "<tr><td style='height:110px;border-color:#ffffff;'>".$str." ".$k['regdate']."</td></tr>";
+									echo "<tr><td style='border-color:#ffffff;word-break: keep-all;'>".$str." ".$k['regdate']."</td></tr>";
 								}
 							}
 							?>
@@ -451,12 +451,12 @@ $write_pages = get_paging(10, $page, $total_page, "./d_sub06.php?sdate={$_GET['s
 										$results = str_replace("(", "<br/>", get_result($k['result']));
 										$results = str_replace(")", " ", $results);
 									}else{
-										$results = str_replace("(", "<br/>", get_result_final($k['result']));
+										$results = str_replace("(", "<br/>", get_result($k['result']));
 									}
 									if($k['rstep']=='1') $str = "1<sup>ST</sup>";
 									if($k['rstep']=='2') $str = "2<sup>ND</sup>";
 									if($k['rstep']=='3') $str = "3<sup>RD</sup>";
-									echo "<tr><td style='height:110px;border-color:#ffffff;'>".$str." ".$results."</td></tr>";
+									echo "<tr><td style='border-color:#ffffff;word-break: keep-all;'>".$str." ".$results."</td></tr>";
 								}
 							}
 							?>
@@ -468,7 +468,7 @@ $write_pages = get_paging(10, $page, $total_page, "./d_sub06.php?sdate={$_GET['s
 			}else{
 			?>
 			<tr>
-				<td colspan="15">
+				<td colspan="15" class="text-center">
 					해당하는 데이터가 없습니다.
 				</td>
 			</tr>

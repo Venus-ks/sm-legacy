@@ -51,10 +51,10 @@ if($_GET['seq']){
 														<select name="result" id="result" style="width:40%;" required>
 														<option value="">= 선택 =</option>
 														<?php
-														if($data['step']<15) {
+														if($data['step']<25) {
 															$arr = get_result();
 														} else {
-															$arr = get_result_2nd();
+															$arr = get_result_final();
 														}
 														?>
 														<?php for($i=0;$i<count($arr);$i++):?>

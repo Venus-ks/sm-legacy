@@ -255,6 +255,8 @@ $(document).ready(function() {
 			<?php if($_GET['mode']==2):?><a href="mailto:<?=$info['editor_email']?>"><?=$info['editor_email']?></a>
 			<?php else:?><a href="mailto:<?=$info['editor_email2']?>"><?=$info['editor_email2']?></a><?php endif?>
 			)로 ID/PW 문의바랍니다.
+			<br><br>
+			신규 회원가입자나 본 시스템에 로그인이 되지 않는 사용자의 경우 홈페이지와 별개로 본 시스템에 회원등록을 해주시기 바랍니다.
 		</div>
 	</div>
 </div>
@@ -266,7 +268,7 @@ $(document).ready(function() {
 				<a href="<?=$info['site']?>" class="nav-link"><?=$info['institute_title']?> 홈페이지</a>
 			</li>
 			<li class="nav-item">
-				<a href="<?=$info['publish_rule_url']?>" target="_blank" class="nav-link">학회지 발간규정</a>
+				<a href="<?=$info['submit_rule_url']?>" target="_blank" class="nav-link">학회지 발간규정</a>
 			</li>
 			<li class="nav-item">
 				<a href="<?=$info['ethic_rule_url']?>" class="nav-link">연구윤리 규정</a>

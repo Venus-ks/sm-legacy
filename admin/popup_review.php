@@ -63,7 +63,7 @@ while ($row = sql_fetch_array($result)){
 		}else{
 	?>
 	<tr>
-		<td colspan="4">
+		<td colspan="4" class="text-center">
 			해당하는 데이터가 없습니다.
 		</td>
 	</tr>

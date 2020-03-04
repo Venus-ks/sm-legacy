@@ -146,7 +146,6 @@ $write_pages = get_paging(10, $page, $total_page, "./b_sub02.php?page=");
 	<th width="50" rowspan="2"><strong>상태<br />Status</strong></th>
 	<th width="80" rowspan="2"><strong>논문번호<br />Paper Number</strong></th>
 	<th width="60" rowspan="2"><strong>저널명<br />Journal Title</strong></th>
-	<th width="70" rowspan="2"><strong>원고종류<br />Type of Paper</strong></th>
 	<th width="80" rowspan="2"><strong>심사요청분야<br />Review Category</strong></th>
 	<th rowspan="2"><strong>논문명<br />Title</strong></th>
 	<th width="60" rowspan="2"><strong>접수일<br />Received Date</strong></th>
@@ -155,12 +154,11 @@ $write_pages = get_paging(10, $page, $total_page, "./b_sub02.php?page=");
 <tr>
 	<th width="100"><strong>심사완료 요청일<br />Expiration Date</th>
 	<th width="75"><strong>의견등록일<br />Review Date</th>
-	<th width="55"><strong>심사결과<br />Result</th>
+	<th width="110"><strong>심사결과<br />Result</th>
 </tr>
 			<?php if(count($list)):?>
 				<?php for ($i=0; $i<count($list); $i++):?>
 					<?php
-					echo count($list);
 					$review = array();
 					$sql = "select * from ad_paper_review where parent_seq = '{$list[$i]['seq']}' and mb_id = '{$member['mb_id']}' order by rstep asc limit 3";
 					$ress	= sql_query($sql);
@@ -187,7 +185,6 @@ $write_pages = get_paging(10, $page, $total_page, "./b_sub02.php?page=");
 						?>
 						<td>KJ-<?=$cyear?>-<?=$number?></td>
 						<td><?=$list[$i]['journal']?></td>
-						<td><? if($list[$i]['manuscript']){ ?><?=get_manuscript($list[$i]['manuscript'])?><? } ?></td>
 						<td><? if($list[$i]['review_category_target']){ ?><?=get_category($list[$i]['review_category_target'])?><? } ?></td>
 						<td><strong><?=$list[$i]['title']?></strong></td>
 						<td><?=substr($list[$i]['regdate'],0,10)?></td>
@@ -223,10 +220,8 @@ $write_pages = get_paging(10, $page, $total_page, "./b_sub02.php?page=");
 							?>
 						</td>
 						<td>
-							<?
-							for ($q=0; $q<$p; $q++){
-							?>
-								<a href='#score_box<?=$review[$q]['rseq']?>' class='inline'>
+							<?php for ($q=0; $q<$p; $q++):?>
+								<button type="button" class="btn btn-<?=($review[$q]['result']==4)?'danger':'info'?> btn-sm" data-toggle="modal" data-target="#review-<?=$review[$q]['rseq']?>-Modal" data-whatever="@mdo">
 								<? if($review[$q]['regdate']){?>
 									<? if ($q == 0){?>
 									1<sup>ST</sup>
@@ -236,80 +231,48 @@ $write_pages = get_paging(10, $page, $total_page, "./b_sub02.php?page=");
 									3<sup>RD</sup>
 									<? }?>
 								<?=get_result($review[$q]['result'])?><br /><? } ?>
-								</a>
-							<?
-							}
-							?>
-						<?php foreach($review as $k):?>
-							<div style='display:none'>
-								<div id='score_box<?=$k['rseq']?>' style='padding:10px; background:#fff;font-size: 12px;'>
-									<form name="review_form<?=$k['rseq']?>" id="review_form<?=$k['rseq']?>" method="post" onsubmit="return fwrite_submit(this);" enctype="multipart/form-data">
-										<input type="hidden" name="mode" value="b_review_modify"/>
-										<input type="hidden" name="rseq" value="<?=$k['rseq']?>"/>
-										<ul style="list-style:none;font-size:1em;padding-left:5px">
-											<?php
-												$sq	= "SELECT * FROM `ad_check_review` ORDER BY id ";
-												$chklist = sql_query($sq);
-												$score_arr = explode('|',$k['score']);
-												$j=0;
-											?>
-											<?php while ($row = sql_fetch_array($chklist)):?>
-												<?php if($chk_tmp!=$row['title']):?>
-												<h3><?=$row['title']?></h3>
-												<?php endif?>
-												<?php $chk_tmp=$row['title'];?>
-												<li>
-													<div style="padding:5px;background-color:#EEE"><?=$row['content']?></div>
-													<div style="text-align:right;line-height:10px;padding:5px 0">
-														<label for="q<?=$row['id']?>-good">
-															<input type="radio" name="q<?=$row['id']?>" id="q<?=$row['id']?>-good" value="5" <?=($score_arr[$j]==5)?'checked="checked"':''?>>
-															우수&nbsp;&nbsp;&nbsp;
-														</label>
-														<label for="q<?=$row['id']?>">
-															<input type="radio" name="q<?=$row['id']?>" id="q<?=$row['id']?>" value="3" <?=($score_arr[$j]==3)?'checked="checked"':''?>>
-															양호&nbsp;&nbsp;&nbsp;
-														</label>
-														<label for="q<?=$row['id']?>-bad">
-															<input type="radio" name="q<?=$row['id']?>" id="q<?=$row['id']?>-bad" value="2" <?=($score_arr[$j]==2)?'checked="checked"':''?>>
-															미흡&nbsp;&nbsp;&nbsp;
-														</label>
-													</div>
-												</li>
-												<?php $j++?>
-											<?php endwhile?>
-										</ul>
-										<hr>
-										<select name="result" id="result" style="width:100%;" required>
-											<option value="">= 선택 =</option>
-											<?
-											if($data['step'] > 15) $arr = get_result_temp();
-											else $arr = get_result();
-											foreach($arr as $v){
-											?>
-											<option value="<?=$v['cvalue']?>" <?=($k['result']==$v['cvalue'])?'selected':''?>><?=$v['ctext']?></option>
-											<? } ?>
-										</select>
-										<hr>
-										<textarea name="comments" id="comments" style="width:100%;" rows="5" required><?=$k['comments']?></textarea>
-										<?php if($list[$i]['step'] == 4 || $list[$i]['step'] == 14 || $list[$i]['step'] == 3 || $list[$i]['step'] == 13):?>
-											<div style="padding-top:20px">
-												<center><button type="submit" class="btn btn-danger">수정하기</button></center>
+								</button>
+							<?php endfor ?>
+						
+							<?php foreach($review as $v):?>
+								<div class="modal fade" id="review-<?=$v['rseq']?>-Modal" tabindex="-1" role="dialog" aria-labelledby="review-<?=$v['rseq']?>-ModalLabel" aria-hidden="true">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="review-<?=$v['rseq']?>-ModalLabel">
+												<?=$v['rstep'] == 4 ? '편집자' : $v['rstep'].'차'?> 심사결과
+											</h5>
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body">
+											<form>
+											<div class="form-group">
+												<label for="recipient-name" class="col-form-label">심사결과</label>
+												<input type="text" class="form-control" id="recipient-name" disabled value="<?=get_result($v['result'])?>">
 											</div>
-										<?php else:?>
-											<div style="padding-top:20px">
-												<center><button type="submit" class="btn btn-danger" disabled>수정불가</button></center>
+											<div class="form-group">
+												<label for="message-text" class="col-form-label">심사의견서</label>
+												<p class="h6">
+												<?=end(explode("/",substr(strstr($v['rfile'], '^'), 1)))?> <a href="/down.php?link=<?=urlencode($v['rfile'])?>"><img src="../images/btn_download.png"  align="absmiddle" /></a>
+												</p>
 											</div>
-										<?php endif?>
-									</form>
-								</div>
-							</div>
-						<?php endforeach?>
+											</form>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+										</div>
+										</div>
+									</div>
+									</div>
+							<?php endforeach ?>
 						</td>
 					</tr>
 				<?php endfor?>
 			<?php else:?>
 				<tr>
-					<td colspan="14">
+					<td colspan="14" class="text-center">
 						해당하는 데이터가 없습니다.
 					</td>
 				</tr>

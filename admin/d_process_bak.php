@@ -726,7 +726,7 @@ else if($_POST['mode']=="d_sub5_reg"){
 			Tel) 02-566-9477,  Fax) 02-569-5134,  E-mail : <a href='mailto:journal@ksmer.or.kr'>journal@ksmer.or.kr</a><br />
 			Home :<a href='http://www.saek.or.kr'>www.saek.or.kr</a></p>
 			</td></tr></table></td></tr></table></body></html>";
-			$body	 = eregi_replace("[\]",'',$body);
+			$body	 = preg_replace ("[\]",'',$body);
 			##############
 			$mail->MsgHTML($body);
 			//$address = $mem['mb_id'];
@@ -760,7 +760,7 @@ else if($_POST['mode']=="d_sub5_reg"){
 		/* 최종 거부시 메일은 일단 보내지 않는다. (문구가 없슴)
 		##############
 		$body = "deny";
-		$body	 = eregi_replace("[\]",'',$body);
+		$body	 = preg_replace ("[\]",'',$body);
 		##############
 		$mail->MsgHTML($body);
 		//$address = $_POST['mb_id'];
@@ -824,7 +824,7 @@ else if($_POST['mode']=="d_sub5_reg"){
 			Tel) 02-566-9477,  Fax) 02-569-5134,  E-mail : <a href='mailto:journal@ksmer.or.kr'>journal@ksmer.or.kr</a><br />
 			Home :<a href='http://www.saek.or.kr'>www.saek.or.kr</a></p>
 			</td></tr></table></td></tr></table></body></html>";
-			$body	 = eregi_replace("[\]",'',$body);
+			$body	 = preg_replace ("[\]",'',$body);
 			##############
 			$mail->MsgHTML($body);
 			//$address = $mem['mb_id'];

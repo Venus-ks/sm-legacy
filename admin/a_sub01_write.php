@@ -138,7 +138,7 @@ function add_author(){
 	table += "<tr>";
 	table += "<th width=\"200\">저자명*<br />Author Name*</th>";
 	table += "<td>한/Kor : <input type=\"text\" name=\"auth_name[]\" id=\"auth_name\" style=\"width:80%;\" /><br/><br/>영/Eng : <input type=\"text\" name=\"auth_name_eng[]\" id=\"auth_name_eng\" style=\"width:80%;\"/></td>";
-	table += "<th width=\"200\">전화*<br />Tel</th>";
+	table += "<th width=\"200\">전화<br />Tel</th>";
 	table += "<td><input type=\"text\" name=\"auth_tel[]\" id=\"auth_tel\" style=\"width:100%;\" /></td>";
 	table += "</tr>";
 	table += "<tr>";

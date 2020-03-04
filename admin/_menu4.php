@@ -213,14 +213,14 @@
 </tr>
 </table>
 <div class="modal fade" id="manualModal" tabindex="-1" role="dialog" aria-labelledby="투고시스템 매뉴얼">
-  <div class="modal-dialog" role="document" style="width:90%">
+  <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">투고시스템 메뉴얼</h4>
       </div>
       <div class="modal-body">
-		  <embed src="<?=$info['manual_url']?>" frameborder="0" width="100%" height="100%">
+		  <embed src="<?=$info['manual_url']?>" frameborder="0" width="100%" height="790">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

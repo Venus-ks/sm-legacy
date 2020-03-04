@@ -56,7 +56,7 @@ if($_GET['seq']){
 							<tr>
 								<th>수정논문파일<br/>Modified Manuscript File</th>
 								<td>
-									<input type="file" name="modify_file" style="width:100%;"/>
+									<input type="file" name="modify_file" style="width:100%;" required/>
 									<input type="hidden" name="modify_file_temp" value="<?=$data['submission_data']?>"/>
 									<? if($data['modify_file']){ ?>
 									<div style="padding-top:5px;"><?=end(explode("/",substr(strstr($data['modify_file'], '^'), 1)))?> <a href="/down.php?link=<?=$data['modify_file']?>"><img src="../images/btn_download.png"  align="absmiddle" /></a></div>
@@ -92,7 +92,7 @@ if($_GET['seq']){
 											<td width="62">
 												<a href="d_sub01.php"><img src="../images/btn_list.png" /></a>
 											</td>
-											<td width="100">
+											<td>
 												<a href="javascript:withdraw_article();" class="btn btn-danger" style="line-height:23px;color:#FFF;margin-left:50px">부적합 판정</a>
 											</td>
 										</tr>

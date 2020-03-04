@@ -46,7 +46,7 @@ if($_GET['seq']){
 							<?php if($data['step']>10) include_once("./template/review01.php");?>
 							<table width="100%" class="boardType01_write" style="margin-top:20px;">
 								<tr>
-									<th width="200" rowspan="3"><strong>심사위원 A<br/>Reviewer A</strong></th>
+									<th width="200" rowspan="2"><strong>심사위원 A<br/>Reviewer A</strong></th>
 									<td class="tabA">
 										<input type="text" name="review_a_name" id="review_a_name" style="width:100px;" value="<?=get_review_name($data['review_a_user'])?>" readonly/>
 										<input type="hidden" name="review_a_user" id="review_a_user" style="width:100px;" value="<?=$data['review_a_user']?>"/>
@@ -54,16 +54,16 @@ if($_GET['seq']){
 										<input type="hidden" name="review_a_field" id="review_a_field" style="width:100px;"/>
 										<a href="javascript:delete_choice('review_a');"><img src="../images/btn_delete.png" width="63" height="21" align="absmiddle"  class="btnA"/></a>&nbsp;<?=get_review_confirm($data['review_a_user'],$data['seq'])?><?=get_review_status($data['review_a_user'],$data['seq'],$data['step'])?>
 									</td>
-									<td width="130" rowspan="3" align="center" class="tabA">
+									<td width="130" rowspan="2" align="center" class="tabA">
 										<input type="text" name="review_a_date" id="review_a_date" style="width:109px;" value="<?=$data['review_a_date']?>"/>
 										<a href="javascript:win_calendar_review('review_a_date', document.getElementById('review_a_date').value, '');"><img src="../images/btn_paper_date.png" style="margin-top:5px;" class="btnA"/></a>
 									</td>
-									<td width="130" rowspan="3" align="center" class="tabA"><a href="javascript:review_conf('review_a_conf','<?=$data['review_a_conf']?>');"><?if($data['review_a_conf']=="Y"){?><img src="../images/btn_paper_cancel.png" width="109" height="44" /><?}else{?><img src="../images/btn_paper_ok.png" width="109" height="44" /><?}?></a></td>
+									<td width="130" rowspan="2" align="center" class="tabA"><a href="javascript:review_conf('review_a_conf','<?=$data['review_a_conf']?>');"><?if($data['review_a_conf']=="Y"){?><img src="../images/btn_paper_cancel.png" width="109" height="44" /><?}else{?><img src="../images/btn_paper_ok.png" width="109" height="44" /><?}?></a></td>
 								</tr>
 								<tr>
-									<td class="tabA"><a href="javascript:pop_choice('review_a');"><img src="../images/btn_paper_reviewer1.png" width="91" height="21" class="btnA"/></a>&nbsp;<a href="./d_sub03_email.php?seq=<?=$data['seq']?>&type=a"><img src="../images/btn_email.png"/></a></td>
+									<td class="tabA"><a href="javascript:pop_choice('review_a');"><img src="../images/btn_paper_reviewer1.png" width="91" height="21" class="btnA"/></a>&nbsp;<a href="javascript:sendMail('<?=$data['review_a_user']?>','<?=$data['review_category']?>');"><img src="../images/btn_email.png"/></a></td>
 								</tr>
-								<tr>
+								<!-- <tr>
 									<td>
 										 <table class="boardType01_write" border="0" cellspacing="0" cellpadding="0">
 											<tr>
@@ -82,9 +82,9 @@ if($_GET['seq']){
 											<?php endif?>
 										</table>
 									</td>
-								</tr>
+								</tr> -->
 								<tr>
-									<th width="150" rowspan="3"><strong>심사위원 B<br/>Reviewer B</strong></th>
+									<th width="150" rowspan="2"><strong>심사위원 B<br/>Reviewer B</strong></th>
 									<td class="tabB">
 										<input type="text" name="review_b_name" id="review_b_name" style="width:100px;" value="<?=get_review_name($data['review_b_user'])?>" readonly/>
 										<input type="hidden" name="review_b_user" id="review_b_user" style="width:100px;" value="<?=$data['review_b_user']?>"/>
@@ -92,16 +92,16 @@ if($_GET['seq']){
 										<input type="hidden" name="review_b_field" id="review_b_field" style="width:100px;"/>
 										<a href="javascript:delete_choice('review_b');"><img src="../images/btn_delete.png" width="63" height="21" align="absmiddle" class="btnB"/></a>&nbsp;<?=get_review_confirm($data['review_b_user'],$data['seq'])?><?=get_review_status($data['review_b_user'],$data['seq'],$data['step'])?>
 									</td>
-									<td class="tabB" width="130" rowspan="3" align="center">
+									<td class="tabB" width="130" rowspan="2" align="center">
 										<input type="text" name="review_b_date" id="review_b_date" style="width:109px;" value="<?=$data['review_b_date']?>"/>
 										<a href="javascript:win_calendar_review('review_b_date', document.getElementById('review_b_date').value, '');"><img src="../images/btn_paper_date.png" style="margin-top:5px;" class="btnB"/></a>
 									</td>
-									<td class="tabB" width="130" rowspan="3" align="center"><a href="javascript:review_conf('review_b_conf','<?=$data['review_b_conf']?>');"><?if($data['review_b_conf']=="Y"){?><img src="../images/btn_paper_cancel.png" width="109" height="44" /><?}else{?><img src="../images/btn_paper_ok.png" width="109" height="44" /><?}?></a></td>
+									<td class="tabB" width="130" rowspan="2" align="center"><a href="javascript:review_conf('review_b_conf','<?=$data['review_b_conf']?>');"><?if($data['review_b_conf']=="Y"){?><img src="../images/btn_paper_cancel.png" width="109" height="44" /><?}else{?><img src="../images/btn_paper_ok.png" width="109" height="44" /><?}?></a></td>
 								</tr>
 								<tr>
-									<td class="tabB"><a href="javascript:pop_choice('review_b');"><img src="../images/btn_paper_reviewer1.png" width="91" height="21" class="btnB"/></a>&nbsp;<a href="./d_sub03_email.php?seq=<?=$data['seq']?>&type=b"><img src="../images/btn_email.png"/></a></td>
+									<td class="tabB"><a href="javascript:pop_choice('review_b');"><img src="../images/btn_paper_reviewer1.png" width="91" height="21" class="btnB"/></a>&nbsp;<a href="javascript:sendMail('<?=$data['review_a_user']?>','<?=$data['review_category']?>');"><img src="../images/btn_email.png"/></a></td>
 								</tr>
-								<tr>
+								<!-- <tr>
 									<td>
 										 <table class="boardType01_write" border="0" cellspacing="0" cellpadding="0">
 											<tr>
@@ -120,9 +120,9 @@ if($_GET['seq']){
 											<?php endif?>
 										</table>
 									</td>
-								</tr>
+								</tr> -->
 								<tr>
-									<th width="150" rowspan="3"><strong>심사위원 C<br/>Reviewer C</strong></th>
+									<th width="150" rowspan="2"><strong>심사위원 C<br/>Reviewer C</strong></th>
 									<td class="tabC">
 										<input type="text" name="review_c_name" id="review_c_name" style="width:100px;" value="<?=get_review_name($data['review_c_user'])?>" readonly/>
 										<input type="hidden" name="review_c_user" id="review_c_user" style="width:100px;" value="<?=$data['review_c_user']?>"/>
@@ -130,16 +130,16 @@ if($_GET['seq']){
 										<input type="hidden" name="review_c_field" id="review_c_field" style="width:100px;"/>
 										<a href="javascript:delete_choice('review_c');"><img src="../images/btn_delete.png" width="63" height="21" align="absmiddle" class="btnC"/></a>&nbsp;<?=get_review_confirm($data['review_c_user'],$data['seq'])?><?=get_review_status($data['review_c_user'],$data['seq'],$data['step'])?>
 									</td>
-									<td class="tabC" width="130" rowspan="3" align="center">
+									<td class="tabC" width="130" rowspan="2" align="center">
 										<input type="text" name="review_c_date" id="review_c_date" style="width:109px;" value="<?=$data['review_c_date']?>"/>
 										<a href="javascript:win_calendar_review('review_c_date', document.getElementById('review_c_date').value, '');"><img src="../images/btn_paper_date.png" style="margin-top:5px;" class="btnC"/></a>
 									</td>
-									<td class="tabC" width="130" rowspan="3" align="center"><a href="javascript:review_conf('review_c_conf','<?=$data['review_c_conf']?>');"><?if($data['review_c_conf']=="Y"){?><img src="../images/btn_paper_cancel.png" width="109" height="44" /><?}else{?><img src="../images/btn_paper_ok.png" width="109" height="44" /><?}?></a></td>
+									<td class="tabC" width="130" rowspan="2" align="center"><a href="javascript:review_conf('review_c_conf','<?=$data['review_c_conf']?>');"><?if($data['review_c_conf']=="Y"){?><img src="../images/btn_paper_cancel.png" width="109" height="44" /><?}else{?><img src="../images/btn_paper_ok.png" width="109" height="44" /><?}?></a></td>
 								</tr>
 								<tr>
-									<td class="tabC"><a href="javascript:pop_choice('review_c');"><img src="../images/btn_paper_reviewer1.png" width="91" height="21" class="btnC"/></a>&nbsp;<a href="./d_sub03_email.php?seq=<?=$data['seq']?>&type=c"><img src="../images/btn_email.png"/></a></td>
+									<td class="tabC"><a href="javascript:pop_choice('review_c');"><img src="../images/btn_paper_reviewer1.png" width="91" height="21" class="btnC"/></a>&nbsp;<a href="javascript:sendMail('<?=$data['review_a_user']?>','<?=$data['review_category']?>');"><img src="../images/btn_email.png"/></a></td>
 								</tr>
-								<tr>
+								<!-- <tr>
 									<td>
 										 <table class="boardType01_write" border="0" cellspacing="0" cellpadding="0">
 											<tr>
@@ -158,9 +158,10 @@ if($_GET['seq']){
 											<?php endif?>
 										</table>
 									</td>
-								</tr>
+								</tr> -->
 							</table>
 							<?php if($data['step']>10):?>
+								<br>
 								<h4>※ 2차 심사부터는 최종 Submit을 눌러야 심사진행이 가능합니다.</h4>
 							<?php endif?>
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
@@ -170,10 +171,10 @@ if($_GET['seq']){
 									</td>
 									<td width="10px">&nbsp;</td>
 									<td align="left" width="50%">
-										<a href="d_sub03.php"><img src="../images/btn_list.png" /></a></td>
-										<td width="100">
-											<a href="javascript:withdraw_article();" class="btn btn-danger" style="line-height:23px;color:#FFF;margin-left:50px">부적합 판정</a>
-										</td>
+										<a href="d_sub03.php"><img src="../images/btn_list.png" /></a>
+										<a href="javascript:withdraw_article();" class="btn btn-danger" style="line-height:23px;color:#FFF;margin-left:50px">부적합 판정</a>
+									</td>
+										
 								</tr>
 							</table>
 						</td>

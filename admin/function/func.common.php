@@ -1629,7 +1629,7 @@ function score_result($sum){
 
 function get_result_final($num=null){
 	$arr[] = array("cvalue"=>1, "ctext"=>"게재가");
-	$arr[] = array("cvalue"=>2, "ctext"=>"수정 후 게재가");
+	$arr[] = array("cvalue"=>3, "ctext"=>"수정 후 재심사");
 	$arr[] = array("cvalue"=>4, "ctext"=>"게재불가");
 
 	if($num){

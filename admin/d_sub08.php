@@ -174,7 +174,7 @@ $write_pages = get_paging(10, $page, $total_page, "./d_sub08.php?page=");
 				}else{
 			?>
 			<tr>
-				<td colspan="7">
+				<td colspan="7" class="text-center">
 					해당하는 데이터가 없습니다.
 				</td>
 			</tr>

@@ -41,7 +41,7 @@ include_once("$g4[path]/lib/outlogin.lib.php");
 									<select name="mb_level" id="mb_level" itemname="회원구분" style="width: 170px;" required>
 										<option value="">====== 선택 ======</option>
 										<option value="2">정회원</option>
-										<option value="0">미가입 또는 연회비 미납</option>
+										<!-- <option value="0">미가입 또는 연회비 미납</option> -->
 									</select>
 								</td>
 							</tr>
@@ -95,7 +95,7 @@ include_once("$g4[path]/lib/outlogin.lib.php");
 							</tr>
 							<tr>
 								<th><span class="glyphicon glyphicon-ok-sign submit_color"></span>&nbsp;전화<font style="font-weight:normal !important;" required></font></th>
-								<td><input type="text" name="mb_tel" id="mb_tel" style="width:100%;" itemname="전화" required value=""/></td>
+								<td><input type="text" name="mb_tel" id="mb_tel" style="width:100%;" itemname="전화" value=""/></td>
 								<th><span class="glyphicon glyphicon-ok-sign submit_color"></span>&nbsp;핸드폰<font style="font-weight:normal !important;"></font></th>
 								<td><input type="text" name="mb_hp" id="mb_hp" style="width:100%;" itemname="핸드폰" required value=""/></td>
 							</tr>

@@ -16,7 +16,7 @@ if($_GET['seq']){
 	while ($row = sql_fetch_array($res)) $loop[] = $row;
 	//type 결정
 	if(!$data['review_b_conf']) $sql = "select * from ad_paper_review where parent_seq = '{$_GET['seq']}' order by regdate desc";
-	else $sql = "select * from ad_paper_review where parent_seq = '{$_GET['seq']}' and mb_id = '{$member['mb_id']}' order by regdate desc";
+	else $sql = "select * from ad_paper_review where parent_seq = '{$_GET['seq']}' and mb_id = '{$member['mb_id']}' order by rstep asc,regdate desc";
 	$ress	= sql_query($sql);
 	while ($_row = sql_fetch_array($ress)) $review[] = $_row;
 	if($data['review_a_user']==$member['mb_id']) $auth_type='A';
@@ -61,7 +61,7 @@ if($_GET['seq']){
 											<? for($i=0;$i<count($review);$i++){ ?>
 												<table class="boardType01_write" style="margin-top:20px;">
 													<tr>
-														<th width="150"><strong>등록일</strong></th>
+														<th width="150"><strong><?=$review[$i]['rstep']?>차 심사 등록일</strong></th>
 														<td><?=$review[$i]['regdate']?></td>
 													</tr>
 													<?php
@@ -102,7 +102,7 @@ if($_GET['seq']){
 													<select name="result" style="width:100%;" required>
 														<option value="">= 선택 =</option>
 														<?
-														if($data['step'] >= 10) $arr = get_result_2nd();
+														if($data['step'] >= 20) $arr = get_result_2nd();
 														else $arr = get_result();
 														for($i=0;$i<count($arr);$i++){
 														?>

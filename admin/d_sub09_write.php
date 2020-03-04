@@ -102,7 +102,7 @@ while ($row = sql_fetch_array($ress)){
 		<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
 		<tr>
 			<td align="right" width="50%">
-					<input type="image" src="../images/btn_summit.png" alt="" style="width:89px;height:38px;border:0px;"/>
+					<input type="image" src="../images/btn_summit.png" alt="" style="width:89px;border:0px;"/>
 				</td>
                 <td width="10px">&nbsp;</td>
 				<td align="left" width="50%">

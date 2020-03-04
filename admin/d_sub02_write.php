@@ -117,10 +117,10 @@ if($_GET['seq']){
 			</table>
 
 			<table class="boardType01_write" style="margin-top:20px;">
-			<tr>
+			<!-- <tr>
 				<th width="200">원고종류<br/>Type of Manuscript</th>
 				<td><? if($data['manuscript']){ ?><?=get_manuscript($data['manuscript'])?><? } ?></td>
-			</tr>
+			</tr> -->
 			<tr>
 				<th width="150"><strong>심사요청분야<br/>Review Category</strong></th>
 				<td><? if($data['review_category_target']){ ?><?=get_category_target($data['review_category_target'])?><? } ?> / <? if($data['review_category']){ ?><?=get_category($data['review_category'])?><? } ?></td>

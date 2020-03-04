@@ -281,7 +281,7 @@ if($_POST['mode']=="a_sub_reg"){
 		$md_qry = " , modify_date = now() ";
 	}
 	if($_POST['step'] == 32){
-		$step = 33;
+		$step = 34;
 		$md_qry = " , modify_date = now() ";
 	}
 	if($_POST['step'] > 99){
@@ -346,7 +346,7 @@ if($_POST['mode']=="a_sub_reg"){
 		<tr><td height='80' align='center' valign='top' bgcolor='#FFF'>
 		{$mail_footer}
 		";
-		$body	 = eregi_replace("[\]",'',$body);
+		$body	 = preg_replace ("[\]",'',$body);
 		##############
 		$mail->MsgHTML($body);
 		//$address = $member['mb_id'];
@@ -381,7 +381,7 @@ if($_POST['mode']=="a_sub_reg"){
 					mb_name		= '{$member['mb_name']}',
 					regdate		= now()";
 		sql_query($sql);
-		$parent_seq = mysqlI_insert_id();
+		$parent_seq = mysqli_insert_id($connect_db);
 		##############
 		$body = "
 		{$mail_header}
@@ -401,7 +401,7 @@ if($_POST['mode']=="a_sub_reg"){
 		<tr><td height='80' align='center' valign='top' bgcolor='#FFF'>
 		{$mail_footer}
 		";
-		$body	 = eregi_replace("[\]",'',$body);
+		$body	 = preg_replace ("[\]",'',$body);
 		##############
 		$mail->MsgHTML($body);
 		//$address = $member['mb_id'];
@@ -528,7 +528,7 @@ else if($_POST['mode']=="find_pwd"){
 <br>
 {$mail_footer}
 MAIL;
-		$body2	 = eregi_replace("[\]",'',$content);
+		$body2	 = preg_replace ("[\]",'',$content);
 		##############
 		$mail->ClearAllRecipients( );
 		$mail->MsgHTML($body2);
