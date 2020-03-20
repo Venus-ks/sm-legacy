@@ -248,7 +248,7 @@ $(document).ready(function() {
 			<a href="find_info.php"><i style="text-decoration:underline"> 비밀번호를 잊어버리셨나요?</i></a>
 			<br><br>
 			<button onclick="javascript:login_check();" class="btn btn-lg" style="background-color:<?=$info['maincolor']?>;color:#FFF">로그인</button>
-			<a type="button" class="btn btn-default" href="./member_write.php" style="padding:6px 60px;float:right;font-size:20px">회원등록</a>
+			<a type="button" class="btn btn-secondary" href="./member_write.php" style="padding:6px 60px;float:right;font-size:20px;color:#FFF">회원등록</a>
 			</form>
 			<br><br>
 			투고논문 심사를 처음 의뢰받으신 경우에는 편집위원회(
@@ -268,7 +268,7 @@ $(document).ready(function() {
 				<a href="<?=$info['site']?>" class="nav-link"><?=$info['institute_title']?> 홈페이지</a>
 			</li>
 			<li class="nav-item">
-				<a href="<?=$info['submit_rule_url']?>" target="_blank" class="nav-link">학회지 발간규정</a>
+				<a href="<?=$info['submit_rule_url']?>" target="_blank" class="nav-link">학회지 투고규정</a>
 			</li>
 			<li class="nav-item">
 				<a href="<?=$info['ethic_rule_url']?>" class="nav-link">연구윤리 규정</a>

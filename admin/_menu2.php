@@ -61,8 +61,8 @@
 	<td><img src="../images/leftline.png" width="199" height="1" /></td>
 </tr>
 <tr>
-	<td class="leftmenuoff"><a href="<?=$info['ethic_rule_url']?>" class="leftmenuofflink"><strong>연구윤리규정</strong><br />
-	<font class="font11">Publication ethics</font></a></td>
+	<td class="leftmenuoff"><a href="<?=$info['review_rule_url']?>" class="leftmenuofflink"><strong>심사규정</strong><br />
+	<font class="font11">Reviewer Rules</font></a></td>
 </tr>
 <tr>
 	<td><img src="../images/leftline.png" width="199" height="1" /></td>
