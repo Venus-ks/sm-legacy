@@ -59,7 +59,7 @@ function manual_popup(cont){
 	<td><img src="../images/01_leftmenu01_instruction_list.png" width="199" height="70" /></td>
 </tr>
 <tr>
-	<td class="leftmenuoff"><a href="<?=$info['publish_rule_url']?>" class="leftmenuofflink"><strong>학회지 발간규정</strong><br /><font class="font11">Instruction for Manuscript</font></a></td>
+<td class="leftmenuoff"><a href="<?=$info['submit_rule_url']?>" class="leftmenuofflink"><strong>학회지 투고규정</strong><br /><font class="font11">Instruction for Manuscript</font></a></td>
 </tr>
 <tr>
 	<td><img src="../images/leftline.png" width="199" height="1" /></td>
