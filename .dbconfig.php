@@ -5,7 +5,7 @@ $mysql_user = 'abbr';
 $mysql_password = 'abbrYEAR';
 $mysql_db = 'submit_abbr';
 // 개발모드
-//define('__DEV__',TRUE);
+define('__DEV__',TRUE);
 if(defined('__DEV__')) error_reporting(E_WARNING);
 else error_reporting(0);
 // 학회정보
@@ -27,20 +27,27 @@ $info['bank_comment'] = "<p>심사료는 ??만원이며, 다음의 계좌로 입
 // down.php?link=/data/file/paper_sample.hwp
 // OR
 // javascript:ad_popup('content02');
-$info['paper_sample_url'] = "javascript:alert('양식이 없습니다. 개별 요청바랍니다')";
-$info['info_form_url'] = "javascript:alert('양식이 없습니다. 개별 요청바랍니다')";
-$info['ethic_form_url'] = "javascript:alert('양식이 없습니다. 개별 요청바랍니다')";
-$info['revision_form_url'] = "javascript:alert('양식이 없습니다. 개별 요청바랍니다')";
-$info['publish_rule_url'] = "javascript:alert('양식이 없습니다. 개별 요청바랍니다')";
-$info['ethic_rule_url'] = "javascript:alert('양식이 없습니다. 개별 요청바랍니다')";
-$info['review_table_url'] = "javascript:alert('양식이 없습니다. 개별 요청바랍니다')";
-$info['review_file_url'] = "javascript:alert('양식이 없습니다. 개별 요청바랍니다')";
-$info['author_manual_url'] = "javascript:alert('양식이 없습니다. 개별 요청바랍니다')";
-$info['reviewer_manual_url'] = "javascript:alert('양식이 없습니다. 개별 요청바랍니다')";
-$info['manual_url'] = "javascript:alert('양식이 없습니다. 개별 요청바랍니다')";
-$info['review_form_url1'] = "javascript:alert('양식이 없습니다. 개별 요청바랍니다')";
-$info['review_form_url2'] = "javascript:alert('양식이 없습니다. 개별 요청바랍니다')";
-$info['review_form_url3'] = "javascript:alert('양식이 없습니다. 개별 요청바랍니다')";
+$doc_list = [
+    'paper_sample_url' => "투고논문본문format샘플.hwp",
+    'info_form_url' => "투고신청서.hwp",
+    'ethic_form_url' => "연구윤리준수_확인서_자가점검표.hwp",
+    'revision_form_url' => "수정요지서(저자답변서).hwp",
+    // 'author_checklist_url' => ".hwp",
+    'submit_rule_url' => "투고규정.pdf",
+    'ethic_rule_url' => "윤리규정.pdf",
+    'review_rule_url' => "심사규정.pdf",
+    'author_manual_url' => "manual_author.pdf",
+    'reviewer_manual_url' => "manual_reviewer.pdf",
+    'manual_url' => "manual.pdf",
+    'review_form_url1' => "논문심사서.hwp",
+    'review_form_url2' => "논문심사서.hwp",
+    'review_form_url3' => "논문심사서.hwp",
+];
+
+foreach($doc_list as $k => $v) {
+    $filename = urlencode($v);
+    $info[$k] = "/down.php?link=/data/file/".$filename;
+}
 
 //상세설정
 $GLOBALS['rule']['manuscript_target'] = ['단독연구','공동연구'];
