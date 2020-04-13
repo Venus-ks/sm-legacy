@@ -63,7 +63,7 @@ if($_POST['mode']=="d_sub_reg"){
 		$step = 13;
 	}
 	if($_POST['step'] == 21){
-		$step = 23;
+		$step = 31;
 	}
 	if($_POST['step'] == 33){
 		$step = 34;
@@ -82,7 +82,7 @@ if($_POST['mode']=="d_sub_reg"){
 	$fr_result	= sql_fetch("select * from ad_paper_review where parent_seq = '{$_POST['seq']}' and rstep = 4 order by rseq desc limit 1");
 	## 심사 결과가 있으면...
 	// 편집위원장 메일 주소 가지고 오기. 편집위원장의 카테고리 분야에 따라 메일 주소를 가지고 와서 발송 함.
-	if($fr_result['result'] == '3') {
+	if($fr_result['result'] == '3' || (!$fr_result['result'] && $_POST['review_score'] == '3')) {
 		sql_query("UPDATE ad_paper SET settle_date = now(), step = 34 {$file_sql} WHERE seq = '{$_POST['seq']}'");
 		## 수정 후 재심사는 편집위원장에게 메일 발송하고 편집위원장 심사 단계 진행. step 34
 		$body = "
@@ -107,8 +107,7 @@ if($_POST['mode']=="d_sub_reg"){
 		{$mail_footer}
 		";
 		$mail->sendInput($main_editor, '편집장', $body, "[{$info['journal_title']}] 최종논문 검토 요청");
-
-	}else if($fr_result['result'] == '2') {
+	}else if($fr_result['result'] == '2' || (!$fr_result['result'] && $_POST['review_score'] == '2')) {
 		sql_query("UPDATE ad_paper SET settle_date = now(), step = 50 {$file_sql} WHERE seq = '{$_POST['seq']}'");
 		## 수정 후 게재가는 메일 발송 없이 최종 결과 등록으로 이동. step 50
 		$body = "
@@ -249,7 +248,7 @@ else if($_POST['mode']=="d_sub3_reg"){
 	$data	= sql_fetch($sql);
 	$step	= "";
 	$cnt	= 0;
-	if(($data['review_a_conf']!='Y' || $data['review_b_conf']!='Y' || $data['review_c_conf']!='Y') && $data['step']!='13' && $data['step']!='23') {
+	if(($data['review_a_conf']!='Y' || $data['review_b_conf']!='Y' || $data['review_c_conf']!='Y') && $data['step']!='13') {
 			$msg		= "심사위원을 3명 모두 선택바랍니다.";
 			$returnUrl	= "./d_sub03_write.php?seq={$_POST['seq']}";
 			alert($msg, $returnUrl);
@@ -390,21 +389,19 @@ else if($_POST['mode']=="d_sub4_reg") {
 	}
 	//종합결과 기록
 	sql_query("UPDATE ad_paper SET review_score={$_POST['result']} WHERE seq = '{$_POST['seq']}'");
-	if($_POST['step']==25) {
+	if($_POST['step']==15) {
+		//2차수정요청은 없음.메일 미발송. 31(최종논문검토)로
 		$step = 31;
-	} else if($_POST['step']==15) {
-		$step = 20;
 	} else {
 		$step = 10;
-		
+		$subject = "[{$info['journal_title']}] 논문 심사결과 안내({$_POST['mb_name']} 귀하)";
+		$body_toauth = "{$mail_header}<p>안녕하십니까. {$info['institute_title']} [{$info['journal_title']}] 편집위원회입니다</p><p>먼저 「{$info['journal_title']}」에 논문을 투고해주셔서 진심으로 감사드립니다.</p><p>수합된 심사결과를 투고시스템(<a href='http://{$_SERVER['HTTP_HOST']}'>http://{$_SERVER['HTTP_HOST']}</a>)에서 확인부탁드립니다.</p><p>감사합니다.</p><p>- {$info['institute_title']} 편집위원회 드림 -</p>{$mail_footer}";
 	}
 	if($_POST['result'] == 4) {
 		sql_query("UPDATE ad_paper SET settle_date = now(), step = 50 WHERE seq = '{$_POST['seq']}'");
 		$body = "{$mail_header}<p>{$info['institute_title']} [{$info['journal_title']}] 논문 검토 완료 {$info['abbr']}-{$id_year}-{$number}</p><p>편집위원장님</p><p>&nbsp; 본 학회 {$info['institute_title']}지에 {$_POST['mb_name']}님이 투고한 원고의 심사결과가 '게재불가'로 최종논문 검토 완료되었습니다.</p></td></tr><tr><td height='15'></td></tr><tr><td height='51' align='left' valign='top'><p>원고 세부 사항</p><p>제목 : {$_POST['title']}</p><p>키워드 : {$_POST['keyword']}</p></td></tr><tr><td height='15'></td></tr><tr><td height='80' align='center' valign='top' bgcolor='#FFF'>{$mail_footer}";
 		$mail->sendInput($main_editor, '편집장', $body);
 	} else if($_POST['result'] == 2 || $_POST['result'] == 3){
-		$subject = "[{$info['journal_title']}] 논문 심사결과 안내({$_POST['mb_name']} 귀하)";
-		$body_toauth = "{$mail_header}<p>안녕하십니까. {$info['institute_title']} [{$info['journal_title']}] 편집위원회입니다</p><p>먼저 「{$info['journal_title']}」에 논문을 투고해주셔서 진심으로 감사드립니다.</p><p>수합된 심사결과를 투고시스템(<a href='http://{$_SERVER['HTTP_HOST']}'>http://{$_SERVER['HTTP_HOST']}</a>)에서 확인부탁드립니다.</p><p>감사합니다.</p><p>- {$info['institute_title']} 편집위원회 드림 -</p>{$mail_footer}";
 		// 1차 수정요청 메일 발송. 2차수정요청은 없음
 		sql_query("UPDATE ad_paper SET settle_date = now(), step = '{$step}', edit_comment='{$_POST['edit_comment']}' WHERE seq = '{$_POST['seq']}'");
 		$mail->sendInput($_POST['mb_id'], $_POST['mb_name'], $body_toauth, $subject);
@@ -676,7 +673,7 @@ else if($_POST['mode']=="d_sub9_reg"){
 }
 ### 심사윈원
 else if($_POST['mode']=="d_sub7_reg"){
-	$email = trim($_POST['mb_id']);
+	$email = $_POST['mb_id'];
 	$mb_hp = preg_replace("/[^0-9]*/s", "", $_POST['mb_hp']);
 	if($_POST['mb_no']){
 		$pass_sql = "";
@@ -734,7 +731,7 @@ else if($_POST['mode']=="d_sub7_reg"){
 }
 ### 일반회원
 else if($_POST['mode']=="member_write"){
-	$email = trim($_POST['mb_id']);
+	$email = $_POST['mb_id'];
 	$mb_hp = preg_replace("/[^0-9]*/s", "", $_POST['mb_hp']);
 	$sql = "SELECT * FROM g4_member WHERE mb_id = '{$email}'";
 	$res	= sql_fetch($sql);

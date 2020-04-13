@@ -58,7 +58,7 @@ if($_POST['mode']=="a_sub_reg"){
 		$tmp_file	= $_FILES['submission_data'][tmp_name];
 		$filesize	= $_FILES['submission_data'][size];
 		$filename	= $_FILES['submission_data'][name];
-		$filename	= preg_replace('/[^a-zA-Z0-9가-힣.]/', '_', $filename);
+		$filename	= preg_replace_callback('/[^a-zA-Z0-9가-힣.]/', '_', $filename);
 		$rfilename	= iconv("utf-8", "euc-kr", $filename);
 		//중복 파일 방지를 위해 타임스탬프를 붙인다.
 		$mcrtime = explode(' ',microtime());
@@ -76,7 +76,7 @@ if($_POST['mode']=="a_sub_reg"){
 		$tmp_file2	= $_FILES['submission_data2'][tmp_name];
 		$filesize2	= $_FILES['submission_data2'][size];
 		$filename2	= $_FILES['submission_data2'][name];
-		$filename2	= preg_replace('/[^a-zA-Z0-9가-힣.]/', '_', $filename2);
+		$filename2	= preg_replace_callback('/[^a-zA-Z0-9가-힣.]/', '_', $filename2);
 		$rfilename2	= iconv("utf-8", "euc-kr", $filename2);
 		//중복 파일 방지를 위해 타임스탬프를 붙인다.
 		$mcrtime = explode(' ',microtime());
@@ -100,7 +100,7 @@ if($_POST['mode']=="a_sub_reg"){
 		$tmp_file4	= $_FILES['submission_add_data'][tmp_name];
 		$filesize4	= $_FILES['submission_add_data'][size];
 		$filename4	= $_FILES['submission_add_data'][name];
-		$filename4	= preg_replace('/[^a-zA-Z0-9가-힣.]/', '_', $filename4);
+		$filename4	= preg_replace_callback('/[^a-zA-Z0-9가-힣.]/', '_', $filename4);
 		$rfilename4	= iconv("utf-8", "euc-kr", $filename4);
 		//중복 파일 방지를 위해 타임스탬프를 붙인다.
 		$mcrtime = explode(' ',microtime());
@@ -118,7 +118,7 @@ if($_POST['mode']=="a_sub_reg"){
 		$tmp_file5	= $_FILES['response_data'][tmp_name];
 		$filesize5	= $_FILES['response_data'][size];
 		$filename5	= $_FILES['response_data'][name];
-		$filename5	= preg_replace('/[^a-zA-Z0-9가-힣.]/', '_', $filename5);
+		$filename5	= preg_replace_callback('/[^a-zA-Z0-9가-힣.]/', '_', $filename5);
 		$rfilename5	= iconv("utf-8", "euc-kr", $filename5);
 		//중복 파일 방지를 위해 타임스탬프를 붙인다.
 		$mcrtime = explode(' ',microtime());
@@ -137,7 +137,7 @@ if($_POST['mode']=="a_sub_reg"){
 		$tmp_file6	= $_FILES['response_data_b'][tmp_name];
 		$filesize6	= $_FILES['response_data_b'][size];
 		$filename6	= $_FILES['response_data_b'][name];
-		$filename6	= preg_replace('/[^a-zA-Z0-9가-힣.]/', '_', $filename6);
+		$filename6	= preg_replace_callback('/[^a-zA-Z0-9가-힣.]/', '_', $filename6);
 		$rfilename6	= iconv("utf-8", "euc-kr", $filename6);
 		//중복 파일 방지를 위해 타임스탬프를 붙인다.
 		$mcrtime = explode(' ',microtime());
@@ -155,7 +155,7 @@ if($_POST['mode']=="a_sub_reg"){
 		$tmp_file7	= $_FILES['response_data_c'][tmp_name];
 		$filesize7	= $_FILES['response_data_c'][size];
 		$filename7	= $_FILES['response_data_c'][name];
-		$filename7	= preg_replace('/[^a-zA-Z0-9가-힣.]/', '_', $filename7);
+		$filename7	= preg_replace_callback('/[^a-zA-Z0-9가-힣.]/', '_', $filename7);
 		$rfilename7	= iconv("utf-8", "euc-kr", $filename7);
 		//중복 파일 방지를 위해 타임스탬프를 붙인다.
 		$mcrtime = explode(' ',microtime());
@@ -173,7 +173,7 @@ if($_POST['mode']=="a_sub_reg"){
 		$tmp_file8	= $_FILES['response_data_d'][tmp_name];
 		$filesize8	= $_FILES['response_data_d'][size];
 		$filename8	= $_FILES['response_data_d'][name];
-		$filename8	= preg_replace('/[^a-zA-Z0-9가-힣.]/', '_', $filename8);
+		$filename8	= preg_replace_callback('/[^a-zA-Z0-9가-힣.]/', '_', $filename8);
 		$rfilename8	= iconv("utf-8", "euc-kr", $filename8);
 		//중복 파일 방지를 위해 타임스탬프를 붙인다.
 		$mcrtime = explode(' ',microtime());
@@ -191,7 +191,7 @@ if($_POST['mode']=="a_sub_reg"){
 		$tmp_file9	= $_FILES['response_data_e'][tmp_name];
 		$filesize9	= $_FILES['response_data_e'][size];
 		$filename9	= $_FILES['response_data_e'][name];
-		$filename9	= preg_replace('/[^a-zA-Z0-9가-힣.]/', '_', $filename9);
+		$filename9	= preg_replace_callback('/[^a-zA-Z0-9가-힣.]/', '_', $filename9);
 		$rfilename9	= iconv("utf-8", "euc-kr", $filename9);
 		//중복 파일 방지를 위해 타임스탬프를 붙인다.
 		$mcrtime = explode(' ',microtime());
@@ -209,7 +209,7 @@ if($_POST['mode']=="a_sub_reg"){
 		$tmp_file10	= $_FILES['submission_cover_data'][tmp_name];
 		$filesize10	= $_FILES['submission_cover_data'][size];
 		$filename10	= $_FILES['submission_cover_data'][name];
-		$filename10	= preg_replace('/[^a-zA-Z0-9가-힣.]/', '_', $filename10);
+		$filename10	= preg_replace_callback('/[^a-zA-Z0-9가-힣.]/', '_', $filename10);
 		$rfilename10	= iconv("utf-8", "euc-kr", $filename10);
 		//중복 파일 방지를 위해 타임스탬프를 붙인다.
 		$mcrtime = explode(' ',microtime());
@@ -227,7 +227,7 @@ if($_POST['mode']=="a_sub_reg"){
 		$tmp_file11	= $_FILES['submission_data4'][tmp_name];
 		$filesize11	= $_FILES['submission_data4'][size];
 		$filename11	= $_FILES['submission_data4'][name];
-		$filename11	= preg_replace('/[^a-zA-Z0-9가-힣.]/', '_', $filename11);
+		$filename11	= preg_replace_callback('/[^a-zA-Z0-9가-힣.]/', '_', $filename11);
 		$rfilename11	= iconv("utf-8", "euc-kr", $filename11);
 		//중복 파일 방지를 위해 타임스탬프를 붙인다.
 		$mcrtime = explode(' ',microtime());
@@ -245,7 +245,7 @@ if($_POST['mode']=="a_sub_reg"){
 		$tmp_file12	= $_FILES['submission_data5'][tmp_name];
 		$filesize12	= $_FILES['submission_data5'][size];
 		$filename12	= $_FILES['submission_data5'][name];
-		$filename12	= preg_replace('/[^a-zA-Z0-9가-힣.]/', '_', $filename12);
+		$filename12	= preg_replace_callback('/[^a-zA-Z0-9가-힣.]/', '_', $filename12);
 		$rfilename12	= iconv("utf-8", "euc-kr", $filename12);
 		//중복 파일 방지를 위해 타임스탬프를 붙인다.
 		$mcrtime = explode(' ',microtime());
@@ -346,7 +346,7 @@ if($_POST['mode']=="a_sub_reg"){
 		<tr><td height='80' align='center' valign='top' bgcolor='#FFF'>
 		{$mail_footer}
 		";
-		$body	 = preg_replace("[\]",'',$body);
+		$body	 = eregi_replace("[\]",'',$body);
 		##############
 		$mail->MsgHTML($body);
 		//$address = $member['mb_id'];
@@ -401,7 +401,7 @@ if($_POST['mode']=="a_sub_reg"){
 		<tr><td height='80' align='center' valign='top' bgcolor='#FFF'>
 		{$mail_footer}
 		";
-		$body	 = preg_replace("[\]",'',$body);
+		$body	 = eregi_replace("[\]",'',$body);
 		##############
 		$mail->MsgHTML($body);
 		//$address = $member['mb_id'];
@@ -463,7 +463,7 @@ if($_POST['mode']=="a_sub_reg"){
 }
 ### 회원관리
 else if($_POST['mode']=="a_member"){
-	$mb_hp = preg_replace("/[^0-9]*/s", "", $_POST['mb_hp']);
+	$mb_hp = preg_replace_callback("/[^0-9]*/s", "", $_POST['mb_hp']);
 	$chksql = "select * from g4_member where mb_no = '{$_POST['mb_no']}' and mb_password = '".sql_password($_POST['mb_password'])."'";
 	$data = sql_query($chksql);
 	$total_count0 = mysqlI_num_rows($data);
@@ -495,7 +495,7 @@ else if($_POST['mode']=="a_member"){
 	}
 }
 else if($_POST['mode']=="find_id"){
-	$mb_hp = preg_replace("/[^0-9]*/s", "", $_POST['mb_hp']);
+	$mb_hp = preg_replace_callback("/[^0-9]*/s", "", $_POST['mb_hp']);
 	$fidsql = "select * from g4_member where mb_name = '{$_POST['mb_name']}' and mb_hp = '{$mb_hp}'";
 	$data	= sql_fetch($fidsql);
 	$result = sql_query($fidsql);

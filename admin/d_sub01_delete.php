@@ -10,5 +10,5 @@ if($result==TRUE) {
 	$msg		= "실패하였습니다.";
 }
 $returnUrl	= "./d_sub01.php";
-alert($msg);
+alert($msg,$returnUrl);
 ?>
