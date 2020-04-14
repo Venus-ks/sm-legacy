@@ -83,7 +83,7 @@ if($_SERVER['PHP_SELF']=="/admin/index.php"){
 	}
 }
 ?>
-<h2 style="font-family:'Malgun gothic,맑은고딕';margin:0.5rem 1.5rem">
+<h2 class="logo">
 	<?php if($info['logo_url']):?>
 		<a href="<?=$info['banner']['href']?>"><img src="<?=$info['logo_url']?>"/></a>
 	<?php else:?>

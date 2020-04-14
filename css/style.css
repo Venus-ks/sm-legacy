@@ -76,6 +76,16 @@ a:active {
     color: #D9534F;
 }
 
+.logo {
+    font-family: 'Malgun gothic,맑은고딕';
+    margin: 0.5rem 1.5rem;
+}
+
+.logo>b {
+    letter-spacing: -2px;
+    ;
+}
+
 .boardType01 {
     clear: both;
     width: 100%;
