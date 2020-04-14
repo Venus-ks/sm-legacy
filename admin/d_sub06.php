@@ -56,9 +56,7 @@ $nowdate = date('Ymd',strtotime ('+2 week'));
 if($_GET['delay']){
 $where .= " AND (review_a_conf='Y' and review_a_date < '{$nowdate}' and review_a_result ='0') or
 (review_b_conf='Y' and review_b_date < '{$nowdate}' and review_b_result ='0') or
-(review_c_conf='Y' and review_c_date < '{$nowdate}' and review_c_result ='0') or
-(review_d_conf='Y' and review_d_date < '{$nowdate}' and review_d_result ='0') or
-(review_e_conf='Y' and review_e_date < '{$nowdate}' and review_e_result ='0')";
+(review_c_conf='Y' and review_c_date < '{$nowdate}' and review_c_result ='0')";
 }
 ###
 $board[bo_page_rows] = 10;
@@ -371,7 +369,7 @@ $write_pages = get_paging(10, $page, $total_page, "./d_sub06.php?sdate={$_GET['s
 			<?php
 			if(count($list)){
 				for ($i=0; $i<count($list); $i++) {
-					$sql = "select * from ad_paper_review where parent_seq = '{$list[$i]['seq']}' order by rstep asc,type asc,rseq desc limit 9";
+					$sql = "select * from ad_paper_review where parent_seq = '{$list[$i]['seq']}' order by rstep asc,type asc,rseq ASC";
 					$ress = sql_query($sql);
 					unset($review);
 					while ($row = sql_fetch_array($ress)) $review[] = $row;
@@ -422,6 +420,7 @@ $write_pages = get_paging(10, $page, $total_page, "./d_sub06.php?sdate={$_GET['s
 									if($k['rstep']=='1') $str = "1<sup>ST</sup>";
 									if($k['rstep']=='2') $str = "2<sup>ND</sup>";
 									if($k['rstep']=='3') $str = "3<sup>RD</sup>";
+									if($k['rstep']=='4') $str = "";
 									echo "<tr><td style='border-color:#ffffff;word-break: keep-all;'>".$str." ".$k['mb_name']."</td></tr>";
 								}
 							}
@@ -436,6 +435,7 @@ $write_pages = get_paging(10, $page, $total_page, "./d_sub06.php?sdate={$_GET['s
 									if($k['rstep']=='1') $str = "1<sup>ST</sup>";
 									if($k['rstep']=='2') $str = "2<sup>ND</sup>";
 									if($k['rstep']=='3') $str = "3<sup>RD</sup>";
+									if($k['rstep']=='4') $str = "";
 									echo "<tr><td style='border-color:#ffffff;word-break: keep-all;'>".$str." ".$k['regdate']."</td></tr>";
 								}
 							}
@@ -456,6 +456,7 @@ $write_pages = get_paging(10, $page, $total_page, "./d_sub06.php?sdate={$_GET['s
 									if($k['rstep']=='1') $str = "1<sup>ST</sup>";
 									if($k['rstep']=='2') $str = "2<sup>ND</sup>";
 									if($k['rstep']=='3') $str = "3<sup>RD</sup>";
+									if($k['rstep']=='4') $str = "";
 									echo "<tr><td style='border-color:#ffffff;word-break: keep-all;'>".$str." ".$results."</td></tr>";
 								}
 							}
