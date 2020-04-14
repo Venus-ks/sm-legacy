@@ -179,11 +179,11 @@ $(document).ready(function() {
 	getLogin();
 });
 </script>
-<h2 style="margin:5px 10px;font-family:'Malgun gothic,맑은고딕;'">
+<h2 class="logo">
 	<?php if($info['logo_url']):?>
 		<img src="<?=$info['logo_url']?>"></h2>
 	<?php else:?>
-		<?=$info['institute_title']?>
+		<b><?=$info['institute_title']?></b>
 	<?php endif?>
 </h2>
 <hr style="margin:0;height:8px;background-color:<?=$info['maincolor']?>">
