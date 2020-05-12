@@ -53,213 +53,18 @@ function passnum($idsu){
 }
 ### A :: 논문투고 등록
 if($_POST['mode']=="a_sub_reg"){
-	$file_sql = "";
-	if($_FILES['submission_data'][tmp_name]){
-		$tmp_file	= $_FILES['submission_data'][tmp_name];
-		$filesize	= $_FILES['submission_data'][size];
-		$filename	= $_FILES['submission_data'][name];
-		$filename	= preg_replace_callback('/[^a-zA-Z0-9가-힣.]/', '_', $filename);
-		$rfilename	= iconv("utf-8", "euc-kr", $filename);
-		//중복 파일 방지를 위해 타임스탬프를 붙인다.
-		$mcrtime = explode(' ',microtime());
-		$mcrtime[0] = substr($mcrtime[0],2,6);
-		$rfilename = time().$mcrtime[0]."^".$rfilename;
-		$dest_file = "$g4[path]/data/adata/".$rfilename;
-		$sfilename = iconv("euc-kr", "utf-8", $rfilename);
-		if (is_uploaded_file($tmp_file)){
-			$error_code = move_uploaded_file($tmp_file, $dest_file) or die($_FILES['submission_data'][error]);
+	// 세션체크하여 만료면 로그아웃
+	checkSessionLive();
+	foreach($info['file_arr'] as $v) {
+		if($_FILES[$v['name']][tmp_name]) {
+			$file_sql_arr[] = "{$v['name']}='/data/adata/".UploadFile::uploadByType($_FILES[$v['name']],'adata')."'";
+		} else if($_POST[$v['name']]) {
+			$file_sql_arr[] = "{$v['name']}='".$_POST[$v['name']]."'";
 		}
-		$file_sql = " submission_data	= '/data/adata/{$sfilename}', ";
 	}
-	$file_sql2 = "";
-	if($_FILES['submission_data2'][tmp_name]){
-		$tmp_file2	= $_FILES['submission_data2'][tmp_name];
-		$filesize2	= $_FILES['submission_data2'][size];
-		$filename2	= $_FILES['submission_data2'][name];
-		$filename2	= preg_replace_callback('/[^a-zA-Z0-9가-힣.]/', '_', $filename2);
-		$rfilename2	= iconv("utf-8", "euc-kr", $filename2);
-		//중복 파일 방지를 위해 타임스탬프를 붙인다.
-		$mcrtime = explode(' ',microtime());
-		$mcrtime[0] = substr($mcrtime[0],2,6);
-		$rfilename2 = time().$mcrtime[0]."^".$rfilename2;
-		$dest_file2 = "$g4[path]/data/adata/".$rfilename2;
-		$sfilename2 = iconv("euc-kr", "utf-8", $rfilename2);
-		if (is_uploaded_file($tmp_file2)){
-			$error_code2 = move_uploaded_file($tmp_file2, $dest_file2) or die($_FILES['submission_data2'][error]);
-		}
-		$file_sql2 = " submission_data2	= '/data/adata/{$sfilename2}', ";
-	}
-	//연구윤리서약 동의
-	$file_sql3 = "";
-	if($_FILES['submission_data3'][tmp_name]) {
-		$file_sql3 = " submission_data3	= '/data/adata/".UploadFile::uploadByType($_FILES['submission_data3'],'adata')."', ";
-	}
+	if($file_sql_arr) $file_sql = implode(',',$file_sql_arr).',';
 
-	/* $file_sql4 = "";
-	if($_FILES['submission_add_data'][tmp_name]){
-		$tmp_file4	= $_FILES['submission_add_data'][tmp_name];
-		$filesize4	= $_FILES['submission_add_data'][size];
-		$filename4	= $_FILES['submission_add_data'][name];
-		$filename4	= preg_replace_callback('/[^a-zA-Z0-9가-힣.]/', '_', $filename4);
-		$rfilename4	= iconv("utf-8", "euc-kr", $filename4);
-		//중복 파일 방지를 위해 타임스탬프를 붙인다.
-		$mcrtime = explode(' ',microtime());
-		$mcrtime[0] = substr($mcrtime[0],2,6);
-		$rfilename4 = time().$mcrtime[0]."^".$rfilename4;
-		$dest_file4 = "$g4[path]/data/adata/".$rfilename4;
-		$sfilename4 = iconv("euc-kr", "utf-8", $rfilename4);
-		if (is_uploaded_file($tmp_file4)){
-			$error_code4 = move_uploaded_file($tmp_file4, $dest_file4) or die($_FILES['submission_add_data'][error]);
-		}
-		$file_sql4 = " submission_add_data	= '/data/adata/{$sfilename4}', ";
-	} */
-	$file_sql5 = "";
-	if($_FILES['response_data'][tmp_name]){
-		$tmp_file5	= $_FILES['response_data'][tmp_name];
-		$filesize5	= $_FILES['response_data'][size];
-		$filename5	= $_FILES['response_data'][name];
-		$filename5	= preg_replace_callback('/[^a-zA-Z0-9가-힣.]/', '_', $filename5);
-		$rfilename5	= iconv("utf-8", "euc-kr", $filename5);
-		//중복 파일 방지를 위해 타임스탬프를 붙인다.
-		$mcrtime = explode(' ',microtime());
-		$mcrtime[0] = substr($mcrtime[0],2,6);
-		$rfilename5 = time().$mcrtime[0]."^".$rfilename5;
-		$dest_file5 = "$g4[path]/data/adata/".$rfilename5;
-		$sfilename5 = iconv("euc-kr", "utf-8", $rfilename5);
-		if (is_uploaded_file($tmp_file5)){
-			$error_code5 = move_uploaded_file($tmp_file5, $dest_file5) or die($_FILES['response_data'][error]);
-		}
-		$file_sql5 = " response_data	= '/data/adata/{$sfilename5}', ";
-	}
-	//================ 신규 추가 ======================
-	$file_sql6 = "";
-	if($_FILES['response_data_b'][tmp_name]){
-		$tmp_file6	= $_FILES['response_data_b'][tmp_name];
-		$filesize6	= $_FILES['response_data_b'][size];
-		$filename6	= $_FILES['response_data_b'][name];
-		$filename6	= preg_replace_callback('/[^a-zA-Z0-9가-힣.]/', '_', $filename6);
-		$rfilename6	= iconv("utf-8", "euc-kr", $filename6);
-		//중복 파일 방지를 위해 타임스탬프를 붙인다.
-		$mcrtime = explode(' ',microtime());
-		$mcrtime[0] = substr($mcrtime[0],2,6);
-		$rfilename6 = time().$mcrtime[0]."^".$rfilename6;
-		$dest_file6 = "$g4[path]/data/adata/".$rfilename6;
-		$sfilename6 = iconv("euc-kr", "utf-8", $rfilename6);
-		if (is_uploaded_file($tmp_file6)){
-			$error_code6 = move_uploaded_file($tmp_file6, $dest_file6) or die($_FILES['response_data_b'][error]);
-		}
-		$file_sql6 = " response_data_b	= '/data/adata/{$sfilename6}', ";
-	}
-	$file_sql7 = "";
-	if($_FILES['response_data_c'][tmp_name]){
-		$tmp_file7	= $_FILES['response_data_c'][tmp_name];
-		$filesize7	= $_FILES['response_data_c'][size];
-		$filename7	= $_FILES['response_data_c'][name];
-		$filename7	= preg_replace_callback('/[^a-zA-Z0-9가-힣.]/', '_', $filename7);
-		$rfilename7	= iconv("utf-8", "euc-kr", $filename7);
-		//중복 파일 방지를 위해 타임스탬프를 붙인다.
-		$mcrtime = explode(' ',microtime());
-		$mcrtime[0] = substr($mcrtime[0],2,6);
-		$rfilename7 = time().$mcrtime[0]."^".$rfilename7;
-		$dest_file7 = "$g4[path]/data/adata/".$rfilename7;
-		$sfilename7 = iconv("euc-kr", "utf-8", $rfilename7);
-		if (is_uploaded_file($tmp_file7)){
-			$error_code7 = move_uploaded_file($tmp_file7, $dest_file7) or die($_FILES['response_data_c'][error]);
-		}
-		$file_sql7 = " response_data_c	= '/data/adata/{$sfilename7}', ";
-	}
-	$file_sql8 = "";
-	if($_FILES['response_data_d'][tmp_name]){
-		$tmp_file8	= $_FILES['response_data_d'][tmp_name];
-		$filesize8	= $_FILES['response_data_d'][size];
-		$filename8	= $_FILES['response_data_d'][name];
-		$filename8	= preg_replace_callback('/[^a-zA-Z0-9가-힣.]/', '_', $filename8);
-		$rfilename8	= iconv("utf-8", "euc-kr", $filename8);
-		//중복 파일 방지를 위해 타임스탬프를 붙인다.
-		$mcrtime = explode(' ',microtime());
-		$mcrtime[0] = substr($mcrtime[0],2,6);
-		$rfilename8 = time().$mcrtime[0]."^".$rfilename8;
-		$dest_file8 = "$g4[path]/data/adata/".$rfilename8;
-		$sfilename8 = iconv("euc-kr", "utf-8", $rfilename8);
-		if (is_uploaded_file($tmp_file8)){
-			$error_code8 = move_uploaded_file($tmp_file8, $dest_file8) or die($_FILES['response_data_d'][error]);
-		}
-		$file_sql8 = " response_data_d	= '/data/adata/{$sfilename8}', ";
-	}
-	$file_sql9 = "";
-	if($_FILES['response_data_e'][tmp_name]){
-		$tmp_file9	= $_FILES['response_data_e'][tmp_name];
-		$filesize9	= $_FILES['response_data_e'][size];
-		$filename9	= $_FILES['response_data_e'][name];
-		$filename9	= preg_replace_callback('/[^a-zA-Z0-9가-힣.]/', '_', $filename9);
-		$rfilename9	= iconv("utf-8", "euc-kr", $filename9);
-		//중복 파일 방지를 위해 타임스탬프를 붙인다.
-		$mcrtime = explode(' ',microtime());
-		$mcrtime[0] = substr($mcrtime[0],2,6);
-		$rfilename9 = time().$mcrtime[0]."^".$rfilename9;
-		$dest_file9 = "$g4[path]/data/adata/".$rfilename9;
-		$sfilename9 = iconv("euc-kr", "utf-8", $rfilename9);
-		if (is_uploaded_file($tmp_file9)){
-			$error_code9 = move_uploaded_file($tmp_file9, $dest_file9) or die($_FILES['response_data_e'][error]);
-		}
-		$file_sql9 = " response_data_e	= '/data/adata/{$sfilename9}', ";
-	}
-	$file_sql10 = "";
-	if($_FILES['submission_cover_data'][tmp_name]){
-		$tmp_file10	= $_FILES['submission_cover_data'][tmp_name];
-		$filesize10	= $_FILES['submission_cover_data'][size];
-		$filename10	= $_FILES['submission_cover_data'][name];
-		$filename10	= preg_replace_callback('/[^a-zA-Z0-9가-힣.]/', '_', $filename10);
-		$rfilename10	= iconv("utf-8", "euc-kr", $filename10);
-		//중복 파일 방지를 위해 타임스탬프를 붙인다.
-		$mcrtime = explode(' ',microtime());
-		$mcrtime[0] = substr($mcrtime[0],2,6);
-		$rfilename10 = time().$mcrtime[0]."^".$rfilename10;
-		$dest_file10 = "$g4[path]/data/adata/".$rfilename10;
-		$sfilename10 = iconv("euc-kr", "utf-8", $rfilename10);
-		if (is_uploaded_file($tmp_file10)){
-			$error_code10 = move_uploaded_file($tmp_file10, $dest_file10) or die($_FILES['submission_cover_data'][error]);
-		}
-		$file_sql10 = " submission_cover_data	= '/data/adata/{$sfilename10}', ";
-	}
-	$file_sql11 = "";
-	if($_FILES['submission_data4'][tmp_name]){
-		$tmp_file11	= $_FILES['submission_data4'][tmp_name];
-		$filesize11	= $_FILES['submission_data4'][size];
-		$filename11	= $_FILES['submission_data4'][name];
-		$filename11	= preg_replace_callback('/[^a-zA-Z0-9가-힣.]/', '_', $filename11);
-		$rfilename11	= iconv("utf-8", "euc-kr", $filename11);
-		//중복 파일 방지를 위해 타임스탬프를 붙인다.
-		$mcrtime = explode(' ',microtime());
-		$mcrtime[0] = substr($mcrtime[0],2,6);
-		$rfilename11 = time().$mcrtime[0]."^".$rfilename11;
-		$dest_file11 = "$g4[path]/data/adata/".$rfilename11;
-		$sfilename11 = iconv("euc-kr", "utf-8", $rfilename11);
-		if (is_uploaded_file($tmp_file11)){
-			$error_code11 = move_uploaded_file($tmp_file11, $dest_file11) or die($_FILES['submission_data4'][error]);
-		}
-		$file_sql11 = " submission_data4	= '/data/adata/{$sfilename11}', ";
-	}
-	$file_sql12 = "";
-	if($_FILES['submission_data5'][tmp_name]){
-		$tmp_file12	= $_FILES['submission_data5'][tmp_name];
-		$filesize12	= $_FILES['submission_data5'][size];
-		$filename12	= $_FILES['submission_data5'][name];
-		$filename12	= preg_replace_callback('/[^a-zA-Z0-9가-힣.]/', '_', $filename12);
-		$rfilename12	= iconv("utf-8", "euc-kr", $filename12);
-		//중복 파일 방지를 위해 타임스탬프를 붙인다.
-		$mcrtime = explode(' ',microtime());
-		$mcrtime[0] = substr($mcrtime[0],2,6);
-		$rfilename12 = time().$mcrtime[0]."^".$rfilename12;
-		$dest_file12 = "$g4[path]/data/adata/".$rfilename12;
-		$sfilename12 = iconv("euc-kr", "utf-8", $rfilename12);
-		if (is_uploaded_file($tmp_file12)){
-			$error_code12 = move_uploaded_file($tmp_file12, $dest_file12) or die($_FILES['submission_data5'][error]);
-		}
-		$file_sql12 = " submission_data5	= '/data/adata/{$sfilename12}', ";
-	}
 	//CCL 처리
-
 	if($_POST['ccl_author'] == 'by') {
 		if($_POST['ccl_commercial']=='nc') $submission_add_data='BY-NC';
 		else $submission_add_data='BY';
@@ -304,17 +109,6 @@ if($_POST['mode']=="a_sub_reg"){
 				review_fee			= '{$_POST['fee']}',
 				submission_add_data			= '{$submission_add_data}',
 				{$file_sql}
-				{$file_sql2}
-				{$file_sql3}
-				{$file_sql4}
-				{$file_sql5}
-				{$file_sql6}
-				{$file_sql7}
-				{$file_sql8}
-				{$file_sql9}
-				{$file_sql10}
-				{$file_sql11}
-				{$file_sql12}
 				journal		= '{$_POST['journal']}' ";
 	if($_POST['seq']){
 		$sql = "UPDATE ad_paper SET {$field} {$md_qry} WHERE seq = '{$_POST['seq']}'";

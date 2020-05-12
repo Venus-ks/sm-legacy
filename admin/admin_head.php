@@ -83,7 +83,7 @@ if($_SERVER['PHP_SELF']=="/admin/index.php"){
 	}
 }
 ?>
-<h2 class="logo">
+<h2 style="font-family:'Malgun gothic,맑은고딕';margin:0.5rem 1.5rem">
 	<?php if($info['logo_url']):?>
 		<a href="<?=$info['banner']['href']?>"><img src="<?=$info['logo_url']?>"/></a>
 	<?php else:?>
@@ -91,7 +91,7 @@ if($_SERVER['PHP_SELF']=="/admin/index.php"){
 	<?php endif?>
 </h2>
 <style>
-.nav-tabs>li.active>a {background-color: #2977C9;color:#fff}
+.nav-tabs>li.active>a {background-color:<?=$info['maincolor']?>;color:#fff}
 </style>
 <ul class="nav nav-tabs">
 	<?php if($member['mb_level']>=2):?>
@@ -104,4 +104,4 @@ if($_SERVER['PHP_SELF']=="/admin/index.php"){
 		<li role="presentation" class="nav-item <?=($mode==3)?'active':''?>"><a href="./d_process.php?mode=switch_mode&mb_id=<?=$member['mb_id']?>&type=3" class="nav-link">편집자 모드(Editor mode)</a></li>
 	<?php endif?>
 </ul>
-<div style="margin:0;line-height:20px;height:20px;background-color:#2977C9;color:#FFF;padding-left:5px;font-weight:600"></div>
+<div style="margin:0;line-height:20px;height:20px;background-color:<?=$info['maincolor']?>;color:#FFF;padding-left:5px;font-weight:600"></div>

@@ -45,7 +45,7 @@
 		</tr>
 		</table>
 		<table class="boardType01_write" style="margin-top:20px;">
-		<!-- <tr>
+		<tr>
 			<th width="200"><strong>연구종류<br/>Type of Paper</strong></th>
 			<td>
 				<select name="manuscript" style="width:100%;">
@@ -56,11 +56,11 @@
 					<?php endforeach?>
 				</select>
 			</td>
-		</tr> -->
+		</tr>
 		<tr>
 			<th width="200"><strong>심사요청분야<br/>Review Category</strong></th>
 			<td>
-				<select name="review_category_target" style="width:100%;" <?=($data['review_category_target'])?'':'required'?>>
+				<select name="review_category_target" style="width:100%;">
 					<option value="">= 선택해주세요 =</option>
 						<?php $arr = get_category_target()?>
 						<?php foreach($arr as $v):?>
@@ -72,21 +72,22 @@
 		<tr>
 			<th width="200">투고논문 파일<br/>Paper File</th>
 			<td>
-				<input type="file" name="submission_data" style="width:100%;" <?=($member['mb_level'] == 10)?'':'required'?>/>
+				<input type="file" name="submission_data" style="width:100%;" <?=($data['seq'])?'':'required'?>/>
 				<? if($data['submission_data']){ ?>
 				<div style="padding-top:5px;"><a href="/down.php?link=<?=$data['submission_data']?>"><?=end(explode("/",substr(strstr($data['submission_data'], '^'), 1)))?></a></div>
 				<? } ?>
-				<a href="<?=$info['paper_sample_url']?>"><strong style="color:#B60000">작성법 다운로드</strong></a>
+				<!--a href="<?=$info['paper_sample_url']?>"><strong style="color:#B60000">양식 다운로드</strong></a>
 				<?php if(!$data['seq']):?>
 					<br/>한글프로그램을 이용하여 작성하되, 원고교정이 완료되어 그대로 출판될 수 있는 완전한 상태로 제출바랍니다.
 				<? endif?>
+			-->
 			</td>
 		</tr>
 		<? if($data['step']>1){ ?>
 		<tr>
 			<th width="200">논문수정표<br/>Author's Edit Table</th>
 			<td>
-				<input type="file" name="response_data" style="width:100%;" <?=($member['mb_level'] == 10)?'':'required'?>/>
+				<input type="file" name="response_data" style="width:100%;" <?=($data['response_data'])?'':'required'?>/>
 				<? if($data['step']>0 && $data['response_data']){ ?>
 				<div style="padding-top:5px;"><a href="/down.php?link=<?=$data['response_data']?>"><?=end(explode("/",substr(strstr($data['response_data'], '^'), 1)))?></a></div>
 				<? } ?>
@@ -102,31 +103,31 @@
 				<? if($data['step']>0 && $data['submission_data2']){ ?>
 					<div style="padding-top:5px;"><a href="/down.php?link=<?=$data['submission_data2']?>"><?=end(explode("/",substr(strstr($data['submission_data2'], '^'), 1)))?></a></div>
 				<? } ?>
-				<div style="padding-top:5px;"><a href="<?=$info['info_form_url']?>"><strong style="color:#B60000">양식 다운로드</strong></a>
+				<!--div style="padding-top:5px;"><a href="<?=$info['info_form_url']?>"><strong style="color:#B60000">양식 다운로드</strong></a>
 				</div>
-				<span>다운로드 받은 양식에 날인하여, 업로드(pdf 가능)해주시기 바랍니다.</span>
+				<span>다운로드 받은 양식에 날인하여, 업로드(pdf 가능)해주시기 바랍니다.</span-->
 			</td>
 		</tr>
-		<!-- <tr>
-			<th width="200">저작권이양동의서<br/>Copyright Agreement</th>
+		<tr>
+			<th width="200">자가점검사항표<br/>Checklist</th>
 			<td>
 				<input type="file" name="submission_data3" style="width:100%;" <?=($data['submission_data3'])?'':'required'?>/>
 				<? if($data['step']>0 && $data['submission_data3']){ ?>
 					<div style="padding-top:5px;"><a href="/down.php?link=<?=$data['submission_data3']?>"><?=end(explode("/",substr(strstr($data['submission_data3'], '^'), 1)))?></a></div>
 				<? } ?>
-				<div style="padding-top:5px;"><a href="<?=$info['author_checklist_url']?>"><strong style="color:#B60000">양식 다운로드</strong></a>
+				<!--div style="padding-top:5px;"><a href="<?=$info['author_checklist_url']?>"><strong style="color:#B60000">양식 다운로드</strong></a>
 				</div>
-				<span>다운로드 받은 양식을 작성하여, 업로드(pdf 가능)해주시기 바랍니다.</span>
+				<span>다운로드 받은 양식을 작성하여, 업로드(pdf 가능)해주시기 바랍니다.</span-->
 			</td>
-		</tr> -->
+		</tr>
 		<tr>
-			<th width="200">저작권이양동의서 & 연구윤리동의서<br/>Copyright Agreement & Research Ethics Form</th>
+			<th width="200">연구윤리동의서<br/>Research Ethics Form</th>
 			<td>
 				<input type="file" name="submission_data4" style="width:100%;" <?=($data['submission_data4'])?'':'required'?>/>
 				<? if($data['step']>0 && $data['submission_data4']){ ?>
 					<div style="padding-top:5px;"><a href="/down.php?link=<?=$data['submission_data4']?>"><?=end(explode("/",substr(strstr($data['submission_data4'], '^'), 1)))?></a></div>
 				<? } ?>
-				<div style="padding-top:5px;"><a href="<?=$info['ethic_copyright_form_url']?>"><strong style="color:#B60000">양식 다운로드</strong></a>
+				<div style="padding-top:5px;"><a href="<?=$info['ethic_form_url']?>"><strong style="color:#B60000">양식 다운로드</strong></a>
 				</div>
 				<span>다운로드 받은 양식에 날인하여, 업로드(pdf 가능)해주시기 바랍니다.</span>
 			</td>
@@ -142,19 +143,52 @@
 				<span>투고 논문으로 ‘KCI 문헌유사도 검사’를 시행하신 뒤, 검사 후 산출된 ‘종합결과파일(PDF)’을 업로드해주시기 바랍니다.</span>
 			</td>
 		</tr>
+		<!-- <tr>
+			<th width="200">CCL (Creative Commons License) 사용<br/><br/><span><a href="http://ccl.cckorea.org/about/" target="_blank"><strong style="color:#B60000">▶ CCL 라이선스에 대하여</strong></a></span></th>
+
+			<td>
+				<table class="boardType01_write" style="margin:5px 0">
+					<tr>
+						<td>
+						<h5>CCL 저작자 표시</h5>
+						<label><input type="radio" name="ccl_author" value="by"/> 사용</label>&nbsp;&nbsp;
+						<label><input type="radio" name="ccl_author" value="" checked="checked" /> 사용안함</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label><input type="checkbox" name="ccl_commercial" value="nc" class="ccl_add" disabled/> 비영리 (NC)<br></label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label><input type="radio" name="ccl_edit" value="sa" class="ccl_add" disabled/> 동일조건변경허락 (SA)<br></label>&nbsp;&nbsp;
+							<label><input type="radio" name="ccl_edit" value="nd" class="ccl_add" disabled/> 변경금지 (ND)</label>
+						</td>
+					</tr>
+				</table>
+			</td>
+			<script>
+			$("input[name=ccl_author]").change(function(){
+				var radioValue = $(this).val();
+				if (radioValue == "by") {
+					$(".ccl_add").attr("disabled",false);
+				} else {
+					$(".ccl_add").attr("disabled",true);
+				}
+			});
+			</script>
+		</tr> -->
 		</table>
 		<table class="boardType01_write">
 			<tr>
 				<th width="200">심사료 납입 여부<br/>
-				
-				</th>
-				<td>
-					<br>
-					<input type="checkbox" name="fee" value="Y" <?=($data['review_fee']=='Y')?'checked=checked':''?>>예&nbsp;<input type="checkbox" name="fee" value="N" <?=($data['review_fee']=='N')?'checked=checked':''?> />아니오<br><br>
 				<font style="color: #DE790D;">
+					<br>
 					<?=$info['bank_comment']?>
 				</font>
-			</td>
+				</th>
+				<td><input type="checkbox" name="fee" value="Y" <?=($data['review_fee']=='Y')?'checked=checked':''?>>예&nbsp;<input type="checkbox" name="fee" value="N" <?=($data['review_fee']=='N')?'checked=checked':''?> />아니오</td>
 			</tr>
 			</table>
 		</td>
