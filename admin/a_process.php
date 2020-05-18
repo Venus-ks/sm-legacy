@@ -175,7 +175,7 @@ if($_POST['mode']=="a_sub_reg"){
 					mb_name		= '{$member['mb_name']}',
 					regdate		= now()";
 		sql_query($sql);
-		$parent_seq = mysqlI_insert_id();
+		$parent_seq = mysqlI_insert_id($connect_db);
 		##############
 		$body = "
 		{$mail_header}
