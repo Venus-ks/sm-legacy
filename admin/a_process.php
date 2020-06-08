@@ -140,7 +140,7 @@ if($_POST['mode']=="a_sub_reg"){
 		<tr><td height='80' align='center' valign='top' bgcolor='#FFF'>
 		{$mail_footer}
 		";
-		$body	 = eregi_replace("[\]",'',$body);
+		$body	 = preg_replace("[\]",'',$body);
 		##############
 		$mail->MsgHTML($body);
 		//$address = $member['mb_id'];
@@ -195,7 +195,7 @@ if($_POST['mode']=="a_sub_reg"){
 		<tr><td height='80' align='center' valign='top' bgcolor='#FFF'>
 		{$mail_footer}
 		";
-		$body	 = eregi_replace("[\]",'',$body);
+		$body	 = preg_replace("[\]",'',$body);
 		##############
 		$mail->MsgHTML($body);
 		//$address = $member['mb_id'];
