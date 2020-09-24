@@ -26,6 +26,8 @@ if($_GET['seq']){
 				<input type="hidden" name="step" value="<?=$data['step']?>"/>
 				<input type="hidden" name="seq" value="<?=$data['seq']?>"/>
 				<input type="hidden" name="number" value="<?=$data['number']?>"/>
+				<input type="hidden" name="number" value="<?=$data['mb_id']?>"/>
+				<input type="hidden" name="number" value="<?=$data['mb_name']?>"/>
 				<input type="hidden" name="review_category" value="<?=$data['review_category']?>"/>
 				<table width="100%" border="0" cellspacing="0" cellpadding="0">
 					<tr>
