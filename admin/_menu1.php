@@ -78,12 +78,12 @@ function manual_popup(cont){
 <tr>
 	<td><img src="../images/leftline.png" width="199" height="1" /></td>
 </tr>
-<tr>
+<!-- <tr>
 	<td class="leftmenuoff"><a href="#" class="leftmenuofflink" data-toggle="modal" data-target="#manualModal"><strong>시스템이용방법</strong><br /><font class="font11">How to Use Online Paper Submission</font></a></td>
 </tr>
 <tr>
 	<td><img src="../images/leftline.png" width="199" height="1" /></td>
-</tr>
+</tr> -->
 </table>
 <div class="modal fade" id="manualModal" tabindex="-1" role="dialog" aria-labelledby="투고시스템 매뉴얼">
   <div class="modal-dialog modal-xl" role="document">

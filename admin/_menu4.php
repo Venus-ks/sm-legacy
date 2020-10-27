@@ -190,6 +190,13 @@
 	<td><img src="../images/01_leftmenu01_instruction_list.png" width="199" height="70" /></td>
 </tr>
 <tr>
+	<td class="leftmenuoff"><a href="<?=$info['publish_rule_url']?>" class="leftmenuofflink"><strong>편집 규정</strong><br />
+	<font class="font11">Editorial Policies</font></a></td>
+</tr>
+<tr>
+	<td><img src="../images/leftline.png" width="199" height="1" /></td>
+</tr>
+<tr>
 	<td class="leftmenuoff"><a href="<?=$info['submit_rule_url']?>" class="leftmenuofflink"><strong>학회지 투고규정</strong><br /><font class="font11">Instruction for Manuscript</font></a></td>
 </tr>
 <tr>
@@ -197,7 +204,7 @@
 </tr>
 <tr>
 	<td class="leftmenuoff"><a href="<?=$info['ethic_rule_url']?>" class="leftmenuofflink"><strong>연구윤리 규정</strong><br />
-	<font class="font11">Publication ethics</font></a></td>
+	<font class="font11">Publication Ethics</font></a></td>
 </tr>
 <tr>
 	<td><img src="../images/leftline.png" width="199" height="1" /></td>
@@ -205,12 +212,12 @@
 <tr>
 	<td><img src="../images/leftline.png" width="199" height="1" /></td>
 </tr>
-<tr>
+<!-- <tr>
 	<td class="leftmenuoff"><a href="#" class="leftmenuofflink" data-toggle="modal" data-target="#manualModal"><strong>시스템이용방법</strong><br /><font class="font11">How to Use Online Paper Submission</font></a></td>
 </tr>
 <tr>
 	<td><img src="../images/leftline.png" width="199" height="1" /></td>
-</tr>
+</tr> -->
 </table>
 <div class="modal fade" id="manualModal" tabindex="-1" role="dialog" aria-labelledby="투고시스템 매뉴얼">
   <div class="modal-dialog modal-xl" role="document">
