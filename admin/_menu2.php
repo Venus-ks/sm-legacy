@@ -3,7 +3,7 @@
 	<td height="43" align="center"><?=$member['mb_name']?>님 환영합니다.</td>
 </tr>
 <tr>
-	<td align="center" style="padding-bottom:10px;"><img src="../images/btn_mypage.png"  /><a href='<?=$g4[bbs_path]?>/logouts.php'><img src="../images/btn_logout1.png" /></a></td>
+	<td align="center" style="padding-bottom:10px;"><a href="a_member_write.php?mb_no=<?=$member['mb_no']?>"><img src="../images/btn_mypage.png"  /></a><a href='<?=$g4[bbs_path]?>/logouts.php'><img src="../images/btn_logout1.png" /></a></td>
 </tr>
 </table>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
