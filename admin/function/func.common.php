@@ -1680,16 +1680,25 @@ function get_review_name($mb_id){
 	}
 }
 
+// 실제데이터와 맞지않아 수정처리 hjshyo 201120
 function get_review_type($mb_id, $status){
 	global $g4;
-	$sql = "select count(seq) as cnt from ad_paper where ((review_a_user = '{$mb_id}' AND review_a_result = '3') or (review_b_user = '{$mb_id}' AND review_b_result = '3') or (review_c_user = '{$mb_id}' AND review_c_result = '3') )";
+    $sql = "
+    select count(seq) as cnt from ad_paper where 
+    ((step=3 OR step=4) AND ((review_a_user = '{$mb_id}' AND review_a_step = 0) or (review_b_user = '{$mb_id}' AND review_b_step = 0) or (review_c_user = '{$mb_id}' AND review_c_step = 0)))
+    OR 
+    ((step=13 OR step=14) AND ((review_a_user = '{$mb_id}' AND review_a_step = 1) or (review_b_user = '{$mb_id}' AND review_b_step = 1) or (review_c_user = '{$mb_id}' AND review_c_step = 1)))
+    OR 
+    ((step=23 OR step=24) AND ((review_a_user = '{$mb_id}' AND review_a_step = 2) or (review_b_user = '{$mb_id}' AND review_b_step = 2) or (review_c_user = '{$mb_id}' AND review_c_step = 2))) 
+    ";
 	$review	= sql_fetch($sql);
 	return $review['cnt'];
 }
 
+// 실제데이터와 맞지않아 수정처리 hjshyo 201120
 function get_review_type2($mb_id, $status){
 	global $g4;
-	$sql = "select count(seq) as cnt from ad_paper where ((review_a_user = '{$mb_id}' AND review_a_result != '3') or (review_b_user = '{$mb_id}' AND review_b_result != '3') or (review_c_user = '{$mb_id}' AND review_c_result != '3') )";
+	$sql = "select count(rseq) as cnt from ad_paper_review where mb_id = '{$mb_id}'";
 	$review	= sql_fetch($sql);
 	return $review['cnt'];
 }

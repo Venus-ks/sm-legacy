@@ -66,12 +66,12 @@ if($_GET['mb_no']){
 					<select name="mb_level" id="mb_level">
 						<option value="2" <?if ($data['mb_level'] == '2'){?>selected<?}?>>정회원</option>
 						<option value="4" <?if ($data['mb_level'] == '4'){?>selected<?}?>>심사위원</option>
-						<option value="5" <?if ($data['mb_level'] == '5'){?>selected<?}?>>편집위원</option>
-						<option value="6" <?if ($data['mb_level'] == '6'){?>selected<?}?>>시스템관리자</option>
+						<option value="10" <?if ($data['mb_level'] == '10'){?>selected<?}?>>편집장</option>
+						<!-- <option value="6" <?if ($data['mb_level'] == '6'){?>selected<?}?>>시스템관리자</option>
 						<option value="7" <?if ($data['mb_level'] == '7'){?>selected<?}?>>학생회원</option>
 						<option value="8" <?if ($data['mb_level'] == '8'){?>selected<?}?>>대표간사</option>
 						<option value="9" <?if ($data['mb_level'] == '9'){?>selected<?}?>>임시대표간사</option>
-						<option value="10" <?if ($data['mb_level'] == '10'){?>selected<?}?>>최고관리자</option>
+						<option value="10" <?if ($data['mb_level'] == '10'){?>selected<?}?>>최고관리자</option> -->
 					</select>
 				</td>
 			</tr>
