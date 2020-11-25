@@ -82,7 +82,7 @@ if($_POST['mode']=="d_sub_reg"){
 	$fr_result	= sql_fetch("select * from ad_paper_review where parent_seq = '{$_POST['seq']}' and rstep = 4 order by rseq desc limit 1");
 	## 심사 결과가 있으면...
 	// 편집위원장 메일 주소 가지고 오기. 편집위원장의 카테고리 분야에 따라 메일 주소를 가지고 와서 발송 함.
-	if($fr_result['result'] == '3' || (!$fr_result['result'] && $_POST['review_score'] == '3')) {
+	if($fr_result['result'] == '3') {
 		sql_query("UPDATE ad_paper SET settle_date = now(), step = 34 {$file_sql} WHERE seq = '{$_POST['seq']}'");
 		## 수정 후 재심사는 편집위원장에게 메일 발송하고 편집위원장 심사 단계 진행. step 34
 		$body = "
