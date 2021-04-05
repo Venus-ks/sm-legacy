@@ -5,9 +5,11 @@ $mlevel		= 2;
 $menu		= "a1";
 $tmp_cnt 	= 1;
 /* 투고가능 기간 체크 */
-$permit_sql	= "select * from ad_config WHERE service_fdate <= CURDATE() AND service_ldate >= CURDATE()";
+$permit_sql	= "select * from ad_config LIMIT 0,1";
 $permit_data	= sql_fetch($permit_sql);
-//if(!$permit_data && $member['mb_level'] != 10) alert('투고기간이 아닙니다.','./a_sub01.php');
+$sdate = $permit_data['service_fdate'];
+$ldate = $permit_data['service_ldate'];
+if($sdate > date('Ymd') || ($ldate && $ldate < date('Ymd'))) alert('투고기간이 아닙니다.','./a_sub01.php');
 /* //투고가능 기간 체크 */
 $loop = array();
 if($_GET['seq']){

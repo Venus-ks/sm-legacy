@@ -39,12 +39,12 @@ $data	= sql_fetch($sql);
 			<tr>
 				<th>투고 가능 기간</th>
 				<td colspan="3">
-					<input type="text" name="sdate" id="sdate" style="width:100px;" value="<?=date('Ymd',strtotime($data['service_fdate']))?>"/>
+					<input type="text" name="sdate" id="sdate" style="width:100px;" value="<?=$data['service_fdate']?>"/>
 					<a href="javascript:win_calendar('sdate', document.getElementById('sdate').value,'');">
 						<img src="../images/icon_cal.png" align="middle" />
 					</a>
 					&nbsp;
-					<input type="text" name="edate" id="edate"  style="width:100px;" value="<?=date('Ymd',strtotime($data['service_ldate']))?>"/>
+					<input type="text" name="edate" id="edate"  style="width:100px;" value="<?=$data['service_ldate']?>"/>
 					<a href="javascript:win_calendar('edate', document.getElementById('edate').value,'');">
 						<img src="../images/icon_cal.png" align="middle" />
 					</a>

@@ -1214,8 +1214,8 @@ else if($_POST['mode']=="reject_article"){
 	$msg		= "처리 되었습니다.";
 	$returnUrl	= "./d_sub01.php";
 }else if($_POST['mode']=="d_setting"){
-	$fdate = date('Y-m-d',strtotime($_POST['sdate']));
-	$ldate = date('Y-m-d',strtotime($_POST['edate']));
+	$fdate = trim($_POST['sdate']);
+	$ldate = trim($_POST['edate']);
 	$sql = "UPDATE ad_config SET
 				service_fdate	= '{$fdate}',
 				service_ldate	= '{$ldate}'";

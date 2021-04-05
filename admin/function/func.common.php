@@ -21,7 +21,7 @@ function get_paging($write_pages, $cur_page, $total_page, $url, $add="")
     $str = "";
     if ($cur_page > 1) {
         $str .= "<a href='" . $url . "1{$add}'>처음</a>";
-        //$str .= "[<a href='" . $url . ($cur_page-1) . "'>이전</a>]";
+        $str .= "<a href='" . $url . ($cur_page-1) . "' style='margin-left:1rem'>이전</a>";
     }
 
     $start_page = ( ( (int)( ($cur_page - 1 ) / $write_pages ) ) * $write_pages ) + 1;
@@ -43,9 +43,9 @@ function get_paging($write_pages, $cur_page, $total_page, $url, $add="")
     if ($total_page > $end_page) $str .= " &nbsp;<a href='" . $url . ($end_page+1) . "{$add}'></a>";
 
     if ($cur_page < $total_page) {
-        //$str .= "[<a href='$url" . ($cur_page+1) . "'>다음</a>]";
-        //$str .= " &nbsp;<a href='$url$total_page{$add}'>맨끝</a>";
-        $str .= " &nbsp;<a href='{$url}{$next_page}'>맨끝</a>";
+        $str .= "<a href='$url" . ($cur_page+1) . "' style='margin-right:1rem'>다음</a>";
+        $str .= " <a href='$url$total_page{$add}'>맨끝</a>";
+        // $str .= " &nbsp;<a href='{$url}{$next_page}'>맨끝</a>";
     }
     $str .= "";
 
