@@ -183,12 +183,18 @@
 		<table class="boardType01_write">
 			<tr>
 				<th width="200">심사료 납입 여부<br/>
+				
+				</th>
+				<td>
+				<br>
+				<input type="checkbox" name="fee" value="Y" <?=($data['review_fee']=='Y')?'checked=checked':''?>>예&nbsp;<input type="checkbox" name="fee" value="N" <?=($data['review_fee']=='N')?'checked=checked':''?> />아니오
+				<br>
 				<font style="color: #DE790D;">
 					<br>
 					<?=$info['bank_comment']?>
 				</font>
-				</th>
-				<td><input type="checkbox" name="fee" value="Y" <?=($data['review_fee']=='Y')?'checked=checked':''?>>예&nbsp;<input type="checkbox" name="fee" value="N" <?=($data['review_fee']=='N')?'checked=checked':''?> />아니오</td>
+				</td>
+				
 			</tr>
 			</table>
 		</td>
