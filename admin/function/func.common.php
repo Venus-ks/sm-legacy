@@ -364,10 +364,10 @@ function get_list($write_row, $board, $skin_path, $subject_len=40)
     }
 
     // 가변 파일
-    $list['file'] = get_file($board['bo_table'], $list['wr_id']);
+    // $list['file'] = get_file($board['bo_table'], $list['wr_id']);
 
-    if ($list['file']['count'])
-        $list['icon_file'] = "<img src='$skin_path/img/icon_file.gif' align='absmiddle'>";
+    // if ($list['file']['count'])
+    //     $list['icon_file'] = "<img src='$skin_path/img/icon_file.gif' align='absmiddle'>";
 
     return $list;
 }
@@ -2237,5 +2237,14 @@ function get_member_level($num=null){
 function checkSessionLive() {
     if (!$_SESSION) alert("접속시간이 초과되어 로그아웃됩니다", "../bbs/logout.php");
     else return true;
+}
+
+function passnum($idsu){
+	$num = array(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,1,2,3,4,5,6,7,8,9,0,a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z);
+	 for($i=0;$i<$idsu;$i++){
+		$rand = rand(0,71);
+	 $pass .= $num[$rand];
+	}
+	return $pass;
 }
 ?>

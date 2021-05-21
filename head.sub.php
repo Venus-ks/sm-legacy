@@ -47,6 +47,7 @@ var g4_is_ie     = navigator.userAgent.toLowerCase().indexOf("msie") != -1;
 <script type="text/javascript" src="<?=$g4['path']?>/js/common.js"></script>
 <link href="/css/style.css" rel="stylesheet" type="text/css" />
 <link href="/css/colorbox.css" rel="stylesheet" type="text/css" />
+<link href="/css/theme_1590729360053.css" rel="stylesheet" type="text/css" />
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 <script language="javascript" src="/js/common_html.js" type="text/javascript"></script>

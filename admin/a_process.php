@@ -1,10 +1,37 @@
-<?
+<?php
+if(defined('__DEV__')) error_reporting(E_ALL);
+error_reporting(0);
 include_once("./_common.php");
 include_once("./class/class.UploadFile.php");
 ### 메일 관련 코드
+date_default_timezone_set('Asia/Seoul');
+require_once('class.phpmailer.php'); // phpmailer ext module class
+require_once('class/class.MailSender.php'); // phpmailer override class by hjshyo
+$mysqlconn = new Mysqli($mysql_host, $mysql_user, $mysql_password, $mysql_db);
+// 메일 클래스 설정
+$mail = new GoogleTemplateMailer();
+$mail->SMTPDebug  = NULL;
+// enables SMTP debug information (for testing)
+// 1 = errors and messages
+// 2 = messages only
+$mail->Dbconn = $mysqlconn;
+if(!defined('__DEV__')) $mail->Username = $info['smtp_id']; // SMTP account username
+if(!defined('__DEV__')) $mail->Password = $info['smtp_pw']; // SMTP account password
+if(!defined('__DEV__')) $mail->SetFrom($info['editor_email'], $info['institute_title']);
+else $mail->SetFrom($info['editor_email'], '테스트서버');
+//메일템플릿
+require '../vendor/autoload.php';
+
+use Philo\Blade\Blade;
+
+$views = __DIR__ . '/views';
+$cache = __DIR__ . '/data/cache';
+
+$blade = new Blade($views, $cache);
+//넘버일련번호 지정
+$number = str_pad($_POST['number'],3,'0',STR_PAD_LEFT);
 //id 발송시 PECERA 고유번호 발급시 년도 정보 생성
 $id_year=date('y');
-if(defined('__DEV__')) error_reporting(E_ALL);
 // 변수설정
 $main_editor = $info['editor_email'];
 $mail_header = <<<HTML
@@ -27,30 +54,7 @@ Home :<a href='{$info['site']}'>{$info['site']}</a></p>
 </td></tr></table></body></html>
 HTML;
 // 변수설정 끝
-date_default_timezone_set('Asia/Seoul');
-require_once('class.phpmailer.php');
-$mail             = new PHPMailer();
-$mail->IsSMTP(); // telling the class to use SMTP
-$mail->Host       = "ssl://smtp.gmail.com"; // SMTP server
-$mail->SMTPDebug  = 0;                     // enables SMTP debug information (for testing)
-                                           // 1 = errors and messages
-                                           // 2 = messages only
-$mail->SMTPAuth   = true;                  // enable SMTP authentication
-$mail->Host       = "ssl://smtp.gmail.com"; // sets the SMTP server
-$mail->Port       = 465;                    // set the SMTP port for the GMAIL server
-if(!defined('__DEV__')) $mail->Username   = $info['smtp_id']; // SMTP account username
-if(!defined('__DEV__')) $mail->Password   = $info['smtp_pw']; // SMTP account password
-$mail->SetFrom($main_editor,$info['institute_title']);
-$mail->Subject    = "안녕하세요. {$info['institute_title']}입니다.";
-##################
-function passnum($idsu){
-	$num = array(A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,1,2,3,4,5,6,7,8,9,0,a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z);
-	 for($i=0;$i<$idsu;$i++){
-		$rand = rand(0,71);
-	 $pass .= $num[$rand];
-	}
-	return $pass;
-}
+
 ### A :: 논문투고 등록
 if($_POST['mode']=="a_sub_reg"){
 	// 세션체크하여 만료면 로그아웃
@@ -122,51 +126,17 @@ if($_POST['mode']=="a_sub_reg"){
 			$number = $_POST['number'];
 		}
 		##############
-		$body = "
-		{$mail_header}
-		<p>{$info['institute_title']} 투고논문 등록 완료  KA-{$id_year}-{$number}</p>
-		<p>편집위원장님</p>
-		<p>{$member['mb_name']}님이 다음의 논문에 대한 심사결과에 대하여 수정한 원고를 등록하였습니다.</p>
-		</td></tr>
-		<tr><td height='15'></td></tr>
-		<tr><td height='15'><a href='http://{$_SERVER['HTTP_HOST']}/admin/d_sub01_write.php?seq={$parent_seq}' target='_blank'>논문접수 등록 페이지로 이동</a></td></tr>
-		<tr><td height='15'></td></tr>
-		<tr><td height='51' align='left' valign='top'>
-		<p>원고 세부 사항</p>
-		<p>제목 : {$_POST['title']}</p>
-		<p>키워드 : {$_POST['keyword']}</p>
-		</td></tr>
-		<tr><td height='15'></td></tr>
-		<tr><td height='80' align='center' valign='top' bgcolor='#FFF'>
-		{$mail_footer}
-		";
-		$body	 = eregi_replace("[\]",'',$body);
-		##############
-		$mail->MsgHTML($body);
-		//$address = $member['mb_id'];
-		//$mail->AddAddress($address, $member['mb_name']);
-		$address = $main_editor;
-		$mail->AddAddress($address,$info['editor_name']);
-		if(!$mail->Send()) {
-			//echo "Mailer Error: " . $mail->ErrorInfo;
-			//디비에 실패 로그 기록
-			$mail_sql = "insert into ad_mail_log set
-				parent_seq	= '{$_POST['seq']}',
-				mail_yn	= 'N',
-				error_info	= '{$mail->ErrorInfo}',
-				address	= '{$address}',
-				regdate		= now()";
-			sql_query($mail_sql);
-		} else {
-			//echo "Message sent!";
-			//디비에 성공 로그 기록
-			$mail_sql = "insert into ad_mail_log set
-				parent_seq	= '{$_POST['seq']}',
-				mail_yn	= 'Y',
-				address	= '{$address}',
-				regdate		= now()";
-			sql_query($mail_sql);
-		}
+		$body = $blade->view()->make('email/editor/revision',
+			[
+				'info'=>$info,
+				'title'=>$_POST['title'],
+				'abstract'=>$_POST['abstract'],
+				'seq'=>$_POST['seq'],
+				'author'=>$_POST['mb_name'],
+				'article_id'=>"{$info['abbr']}-{$id_year}-{$numbers}",
+			]
+		);
+		$mail->sendInput($main_editor, '편집장', $body, "[{$info['journal_title']}] 수정논문접수 등록 완료({$_POST['mb_name']} 귀하) {$info['abbr']}-{$id_year}-{$numbers}");
 		##############
 	}else{
 		$sql = "INSERT INTO ad_paper SET
