@@ -82,6 +82,7 @@ if($_POST['mode']=="c_sub_review"){
 				{$file_sql3}
 				mb_id		= '{$_POST['mb_id']}',
 				mb_name		= '{$_POST['mb_name']}',
+				account = '{$_POST['acc_bank']}|{$_POST['acc_number']}|{$_POST['acc_name']}',
 				rstep		= '{$rstep}',
 				regdate		= now()";
 	/* 리뷰 중복 등록 방지 hjshyo 151030 */

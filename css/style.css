@@ -297,3 +297,9 @@ a.leftmenuofflink:active {
     padding: 1rem;
     font-size: 2rem;
 }
+
+.required {
+    color: red;
+    padding: 0 0.3rem;
+    font-size: 1.2rem
+}

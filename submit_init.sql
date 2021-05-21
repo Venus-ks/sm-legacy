@@ -412,6 +412,7 @@ CREATE TABLE `ad_paper_review` (
   `rfile` varchar(255) DEFAULT '',
   `mfile` varchar(255) DEFAULT NULL,
   `authorfile` varchar(255) DEFAULT NULL,
+  `account` varchar(255) DEFAULT NULL,
   `regdate` date NOT NULL DEFAULT '0000-00-00',
   `rstep` int(11) DEFAULT '1',
   PRIMARY KEY (`rseq`)
