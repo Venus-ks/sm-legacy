@@ -24,29 +24,35 @@ $info['site'] = '학회웹사이트 URL';
 $info['address'] = '학회주소';
 $info['logo_url'] = '';
 $info['bank_comment'] = "<p>심사료는 ??만원이며, 다음의 계좌로 입금하여 주시기 바랍니다.</p><p>- 계좌번호<br>- 예금주:??? </p>";
-// down.php?link=/data/file/paper_sample.hwp
-// OR
-// javascript:ad_popup('content02');
-$doc_list = [
-    'paper_sample_url' => "투고논문본문format샘플.hwp",
-    'info_form_url' => "투고신청서.hwp",
-    'ethic_form_url' => "연구윤리준수_확인서_자가점검표.hwp",
-    'revision_form_url' => "수정요지서(저자답변서).hwp",
-    // 'author_checklist_url' => ".hwp",
-    'submit_rule_url' => "투고규정.pdf",
-    'ethic_rule_url' => "윤리규정.pdf",
-    'review_rule_url' => "심사규정.pdf",
-    'author_manual_url' => "manual_author.pdf",
-    'reviewer_manual_url' => "manual_reviewer.pdf",
-    'manual_url' => "manual.pdf",
-    'review_form_url1' => "논문심사서.hwp",
-    'review_form_url2' => "논문심사서.hwp",
-    'review_form_url3' => "논문심사서.hwp",
-];
 
+//파일명구분 down, view 201027 hjshyo
+$doc_list = [
+    'paper_sample_url' => "논문샘플.hwp",
+    'info_form_url' => "논문게재신청서.hwp",
+    'ethic_form_url' => "연구윤리준수동의서.hwp",
+    'revision_form_url' => "수정대조표(A).hwp",
+    // 'author_checklist_url' => ".hwp",
+    'copyright_agreement' => "저작권이양동의서.hwp",
+    'review_form_url1' => "심사표.hwp",
+    'review_form_url2' => "심사표.hwp",
+    'review_form_url3' => "심사표.hwp",
+];
 foreach($doc_list as $k => $v) {
     $filename = urlencode($v);
     $info[$k] = "/down.php?link=/data/file/".$filename;
+}
+$view_list = [
+    'submit_rule_url' => "투고규정및논문작성법.pdf",
+    'ethic_rule_url' => "연구윤리규정.pdf",
+    'review_rule_url' => "심사규정.pdf",
+    'publish_rule_url' => "편집규정.pdf",
+    'author_manual_url' => "manual_author.pdf",
+    'reviewer_manual_url' => "manual_reviewer.pdf",
+    'manual_url' => "manual.pdf",
+];
+foreach($view_list as $k => $v) {
+    $filename = urlencode($v);
+    $info[$k] = "/view.php?link=/data/file/".$filename;
 }
 
 //상세설정

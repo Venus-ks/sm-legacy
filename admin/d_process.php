@@ -400,6 +400,7 @@ else if($_POST['mode']=="d_sub4_reg") {
 	if($_POST['result'] == 4) {
 		sql_query("UPDATE ad_paper SET settle_date = now(), step = 50 WHERE seq = '{$_POST['seq']}'");
 		$body = "{$mail_header}<p>{$info['institute_title']} [{$info['journal_title']}] 논문 검토 완료 {$info['abbr']}-{$id_year}-{$number}</p><p>편집위원장님</p><p>&nbsp; 본 학회 {$info['institute_title']}지에 {$_POST['mb_name']}님이 투고한 원고의 심사결과가 '게재불가'로 최종논문 검토 완료되었습니다.</p></td></tr><tr><td height='15'></td></tr><tr><td height='51' align='left' valign='top'><p>원고 세부 사항</p><p>제목 : {$_POST['title']}</p><p>키워드 : {$_POST['keyword']}</p></td></tr><tr><td height='15'></td></tr><tr><td height='80' align='center' valign='top' bgcolor='#FFF'>{$mail_footer}";
+		$mail->sendInput($_POST['mb_id'], $_POST['mb_name'], $body_toauth, $subject);
 		$mail->sendInput($main_editor, '편집장', $body);
 	} else if($_POST['result'] == 2 || $_POST['result'] == 3){
 		// 1차 수정요청 메일 발송. 2차수정요청은 없음
@@ -1213,8 +1214,8 @@ else if($_POST['mode']=="reject_article"){
 	$msg		= "처리 되었습니다.";
 	$returnUrl	= "./d_sub01.php";
 }else if($_POST['mode']=="d_setting"){
-	$fdate = date('Y-m-d',strtotime($_POST['sdate']));
-	$ldate = date('Y-m-d',strtotime($_POST['edate']));
+	$fdate = trim($_POST['sdate']);
+	$ldate = trim($_POST['edate']);
 	$sql = "UPDATE ad_config SET
 				service_fdate	= '{$fdate}',
 				service_ldate	= '{$ldate}'";

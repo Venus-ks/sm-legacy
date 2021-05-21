@@ -92,12 +92,12 @@ $write_pages = get_paging(10, $page, $total_page, "./d_member.php?page=");
 						<option value="">= 선택 =</option>
 						<option value="2" <? if($_GET['grade']=="2"){ ?>selected<? } ?>>정회원</option>
 						<option value="4" <? if($_GET['grade']=="4"){ ?>selected<? } ?>>심사위원</option>
-						<option value="5" <? if($_GET['grade']=="5"){ ?>selected<? } ?>>편집위원</option>
-						<option value="6" <? if($_GET['grade']=="6"){ ?>selected<? } ?>>시스템관리자</option>
+						<option value="10" <? if($_GET['grade']=="10"){ ?>selected<? } ?>>편집장</option>
+						<!-- <option value="6" <? if($_GET['grade']=="6"){ ?>selected<? } ?>>시스템관리자</option>
 						<option value="7" <? if($_GET['grade']=="7"){ ?>selected<? } ?>>학생회원</option>
 						<option value="8" <? if($_GET['grade']=="8"){ ?>selected<? } ?>>대표간사</option>
 						<option value="9" <? if($_GET['grade']=="9"){ ?>selected<? } ?>>임시대표간사</option>
-						<option value="10" <? if($_GET['grade']=="10"){ ?>selected<? } ?>>최고관리자</option>
+						<option value="10" <? if($_GET['grade']=="10"){ ?>selected<? } ?>>최고관리자</option> -->
 				</select>
 
 				<select name="cat" id="cat" style="width:100px;height:24px;line-height:21px;display:none;">
@@ -190,8 +190,8 @@ $write_pages = get_paging(10, $page, $total_page, "./d_member.php?page=");
 		<!-- ### PAGING -->
 		<?
 		$page_table		= $write_pages;
-		$page_table		= str_replace("처음", "<span class=\"next\"><img src=\"/images/list_prev.png\" /></span>", $page_table);
-		$page_table		= str_replace("맨끝", "<span class=\"next\"><img src=\"/images/list_next.png\" /></span>", $page_table);
+		// $page_table		= str_replace("처음", "<span class=\"next\"><img src=\"/images/list_prev.png\" /></span>", $page_table);
+		// $page_table		= str_replace("맨끝", "<span class=\"next\"><img src=\"/images/list_next.png\" /></span>", $page_table);
 		$page_table		= str_replace("&nbsp;", "", $page_table);
 		$page_table		= preg_replace("/<b>([0-9]*)<\/b>/", "<span class=\"on\">$1</span>", $page_table);
 		echo $page_table;

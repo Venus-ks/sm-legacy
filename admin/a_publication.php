@@ -241,8 +241,8 @@ $write_pages = get_paging(10, $page, $total_page, "./a_publication.php?page=");
 		<!-- ### PAGING -->
 		<?
 		$page_table		= $write_pages;
-		$page_table		= str_replace("처음", "<span class=\"next\"><img src=\"/images/list_prev.png\" /></span>", $page_table);
-		$page_table		= str_replace("맨끝", "<span class=\"next\"><img src=\"/images/list_next.png\" /></span>", $page_table);
+		// $page_table		= str_replace("처음", "<span class=\"next\"><img src=\"/images/list_prev.png\" /></span>", $page_table);
+		// $page_table		= str_replace("맨끝", "<span class=\"next\"><img src=\"/images/list_next.png\" /></span>", $page_table);
 		$page_table		= str_replace("&nbsp;", "", $page_table);
 		$page_table		= preg_replace("/<b>([0-9]*)<\/b>/", "<span class=\"on\">$1</span>", $page_table);
 		echo $page_table;

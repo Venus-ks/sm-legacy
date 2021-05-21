@@ -126,7 +126,7 @@ table input {height:21px;margin:2px}
 				</td>
                 <td width="10px">&nbsp;</td>
 				<td align="left" width="50%">
-					<a href="a_sub01.php"><img src="../images/btn_cancel.png" /></a></td>
+					<a href="#" onclick="javascript:history.go(-1)"><img src="../images/btn_cancel.png" /></a></td>
 			</tr>
 			</table>
 

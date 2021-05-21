@@ -31,6 +31,8 @@ if($_GET['seq']){
 				<input type="hidden" name="mode" value="d_sub_reg"/>
 				<input type="hidden" name="seq" value="<?=$data['seq']?>"/>
 				<input type="hidden" name="step" value="<?=$data['step']?>"/>
+				<input type="hidden" name="mb_id" value="<?=$data['mb_id']?>"/>
+				<input type="hidden" name="mb_name" value="<?=$data['mb_name']?>"/>
 				<input type="hidden" name="express_publication" value="<?=$data['express_publication']?>">
 				<input type="hidden" name="review_category" value="<?=$data['review_category']?>">
 				<input type="hidden" name="number" value="<?=$data['number']?>"/>
