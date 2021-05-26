@@ -35,6 +35,8 @@ submit_ok = '';
 				<input type="hidden" name="mode" value="a_sub_reg"/>
 				<input type="hidden" name="seq" value="<?=$data['seq']?>"/>
 				<input type="hidden" name="step" value="<?=$data['step']?>"/>
+				<input type="hidden" name="mb_id" value="<?=$data['mb_id']?>"/>
+				<input type="hidden" name="mb_name" value="<?=$data['mb_name']?>"/>
 				<input type="hidden" name="number" value="<?=$data['number']?>"/>
 				<input type="hidden" name="auth_seq" value="">
 				<table width="100%" border="0" cellspacing="0" cellpadding="0">
