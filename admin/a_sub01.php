@@ -108,10 +108,12 @@ $write_pages = get_paging(10, $page, $total_page, "./a_sub01.php?page=");
 						<input type="image" src="../images/btn_search.png" align="absmiddle" style="border:0px;"/></td>
 				</tr>
 				<tr>
-					<td height="32">&nbsp;</td>
-				</tr>
-				<tr>
-					<td><a href="a_sub01_write.php"><img src="../images/btn_paper_registration.png" /></a></td>
+					<!-- <td><a href="a_sub01_write.php"><img src="../images/btn_paper_registration.png" /></a></td> -->
+					<td>
+						<a href="a_sub01_write.php" class="btn btn-danger btn-lg btn-block text-white mt-2">
+							<i class="fa fa-plus icon-plus lnr lnr-plus ion-ios-plus-outline"></i>&nbsp;Paper Submission(논문투고)
+						</a>
+					</td>
 				</tr>
 				</table>
 				</form>

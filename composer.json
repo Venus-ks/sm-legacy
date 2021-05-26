@@ -1,6 +1,7 @@
 {
     "require": {
         "apfelbox/php-file-download": "^2.1",
-        "league/flysystem": "1.0.28"
-     }
+        "league/flysystem": "1.0.28",
+        "philo/laravel-blade": "3.*"
+    }
 }

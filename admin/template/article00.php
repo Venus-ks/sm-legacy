@@ -20,27 +20,29 @@
 			</td>
 		</tr>
 		<tr>
-			<th width="200">논문명(국문)<br/>Paper Title (Kor)</th>
-			<td><input type="text" name="title" value="<?=$data['title']?>" itemname="Title" required style="width:100%;" /></td>
+			<th width="200">논문명(국문)<span class="required">*</span><br/>Paper Title (Kor)</th>
+			<td>
+				<input type="text" name="title" value="<?=$data['title']?>" itemname="Title" required style="width:100%;" />
+			</td>
 		</tr>
 		<tr>
-			<th width="200">논문명(영문)<br/>Paper Title (Eng)</th>
+			<th width="200">논문명(영문)<span class="required">*</span><br/>Paper Title (Eng)</th>
 			<td><input type="text" name="title_eng" value="<?=$data['title_eng']?>" itemname="Title(ENG)" required style="width:100%;" /></td>
 		</tr>
 		<tr>
-			<th width="200">초록(국문)<br/>Abstract(KOR)</th>
+			<th width="200">초록(국문)<span class="required">*</span><br/>Abstract(KOR)</th>
 			<td><textarea cols="10" name="abstract" itemname="abstract" style="width:100%;height:100px"><?=$data['abstract']?></textarea><BR/></td>
 		</tr>
 		<tr>
-			<th width="200">초록(영문)<br/>Abstract(ENG)</th>
+			<th width="200">초록(영문)<span class="required">*</span><br/>Abstract(ENG)</th>
 			<td><textarea cols="10" name="abstract_eng" itemname="abstract_eng" style="width:100%;height:100px"><?=$data['abstract_eng']?></textarea><BR/></td>
 		</tr>
 		<tr>
-			<th width="200">키워드(국문)<br/>Keywords(KOR)</th>
+			<th width="200">키워드(국문)<span class="required">*</span><br/>Keywords(KOR)</th>
 			<td><input type="text" name="keyword" value="<?=$data['keyword']?>" itemname="keyword" style="width:100%;" /><BR/>※ 키워드 5개까지 입력가능합니다. 콤마(,)로 구분합니다.</td>
 		</tr>
 		<tr>
-			<th width="200">키워드(영문)<br/>Keywords(ENG)</th>
+			<th width="200">키워드(영문)<span class="required">*</span><br/>Keywords(ENG)</th>
 			<td><input type="text" name="keyword_eng" value="<?=$data['keyword_eng']?>" itemname="keyword_eng" style="width:100%;" /><BR/>※ 키워드 5개까지 입력가능합니다. 콤마(,)로 구분합니다.</td>
 		</tr>
 		</table>
@@ -70,7 +72,7 @@
 			</td>
 		</tr>
 		<tr>
-			<th width="200">투고논문 파일<br/>Paper File</th>
+			<th width="200">투고논문 파일<span class="required">*</span><br/>Paper File</th>
 			<td>
 				<input type="file" name="submission_data" style="width:100%;" <?=($data['seq'])?'':'required'?>/>
 				<? if($data['submission_data']){ ?>
@@ -83,7 +85,7 @@
 			-->
 			</td>
 		</tr>
-		<? if($data['step']>1){ ?>
+		<?php if($data['step']>1 || !$data['step']):?>
 		<tr>
 			<th width="200">논문수정표<br/>Author's Edit Table</th>
 			<td>
@@ -95,7 +97,7 @@
 				<a href="<?=$info['revision_form_url']?>"><strong style="color:#B60000">양식 다운로드</strong></a>
 			</td>
 		</tr>
-		<? } ?>
+		<?php endif ?>
 		<tr>
 			<th width="200">투고논문신청서<br/>Submission Information</th>
 			<td>
@@ -121,7 +123,7 @@
 			</td>
 		</tr>
 		<tr>
-			<th width="200">연구윤리동의서<br/>Research Ethics Form</th>
+			<th width="200">연구윤리동의서<span class="required">*</span><br/>Research Ethics Form</th>
 			<td>
 				<input type="file" name="submission_data4" style="width:100%;" <?=($data['submission_data4'])?'':'required'?>/>
 				<? if($data['step']>0 && $data['submission_data4']){ ?>

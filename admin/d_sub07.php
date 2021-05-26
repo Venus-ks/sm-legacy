@@ -168,6 +168,7 @@ $write_pages = get_paging(10, $page, $total_page, "./d_sub07.php?page=");
 				<th><strong>이메일</strong></th>
 				<th><strong>심사중/심사완료</strong></th>
 				<th><strong>심사승인/심사거부</strong></th>
+				<th><strong>최신계좌정보</strong></th>
 				<th width="85"><strong>관리</strong></th>
 			</tr>
 			<?
@@ -184,6 +185,7 @@ $write_pages = get_paging(10, $page, $total_page, "./d_sub07.php?page=");
 				<td><?=$list[$i]['mb_email']?></td>
 				<td><?=get_review_type($list[$i]['mb_id'],"")?> / <?=get_review_type2($list[$i]['mb_id'],"")?></td>
 				<td><?=get_confirm_Y($list[$i]['mb_id'])?> / <?=get_confirm_N($list[$i]['mb_id'])?></td>
+				<td><?=get_account($list[$i]['mb_id'])?></td>
 				<td>
 					<a href="javascript:deleteMember('<?=$list[$i]['mb_no']?>');" class="btn btn-sm  btn-danger" style="color:#FFF;margin:2px">삭제</a>
 					<a href="javascript:changeToReviewer('<?=$list[$i]['mb_no']?>');" class="btn btn-sm btn-info" style="color:#FFF;margin:2px">심사대행</a>

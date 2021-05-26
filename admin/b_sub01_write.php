@@ -65,6 +65,11 @@ if($_GET['seq']){
 														<td><?=$review[$i]['regdate']?></td>
 													</tr>
 													<?php
+													//계좌정보
+													if($review[$i]['account']) $acc = explode('|',$review[$i]['account']);
+													include('./widget/account.php');
+													?>
+													<?php
 													//설문형태 요구시
 													//include('./widget/question-list-result.php')
 													?>
@@ -84,6 +89,10 @@ if($_GET['seq']){
 											<? } ?>
 										<? } ?>
 										<table class="boardType01_write" style="margin-top:20px;">
+											<?php
+											//계좌정보
+											include('./widget/account.php');
+											?>
 											<?php
 											//설문형태 요구시
 											//include('./widget/question-list.php');

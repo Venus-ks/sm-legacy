@@ -126,6 +126,11 @@ class GoogleTemplateMailer extends PHPMailer
 		$this->ClearAddresses();
 		$this->MsgHTML($body);
 		$this->AddAddress($mailto, $nameto);
+		return $this->sendWithLog();
+	}
+
+	private function sendWithLog()
+	{
 		if(!$this->Send()) {
 			$this->Dbconn->query("insert into ad_mail_log set
 						parent_seq	= '{$this->seq}',
@@ -133,6 +138,7 @@ class GoogleTemplateMailer extends PHPMailer
 						error_info	= '{$this->ErrorInfo}',
 						address	= '{$mailto}',
 						regdate	= now()");
+			return false;
 		}
 		else {
 			$this->Dbconn->query("insert into ad_mail_log set
@@ -140,6 +146,7 @@ class GoogleTemplateMailer extends PHPMailer
 						mail_yn	= 'Y',
 						address	= '{$mailto}',
 						regdate = now()");
+			return true;
 		}
 	}
 }
