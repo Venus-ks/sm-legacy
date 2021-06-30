@@ -169,7 +169,7 @@ $write_pages = get_paging(10, $page, $total_page, "./d_sub07.php?page=");
 				<th><strong>심사중/심사완료</strong></th>
 				<th><strong>심사승인/심사거부</strong></th>
 				<th><strong>최신계좌정보</strong></th>
-				<th width="85"><strong>관리</strong></th>
+				<th width="95"><strong>관리</strong></th>
 			</tr>
 			<?
 				if(count($list)){

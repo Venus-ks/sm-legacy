@@ -1,53 +1,27 @@
--- MySQL dump 10.13  Distrib 5.7.26, for Linux (x86_64)
---
--- Host: localhost    Database: sm_develop
--- ------------------------------------------------------
--- Server version	5.7.26-log
+-- Adminer 4.7.5 MySQL dump
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
---
---
--- Table structure for table `ad_check_review`
---
+SET NAMES utf8;
+SET time_zone = '+00:00';
+SET foreign_key_checks = 0;
+SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
 DROP TABLE IF EXISTS `ad_check_review`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ad_check_review` (
   `id` mediumint(9) NOT NULL,
   `part` mediumint(9) NOT NULL,
   `title` varchar(64) NOT NULL,
   `content` varchar(256) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `ad_check_review`
---
-
-LOCK TABLES `ad_check_review` WRITE;
-/*!40000 ALTER TABLE `ad_check_review` DISABLE KEYS */;
-INSERT INTO `ad_check_review` VALUES (1,1,'평기기준','연구제목의 명료성'),(2,1,'평기기준','연구목적의 명료성'),(3,1,'평기기준','연구방법의 적절성'),(4,1,'평기기준','결과해석 및 논의의 적절성'),(5,1,'평기기준','연구의 독창성'),(6,1,'평기기준','연구결과의 유용성');
-/*!40000 ALTER TABLE `ad_check_review` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `ad_config`
---
+INSERT INTO `ad_check_review` (`id`, `part`, `title`, `content`) VALUES
+(1,	1,	'평기기준',	'연구제목의 명료성'),
+(2,	1,	'평기기준',	'연구목적의 명료성'),
+(3,	1,	'평기기준',	'연구방법의 적절성'),
+(4,	1,	'평기기준',	'결과해석 및 논의의 적절성'),
+(5,	1,	'평기기준',	'연구의 독창성'),
+(6,	1,	'평기기준',	'연구결과의 유용성');
 
 DROP TABLE IF EXISTS `ad_config`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ad_config` (
   `content01` text NOT NULL,
   `content02` text NOT NULL,
@@ -58,61 +32,9 @@ CREATE TABLE `ad_config` (
   `service_ldate` date DEFAULT NULL,
   `regdate` date NOT NULL DEFAULT '0000-00-00'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `ad_config`
---
-
-LOCK TABLES `ad_config` WRITE;
-/*!40000 ALTER TABLE `ad_config` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ad_config` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `ad_journal`
---
-
-DROP TABLE IF EXISTS `ad_journal`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `ad_journal` (
-  `seq` int(11) NOT NULL AUTO_INCREMENT,
-  `mb_id` varchar(100) DEFAULT '',
-  `mb_name` varchar(100) DEFAULT '',
-  `title` varchar(255) NOT NULL DEFAULT '',
-  `title_eng` varchar(255) NOT NULL DEFAULT '',
-  `issn` varchar(255) NOT NULL DEFAULT '',
-  `issn_ec` varchar(255) NOT NULL DEFAULT '',
-  `issn_cd` varchar(255) NOT NULL DEFAULT '',
-  `sdate` varchar(10) NOT NULL DEFAULT '',
-  `edate` varchar(10) NOT NULL DEFAULT '',
-  `category` varchar(255) NOT NULL DEFAULT '',
-  `field` varchar(255) NOT NULL DEFAULT '',
-  `cont` text NOT NULL,
-  `cont_eng` text NOT NULL,
-  `regdate` date NOT NULL DEFAULT '0000-00-00',
-  PRIMARY KEY (`seq`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `ad_journal`
---
-
-LOCK TABLES `ad_journal` WRITE;
-/*!40000 ALTER TABLE `ad_journal` DISABLE KEYS */;
-INSERT INTO `ad_journal` VALUES (1,'대표이메일','','학회명','영문학회명','ISSN','','','','','','','','','0000-00-00');
-/*!40000 ALTER TABLE `ad_journal` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `ad_mail_log`
---
 
 DROP TABLE IF EXISTS `ad_mail_log`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ad_mail_log` (
   `parent_seq` int(11) NOT NULL,
   `mail_yn` varchar(1) NOT NULL,
@@ -120,24 +42,9 @@ CREATE TABLE `ad_mail_log` (
   `address` varchar(255) NOT NULL,
   `regdate` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `ad_mail_log`
---
-
-LOCK TABLES `ad_mail_log` WRITE;
-/*!40000 ALTER TABLE `ad_mail_log` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ad_mail_log` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `ad_mail_text`
---
 
 DROP TABLE IF EXISTS `ad_mail_text`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ad_mail_text` (
   `uid` int(11) NOT NULL,
   `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -145,24 +52,9 @@ CREATE TABLE `ad_mail_text` (
   `content` text COLLATE utf8_unicode_ci NOT NULL,
   `adds` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `ad_mail_text`
---
-
-LOCK TABLES `ad_mail_text` WRITE;
-/*!40000 ALTER TABLE `ad_mail_text` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ad_mail_text` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `ad_paper`
---
 
 DROP TABLE IF EXISTS `ad_paper`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ad_paper` (
   `seq` int(11) NOT NULL AUTO_INCREMENT,
   `mb_id` varchar(100) DEFAULT '',
@@ -230,24 +122,9 @@ CREATE TABLE `ad_paper` (
   PRIMARY KEY (`seq`),
   KEY `mb_id` (`mb_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `ad_paper`
---
-
-LOCK TABLES `ad_paper` WRITE;
-/*!40000 ALTER TABLE `ad_paper` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ad_paper` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `ad_paper_auth`
---
 
 DROP TABLE IF EXISTS `ad_paper_auth`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ad_paper_auth` (
   `auth_seq` int(11) NOT NULL AUTO_INCREMENT,
   `parent_seq` int(11) DEFAULT '0',
@@ -263,24 +140,9 @@ CREATE TABLE `ad_paper_auth` (
   PRIMARY KEY (`auth_seq`),
   KEY `mb_id` (`parent_seq`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `ad_paper_auth`
---
-
-LOCK TABLES `ad_paper_auth` WRITE;
-/*!40000 ALTER TABLE `ad_paper_auth` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ad_paper_auth` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `ad_paper_auth_deleted`
---
 
 DROP TABLE IF EXISTS `ad_paper_auth_deleted`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ad_paper_auth_deleted` (
   `auth_seq` int(11) NOT NULL,
   `parent_seq` int(11) DEFAULT '0',
@@ -296,24 +158,9 @@ CREATE TABLE `ad_paper_auth_deleted` (
   KEY `mb_id` (`parent_seq`),
   KEY `auth_seq` (`auth_seq`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `ad_paper_auth_deleted`
---
-
-LOCK TABLES `ad_paper_auth_deleted` WRITE;
-/*!40000 ALTER TABLE `ad_paper_auth_deleted` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ad_paper_auth_deleted` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `ad_paper_deleted`
---
 
 DROP TABLE IF EXISTS `ad_paper_deleted`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ad_paper_deleted` (
   `seq` int(11) NOT NULL,
   `mb_id` varchar(100) DEFAULT '',
@@ -381,24 +228,9 @@ CREATE TABLE `ad_paper_deleted` (
   KEY `mb_id` (`mb_id`),
   KEY `seq` (`seq`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `ad_paper_deleted`
---
-
-LOCK TABLES `ad_paper_deleted` WRITE;
-/*!40000 ALTER TABLE `ad_paper_deleted` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ad_paper_deleted` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `ad_paper_review`
---
 
 DROP TABLE IF EXISTS `ad_paper_review`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ad_paper_review` (
   `rseq` int(11) NOT NULL AUTO_INCREMENT,
   `parent_seq` int(11) DEFAULT '0',
@@ -417,24 +249,9 @@ CREATE TABLE `ad_paper_review` (
   `rstep` int(11) DEFAULT '1',
   PRIMARY KEY (`rseq`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `ad_paper_review`
---
-
-LOCK TABLES `ad_paper_review` WRITE;
-/*!40000 ALTER TABLE `ad_paper_review` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ad_paper_review` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `ad_paper_total`
---
 
 DROP TABLE IF EXISTS `ad_paper_total`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ad_paper_total` (
   `tseq` int(11) NOT NULL AUTO_INCREMENT,
   `parent_seq` int(11) DEFAULT '0',
@@ -446,24 +263,9 @@ CREATE TABLE `ad_paper_total` (
   `regdate` date NOT NULL DEFAULT '0000-00-00',
   PRIMARY KEY (`tseq`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `ad_paper_total`
---
-
-LOCK TABLES `ad_paper_total` WRITE;
-/*!40000 ALTER TABLE `ad_paper_total` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ad_paper_total` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `ad_reviewer_log`
---
 
 DROP TABLE IF EXISTS `ad_reviewer_log`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ad_reviewer_log` (
   `parent_seq` int(11) NOT NULL,
   `review_user` varchar(255) NOT NULL,
@@ -472,24 +274,9 @@ CREATE TABLE `ad_reviewer_log` (
   `confirm` varchar(1) NOT NULL,
   `confirmdate` date NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `ad_reviewer_log`
---
-
-LOCK TABLES `ad_reviewer_log` WRITE;
-/*!40000 ALTER TABLE `ad_reviewer_log` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ad_reviewer_log` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `g4_config`
---
 
 DROP TABLE IF EXISTS `g4_config`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `g4_config` (
   `cf_title` varchar(255) NOT NULL DEFAULT '',
   `cf_admin` varchar(255) NOT NULL DEFAULT '',
@@ -591,24 +378,9 @@ CREATE TABLE `g4_config` (
   `cf_9` varchar(255) NOT NULL DEFAULT '',
   `cf_10` varchar(255) NOT NULL DEFAULT ''
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `g4_config`
---
-
-LOCK TABLES `g4_config` WRITE;
-/*!40000 ALTER TABLE `g4_config` DISABLE KEYS */;
-/*!40000 ALTER TABLE `g4_config` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `g4_member`
---
 
 DROP TABLE IF EXISTS `g4_member`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `g4_member` (
   `mb_no` int(11) NOT NULL AUTO_INCREMENT,
   `mb_id` varchar(255) NOT NULL DEFAULT '',
@@ -666,26 +438,18 @@ CREATE TABLE `g4_member` (
   UNIQUE KEY `mb_id` (`mb_id`),
   KEY `mb_today_login` (`mb_today_login`),
   KEY `mb_datetime` (`mb_datetime`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `g4_member`
---
-
-LOCK TABLES `g4_member` WRITE;
-/*!40000 ALTER TABLE `g4_member` DISABLE KEYS */;
-INSERT INTO `g4_member` VALUES (1,'admin@site.com','*A4B6157319038724E3560894F7F932C8886EBFCF','편집위원장','','0000-00-00','admin@site.com','','','',10,'*EC2A66B6D554020B8C68D442F5F31E1558D4AE69','','','','','','','','','','','','',8700,'2020-05-29 11:15:16','125.129.246.60','2013-05-15 16:45:25','114.200.239.60','','','2013-05-15 16:45:25','','',1,0,1,'0000-00-00','','','','','','','','','','','','','normal',''),(2,'user@site.com','*A4B6157319038724E3560894F7F932C8886EBFCF','테스터','','2013-06-06','user@site.com','','','',2,'','M','19810609','','','','','','','','','','',9300,'2018-12-14 09:43:44','125.129.246.69','2013-06-06 02:35:38','203.234.216.182','','','2013-06-06 02:35:38','','',1,1,1,'2013-06-06','','','','','','','','','','','','','normal',''),(3,'a@site.com','*A4B6157319038724E3560894F7F932C8886EBFCF','심사위원A','','0000-00-00','a@site.com','','','',4,'','','19800611','0000-0000-000','','135','806','','1-1','','','','',3500,'2018-12-14 10:05:59','125.129.246.69','2013-06-11 17:52:38','1.215.232.34','','','0000-00-00 00:00:00','','',0,0,0,'0000-00-00','','','','','','','','','','','','','review','1'),(4,'b@site.com','*A4B6157319038724E3560894F7F932C8886EBFCF','심사위원B','','0000-00-00','b@site.com','','','',4,'','','19820609','000-0000-0000','','135','807','','2-2','','','','',1800,'2018-12-14 10:07:15','125.129.246.69','2013-06-11 17:53:55','1.215.232.34','','','0000-00-00 00:00:00','','',0,0,0,'0000-00-00','','','','','','','','','','','','','review','1'),(5,'c@site.com','*A4B6157319038724E3560894F7F932C8886EBFCF','심사위원C','','0000-00-00','c@site.com','','','',4,'','','19860319','333-3333-3333','','135','806','','3-3','','','','',1700,'2018-12-14 10:07:33','125.129.246.69','2013-06-11 17:55:25','1.215.232.34','','','0000-00-00 00:00:00','','',0,0,0,'0000-00-00','','','','','','','','','','','','','review','1'),(6,'d@site.com','*A4B6157319038724E3560894F7F932C8886EBFCF','심사위원D','','0000-00-00','d@site.com','','','',4,'','','','1234','1234','','','1234','','','','','',0,'2018-11-09 14:50:14','125.129.246.60','2017-07-21 17:18:37','125.129.246.69','','','0000-00-00 00:00:00','','',0,0,0,'0000-00-00','','','','','','','','','','','','','review',''),(7,'hjshyo@hakjisa.co.kr','*A4B6157319038724E3560894F7F932C8886EBFCF','시스템관리자','','0000-00-00','hjshyo@hakjisa.co.kr','','','',10,'','','','02-330-5171','1234','','','1234','','','','','',0,'2018-11-09 14:50:14','125.129.246.60','2017-07-21 17:18:37','125.129.246.69','','','0000-00-00 00:00:00','','',0,0,0,'0000-00-00','','','','','','','','','','','','','review','');
-/*!40000 ALTER TABLE `g4_member` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `g4_visit`
---
+INSERT INTO `g4_member` (`mb_no`, `mb_id`, `mb_password`, `mb_name`, `mb_nick`, `mb_nick_date`, `mb_email`, `mb_homepage`, `mb_password_q`, `mb_password_a`, `mb_level`, `mb_jumin`, `mb_sex`, `mb_birth`, `mb_tel`, `mb_hp`, `mb_zip1`, `mb_zip2`, `mb_addr1`, `mb_addr2`, `mb_addr3`, `mb_addr_jibeon`, `mb_signature`, `mb_recommend`, `mb_point`, `mb_today_login`, `mb_login_ip`, `mb_datetime`, `mb_ip`, `mb_leave_date`, `mb_intercept_date`, `mb_email_certify`, `mb_memo`, `mb_lost_certify`, `mb_mailling`, `mb_sms`, `mb_open`, `mb_open_date`, `mb_profile`, `mb_memo_call`, `mb_1`, `mb_2`, `mb_3`, `mb_4`, `mb_5`, `mb_6`, `mb_7`, `mb_8`, `mb_9`, `mb_10`, `gb`, `field`) VALUES
+(1,	'admin@site.com',	'*A4B6157319038724E3560894F7F932C8886EBFCF',	'편집위원장',	'',	'0000-00-00',	'admin@site.com',	'',	'',	'',	10,	'*EC2A66B6D554020B8C68D442F5F31E1558D4AE69',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	8700,	'2021-06-30 15:36:27',	'125.129.246.60',	'2013-05-15 16:45:25',	'114.200.239.60',	'',	'',	'2013-05-15 16:45:25',	'',	'',	1,	0,	1,	'0000-00-00',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'normal',	''),
+(2,	'user@site.com',	'*A4B6157319038724E3560894F7F932C8886EBFCF',	'테스터',	'',	'2013-06-06',	'user@site.com',	'',	'',	'',	2,	'',	'M',	'19810609',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	9300,	'2018-12-14 09:43:44',	'125.129.246.69',	'2013-06-06 02:35:38',	'203.234.216.182',	'',	'',	'2013-06-06 02:35:38',	'',	'',	1,	1,	1,	'2013-06-06',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'normal',	''),
+(3,	'a@site.com',	'*A4B6157319038724E3560894F7F932C8886EBFCF',	'심사위원A',	'',	'0000-00-00',	'a@site.com',	'',	'',	'',	4,	'',	'',	'19800611',	'0000-0000-000',	'',	'135',	'806',	'',	'1-1',	'',	'',	'',	'',	3500,	'2021-05-21 14:59:09',	'125.129.246.60',	'2013-06-11 17:52:38',	'1.215.232.34',	'',	'',	'0000-00-00 00:00:00',	'',	'',	0,	0,	0,	'0000-00-00',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'review',	'1'),
+(4,	'b@site.com',	'*A4B6157319038724E3560894F7F932C8886EBFCF',	'심사위원B',	'',	'0000-00-00',	'b@site.com',	'',	'',	'',	4,	'',	'',	'19820609',	'000-0000-0000',	'',	'135',	'807',	'',	'2-2',	'',	'',	'',	'',	1800,	'2018-12-14 10:07:15',	'125.129.246.69',	'2013-06-11 17:53:55',	'1.215.232.34',	'',	'',	'0000-00-00 00:00:00',	'',	'',	0,	0,	0,	'0000-00-00',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'review',	'1'),
+(5,	'c@site.com',	'*A4B6157319038724E3560894F7F932C8886EBFCF',	'심사위원C',	'',	'0000-00-00',	'c@site.com',	'',	'',	'',	4,	'',	'',	'19860319',	'333-3333-3333',	'',	'135',	'806',	'',	'3-3',	'',	'',	'',	'',	1700,	'2018-12-14 10:07:33',	'125.129.246.69',	'2013-06-11 17:55:25',	'1.215.232.34',	'',	'',	'0000-00-00 00:00:00',	'',	'',	0,	0,	0,	'0000-00-00',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'review',	'1'),
+(6,	'd@site.com',	'*A4B6157319038724E3560894F7F932C8886EBFCF',	'심사위원D',	'',	'0000-00-00',	'd@site.com',	'',	'',	'',	4,	'',	'',	'',	'1234',	'1234',	'',	'',	'1234',	'',	'',	'',	'',	'',	0,	'2018-11-09 14:50:14',	'125.129.246.60',	'2017-07-21 17:18:37',	'125.129.246.69',	'',	'',	'0000-00-00 00:00:00',	'',	'',	0,	0,	0,	'0000-00-00',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'review',	''),
+(7,	'hjshyo@hakjisa.co.kr',	'*A4B6157319038724E3560894F7F932C8886EBFCF',	'시스템관리자',	'',	'0000-00-00',	'hjshyo@hakjisa.co.kr',	'',	'',	'',	10,	'',	'',	'',	'02-330-5171',	'1234',	'',	'',	'1234',	'',	'',	'',	'',	'',	0,	'2018-11-09 14:50:14',	'125.129.246.60',	'2017-07-21 17:18:37',	'125.129.246.69',	'',	'',	'0000-00-00 00:00:00',	'',	'',	0,	0,	0,	'0000-00-00',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'review',	'');
 
 DROP TABLE IF EXISTS `g4_visit`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `g4_visit` (
   `vi_id` int(11) NOT NULL DEFAULT '0',
   `vi_ip` varchar(255) NOT NULL DEFAULT '',
@@ -697,50 +461,27 @@ CREATE TABLE `g4_visit` (
   UNIQUE KEY `index1` (`vi_ip`,`vi_date`),
   KEY `index2` (`vi_date`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `g4_visit`
---
-
-LOCK TABLES `g4_visit` WRITE;
-/*!40000 ALTER TABLE `g4_visit` DISABLE KEYS */;
-INSERT INTO `g4_visit` VALUES (1,'','2020-05-29','11:14:41','','');
-/*!40000 ALTER TABLE `g4_visit` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `g4_visit_sum`
---
+INSERT INTO `g4_visit` (`vi_id`, `vi_ip`, `vi_date`, `vi_time`, `vi_referer`, `vi_agent`) VALUES
+(1,	'',	'2020-05-29',	'11:14:41',	'',	''),
+(2,	'',	'2020-07-23',	'16:37:10',	'',	''),
+(3,	'',	'2020-09-07',	'15:01:23',	'',	''),
+(4,	'',	'2021-05-21',	'14:02:48',	'',	''),
+(5,	'',	'2021-06-30',	'15:09:14',	'',	'');
 
 DROP TABLE IF EXISTS `g4_visit_sum`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `g4_visit_sum` (
   `vs_date` date NOT NULL DEFAULT '0000-00-00',
   `vs_count` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`vs_date`),
   KEY `index1` (`vs_count`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `g4_visit_sum`
---
+INSERT INTO `g4_visit_sum` (`vs_date`, `vs_count`) VALUES
+('2020-05-29',	1),
+('2020-07-23',	1),
+('2020-09-07',	1),
+('2021-05-21',	1),
+('2021-06-30',	1);
 
-LOCK TABLES `g4_visit_sum` WRITE;
-/*!40000 ALTER TABLE `g4_visit_sum` DISABLE KEYS */;
-INSERT INTO `g4_visit_sum` VALUES ('2020-05-29',1);
-/*!40000 ALTER TABLE `g4_visit_sum` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
-
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2020-05-29 16:43:45
+-- 2021-06-30 06:52:08

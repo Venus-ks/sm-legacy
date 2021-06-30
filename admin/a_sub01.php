@@ -110,12 +110,12 @@ $write_pages = get_paging(10, $page, $total_page, "./a_sub01.php?page=");
 				<tr>
 					<!-- <td><a href="a_sub01_write.php"><img src="../images/btn_paper_registration.png" /></a></td> -->
 					<td>
-						<a href="a_sub01_write.php" class="btn btn-danger btn-lg btn-block text-white mt-2">
-							<i class="fa fa-plus icon-plus lnr lnr-plus ion-ios-plus-outline"></i>&nbsp;Paper Submission(논문투고)
-						</a>
 					</td>
 				</tr>
 				</table>
+						<a href="a_sub01_write.php" class="btn btn-danger btn-lg text-white mt-2">
+							<i class="fa fa-plus icon-plus lnr lnr-plus ion-ios-plus-outline"></i>&nbsp;Paper Submission(논문투고)
+						</a>
 				</form>
 				<!-- ### LIST -->
 				<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:12px;">

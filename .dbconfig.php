@@ -60,3 +60,80 @@ $GLOBALS['rule']['manuscript_target'] = ['단독연구','공동연구'];
 $GLOBALS['rule']['category_target'] = ['분야1','분야2','분야3','분야4','분야5','분야6'];
 $GLOBALS['rule']['get_result'] = ['게재가','수정 후 게재가','수정 후 재심사','게재불가'];
 $GLOBALS['rule']['get_result_2nd'] = ['게재가','게재불가'];
+
+//file array
+$info['file_arr'] = [
+    [
+        'name'=>'submission_data2',
+        'title'=>'제목 및 저자 인적사항 /<br>저자사진',
+        'eng_title'=>'Title page /<br> Portrait photography',
+        'file_on'=>false,
+        'msg'=>'파일을 압축(ZIP)하여 올려주시기 바랍니다./<br>Please zip the file and upload it.',
+        'file'=>'info_form_url',
+        'required'=>TRUE,
+    ],
+    [
+        'name'=>'submission_data3',
+        'title'=>'저작권 이양 동의서 및 이해관계 서약서',
+        'eng_title'=>'Copyright Release Form',
+        'file_on'=>true,
+        'msg'=>'다운로드 받은 양식을 작성하여, 업로드해주시기 바랍니다./<br>Please fill out the downloaded form and upload it.',
+        'file'=>'copyright_form_url',
+        'file_en'=>'copyright_form_en_url',
+        'required'=>TRUE,
+    ],
+    [
+        'name'=>'submission_data',
+        'title'=>'논문 본문',
+        'eng_title'=>'Manuscript file',
+        'file_on'=>false,
+        'file'=>'paper_sample_url',
+        'required'=>TRUE,
+    ],
+    [
+        'step'=>[10,11,20],
+        'name'=>'response_data',
+        'title'=>'논문 수정노트',
+        'eng_title'=>'Revision note',
+        'file_on'=>false,
+        'file'=>'response_data',
+        'required'=>TRUE,
+    ],
+    [
+        'name'=>'submission_cover_data',
+        'title'=>'그림',
+        'eng_title'=>'Figures',
+        'file_on'=>false,
+        'msg'=>'파일을 압축(ZIP)하여 올려주시기 바랍니다./<br>Please zip the file and upload it.',
+        // 'required'=>TRUE,
+        'review_open'=>TRUE,
+    ],
+    [
+        'name'=>'submission_add_data',
+        'title'=>'표',
+        'eng_title'=>'Tables',
+        'file_on'=>false,
+        'msg'=>'필요시 파일을 압축(ZIP)하여 올려주시기 바랍니다./<br>If necessary, Please zip the file and upload it.',
+        'review_open'=>TRUE,
+    ],
+    [
+        'name'=>'submission_data4',
+        'title'=>'잠재적 이해관계의 공개를 위한 ICMJE 서식',
+        'eng_title'=>'Conflict of Interest Form',
+        'file_on'=>true,
+        'msg'=>'다운로드 받은 양식을 작성하여, 업로드해주시기 바랍니다./<br>Please fill out the downloaded form and upload it.',
+        'file'=>'conflict_of_interest_form_url',
+        'file_en'=>'conflict_of_interest_form_en_url',
+        'required'=>TRUE,
+    ],
+    [
+        'name'=>'submission_data5',
+        'title'=>'진료기록 이용동의서',
+        'eng_title'=>'Release Form for Patient Record',
+        'file_on'=>true,
+        'msg'=>'다운로드 받은 양식을 작성하여, 업로드해주시기 바랍니다./<br>Please fill out the downloaded form and upload it.',
+        'file'=>'patient_record_form_url',
+        'file_en'=>'patient_record_form_en_url',
+        'required'=>false,
+    ],
+];
