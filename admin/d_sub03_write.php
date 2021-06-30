@@ -99,7 +99,7 @@ if($_GET['seq']){
 									<td class="tabB" width="130" rowspan="2" align="center"><a href="javascript:review_conf('review_b_conf','<?=$data['review_b_conf']?>');"><?if($data['review_b_conf']=="Y"){?><img src="../images/btn_paper_cancel.png" width="109" height="44" /><?}else{?><img src="../images/btn_paper_ok.png" width="109" height="44" /><?}?></a></td>
 								</tr>
 								<tr>
-									<td class="tabB"><a href="javascript:pop_choice('review_b');"><img src="../images/btn_paper_reviewer1.png" width="91" height="21" class="btnB"/></a>&nbsp;<a href="javascript:sendMail('<?=$data['review_b_user']?>','<?=$data['review_category']?>');"><img src="../images/btn_email.png"/></a></td>
+									<td class="tabB"><a href="javascript:pop_choice('review_b');"><img src="../images/btn_paper_reviewer1.png" width="91" height="21" class="btnB"/></a>&nbsp;<a href="javascript:sendMail('<?=$data['review_a_user']?>','<?=$data['review_category']?>');"><img src="../images/btn_email.png"/></a></td>
 								</tr>
 								<!-- <tr>
 									<td>
@@ -137,7 +137,7 @@ if($_GET['seq']){
 									<td class="tabC" width="130" rowspan="2" align="center"><a href="javascript:review_conf('review_c_conf','<?=$data['review_c_conf']?>');"><?if($data['review_c_conf']=="Y"){?><img src="../images/btn_paper_cancel.png" width="109" height="44" /><?}else{?><img src="../images/btn_paper_ok.png" width="109" height="44" /><?}?></a></td>
 								</tr>
 								<tr>
-									<td class="tabC"><a href="javascript:pop_choice('review_c');"><img src="../images/btn_paper_reviewer1.png" width="91" height="21" class="btnC"/></a>&nbsp;<a href="javascript:sendMail('<?=$data['review_a_user']?>','<?=$data['review_category']?>');"><img src="../images/btn_email.png"/></a></td>
+									<td class="tabC"><a href="javascript:pop_choice('review_c');"><img src="../images/btn_paper_reviewer1.png" width="91" height="21" class="btnC"/></a>&nbsp;<a href="javascript:sendMail('<?=$data['review_c_user']?>','<?=$data['review_category']?>');"><img src="../images/btn_email.png"/></a></td>
 								</tr>
 								<!-- <tr>
 									<td>
