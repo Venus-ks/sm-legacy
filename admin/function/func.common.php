@@ -2183,7 +2183,7 @@ function get_confirm_N($mb_id){
 }
 
 function get_account($mb_id){
-	$sql = "select account from ad_paper_review where mb_id='{$mb_id}' AND account is not null ORDER BY rseq LIMIT 0,1";;
+	$sql = "select account from ad_paper_review where mb_id='{$mb_id}' AND account is not null ORDER BY rseq DESC LIMIT 0,1";;
 	$review	= sql_fetch($sql);
 	$acc = explode('|',$review['account']);
     return $review['account'] ? "{$acc[0]} {$acc[1]} ({$acc[2]})" : '-'; 

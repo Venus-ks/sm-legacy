@@ -5,6 +5,29 @@ SET time_zone = '+00:00';
 SET foreign_key_checks = 0;
 SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
+DROP TABLE IF EXISTS `ad_journal`;
+CREATE TABLE `ad_journal` (
+  `seq` int(11) NOT NULL AUTO_INCREMENT,
+  `mb_id` varchar(100) DEFAULT '',
+  `mb_name` varchar(100) DEFAULT '',
+  `title` varchar(255) NOT NULL DEFAULT '',
+  `title_eng` varchar(255) NOT NULL DEFAULT '',
+  `issn` varchar(255) NOT NULL DEFAULT '',
+  `issn_ec` varchar(255) NOT NULL DEFAULT '',
+  `issn_cd` varchar(255) NOT NULL DEFAULT '',
+  `sdate` varchar(10) NOT NULL DEFAULT '',
+  `edate` varchar(10) NOT NULL DEFAULT '',
+  `category` varchar(255) NOT NULL DEFAULT '',
+  `field` varchar(255) NOT NULL DEFAULT '',
+  `cont` text NOT NULL,
+  `cont_eng` text NOT NULL,
+  `regdate` date NOT NULL DEFAULT '0000-00-00',
+  PRIMARY KEY (`seq`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+INSERT INTO `ad_journal` (`seq`, `mb_id`, `mb_name`, `title`, `title_eng`, `issn`, `issn_ec`, `issn_cd`, `sdate`, `edate`, `category`, `field`, `cont`, `cont_eng`, `regdate`) VALUES
+(1,	'대표이메일',	'',	'학회명',	'영문학회명',	'ISSN',	'',	'',	'',	'',	'',	'',	'',	'',	'0000-00-00');
+
 DROP TABLE IF EXISTS `ad_check_review`;
 CREATE TABLE `ad_check_review` (
   `id` mediumint(9) NOT NULL,

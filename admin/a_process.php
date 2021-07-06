@@ -24,8 +24,8 @@ require '../vendor/autoload.php';
 
 use Philo\Blade\Blade;
 
-$views = __DIR__ . '/views';
-$cache = __DIR__ . '/data/cache';
+$views = $_SERVER['DOCUMENT_ROOT'] . '/views';
+$cache = $_SERVER['DOCUMENT_ROOT'] . '/data/cache';
 
 $blade = new Blade($views, $cache);
 //넘버일련번호 지정
