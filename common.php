@@ -529,6 +529,9 @@ if (isset($board['bo_skin']))
 // 방문자수의 접속을 남김
 include_once("{$g4['bbs_path']}/visit_insert.inc.php");
 
+// 투고시스템 커스텀 셋팅
+include_once("$g4[path]/custom.php");
+
 
 // common.php 파일을 수정할 필요가 없도록 확장합니다.
 #$tmp = dir("$g4[path]/extend");

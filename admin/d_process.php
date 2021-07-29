@@ -1213,15 +1213,6 @@ else if($_POST['mode']=="reject_article"){
 	##############
 	$msg		= "처리 되었습니다.";
 	$returnUrl	= "./d_sub01.php";
-}else if($_POST['mode']=="d_setting"){
-	$fdate = trim($_POST['sdate']);
-	$ldate = trim($_POST['edate']);
-	$sql = "UPDATE ad_config SET
-				service_fdate	= '{$fdate}',
-				service_ldate	= '{$ldate}'";
-	sql_query($sql);
-	$msg		= "처리 되었습니다.";
-	$returnUrl	= "./d_setting.php";
 }else if($_POST['mode']=="d_sub10_reg"){
 	$score_arr = array();
 	for($i=1;$i<12;$i++) array_push($score_arr,$_POST['q'.$i]);

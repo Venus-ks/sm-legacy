@@ -168,7 +168,7 @@
 	<td class="leftmenuon"><strong>설정</strong><br />
 	<font class="font11">Setting</font></td>
 	<? }else{ ?>
-	<td class="leftmenuoff"><a href="d_setting.php" class="leftmenuofflink"><strong>설정</strong><br />
+	<td class="leftmenuoff"><a href="e_setting.php" class="leftmenuofflink"><strong>설정</strong><br />
 	<font class="font11">Setting</font></a></td>
 	<? } ?>
 </tr>

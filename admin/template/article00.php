@@ -78,58 +78,57 @@
 				<? if($data['submission_data']){ ?>
 				<div style="padding-top:5px;"><a href="/down.php?link=<?=$data['submission_data']?>"><?=end(explode("/",substr(strstr($data['submission_data'], '^'), 1)))?></a></div>
 				<? } ?>
-				<!--a href="<?=$info['paper_sample_url']?>"><strong style="color:#B60000">양식 다운로드</strong></a>
+				<a href="<?=$info['file']['paper_sample']['link']?>"><strong style="color:#B60000">양식 다운로드</strong></a>
 				<?php if(!$data['seq']):?>
 					<br/>한글프로그램을 이용하여 작성하되, 원고교정이 완료되어 그대로 출판될 수 있는 완전한 상태로 제출바랍니다.
 				<? endif?>
-			-->
 			</td>
 		</tr>
 		<?php if($data['step']>1 || !$data['step']):?>
 		<tr>
-			<th width="200">논문수정표<br/>Author's Edit Table</th>
+			<th width="200"><?=$info['file']['revision_form']['label']?></th>
 			<td>
 				<input type="file" name="response_data" style="width:100%;" <?=($data['response_data'])?'':'required'?>/>
 				<? if($data['step']>0 && $data['response_data']){ ?>
 				<div style="padding-top:5px;"><a href="/down.php?link=<?=$data['response_data']?>"><?=end(explode("/",substr(strstr($data['response_data'], '^'), 1)))?></a></div>
 				<? } ?>
 				<br/>
-				<a href="<?=$info['revision_form_url']?>"><strong style="color:#B60000">양식 다운로드</strong></a>
+				<a href="/down.php?link=<?=$info['file']['revision_form']['link']?>"><strong style="color:#B60000">양식 다운로드</strong></a>
 			</td>
 		</tr>
 		<?php endif ?>
 		<tr>
-			<th width="200">투고논문신청서<br/>Submission Information</th>
+			<th width="200"><?=$info['file']['info_form']['label']?></th>
 			<td>
 				<input type="file" name="submission_data2" style="width:100%;" <?=($data['submission_data2'])?'':'required'?>/>
 				<? if($data['step']>0 && $data['submission_data2']){ ?>
 					<div style="padding-top:5px;"><a href="/down.php?link=<?=$data['submission_data2']?>"><?=end(explode("/",substr(strstr($data['submission_data2'], '^'), 1)))?></a></div>
 				<? } ?>
-				<!--div style="padding-top:5px;"><a href="<?=$info['info_form_url']?>"><strong style="color:#B60000">양식 다운로드</strong></a>
+				<div style="padding-top:5px;"><a href="/down.php?link=<?=$info['file']['info_form']['link']?>"><strong style="color:#B60000">양식 다운로드</strong></a>
 				</div>
-				<span>다운로드 받은 양식에 날인하여, 업로드(pdf 가능)해주시기 바랍니다.</span-->
+				<span>다운로드 받은 양식에 날인하여, 업로드(pdf 가능)해주시기 바랍니다.</span>
 			</td>
 		</tr>
 		<tr>
-			<th width="200">자가점검사항표<br/>Checklist</th>
+			<th width="200"><?=$info['file']['author_checklist']['label']?></th>
 			<td>
 				<input type="file" name="submission_data3" style="width:100%;" <?=($data['submission_data3'])?'':'required'?>/>
 				<? if($data['step']>0 && $data['submission_data3']){ ?>
 					<div style="padding-top:5px;"><a href="/down.php?link=<?=$data['submission_data3']?>"><?=end(explode("/",substr(strstr($data['submission_data3'], '^'), 1)))?></a></div>
 				<? } ?>
-				<!--div style="padding-top:5px;"><a href="<?=$info['author_checklist_url']?>"><strong style="color:#B60000">양식 다운로드</strong></a>
+				<div style="padding-top:5px;"><a href="/down.php?link=<?=$info['file']['author_checklist']['link']?>"><strong style="color:#B60000">양식 다운로드</strong></a>
 				</div>
-				<span>다운로드 받은 양식을 작성하여, 업로드(pdf 가능)해주시기 바랍니다.</span-->
+				<span>다운로드 받은 양식을 작성하여, 업로드(pdf 가능)해주시기 바랍니다.</span>
 			</td>
 		</tr>
 		<tr>
-			<th width="200">연구윤리동의서<span class="required">*</span><br/>Research Ethics Form</th>
+			<th width="200"><span class="required">*</span><?=$info['file']['ethic_form']['label']?></th>
 			<td>
 				<input type="file" name="submission_data4" style="width:100%;" <?=($data['submission_data4'])?'':'required'?>/>
 				<? if($data['step']>0 && $data['submission_data4']){ ?>
 					<div style="padding-top:5px;"><a href="/down.php?link=<?=$data['submission_data4']?>"><?=end(explode("/",substr(strstr($data['submission_data4'], '^'), 1)))?></a></div>
 				<? } ?>
-				<div style="padding-top:5px;"><a href="<?=$info['ethic_form_url']?>"><strong style="color:#B60000">양식 다운로드</strong></a>
+				<div style="padding-top:5px;"><a href="/down.php?link=<?=$info['file']['ethic_form']['link']?>"><strong style="color:#B60000">양식 다운로드</strong></a>
 				</div>
 				<span>다운로드 받은 양식에 날인하여, 업로드(pdf 가능)해주시기 바랍니다.</span>
 			</td>
