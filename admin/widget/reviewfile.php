@@ -4,15 +4,15 @@
         <input type="file" name="review_file" id="review_file" style="width:100%;" required/>
         <div style="padding-top:5px;">
             <?php if ($data['step'] == '4' || $data['step'] == '3'):?>
-                <a href="<?=$info['review_form_url1']?>" class="btn btn-danger" style="color:#FFF">
+                <a href="<?=$info['review_form1_url']?>" class="btn btn-danger" style="color:#FFF">
                     <span class="glyphicon glyphicon-paperclip"></span> 1차 심사의견서
                 </a>
             <?php elseif ($data['step'] == '14'):?>
-                <a href="<?=$info['review_form_url2']?>" class="btn btn-danger" style="color:#FFF">
+                <a href="<?=$info['review_form2_url']?>" class="btn btn-danger" style="color:#FFF">
                     <span class="glyphicon glyphicon-paperclip"></span> 2차 심사의견서
                 </a>
             <?php elseif ($data['step'] == '24'):?>
-                <a href="<?=$info['review_form_url3']?>" class="btn btn-danger" style="color:#FFF">
+                <a href="<?=$info['review_form3_url']?>" class="btn btn-danger" style="color:#FFF">
                     <span class="glyphicon glyphicon-paperclip"></span> 3차 심사의견서
                 </a>
             <?php endif ?>
