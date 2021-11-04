@@ -1,7 +1,3 @@
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<style>
-input[type="radio"] {cursor:pointer}
-</style>
 <?
 include_once("./admin_head.php");
 ###
@@ -15,8 +11,7 @@ if($_GET['seq']){
 	$res	= sql_query($sql);
 	while ($row = sql_fetch_array($res)) $loop[] = $row;
 	//type 결정
-	if(!$data['review_b_conf']) $sql = "select * from ad_paper_review where parent_seq = '{$_GET['seq']}' order by regdate desc";
-	else $sql = "select * from ad_paper_review where parent_seq = '{$_GET['seq']}' and mb_id = '{$member['mb_id']}' order by rstep asc,regdate desc";
+	$sql = "select * from ad_paper_review where parent_seq = '{$_GET['seq']}' and mb_id = '{$member['mb_id']}' order by rstep asc,regdate desc";
 	$ress	= sql_query($sql);
 	while ($_row = sql_fetch_array($ress)) $review[] = $_row;
 	if($data['review_a_user']==$member['mb_id']) $auth_type='A';
@@ -25,6 +20,10 @@ if($_GET['seq']){
 	else $auth_type='-';
 }
 ?>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<style>
+input[type="radio"] {cursor:pointer}
+</style>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
 		<td width="199" height="800" valign="top" background="/images/leftbg.png">
@@ -66,8 +65,8 @@ if($_GET['seq']){
 													</tr>
 													<?php
 													//계좌정보
-													if($review[$i]['account']) $acc = explode('|',$review[$i]['account']);
-													include('./widget/account.php');
+													$acc = explode('|',$review[$i]['account']);
+													if(!empty($acc[1])) include('./widget/account.php');
 													?>
 													<?php
 													//설문형태 요구시
@@ -89,10 +88,6 @@ if($_GET['seq']){
 											<? } ?>
 										<? } ?>
 										<table class="boardType01_write" style="margin-top:20px;">
-											<?php
-											//계좌정보
-											include('./widget/account.php');
-											?>
 											<?php
 											//설문형태 요구시
 											//include('./widget/question-list.php');
@@ -120,6 +115,10 @@ if($_GET['seq']){
 													</select>
 												</td>
 											</tr>
+											<?php
+											//계좌정보
+											if(empty($acc[1])) include('./widget/account.php');
+											?>
 										</table>
 										<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
 											<tr>

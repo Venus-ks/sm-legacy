@@ -72,9 +72,9 @@
 			</td>
 		</tr>
 		<tr>
-			<th width="200">투고논문 파일<span class="required">*</span><br/>Paper File</th>
+			<th width="200">투고논문 파일<span class="required"><?=($data['step']==1 || $data['step']==11 || $data['step']==21)?'':'*'?></span><br/>Paper File</th>
 			<td>
-				<input type="file" name="submission_data" style="width:100%;" <?=($data['seq'])?'':'required'?>/>
+				<input type="file" name="submission_data" style="width:100%;" <?=($data['step']==1 || $data['step']==11 || $data['step']==21)?'':'required'?>/>
 				<? if($data['submission_data']){ ?>
 				<div style="padding-top:5px;"><a href="/down.php?link=<?=$data['submission_data']?>"><?=end(explode("/",substr(strstr($data['submission_data'], '^'), 1)))?></a></div>
 				<? } ?>
@@ -84,7 +84,7 @@
 				<? endif?>
 			</td>
 		</tr>
-		<?php if($data['step']>1 || !$data['step']):?>
+		<?php if($data['step']>1):?>
 		<tr>
 			<th width="200"><?=$info['file']['revision_form']['label']?></th>
 			<td>
@@ -140,7 +140,7 @@
 				<? if($data['step']>0 && $data['submission_data5']){ ?>
 					<div style="padding-top:5px;"><a href="/down.php?link=<?=$data['submission_data5']?>"><?=end(explode("/",substr(strstr($data['submission_data5'], '^'), 1)))?></a></div>
 				<? } ?>
-				<div style="padding-top:5px;"><a href="https://www.kci.go.kr/kciportal/po/member/loginForm.kci?returnUrl=check/login.jsp" target="_blank"><strong style="color:#B60000">유사도 검사 GO!</strong></a></div>
+				<div style="padding-top:5px;"><a href="https://www.kci.go.kr/kciportal/po/member/loginForm.kci?returnUrl=check/login.jsp" target="_blank"><strong style="color:#B60000">논문유사도검사 바로가기</strong></a></div>
 				<span>투고 논문으로 ‘KCI 문헌유사도 검사’를 시행하신 뒤, 검사 후 산출된 ‘종합결과파일(PDF)’을 업로드해주시기 바랍니다.</span>
 			</td>
 		</tr>
