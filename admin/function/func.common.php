@@ -96,7 +96,7 @@ function set_cookie($cookie_name, $value, $expire)
 {
     global $g4;
 
-    setcookie(md5($cookie_name), base64_encode($value), $g4[server_time] + $expire, '/', $g4[cookie_domain]);
+    setcookie(md5($cookie_name), base64_encode($value), $g4['server_time'] + $expire, '/', $g4['cookie_domain']);
 }
 
 
