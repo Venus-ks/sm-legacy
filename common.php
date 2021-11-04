@@ -386,7 +386,7 @@ if (isset($url)) {
 else {
     // 2008.01.25 Cross Site Scripting 때문에 수정
     //$urlencode = $_SERVER['REQUEST_URI'];
-    $urlencode = urlencode($_SERVER[REQUEST_URI]);
+    $urlencode = urlencode($_SERVER['REQUEST_URI']);
 }
 //===================================
 

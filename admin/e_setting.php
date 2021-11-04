@@ -31,7 +31,7 @@ $data	= sql_fetch($sql);
 		<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:12px;">
 		<tr>
 			<td>
-			<table class="table table-striped table-dark">
+			<table class="table table-striped">
 			<tr>
 				<th width="200">서비스 명</th>
 				<td colspan="3"><?=$info['institute_title']?> 논문투고시스템(Ver 1.0.<?=$data['no']?>)</td>

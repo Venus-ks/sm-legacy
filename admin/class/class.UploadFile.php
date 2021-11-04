@@ -35,4 +35,16 @@ class UploadFile
 		}
 		return $sfilename;
 	}
+	
+	public function uploadByTypeWithBlind($uploaded_file,$type,$reviewfile_name)
+	{
+		$filename  = $uploaded_file['name'];
+		$rfilename	= $reviewfile_name.'_'.$type.'.'.pathinfo($filename)['extension'];
+		//중복 파일 방지를 위해 타임스탬프를 붙인다.
+		$dest_file = "../data/{$type}/".$rfilename;
+		if (is_uploaded_file($tmp_file)){
+			$error_code = move_uploaded_file($tmp_file, $dest_file) or die($uploaded_file['error']);
+		}
+		return $rfilename;
+	}
 }

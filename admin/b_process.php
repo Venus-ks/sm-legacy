@@ -1,5 +1,18 @@
 <?
 include_once("./_common.php");
+################################################################################
+## 세션 유지 안될경우 회원정보 유실로 결과 기록이 남지 않음 이 경우 로그인 페이지로 이동
+## hjshyo 2021-11-02
+################################################################################
+if(!$_SESSION['ss_mb_id']) {
+	session_unset(); // 모든 세션변수를 언레지스터 시켜줌 
+	session_destroy(); // 세션해제함 
+	alert("접속기간이 경과되어 로그인페이지로 이동합니다.");
+	$link = $g4['path']."/admin/login.php";
+	goto_url($link);
+}
+################################################################################
+################################################################################
 ### 메일 관련 코드
 // 변수설정
 $main_editor = $info['editor_email'];
@@ -50,16 +63,17 @@ $file_sql2 = "";
 $file_sql3 = "";
 $rstep = 1;
 if($_POST['mode']=="c_sub_review"){
+	$reviewfile_name = "{$_POST['seq']}_{$_POST['type']}_{$rstep}";
 	if($_FILES['review_file'][tmp_name]) {
-		$sfilename = UploadFile::uploadByType($_FILES['review_file'],'bdata');
+		$sfilename = UploadFile::uploadByTypeWithBlind($_FILES['review_file'],'bdata',$reviewfile_name);
 		$file_sql = " rfile	= '/data/bdata/{$sfilename}', ";
 	}
 	if($_FILES['review_table'][tmp_name]) {
-		$sfilename = UploadFile::uploadByType($_FILES['review_table'],'bdata');
+		$sfilename = UploadFile::uploadByTypeWithBlind($_FILES['review_table'],'bdata',$reviewfile_name);
 		$file_sql2 = " mfile	= '/data/bdata/{$sfilename}', ";
 	}
 	if($_FILES['author_file'][tmp_name]) {
-		$sfilename = UploadFile::uploadByType($_FILES['author_file'],'authorinfo');
+		$sfilename = UploadFile::uploadByTypeWithBlind($_FILES['author_file'],'authorinfo',$reviewfile_name);
 		$file_sql3 = " authorfile	= '/data/authorinfo/{$sfilename}', ";
 	}
 	if($_POST['step'] == 14) {
@@ -110,14 +124,18 @@ if($_POST['mode']=="c_sub_review"){
 	###
 	$step = "";
 	if($_POST['step'] == 24){
-		$sql = "select count(rseq) as cnt from ad_paper_review where parent_seq = '{$_POST['seq']}' and rstep = 2 and (result = 2 or result = 3)";
+		// $sql = "select count(rseq) as cnt from ad_paper_review where parent_seq = '{$_POST['seq']}' and rstep = 2";
+		// 심사위원 선정 개수로 변경  hjshyo 20210111
+		$sql = "SELECT char_length(concat(`review_a_conf`, `review_b_conf`, `review_c_conf`)) AS cnt FROM `ad_paper` WHERE seq = '{$_POST['seq']}'";
 		$chk	= sql_fetch($sql);
 		$sql = "select count(rseq) as cnt from ad_paper_review where parent_seq = '{$_POST['seq']}' and rstep = 3";
 		$chk2	= sql_fetch($sql);
 		//if($cnt > 7) $step = " , step = 25 ";
 		if($chk['cnt']==$chk2['cnt']) $step = " step = 25 ";
 	}else if($_POST['step'] == 14){
-		$sql = "select count(rseq) as cnt from ad_paper_review where parent_seq = '{$_POST['seq']}' and rstep = 1 and (result = 2 or result = 3)";
+		// $sql = "select count(rseq) as cnt from ad_paper_review where parent_seq = '{$_POST['seq']}' and rstep = 1";
+		// 심사위원 선정 개수로 변경  hjshyo 20210111
+		$sql = "SELECT char_length(concat(`review_a_conf`, `review_b_conf`, `review_c_conf`)) AS cnt FROM `ad_paper` WHERE seq = '{$_POST['seq']}'";
 		$chk	= sql_fetch($sql);
 		$sql = "select count(rseq) as cnt from ad_paper_review where parent_seq = '{$_POST['seq']}' and rstep = 2";
 		$chk2	= sql_fetch($sql);
