@@ -507,4 +507,30 @@ INSERT INTO `g4_visit_sum` (`vs_date`, `vs_count`) VALUES
 ('2021-05-21',	1),
 ('2021-06-30',	1);
 
+DROP TABLE IF EXISTS `ad_config`;
+CREATE TABLE `ad_config` (
+  `no` int(11) NOT NULL AUTO_INCREMENT,
+  `regip` varchar(15) DEFAULT '',
+  `service_fdate` date DEFAULT NULL,
+  `service_ldate` date DEFAULT NULL,
+  `paper_sample` varchar(255) DEFAULT NULL,
+  `info_form` varchar(255) DEFAULT NULL,
+  `ethic_form` varchar(255) DEFAULT NULL,
+  `revision_form` varchar(255) DEFAULT NULL,
+  `author_checklist` varchar(255) DEFAULT NULL,
+  `copyright_agreement` varchar(255) DEFAULT NULL,
+  `submit_rule` varchar(255) DEFAULT NULL,
+  `ethic_rule` varchar(255) DEFAULT NULL,
+  `review_rule` varchar(255) DEFAULT NULL,
+  `publish_rule` varchar(255) DEFAULT NULL,
+  `author_manual` varchar(255) DEFAULT NULL,
+  `reviewer_manual` varchar(255) DEFAULT NULL,
+  `manual` varchar(255) DEFAULT NULL,
+  `review_form1` varchar(255) DEFAULT NULL,
+  `review_form2` varchar(255) DEFAULT NULL,
+  `review_form3` varchar(255) DEFAULT NULL,
+  `regdate` date NOT NULL DEFAULT '0000-00-00',
+  PRIMARY KEY (`no`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
 -- 2021-06-30 06:52:08
