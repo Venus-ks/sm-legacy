@@ -44,6 +44,17 @@ if($_GET['seq']){
 								</tr>
 							</table>
 							<?php include_once("./template/article01.php");?>
+							<table class="boardType01_write" style="margin-top:20px;">
+								<tr>
+									<th width="150"><strong>제출논문파일<br/>Original Paper File</strong></th>
+									<td>
+										<? if($data['submission_data']){ ?>
+										<?=end(explode("/",substr(strstr($data['submission_data'], '^'), 1)))?>
+										<a href="/down.php?link=<?=$data['submission_data']?>"><img src="../images/btn_download.png"  align="absmiddle" /></a>
+										<? } ?>
+									</td>
+								</tr>
+							</table>
 							<!--table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:20px;">
 								<tr>
 									<td class="font_16"><img src="../images/icon.png"  align="absmiddle" class="mr5" />의뢰 공문</td>
