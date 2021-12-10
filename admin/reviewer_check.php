@@ -34,9 +34,9 @@ $data3	= sql_fetch($sql3);
           <?=$data2['mb_name']?>
           심사위원의 논문 심사 승인 여부 </td>
       </tr>
-	  <tr>
+	  <!-- <tr>
 		<td><center><a href="/down.php?link=<?=$data[$_GET['doctype']]?>">[공문 확인]</a></center></td>
-	  </tr>	
+	  </tr>	 -->
 	  <tr>
 		<td><center><a href="/down.php?link=<?=$data['modify_file']?>">[논문 열람]</a></center></td>
 	  </tr>	
