@@ -4,13 +4,7 @@ include_once("./admin_head.php");
 $mlevel		= 2;
 $menu		= "a1";
 $tmp_cnt 	= 1;
-/* 투고가능 기간 체크 */
-$permit_sql	= "select * from ad_config ORDER BY no DESC LIMIT 0,1";
-$permit_data	= sql_fetch($permit_sql);
-$sdate = $permit_data['service_fdate'];
-$ldate = $permit_data['service_ldate'];
-if(( $sdate!='0000-00-00' && $sdate > date('Ymd') || ($ldate!='0000-00-00' && $ldate < date('Ymd')))) alert('투고기간이 아닙니다.','./a_sub01.php');
-/* //투고가능 기간 체크 */
+
 $loop = array();
 if($_GET['seq']){
 	$sql	= "select * from ad_paper where mb_id = '{$member['mb_id']}' and seq = '{$_GET['seq']}'";
@@ -19,6 +13,13 @@ if($_GET['seq']){
 	$res	= sql_query($sql);
 	while ($row = sql_fetch_array($res)) $loop[] = $row;
 }
+/* 투고가능 기간 체크 */
+$permit_sql	= "select * from ad_config ORDER BY no DESC LIMIT 0,1";
+$permit_data	= sql_fetch($permit_sql);
+$sdate = $permit_data['service_fdate'];
+$ldate = $permit_data['service_ldate'];
+if($ldate!='0000-00-00' && (date('Y-m-d') < $sdate || date('Y-m-d') > $ldate) && !$data['number']) alert('투고기간이 아닙니다.','./a_sub01.php');
+/* //투고가능 기간 체크 */
 $tmp_cnt = count($loop);
 ?>
 <script>
@@ -31,7 +32,7 @@ submit_ok = '';
 			<? include_once("./_menu.php"); ?>
 		</td>
 		<td valign="top">
-			<form name="form1" method="post" onsubmit="return fwrite_submit(this);" enctype="multipart/form-data">
+			<form name="form1" method="post" onsubmit="return fwrite_submit(this);" enctype="multipart/form-data" <?=(defined('__DEV__'))?'novalidate':''?>>
 				<input type="hidden" name="mode" value="a_sub_reg"/>
 				<input type="hidden" name="seq" value="<?=$data['seq']?>"/>
 				<input type="hidden" name="step" value="<?=$data['step']?>"/>
