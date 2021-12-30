@@ -204,6 +204,7 @@ if($_POST['mode']=="a_sub_reg"){
 			if($_POST['auth_name'][$i]){
 				$tmp		= "auth_type".$i;
 				if($_POST[$tmp]) $auth_type	= implode("|", $_POST[$tmp]);
+				else $auth_type	= '';
 				$sql = "INSERT INTO ad_paper_auth SET
 							parent_seq		= '{$parent_seq}',
 							auth_type		= '{$auth_type}',

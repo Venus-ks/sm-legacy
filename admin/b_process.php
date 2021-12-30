@@ -51,6 +51,19 @@ if(!defined('__DEV__')) $mail->Username   = $info['smtp_id']; // SMTP account us
 if(!defined('__DEV__')) $mail->Password   = $info['smtp_pw']; // SMTP account password
 $mail->SetFrom($main_editor,$info['editor_name']);
 $mail->Subject    = "안녕하세요. {$info['institute_title']}입니다.";
+################################################################################
+## 세션 유지 안될경우 회원정보 유실로 결과 기록이 남지 않음 이 경우 로그인 페이지로 이동
+## hjshyo 2021-11-02
+################################################################################
+if(!$_SESSION['ss_mb_id']) {
+	session_unset(); // 모든 세션변수를 언레지스터 시켜줌 
+	session_destroy(); // 세션해제함 
+	alert("접속기간이 경과되어 로그인페이지로 이동합니다.");
+	$link = $g4['path']."/admin/login.php";
+	goto_url($link);
+}
+################################################################################
+################################################################################
 //Custom sql 생성
 require_once('class/class.CustomSql.php');
 $customque = new CustomSql($mysql_host, $mysql_user, $mysql_password, $mysql_db);
