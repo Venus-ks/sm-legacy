@@ -31,19 +31,19 @@
 		</tr>
 		<tr>
 			<th width="200">초록(국문)<span class="required">*</span><br/>Abstract(KOR)</th>
-			<td><textarea cols="10" name="abstract" itemname="abstract" style="width:100%;height:100px"><?=$data['abstract']?></textarea><BR/></td>
+			<td><textarea cols="10" name="abstract" itemname="abstract" style="width:100%;height:100px" required><?=$data['abstract']?></textarea><BR/></td>
 		</tr>
 		<tr>
 			<th width="200">초록(영문)<span class="required">*</span><br/>Abstract(ENG)</th>
-			<td><textarea cols="10" name="abstract_eng" itemname="abstract_eng" style="width:100%;height:100px"><?=$data['abstract_eng']?></textarea><BR/></td>
+			<td><textarea cols="10" name="abstract_eng" itemname="abstract_eng" style="width:100%;height:100px" required><?=$data['abstract_eng']?></textarea><BR/></td>
 		</tr>
 		<tr>
 			<th width="200">키워드(국문)<span class="required">*</span><br/>Keywords(KOR)</th>
-			<td><input type="text" name="keyword" value="<?=$data['keyword']?>" itemname="keyword" style="width:100%;" /><BR/>※ 키워드 5개까지 입력가능합니다. 콤마(,)로 구분합니다.</td>
+			<td><input type="text" name="keyword" value="<?=$data['keyword']?>" itemname="keyword" style="width:100%;" required/><BR/>※ 키워드 5개까지 입력가능합니다. 콤마(,)로 구분합니다.</td>
 		</tr>
 		<tr>
 			<th width="200">키워드(영문)<span class="required">*</span><br/>Keywords(ENG)</th>
-			<td><input type="text" name="keyword_eng" value="<?=$data['keyword_eng']?>" itemname="keyword_eng" style="width:100%;" /><BR/>※ 키워드 5개까지 입력가능합니다. 콤마(,)로 구분합니다.</td>
+			<td><input type="text" name="keyword_eng" value="<?=$data['keyword_eng']?>" itemname="keyword_eng" style="width:100%;" required/><BR/>※ 키워드 5개까지 입력가능합니다. 콤마(,)로 구분합니다.</td>
 		</tr>
 		</table>
 		<table class="boardType01_write" style="margin-top:20px;">
@@ -78,10 +78,12 @@
 				<? if($data['submission_data']){ ?>
 				<div style="padding-top:5px;"><a href="/down.php?link=<?=$data['submission_data']?>"><?=end(explode("/",substr(strstr($data['submission_data'], '^'), 1)))?></a></div>
 				<? } ?>
+				<?php if($info['file']['info_form']['link']):?>
 				<a href="<?=$info['file']['paper_sample']['link']?>"><strong style="color:#B60000">양식 다운로드</strong></a>
 				<?php if(!$data['seq']):?>
-					<br/>한글프로그램을 이용하여 작성하되, 원고교정이 완료되어 그대로 출판될 수 있는 완전한 상태로 제출바랍니다.
+					<br/>프로그램을 이용하여 작성하되, 원고교정이 완료되어 그대로 출판될 수 있는 완전한 상태로 제출바랍니다.
 				<? endif?>
+				<?php endif?>
 			</td>
 		</tr>
 		<?php if($data['step']>1 && $data['step']<100):?>
@@ -98,45 +100,51 @@
 		</tr>
 		<?php endif ?>
 		<tr>
-			<th width="200"><?=$info['file']['info_form']['label']?></th>
+			<th width="200"><?=$info['file']['info_form']['label']?><span class="required">*</span></th>
 			<td>
 				<input type="file" name="submission_data2" style="width:100%;" <?=($data['submission_data2'])?'':'required'?>/>
 				<? if($data['step']>0 && $data['submission_data2']){ ?>
 					<div style="padding-top:5px;"><a href="/down.php?link=<?=$data['submission_data2']?>"><?=end(explode("/",substr(strstr($data['submission_data2'], '^'), 1)))?></a></div>
 				<? } ?>
+				<?php if($info['file']['info_form']['link']):?>
 				<div style="padding-top:5px;"><a href="/down.php?link=<?=$info['file']['info_form']['link']?>"><strong style="color:#B60000">양식 다운로드</strong></a>
 				</div>
 				<span>다운로드 받은 양식에 날인하여, 업로드(pdf 가능)해주시기 바랍니다.</span>
+				<?php endif?>
 			</td>
 		</tr>
 		<tr>
-			<th width="200"><?=$info['file']['author_checklist']['label']?></th>
+			<th width="200"><?=$info['file']['copyright_agreement']['label']?><span class="required">*</span></th>
 			<td>
 				<input type="file" name="submission_data3" style="width:100%;" <?=($data['submission_data3'])?'':'required'?>/>
 				<? if($data['step']>0 && $data['submission_data3']){ ?>
 					<div style="padding-top:5px;"><a href="/down.php?link=<?=$data['submission_data3']?>"><?=end(explode("/",substr(strstr($data['submission_data3'], '^'), 1)))?></a></div>
 				<? } ?>
-				<div style="padding-top:5px;"><a href="/down.php?link=<?=$info['file']['author_checklist']['link']?>"><strong style="color:#B60000">양식 다운로드</strong></a>
+				<?php if($info['file']['copyright_agreement']['link']):?>
+				<div style="padding-top:5px;"><a href="/down.php?link=<?=$info['file']['copyright_agreement']['link']?>"><strong style="color:#B60000">양식 다운로드</strong></a>
 				</div>
 				<span>다운로드 받은 양식을 작성하여, 업로드(pdf 가능)해주시기 바랍니다.</span>
+				<?php endif?>
 			</td>
 		</tr>
 		<tr>
-			<th width="200"><span class="required">*</span><?=$info['file']['ethic_form']['label']?></th>
+			<th width="200"><?=$info['file']['ethic_form']['label']?><span class="required">*</span></th>
 			<td>
 				<input type="file" name="submission_data4" style="width:100%;" <?=($data['submission_data4'])?'':'required'?>/>
 				<? if($data['step']>0 && $data['submission_data4']){ ?>
 					<div style="padding-top:5px;"><a href="/down.php?link=<?=$data['submission_data4']?>"><?=end(explode("/",substr(strstr($data['submission_data4'], '^'), 1)))?></a></div>
 				<? } ?>
+				<?php if($info['file']['ethic_form']['link']):?>
 				<div style="padding-top:5px;"><a href="/down.php?link=<?=$info['file']['ethic_form']['link']?>"><strong style="color:#B60000">양식 다운로드</strong></a>
 				</div>
 				<span>다운로드 받은 양식에 날인하여, 업로드(pdf 가능)해주시기 바랍니다.</span>
+				<?php endif?>
 			</td>
 		</tr>
 		<tr>
 			<th width="200">문헌유사도 검사결과<br/></th>
 			<td>
-				<input type="file" name="submission_data5" style="width:100%;" <?=($data['submission_data5'])?'':'required'?>/>
+				<input type="file" name="submission_data5" style="width:100%;" <?=($data['submission_data5'])?'':''?>/>
 				<? if($data['step']>0 && $data['submission_data5']){ ?>
 					<div style="padding-top:5px;"><a href="/down.php?link=<?=$data['submission_data5']?>"><?=end(explode("/",substr(strstr($data['submission_data5'], '^'), 1)))?></a></div>
 				<? } ?>

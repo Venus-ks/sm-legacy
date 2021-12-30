@@ -1,7 +1,7 @@
 <table class="boardType01_write" style="margin-top:20px;">
 	<tbody>
 	<tr>
-		<th width="200"><strong>저자유형<br />Author Type</strong></th>
+		<th width="200"><strong>저자유형<span class="required">*</span><br />Author Type</strong></th>
 		<td colspan="3">
 			<label><input type="checkbox" name="auth_type<?=$k?>[]" value="제1저자" <?=(strpos($v['auth_type'],'제1저자')!==false)?'checked=checked':''?>/> 제1저자</label>
 			&nbsp;&nbsp;
@@ -11,19 +11,19 @@
 		</td>
 	</tr>
 	<tr>
-		<th width="200">저자명*<br />Author Name*</th>
+		<th width="200">저자명<span class="required">*</span><br />Author Name</th>
 		<td>한/Kor : <input type="text" name="auth_name[]" id="auth_name" style="width:100%;" value="<?=$v['auth_name']?>" required/><br/><br/>영/Eng : <input type="text" name="auth_name_eng[]" id="auth_name_eng" style="width:100%;" value="<?=$v['auth_name_eng']?>" required/></td>
 		<th width="200">전화<br />Tel</th>
 		<td><input type="text" name="auth_tel[]"  id="auth_tel" style="width:100%;" value="<?=$v['auth_tel']?>"/></td>
 	</tr>
 	<tr>
-		<th width="200">이메일*<br />E-mail*</th>
+		<th width="200">이메일<span class="required">*</span><br />E-mail</th>
 		<td><input type="text" name="auth_email[]" id="auth_email" style="width:100%;" value="<?=$v['auth_email']?>" required/></td>
-		<th width="200">핸드폰*<br />Mobile*</th>
+		<th width="200">핸드폰<span class="required">*</span><br />Mobile</th>
 		<td><input type="text" name="auth_mobile[]" id="auth_mobile" style="width:100%;" value="<?=$v['auth_mobile']?>" required/></td>
 	</tr>
 	<tr>
-		<th width="200">소속*<br />Organization*</th>
+		<th width="200">소속<span class="required">*</span><br />Organization</th>
 		<td colspan="3">한/Kor : <input type="text" name="organization[]" id="organization" style="width:100%;" value="<?=$v['organization']?>" required/><br/><br/>영/Eng : <input type="text" name="organization_eng[]" id="organization_eng" style="width:100%;" value="<?=$v['organization_eng']?>" required/></td>
 	</tr>
 	<tr>

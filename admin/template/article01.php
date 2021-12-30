@@ -79,7 +79,7 @@
 				</tr>
 				<?php if($data['step']>10 && $data['response_data']):?>
 					<tr>
-						<th>논문수정표<br/>Author's Edit Table</th>
+						<th><?=$info['file']['revision_form']['label']?></th>
 						<td>
 							<?=end(explode("/",substr(strstr($data['response_data'], '^'), 1)))?> <a href="/down.php?link=<?=$data['response_data']?>"><img src="../images/btn_download.png"  align="absmiddle" /></a>
 						</td>
@@ -87,21 +87,21 @@
 				<?php endif?>
 				<?php if($hidden_author!=TRUE):?>
 				<tr>
-					<th width="200">투고논문신청서<br/>Submission Information</th>
+					<th width="200"><?=$info['file']['info_form']['label']?></th>
 					<td>
 						<?=end(explode("/",substr(strstr($data['submission_data2'], '^'), 1)))?>
 						<a href="/down.php?link=<?=$data['submission_data2']?>"><img src="../images/btn_download.png"  align="absmiddle" /></a>
 					</td>
 				</tr>
-				<!-- <tr>
-					<th width="200">저작권이양동의서<br/>Copyright Agreement</th>
+				<tr>
+					<th width="200"><?=$info['file']['copyright_agreement']['label']?></th>
 					<td>
 						<?=end(explode("/",substr(strstr($data['submission_data3'], '^'), 1)))?>
 						<a href="/down.php?link=<?=$data['submission_data3']?>"><img src="../images/btn_download.png"  align="absmiddle" /></a>
 					</td>
-				</tr> -->
+				</tr>
 				<tr>
-					<th width="200">저작권이양동의서 & 연구윤리동의서<br/>Copyright Agreement & Research Ethics Guidelines</th>
+					<th width="200"><?=$info['file']['ethic_form']['label']?></th>
 					<td>
 						<?=end(explode("/",substr(strstr($data['submission_data4'], '^'), 1)))?>
 						<a href="/down.php?link=<?=$data['submission_data4']?>"><img src="../images/btn_download.png"  align="absmiddle" /></a>

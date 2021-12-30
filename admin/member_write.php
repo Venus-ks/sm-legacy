@@ -36,7 +36,7 @@ include_once("$g4[path]/lib/outlogin.lib.php");
 								9 -
 								10 - 기존 : 최고관리자
 								-------->
-								<th width="150"><strong><span class="glyphicon glyphicon-ok-sign submit_color"></span>&nbsp;회원구분</strong></th>
+								<th width="150"><strong><span class="glyphicon glyphicon-ok-sign submit_color"></span>&nbsp;회원구분</strong><span class="required">*</span></th>
 								<td  colspan="3" width="350">
 									<select name="mb_level" id="mb_level" itemname="회원구분" style="width: 170px;" required>
 										<option value="">====== 선택 ======</option>
@@ -46,25 +46,25 @@ include_once("$g4[path]/lib/outlogin.lib.php");
 								</td>
 							</tr>
 							<tr>
-								<th><span class="glyphicon glyphicon-ok-sign submit_color"></span>&nbsp;아이디(이메일)</th>
+								<th><span class="glyphicon glyphicon-ok-sign submit_color"></span>&nbsp;아이디(이메일)<span class="required">*</span></th>
 								<td colspan="3">
 									<input type="email" name="mb_id" style="width:250px;" itemname="아이디(이메일)" required/>
 								</td>
 							</tr>
 							<tr>
-								<th><span class="glyphicon glyphicon-ok-sign submit_color"></span>&nbsp;비밀번호</th>
+								<th><span class="glyphicon glyphicon-ok-sign submit_color"></span>&nbsp;비밀번호<span class="required">*</span></th>
 								<td colspan="3"><input type="password" name="mb_password" id="mb_password" style="width:200px;" itemname="비밀번호" required/></td>
 							</tr>
 							<tr>
-								<th><span class="glyphicon glyphicon-ok-sign submit_color"></span>&nbsp;비밀번호 확인</th>
+								<th><span class="glyphicon glyphicon-ok-sign submit_color"></span>&nbsp;비밀번호 확인<span class="required">*</span></th>
 								<td colspan="3"><input type="password" name="re_mb_password" id="re_mb_password" style="width:200px;" itemname="비밀번호 확인" required/></td>
 							</tr>
 							<tr>
-								<th><span class="glyphicon glyphicon-ok-sign submit_color"></span>&nbsp;이름</th>
+								<th><span class="glyphicon glyphicon-ok-sign submit_color"></span>&nbsp;이름<span class="required">*</span></th>
 								<td colspan="3"><input type="text" name="mb_name" id="mb_name" style="width:100%;" itemname="회원명" required value=""/></td>
 							</tr>
 							<tr>
-								<th>주소</th>
+								<th>주소<span class="required">*</span></th>
 								<td colspan="3">
 									<input type="text" id="post1" name="mb_zip1" style="width:150px;"><!-- - <input type="text" id="post2" name="mb_zip2" style="width:50px;"-->
 									<img src="../images/btn_address.png" onclick="openDaumPostcode()" style="vertical-align: top;height: 26px;cursor:pointer"><br>
@@ -96,30 +96,30 @@ include_once("$g4[path]/lib/outlogin.lib.php");
 							<tr>
 								<th><span class="glyphicon glyphicon-ok-sign submit_color"></span>&nbsp;전화<font style="font-weight:normal !important;" required></font></th>
 								<td><input type="text" name="mb_tel" id="mb_tel" style="width:100%;" itemname="전화" value=""/></td>
-								<th><span class="glyphicon glyphicon-ok-sign submit_color"></span>&nbsp;핸드폰<font style="font-weight:normal !important;"></font></th>
+								<th><span class="glyphicon glyphicon-ok-sign submit_color"></span>&nbsp;핸드폰<span class="required">*</span><font style="font-weight:normal !important;"></font></th>
 								<td><input type="text" name="mb_hp" id="mb_hp" style="width:100%;" itemname="핸드폰" required value=""/></td>
 							</tr>
-							<tr>
+							<!-- <tr>
 								<th><span class="glyphicon glyphicon-ok-sign submit_color"></span>&nbsp;생년월일<font style="font-weight:normal !important;"></font></th>
 								<td colspan="3">
 									<input type="text" name="mb_birth" id="mb_birth" style="width:100px;" value="" required/>
 									<a href="javascript:win_calendar('mb_birth', document.getElementById('mb_birth').value, '');"><img src="../images/icon_cal.png" align="middle" style="height:26px;vertical-align: top;"/></a>
 								</td>
-							</tr>
+							</tr> -->
 							<tr>
-								<th><span class="glyphicon glyphicon-ok-sign submit_color"></span>&nbsp;학교/소속<font style="font-weight:normal !important;" required></font></th>
+								<th><span class="glyphicon glyphicon-ok-sign submit_color"></span>&nbsp;학교/소속<span class="required">*</span><font style="font-weight:normal !important;"></font></th>
 								<td><input type="text" name="mb_1" id="mb_1" style="width:100%;" value="" required/></td>
-								<th><span class="glyphicon glyphicon-ok-sign submit_color"></span>&nbsp;학과/부서<font style="font-weight:normal !important;"></font></th>
-								<td><input type="text" name="mb_2" id="mb_2" style="width:100%;" value=""/></td>
+								<th><span class="glyphicon glyphicon-ok-sign submit_color"></span>&nbsp;학과/부서<span class="required">*</span><font style="font-weight:normal !important;"></font></th>
+								<td><input type="text" name="mb_2" id="mb_2" style="width:100%;" value="" required/></td>
 							</tr>
 							<tr>
 								<th><span class="glyphicon glyphicon-ok-sign submit_color"></span>&nbsp;전공분야<font style="font-weight:normal !important;"></font></th>
 								<td colspan="3">
-									<input type="text" name="mb_3" id="mb_3" style="width:250px;" value="" required/>
+									<input type="text" name="mb_3" id="mb_3" style="width:250px;" value=""/>
 								</td>
 							</tr>
 							</table>
-							<p style="text-align:right"><span class="glyphicon glyphicon-ok-sign submit_color"></span> 는 필수입력입니다</p>
+							<p style="text-align:right"><span class="required">*</span> 는 필수입력입니다</p>
 
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
 							<tr>
