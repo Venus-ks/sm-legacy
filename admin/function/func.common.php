@@ -1817,7 +1817,7 @@ function get_status($seq, $type=null){
 
 			case "99": $imgs = "<img src='../images/status45.png' border='0'>"; break;
 
-			default: $imgs = "상태값오류"; break;
+			default: $imgs = "보류"; break;
 		}
 	}else if($member['mb_level'] >= 4){
 		switch($data['step']){
@@ -1850,7 +1850,7 @@ function get_status($seq, $type=null){
 
 			case "99": $imgs = "<img src='../images/status45.png' border='0'>"; break;
 
-			default: $imgs = "상태값오류!"; break;
+			default: $imgs = "보류!"; break;
 		}
 
 
@@ -2021,7 +2021,7 @@ function get_status_excel($seq, $type=null){
 
 			case "99": $imgs = "접수반려/보류"; break;
 
-			default: $imgs = "상태값오류"; break;
+			default: $imgs = "보류"; break;
 		}
 	}else if($member['mb_level'] >= 4){
 		switch($data['step']){
@@ -2049,7 +2049,7 @@ function get_status_excel($seq, $type=null){
 
 			case "99": $imgs = "접수반려/보류"; break;
 
-			default: $imgs = "상태값오류"; break;
+			default: $imgs = "보류"; break;
 		}
 
 
@@ -2132,7 +2132,7 @@ function get_status_excel($seq, $type=null){
 
 			case "99": $imgs = "접수반려/보류"; break;
 
-			default: $imgs = "상태값오류"; break;
+			default: $imgs = "보류"; break;
 		}
 
 		if($data['step']=="51"){

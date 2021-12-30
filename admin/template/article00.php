@@ -84,7 +84,7 @@
 				<? endif?>
 			</td>
 		</tr>
-		<?php if($data['step']>1):?>
+		<?php if($data['step']>1 && $data['step']<100):?>
 		<tr>
 			<th width="200"><?=$info['file']['revision_form']['label']?></th>
 			<td>
