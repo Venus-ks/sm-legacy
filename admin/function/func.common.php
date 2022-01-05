@@ -2263,4 +2263,18 @@ function passnum($idsu){
 	}
 	return $pass;
 }
+
+function get_papernum($paper) {
+    global $info;
+    if($paper['number']) {
+        $numarr = [
+            $info['abbr'],
+            date("y",strtotime($paper['regdate'])),
+            str_pad($paper['number'],3,'0',STR_PAD_LEFT)
+        ];
+        return implode('-',$numarr);
+    } else {
+        return '미접수';
+    }
+}
 ?>

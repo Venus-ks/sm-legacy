@@ -377,13 +377,7 @@ $write_pages = get_paging(10, $page, $total_page, "./d_sub06.php?sdate={$_GET['s
 					<tr class="brc">
 						<td height="15"><?=$list[$i]['num']?></td>
 						<td height="15"><?=get_status($list[$i]['seq'])?></td>
-						<?php
-						$cyear = date("y");
-						if(strlen($list[$i]['number']) == 1) $number = "00".$list[$i]['number'];
-						elseif(strlen($list[$i]['number']) == 2) $number = "0".$list[$i]['number'];
-						else $number = $list[$i]['number'];
-						?>
-						<td height="15"><?=$info['abbr']?>-<?=$cyear?>-<?=$number?></td>
+						<td height="15"><?=get_papernum($list[$i])?></td>
 						<!-- <td height="15"><? if($list[$i]['manuscript']){ ?><?=get_manuscript($list[$i]['manuscript'])?><? } ?></td> -->
 						<?php
 						$rv_category = str_replace("(", "<br/>", get_category($list[$i]['review_category']));

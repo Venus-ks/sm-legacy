@@ -17,7 +17,11 @@
 				</tr>
 				<tr>
 					<th>논문번호<br/>Paper Number</th>
-					<?php $article_code = $info['abbr']."-".date("y").'-'.($number = str_pad($data['number'],2,'0',STR_PAD_LEFT));?>
+					<?php
+						$cyear = date("y",strtotime($data['regdate']));
+						$number = str_pad($data['number'],3,'0',STR_PAD_LEFT);
+					?>
+					<?php $article_code = $info['abbr']."-".$cyear.'-'.$number?>
 					<td colspan="3"><?=$article_code?></td>
 				</tr>
 				<tr>

@@ -146,9 +146,10 @@ if($_POST['mode']=="c_sub_review"){
 		//if($cnt > 7) $step = " , step = 25 ";
 		if($chk['cnt']==$chk2['cnt']) $step = " step = 25 ";
 	}else if($_POST['step'] == 14){
-		// $sql = "select count(rseq) as cnt from ad_paper_review where parent_seq = '{$_POST['seq']}' and rstep = 1";
 		// 심사위원 선정 개수로 변경  hjshyo 20210111
-		$sql = "SELECT char_length(concat(`review_a_conf`, `review_b_conf`, `review_c_conf`)) AS cnt FROM `ad_paper` WHERE seq = '{$_POST['seq']}'";
+		// 수정후게재로 재변경 hjshyo 20220101
+		$sql = "select count(rseq) as cnt from ad_paper_review where parent_seq = '{$_POST['seq']}' and rstep = 1 and (result = 2 or result = 3)";
+		// $sql = "SELECT char_length(concat(`review_a_conf`, `review_b_conf`, `review_c_conf`)) AS cnt FROM `ad_paper` WHERE seq = '{$_POST['seq']}'";
 		$chk	= sql_fetch($sql);
 		$sql = "select count(rseq) as cnt from ad_paper_review where parent_seq = '{$_POST['seq']}' and rstep = 2";
 		$chk2	= sql_fetch($sql);

@@ -155,9 +155,7 @@ $write_pages = get_paging(10, $page, $total_page, "./a_sub01.php?page=");
 					<tr>
 						<td><?=$list[$i]['num']?></td>
 						<td><?=get_status($list[$i]['seq'])?></td>
-						<?php $cyear = date("y");?>
-						<?php $number = str_pad($list[$i]['number'],3,'0',STR_PAD_LEFT);?>
-						<td>KJ-<?=$cyear?>-<?=$number?></td>
+						<td><?=get_papernum($list[$i])?></td>
 						<td><?=$list[$i]['journal']?></td>
 						<!-- <td><? if($list[$i]['manuscript']){ ?><?=get_manuscript($list[$i]['manuscript'])?><? } ?></td> -->
 						<td><?=get_category_target($list[$i]['review_category_target'])?></td>

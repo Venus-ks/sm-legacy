@@ -187,19 +187,10 @@ $write_pages = get_paging(10, $page, $total_page, "./d_publication.php?page=");
 				<td><?=substr($list[$i]['regdate'],0,10)?></td>
 				<td><a href="./d_sub03_write.php?seq=<?=$list[$i]['seq']?>"><img src="../images/btn_paper_reviewer2.png"  /></a></td-->
 				<td><?=$list[$i]['num']?></td>
-				<?
-				$cyear = date("y");
-				?>
-				<?
-				if(strlen($list[$i]['number']) == 1){
-					$number = "00".$list[$i]['number'];
-				}else if(strlen($list[$i]['number']) == 2){
-					$number = "0".$list[$i]['number'];
-				}else{
-					$number = $list[$i]['number'];
-				}
-				?>
-				<td>KJ-<?=$cyear?>-<?=$number?><input type="hidden" name="number_<?=$list[$i]['seq']?>" value="<?=$list[$i]['number']?>"/></td>
+				<td>
+				<?=get_papernum($list[$i])?>
+				<input type="hidden" name="number_<?=$list[$i]['seq']?>" value="<?=$list[$i]['number']?>"/>
+				</td>
 				<td><?=$list[$i]['journal']?></td>
 				<td><? if($list[$i]['review_category_target']){ ?><?=get_category($list[$i]['review_category_target'])?><? } ?></td>
 				<td><strong><?=$list[$i]['title']?></strong><input type="hidden" name="title_<?=$list[$i]['seq']?>" value="<?=$list[$i]['title']?>"/></td>
