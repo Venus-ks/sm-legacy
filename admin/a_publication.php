@@ -188,9 +188,6 @@ $write_pages = get_paging(10, $page, $total_page, "./a_publication.php?page=");
 				<td><?=substr($list[$i]['regdate'],0,10)?></td>
 				<td><a href="./a_sub01_write.php?seq=<?=$list[$i]['seq']?>"><img src="../images/btn_paper_modify.png"  /></a></td-->
 				<td><?=$list[$i]['num']?></td>
-				<?
-				$cyear = date("y");
-				?>
 				<td>
 					<? if($list[$i]['publish_conf'] == 'Y'){ ?>
 					<img src="../images/status42.png" />
@@ -198,7 +195,7 @@ $write_pages = get_paging(10, $page, $total_page, "./a_publication.php?page=");
 					<img src="../images/status41.png" />
 					<?}?>
 				</td>
-				<td>KJ-<?=$cyear?>-<?=$list[$i]['seq']?></td>
+				<td><?=get_papernum($list[$i])?></td>
 				<td><?=$list[$i]['jourmal']?></td>
 				<td><? if($list[$i]['review_category']){ ?><?=get_category($list[$i]['review_category'])?><? } ?></td>
 				<td><strong><?=$list[$i]['title']?></strong></td>

@@ -44,19 +44,7 @@ if($_GET['rseq']){
 										<table class="boardType01_write">
 											<tr>
 												<th>논문번호<br/>Manuscript Number</th>
-												<?
-												$cyear = date("y");
-												?>
-												<?
-												if(strlen($data['number']) == 1){
-												$number = "00".$data['number'];
-												}else if(strlen($data['number']) == 2){
-												$number = "0".$data['number'];
-												}else{
-												$number = $data['number'];
-												}
-												?>
-												<td>KJ-<?=$cyear?>-<?=$number?></td>
+												<td><?=get_papernum($list[$i])?></td>
 											</tr>
 											<tr>
 												<th><strong>심사위원명<br/>Reviewer Name</strong></th>

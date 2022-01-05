@@ -160,19 +160,7 @@ $write_pages = get_paging(10, $page, $total_page, "./d_sub05.php?page=");
 			?>
 			<tr>
 				<td><?=$list[$i]['num']?></td>
-				<?
-				$cyear = date("y");
-				?>
-				<?
-				if(strlen($list[$i]['number']) == 1){
-					$number = "00".$list[$i]['number'];
-				}else if(strlen($list[$i]['number']) == 2){
-					$number = "0".$list[$i]['number'];
-				}else{
-					$number = $list[$i]['number'];
-				}
-				?>
-				<td><?=$info['abbr']?>-<?=$cyear?>-<?=$number?></td>
+				<td><?=get_papernum($list[$i])?></td>
 				<td><?=$list[$i]['journal']?></td>
 				<!-- <td><? if($list[$i]['manuscript']){ ?><?=get_manuscript($list[$i]['manuscript'])?><? } ?></td> -->
 				<td><? if($list[$i]['review_category_target']){ ?><?=get_category($list[$i]['review_category_target'])?><? } ?></td>

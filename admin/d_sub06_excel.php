@@ -114,8 +114,7 @@ echo "<meta http-equiv=\"Content-Type\" content=\"application/vnd.ms-excel;chars
 ?>
 <tr>
 	<td><?=$list[$i]['num']?></td>
-    <?php $cyear = date("y");?>
-	<td>KJ-<?=$cyear?>-<?=$list[$i]['seq']?></td>
+	<td><?=get_papernum($list[$i])?></td>
 	<td class="textalingL"><?=$list[$i]['jourmal']?></td>
 	<td><? if($list[$i]['manuscript']){ ?><?=get_manuscript($list[$i]['manuscript'])?><? } ?></td>
 	<td class="textalingL"><? if($list[$i]['review_category_target']){ ?><?=get_category($list[$i]['review_category_target'])?><? } ?></td>

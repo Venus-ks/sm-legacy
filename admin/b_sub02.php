@@ -171,19 +171,7 @@ $write_pages = get_paging(10, $page, $total_page, "./b_sub02.php?page=");
 					<tr>
 						<td><?=$list[$i]['num']?></td>
 						<td><?=get_status($list[$i]['seq'], 'review')?></td>
-						<?
-						$cyear = date("y");
-						?>
-						<?
-						if(strlen($list[$i]['number']) == 1){
-							$number = "00".$list[$i]['number'];
-						}else if(strlen($list[$i]['number']) == 2){
-							$number = "0".$list[$i]['number'];
-						}else{
-							$number = $list[$i]['number'];
-						}
-						?>
-						<td>KJ-<?=$cyear?>-<?=$number?></td>
+						<td><?=get_papernum($list[$i])?></td>
 						<td><?=$list[$i]['journal']?></td>
 						<td><? if($list[$i]['review_category_target']){ ?><?=get_category($list[$i]['review_category_target'])?><? } ?></td>
 						<td><strong><?=$list[$i]['title']?></strong></td>

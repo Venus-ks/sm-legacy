@@ -161,20 +161,8 @@ $write_pages = get_paging(10, $page, $total_page, "./d_sub01.php?page=");
 				<td><?=substr($list[$i]['regdate'],0,10)?></td>
 				<td><a href="./d_sub01_write.php?seq=<?=$list[$i]['seq']?>"><img src="../images/btn_paper_modify.png"  /></a></td-->
 				<td><?=$list[$i]['num']?></td>
-				<?
-				$cyear = date("y");
-				?>
-				<?
-				if(strlen($list[$i]['number']) == 1){
-					$number = "00".$list[$i]['number'];
-				}else if(strlen($list[$i]['number']) == 2){
-					$number = "0".$list[$i]['number'];
-				}else{
-					$number = $list[$i]['number'];
-				}
-				?>
 				<td><?=get_status($list[$i]['seq'])?></td>
-				<td><?=$info['abbr']?>-<?=$cyear?>-<?=$number?></td>
+				<td><?=get_papernum($list[$i])?></td>
 				<td><?=$list[$i]['journal']?></td>
 				<!-- <td><? if($list[$i]['manuscript']){ ?><?=get_manuscript($list[$i]['manuscript'])?><? } ?></td> -->
 				<!--td><?=$list[$i]['express_publication']?></td-->
