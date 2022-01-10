@@ -125,6 +125,7 @@ function fwrite_submit(f){
 	} */
 	f.action = "./a_process.php";
 	if(confirm('정말 제출하시겠습니까?')) return true;
+	else return false;
 }
 var tmp_cnt = <?=$tmp_cnt?>;
 function add_author(){

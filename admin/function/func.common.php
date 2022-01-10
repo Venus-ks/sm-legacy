@@ -2269,7 +2269,7 @@ function get_papernum($paper) {
     if($paper['number']) {
         $numarr = [
             $info['abbr'],
-            date("y",strtotime($paper['regdate'])),
+            date("y",strtotime($paper['submit_date'])),
             str_pad($paper['number'],3,'0',STR_PAD_LEFT)
         ];
         return implode('-',$numarr);

@@ -54,7 +54,7 @@ if($_GET['seq']){
 							</tr>
 							<tr>
 								<th>논문번호<br/>Manuscript Number</th>
-								<td><?=get_papernum($list[$i])?></td>
+								<td><?=get_papernum($data)?></td>
 							</tr>
 							<tr>
 								<th>논문명(국문)<br/>Manuscript Title (Kor)</th>
