@@ -15,6 +15,11 @@ $mb_login_mode = $_GET['login_mode'];
 ### LOGIN CHECK
 if(!$member['mb_id']) goto_url("./login.php");
 $mode = $_SESSION['ss_mb_mode'];
+
+//role 구분 권한만 노출되도록 함 hjshyo 220112
+if(check_permit($mode)===false) goto_url("./login.php".$mode_param);
+//
+
 if($_SERVER['PHP_SELF']=="/admin/index.php"){
 	if($member['mb_level'] == 10){		// ### 10 // 편집간사
 		if($mode == '1'){

@@ -2277,4 +2277,12 @@ function get_papernum($paper) {
         return '미접수';
     }
 }
+
+function check_permit($mode) {
+    $thisphp = explode('/',$_SERVER['REQUEST_URI']);
+    $flag = substr($thisphp[2],0,1);
+    // php 파일 첫글자-flag 가 abde 일 경우에 한해 권한 체크함
+    if(strstr('abde',$flag)===false) return true;
+    return (($flag=='d'||$flag=='e') && $mode == 3) || ($flag=='b' && $mode >= 2) || ($flag=='a' && $mode >= 1);
+}
 ?>
