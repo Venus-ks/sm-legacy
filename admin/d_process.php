@@ -389,14 +389,17 @@ else if($_POST['mode']=="d_sub4_reg") {
 	}
 	//종합결과 기록
 	sql_query("UPDATE ad_paper SET review_score={$_POST['result']} WHERE seq = '{$_POST['seq']}'");
-	if($_POST['step']==15) {
+	if($_POST['step'] == 5) {
 		//2차수정요청은 없음.메일 미발송. 31(최종논문검토)로
-		$step = 31;
-	} else {
 		$step = 10;
+	}elseif($_POST['step'] == 15){
+		$step = 20;
+	}elseif($_POST['step'] == 25){	
+		$step = 30;
+	}
 		$subject = "[{$info['journal_title']}] 논문 심사결과 안내({$_POST['mb_name']} 귀하)";
 		$body_toauth = "{$mail_header}<p>안녕하십니까. {$info['institute_title']} [{$info['journal_title']}] 편집위원회입니다</p><p>먼저 「{$info['journal_title']}」에 논문을 투고해주셔서 진심으로 감사드립니다.</p><p>수합된 심사결과를 투고시스템(<a href='http://{$_SERVER['HTTP_HOST']}'>http://{$_SERVER['HTTP_HOST']}</a>)에서 확인부탁드립니다.</p><p>감사합니다.</p><p>- {$info['institute_title']} 편집위원회 드림 -</p>{$mail_footer}";
-	}
+	
 	if($_POST['result'] == 4) {
 		sql_query("UPDATE ad_paper SET settle_date = now(), step = 50 WHERE seq = '{$_POST['seq']}'");
 		$body = "{$mail_header}<p>{$info['institute_title']} [{$info['journal_title']}] 논문 검토 완료 {$info['abbr']}-{$id_year}-{$number}</p><p>편집위원장님</p><p>&nbsp; 본 학회 {$info['institute_title']}지에 {$_POST['mb_name']}님이 투고한 원고의 심사결과가 '게재불가'로 최종논문 검토 완료되었습니다.</p></td></tr><tr><td height='15'></td></tr><tr><td height='51' align='left' valign='top'><p>원고 세부 사항</p><p>제목 : {$_POST['title']}</p><p>키워드 : {$_POST['keyword']}</p></td></tr><tr><td height='15'></td></tr><tr><td height='80' align='center' valign='top' bgcolor='#FFF'>{$mail_footer}";
