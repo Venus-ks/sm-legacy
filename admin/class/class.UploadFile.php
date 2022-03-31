@@ -38,6 +38,7 @@ class UploadFile
 	
 	public function uploadByTypeWithBlind($uploaded_file,$type,$reviewfile_name)
 	{
+		$tmp_file  = $uploaded_file['tmp_name'];
 		$filename  = $uploaded_file['name'];
 		$rfilename	= $reviewfile_name.'_'.$type.'.'.pathinfo($filename)['extension'];
 		//중복 파일 방지를 위해 타임스탬프를 붙인다.
