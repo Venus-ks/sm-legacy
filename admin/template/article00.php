@@ -196,7 +196,8 @@
 				</th>
 				<td>
 				<br>
-				<input type="checkbox" name="fee" value="Y" <?=($data['review_fee']=='Y')?'checked=checked':''?>>예&nbsp;<input type="checkbox" name="fee" value="N" <?=($data['review_fee']=='N')?'checked=checked':''?> />아니오
+				<input type="radio" name="fee" value="Y" <?=($data['review_fee']=='Y')?'checked=checked':''?>>예&nbsp;
+				<input type="radio" name="fee" value="N" <?=($data['review_fee']=='N')?'checked=checked':''?> />아니오
 				<br>
 				<font style="color: #DE790D;">
 					<br>
