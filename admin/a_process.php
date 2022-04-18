@@ -194,33 +194,69 @@ if($_POST['mode']=="a_sub_reg"){
 		}
 		##############
 	}
+
+
 	### AUTH
 	$sql = "INSERT INTO ad_paper_auth_deleted SELECT * FROM ad_paper_auth WHERE parent_seq = '{$_POST['seq']}'";
 	sql_query($sql);
 	$sql = "DELETE FROM ad_paper_auth WHERE parent_seq = '{$_POST['seq']}'";
 	$sql_result = sql_query($sql);
 	if ($step < 2 || $sql_result){
-		for($i=0 ; $i<count($_POST['auth_name']) ; $i++){
-			if($_POST['auth_name'][$i]){
-				$tmp		= "auth_type".$i;
-				if($_POST[$tmp]) $auth_type	= implode("|", $_POST[$tmp]);
-				else $auth_type	= '';
-				$sql = "INSERT INTO ad_paper_auth SET
-							parent_seq		= '{$parent_seq}',
-							auth_type		= '{$auth_type}',
-							auth_name		= '{$_POST['auth_name'][$i]}',
-							auth_name_eng		= '{$_POST['auth_name_eng'][$i]}',
-							auth_tel		= '{$_POST['auth_tel'][$i]}',
-							auth_email		= '{$_POST['auth_email'][$i]}',
-							auth_mobile		= '{$_POST['auth_mobile'][$i]}',
-							organization	= '{$_POST['organization'][$i]}',
-							organization_eng	= '{$_POST['organization_eng'][$i]}',
-							address			= '{$_POST['address'][$i]}'
-							ON DUPLICATE KEY UPDATE parent_seq		= '{$parent_seq}',
-							auth_email		= '{$_POST['auth_email'][$i]}'
-							";
-				sql_query($sql);
-			}
+
+		// for($i=0 ; $i<count($_POST['auth_name']) ; $i++){
+		// 	if($_POST['auth_name'][$i]){
+		// 		$tmp = "auth_type".$i;
+		// 		if($_POST[$tmp]) $auth_type	= implode("|", $_POST[$tmp]);
+		// 		else $auth_type	= '';
+		// 		$sql = "INSERT INTO ad_paper_auth SET
+		// 					parent_seq		= '{$parent_seq}',
+		// 					auth_type		= '{$auth_type}',
+		// 					auth_name		= '{$_POST['auth_name'][$i]}',
+		// 					auth_name_eng		= '{$_POST['auth_name_eng'][$i]}',
+		// 					auth_tel		= '{$_POST['auth_tel'][$i]}',
+		// 					auth_email		= '{$_POST['auth_email'][$i]}',
+		// 					auth_mobile		= '{$_POST['auth_mobile'][$i]}',
+		// 					organization	= '{$_POST['organization'][$i]}',
+		// 					organization_eng	= '{$_POST['organization_eng'][$i]}',
+		// 					address			= '{$_POST['address'][$i]}'
+		// 					ON DUPLICATE KEY UPDATE parent_seq		= '{$parent_seq}',
+		// 					auth_email		= '{$_POST['auth_email'][$i]}'
+		// 					";
+		// 		sql_query($sql);
+		// 	}
+		// }
+
+
+		// addauth
+		
+		$json = json_decode(stripslashes($_POST['addauth']),false);
+		if(!$json)return false;
+
+		foreach($json as $row){
+			$auth_type			= implode('|',$row -> type);
+			$auth_name			= $row -> name;
+			$auth_name_eng		= $row -> name_eng;
+			$auth_tel			= $row -> tel; 
+			$auth_email			= $row -> email;
+			$auth_mobile		= $row -> mobile;
+			$organization		= $row -> organization;
+			$organization_eng	= $row -> organization_eng;
+
+			$sql = "INSERT INTO ad_paper_auth SET
+		 		parent_seq								= '{$parent_seq}',
+		 		auth_type								= '{$auth_type}',
+		 		auth_name								= '{$auth_name}',
+		 		auth_name_eng							= '{$auth_name_eng}',
+		 		auth_tel								= '{$auth_tel}',
+		 		auth_email								= '{$auth_email}',
+		 		auth_mobile								= '{$auth_mobile}',
+		 		organization							= '{$organization}',
+		 		organization_eng						= '{$organization_eng}',
+		 		address									= '{$address}'
+		 		ON DUPLICATE KEY UPDATE parent_seq		= '{$parent_seq}',
+		 		auth_email								= '{$auth_email}'
+		 	";
+		 	sql_query($sql);
 		}
 	}
 	$msg		= "처리 되었습니다.";
