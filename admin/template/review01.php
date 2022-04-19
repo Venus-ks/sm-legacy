@@ -29,7 +29,7 @@
 		<input type="hidden" name="review_file_<?=strtolower($row['type'])?>_seq" value="<?=$row['rseq']?>">
 		<table class="boardType01_write" style="margin-top:10px;">
 			<tr>
-				<th width="100" rowspan="2">심사위원 <?=$row['type']?><br>(<?=($reviewer_hidden==TRUE)?'미공개':$row['mb_name']?>)</th>
+				<th width="100" rowspan="3">심사위원 <?=$row['type']?><br>(<?=($reviewer_hidden==TRUE)?'미공개':$row['mb_name']?>)</th>
 				<th width="150">1차 심사결과<br/>Results</th>
 				<td>
 					<?php if($row['result']&&($data['step']>5 || $reviewer_hidden!=TRUE)):?>
@@ -58,6 +58,14 @@
 					-
 				<?php endif?>
 			</tr>
+			<tr>
+				<th>심사결과표</th>
+				<td>
+					<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#review-<?=$row['rseq']?>-Modal" data-whatever="@mdo">
+						보기
+					</button>
+				</td>
+			</tr>
 			<!-- <tr>
 				<th width="150"><strong>심사의견<br/>Comments</strong></th>
 				<td colspan="2">
@@ -68,9 +76,28 @@
 				<?php endif?>
 			</tr> -->
 		</table>
+
+		<div class="modal fade" id="review-<?=$row['rseq']?>-Modal" tabindex="-1" role="dialog" aria-labelledby="review-<?=$row['rseq']?>-ModalLabel" aria-hidden="true">
+			
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<?php 
+						if($row['score']) {
+						$scores = $row['score'];
+						$rseq = $row['rseq'];
+						include("./widget/question-list-result.php");
+						}
+					?>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+				</div>
+			</div>
+		</div>
 	<?php endwhile?>
-	
 <?php endif?>
+
+
 <?php
 	$sql = "select * from ad_paper_review where parent_seq = '{$data['seq']}' and rstep = 2 order by type";
 	$res = sql_query($sql);
@@ -84,7 +111,7 @@
 	<?php while($row = mysqli_fetch_array($res)):?>
 		<table class="boardType01_write" style="margin-top:10px;">
 		<tr>
-				<th width="100" rowspan="2">심사위원 <?=$row['type']?><br>(<?=($reviewer_hidden==TRUE)?'미공개':$row['mb_name']?>)</th>
+				<th width="100" rowspan="3">심사위원 <?=$row['type']?><br>(<?=($reviewer_hidden==TRUE)?'미공개':$row['mb_name']?>)</th>
 				<th width="150">2차 심사결과<br/>Results</th>
 				<td>
 					<?php if($row['result']&&($data['step']>15 || $reviewer_hidden!=TRUE)):?>
@@ -113,6 +140,15 @@
 					-
 				<?php endif?>
 			</tr>
+			<tr>
+				<th>심사결과표</th>
+				<td>
+					<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#review-<?=$row['rseq']?>-Modal" data-whatever="@mdo">
+						보기
+					</button>
+				</td>
+			</tr>
+					
 			<!-- <tr>
 				<th width="150"><strong>심사의견<br/>Comments</strong></th>
 				<td>
@@ -123,6 +159,24 @@
 				<?php endif?>
 			</tr> -->
 		</table>
+		<div class="modal fade" id="review-<?=$row['rseq']?>-Modal" tabindex="-1" role="dialog" aria-labelledby="review-<?=$row['rseq']?>-ModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<?php 
+						if($row['score']) {
+						$scores = $row['score'];
+						$rseq = $row['rseq'];
+						include("./widget/question-list-result.php");
+						}
+					?>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>		
+
 	<?php endwhile?>
 <?php endif?>
 <?php
@@ -138,7 +192,7 @@
 	<?php while($row = mysqli_fetch_array($res)):?>
 		<table class="boardType01_write" style="margin-top:10px;">
 		<tr>
-				<th width="100" rowspan="2">심사위원 <?=$row['type']?><br>(<?=($reviewer_hidden==TRUE)?'미공개':$row['mb_name']?>)</th>
+				<th width="100" rowspan="3">심사위원 <?=$row['type']?><br>(<?=($reviewer_hidden==TRUE)?'미공개':$row['mb_name']?>)</th>
 				<th width="150">3차 심사결과<br/>Results</th>
 				<td>
 					<?php if($row['result']&&($data['step']>25 || $reviewer_hidden!=TRUE)):?>
@@ -167,7 +221,32 @@
 					-
 				<?php endif?>
 			</tr>
+			<tr>
+				<th>심사결과표</th>
+				<td>
+					<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#review-<?=$row['rseq']?>-Modal" data-whatever="@mdo">
+						보기
+					</button>
+				</td>
+			</tr>
 		</table>
+		<div class="modal fade" id="review-<?=$row['rseq']?>-Modal" tabindex="-1" role="dialog" aria-labelledby="review-<?=$row['rseq']?>-ModalLabel" aria-hidden="true">
+			
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<?php 
+						if($row['score']) {
+						$scores = $row['score'];
+						$rseq = $row['rseq'];
+						include("./widget/question-list-result.php");
+						}
+					?>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+				</div>
+			</div>
+		</div>
 	<?php endwhile?>
 <?php endif?>
 <?php if($data['review_score']):?>
