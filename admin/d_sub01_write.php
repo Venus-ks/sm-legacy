@@ -44,6 +44,13 @@ if($_GET['seq']){
 					</td>
 				</tr>
 				<tr>
+					<td>
+						<div class="alert alert-primary" role="alert" style="color:black">
+							현 진행 단계에서는 수정논문 파일만 수정이 가능 합니다.
+						</div>
+					</td>
+				</tr>
+				<tr>
 					<td valign="top" style="padding:20px;">
 						<?php include_once("./template/review01.php");?>
 						<div style="height:20px;"></div>
@@ -67,8 +74,7 @@ if($_GET['seq']){
 							</tr>
 						</table>
 						<?/*저자 리스트*/?>
-						<?php foreach($loop as $k=>$v) include("./template/author00.php");	?>
-						<div id="auth_table"></div>
+						<?php include("./template/author00.php");?>
 						<table class="boardType01_write" style="margin-top:20px;">
 							<tr>
 								<th width="200">접수 보류 코멘트<br/>Rejact Comments</th>
@@ -137,43 +143,5 @@ function withdraw_article(){
 		document.form1.submit();
 	}
 }
-var tmp_cnt = <?=count($loop)?>;
-function add_author(){
-	var optionLoop = document.createElement("div");
-	optionLoop.className = "";
-	optionLoop.name = "multy_"+tmp_cnt;
-	optionLoop.id = "multy_"+tmp_cnt;
-	var table = "";
-	table += "<table class=\"boardType01_write\" style=\"margin-top:20px;\">";
-	table += "<tr>";
-	table += "<th width=\"200\"><strong>저자유형<br />Author Type</strong></th>";
-	table += "<td colspan=\"3\">";
-	table += "<label><input type=\"checkbox\" name=\"auth_type"+tmp_cnt+"[]\" value=\"제1저자\"/> 제1저자</label> &nbsp;&nbsp; <label><input type=\"checkbox\" name=\"auth_type"+tmp_cnt+"[]\" value=\"교신저자\"/> 교신저자</label> &nbsp;&nbsp; <label><input type=\"checkbox\" name=\"auth_type"+tmp_cnt+"[]\" value=\"공저자\"/> 공저자</label> &nbsp;&nbsp; ";
-	table += "</td>";
-	table += "</tr>";
-	table += "<tr>";
-	table += "<th width=\"200\">저자명*<br />Author Name*</th>";
-	table += "<td>한/Kor : <input type=\"text\" name=\"auth_name[]\" id=\"auth_name\" style=\"width:80%;\" /><br/><br/>영/Eng : <input type=\"text\" name=\"auth_name_eng[]\" id=\"auth_name_eng\" style=\"width:80%;\"/></td>";
-	table += "<th width=\"200\">전화<br />Tel</th>";
-	table += "<td><input type=\"text\" name=\"auth_tel[]\" id=\"auth_tel\" style=\"width:100%;\" /></td>";
-	table += "</tr>";
-	table += "<tr>";
-	table += "<th>이메일*<br />E-mail*</th>";
-	table += "<td><input type=\"text\" name=\"auth_email[]\" id=\"auth_email\" style=\"width:100%;\" /></td>";
-	table += "<th>핸드폰*<br />Mobile*</th>";
-	table += "<td><input type=\"text\" name=\"auth_mobile[]\" id=\"auth_mobile\" style=\"width:100%;\" /></td>";
-	table += "</tr>";
-	table += "<tr>";
-	table += "<th>소속*<br />Organization*</th>";
-	table += "<td colspan=\"3\">한/Kor : <input type=\"text\" name=\"organization[]\" id=\"organization\" style=\"width:80%;\" /><br/><br/>영/Eng : <input type=\"text\" name=\"organization_eng[]\" id=\"organization_eng\" style=\"width:80%;\" /></td>";
-	table += "</tr>";
-	table += "<tr>";
-	table += "<th>주소<br />Address</th>";
-	table += "<td colspan=\"3\"><input type=\"text\" name=\"address[]\" style=\"width:100%;\" /></td>";
-	table += "</tr>";
-	table += "</table>";
-	optionLoop.innerHTML = table;
-	document.getElementById('auth_table').appendChild(optionLoop);
-	tmp_cnt++;
-}
+
 </script>
