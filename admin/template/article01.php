@@ -115,7 +115,7 @@
 				</tr>
 				<tr>
 					<th width="200">투고료 납입 여부</th>
-					<td><input type="checkbox" name="fee" value="Y" <?=($data['review_fee']=='Y')?'checked=checked':''?>>예&nbsp;<input type="checkbox" name="fee" value="N" <?=($data['review_fee']=='N')?'checked=checked':''?> />아니오</td>
+					<td><input type="radio" name="fee" value="Y" <?=($data['review_fee']=='Y')?'checked=checked':''?>>예&nbsp;<input type="radio" name="fee" value="N" <?=($data['review_fee']=='N')?'checked=checked':''?> />아니오</td>
 				</tr>
 				<?php endif?>
 			</table>

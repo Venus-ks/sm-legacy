@@ -33,7 +33,7 @@ submit_ok = '';
 			<? include_once("./_menu.php"); ?>
 		</td>
 		<td valign="top">
-			<form name="form1" method="post" onsubmit="return fwrite_submit(this);" enctype="multipart/form-data" <?=(defined('__DEV__'))?'novalidate':''?>>
+			<form name="form1" method="post" onsubmit="return fwrite_submit(this);" enctype="multipart/form-data">
 				<input type="hidden" name="mode" value="a_sub_reg"/>
 				<input type="hidden" name="seq" value="<?=$data['seq']?>"/>
 				<input type="hidden" name="step" value="<?=$data['step']?>"/>

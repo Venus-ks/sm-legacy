@@ -84,10 +84,12 @@ foreach($loop as $lo) {
 
 </table>
 </template>
+<?php if($mode != 3):?>
 <div class="float-right mt-3">
 	<button type="button" class="btn btn-info" @click="authors.push({ type : []})">저자추가</button>
 	<button type="button" class="btn btn-danger btn-small" @click="authors.splice(-1,1)" x-show="authors.length > 1">삭제</button>
 </div>
+<?php endif?>
 
 </div>
 </div>
