@@ -32,7 +32,7 @@ foreach($loop as $lo) {
 				]
 			};
 		}
-	}
+	};
 	
 	
 </script>

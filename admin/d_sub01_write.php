@@ -74,7 +74,11 @@ if($_GET['seq']){
 							</tr>
 						</table>
 						<?/*저자 리스트*/?>
+<<<<<<< HEAD
 						<?php include("./template/author00.php")?>
+=======
+						<?php include("./template/author00.php");?>
+>>>>>>> 743c55b21de1c0a917aa96a924d24304b042710d
 						<table class="boardType01_write" style="margin-top:20px;">
 							<tr>
 								<th width="200">접수 보류 코멘트<br/>Rejact Comments</th>
