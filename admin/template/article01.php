@@ -1,4 +1,4 @@
-<? if($data['step']>=99 && $data['reject_comment']):?>
+<?php if($data['step']>=99 && $data['reject_comment']):?>
 	<table class="boardType01_write" style="margin-top:10px;">
 		<tr>
 			<th width="200" style="color:red">접수 보류 코멘트<br/>Reject Comments</th>

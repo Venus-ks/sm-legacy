@@ -104,7 +104,7 @@ if($_GET['rseq']){
 														$arr = get_result();
 														foreach($arr as $v):?>
 														<option value="<?=$v['cvalue']?>"><?=$v['ctext']?></option>
-														<? endforeach ?>
+														<?php endforeach ?>
 													</select>
 												</td>
 											</tr>

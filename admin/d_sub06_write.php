@@ -88,7 +88,7 @@ if($_GET['seq']){
 							while ($row = sql_fetch_array($ress)) $review[] = $row;
 							?>
 							<?php if($review):?>
-								<? for($i=0;$i<count($review);$i++):?>
+								<?php for($i=0;$i<count($review);$i++):?>
 									<table width="100%" class="boardType01_write" style="margin-top:5px;">
 										<tr>
 											<th width="230"><strong>최종결과</th>

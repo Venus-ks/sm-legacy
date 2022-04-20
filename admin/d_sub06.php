@@ -467,7 +467,7 @@ $write_pages = get_paging(10, $page, $total_page, "./d_sub06.php?sdate={$_GET['s
 					해당하는 데이터가 없습니다.
 				</td>
 			</tr>
-			<?
+			<?php
 				}
 			?>
 			</table>
