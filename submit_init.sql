@@ -1,12 +1,77 @@
--- Adminer 4.7.5 MySQL dump
+-- --------------------------------------------------------
+-- 호스트:                          222.234.3.219
+-- 서버 버전:                        5.7.33-log - MySQL Community Server (GPL)
+-- 서버 OS:                        Linux
+-- HeidiSQL 버전:                  11.3.0.6295
+-- --------------------------------------------------------
 
-SET NAMES utf8;
-SET time_zone = '+00:00';
-SET foreign_key_checks = 0;
-SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-DROP TABLE IF EXISTS `ad_journal`;
-CREATE TABLE `ad_journal` (
+
+-- sm_develop 데이터베이스 구조 내보내기
+CREATE DATABASE IF NOT EXISTS `sm_develop` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `sm_develop`;
+
+-- 테이블 sm_develop.ad_check_review 구조 내보내기
+CREATE TABLE IF NOT EXISTS `ad_check_review` (
+  `id` mediumint(9) NOT NULL,
+  `part` mediumint(9) NOT NULL,
+  `title` varchar(64) NOT NULL,
+  `content` varchar(256) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- 테이블 데이터 sm_develop.ad_check_review:6 rows 내보내기
+DELETE FROM `ad_check_review`;
+/*!40000 ALTER TABLE `ad_check_review` DISABLE KEYS */;
+INSERT INTO `ad_check_review` (`id`, `part`, `title`, `content`) VALUES
+	(1, 1, '평기기준', '연구제목의 명료성'),
+	(2, 1, '평기기준', '연구목적의 명료성'),
+	(3, 1, '평기기준', '연구방법의 적절성'),
+	(4, 1, '평기기준', '결과해석 및 논의의 적절성'),
+	(5, 1, '평기기준', '연구의 독창성'),
+	(6, 1, '평기기준', '연구결과의 유용성');
+/*!40000 ALTER TABLE `ad_check_review` ENABLE KEYS */;
+
+-- 테이블 sm_develop.ad_config 구조 내보내기
+CREATE TABLE IF NOT EXISTS `ad_config` (
+  `no` int(11) NOT NULL AUTO_INCREMENT,
+  `regip` varchar(15) DEFAULT '',
+  `service_fdate` date DEFAULT NULL,
+  `service_ldate` date DEFAULT NULL,
+  `paper_sample` varchar(255) DEFAULT NULL,
+  `info_form` varchar(255) DEFAULT NULL,
+  `ethic_form` varchar(255) DEFAULT NULL,
+  `revision_form` varchar(255) DEFAULT NULL,
+  `author_checklist` varchar(255) DEFAULT NULL,
+  `copyright_agreement` varchar(255) DEFAULT NULL,
+  `submit_rule` varchar(255) DEFAULT NULL,
+  `ethic_rule` varchar(255) DEFAULT NULL,
+  `review_rule` varchar(255) DEFAULT NULL,
+  `publish_rule` varchar(255) DEFAULT NULL,
+  `author_manual` varchar(255) DEFAULT NULL,
+  `reviewer_manual` varchar(255) DEFAULT NULL,
+  `manual` varchar(255) DEFAULT NULL,
+  `review_form1` varchar(255) DEFAULT NULL,
+  `review_form2` varchar(255) DEFAULT NULL,
+  `review_form3` varchar(255) DEFAULT NULL,
+  `regdate` date NOT NULL DEFAULT '0000-00-00',
+  PRIMARY KEY (`no`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- 테이블 데이터 sm_develop.ad_config:1 rows 내보내기
+DELETE FROM `ad_config`;
+/*!40000 ALTER TABLE `ad_config` DISABLE KEYS */;
+INSERT INTO `ad_config` (`no`, `regip`, `service_fdate`, `service_ldate`, `paper_sample`, `info_form`, `ethic_form`, `revision_form`, `author_checklist`, `copyright_agreement`, `submit_rule`, `ethic_rule`, `review_rule`, `publish_rule`, `author_manual`, `reviewer_manual`, `manual`, `review_form1`, `review_form2`, `review_form3`, `regdate`) VALUES
+	(1, '172.19.0.1', '0000-00-00', '0000-00-00', '{"label":"투고논문 파일 샘플","link":null}', '{"label":"투고논문신청서","link":null}', '{"label":"연구윤리동의서","link":null}', '{"label":"논문수정표","link":null}', '{"label":"자가점검사항표","link":null}', '{"label":"저작권이양동의서","link":null}', '{"label":"논문투고규정","link":null}', '{"label":"윤리규정","link":null}', '{"label":"논문심사규정","link":null}', '{"label":"출판규정","link":null}', '{"label":"투고자 메뉴얼","link":null}', '{"label":"심사자 메뉴얼","link":null}', '{"label":"전체 메뉴얼","link":null}', '{"label":"1차 논문심사서","link":null}', '{"label":"2차 논문심사서","link":null}', '{"label":"3차 논문심사서","link":null}', '2022-04-19');
+/*!40000 ALTER TABLE `ad_config` ENABLE KEYS */;
+
+-- 테이블 sm_develop.ad_journal 구조 내보내기
+CREATE TABLE IF NOT EXISTS `ad_journal` (
   `seq` int(11) NOT NULL AUTO_INCREMENT,
   `mb_id` varchar(100) DEFAULT '',
   `mb_name` varchar(100) DEFAULT '',
@@ -23,42 +88,17 @@ CREATE TABLE `ad_journal` (
   `cont_eng` text NOT NULL,
   `regdate` date NOT NULL DEFAULT '0000-00-00',
   PRIMARY KEY (`seq`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
+-- 테이블 데이터 sm_develop.ad_journal:1 rows 내보내기
+DELETE FROM `ad_journal`;
+/*!40000 ALTER TABLE `ad_journal` DISABLE KEYS */;
 INSERT INTO `ad_journal` (`seq`, `mb_id`, `mb_name`, `title`, `title_eng`, `issn`, `issn_ec`, `issn_cd`, `sdate`, `edate`, `category`, `field`, `cont`, `cont_eng`, `regdate`) VALUES
-(1,	'대표이메일',	'',	'학회명',	'영문학회명',	'ISSN',	'',	'',	'',	'',	'',	'',	'',	'',	'0000-00-00');
+	(1, '대표이메일', '', '학회명', '영문학회명', 'ISSN', '', '', '', '', '', '', '', '', '0000-00-00');
+/*!40000 ALTER TABLE `ad_journal` ENABLE KEYS */;
 
-DROP TABLE IF EXISTS `ad_check_review`;
-CREATE TABLE `ad_check_review` (
-  `id` mediumint(9) NOT NULL,
-  `part` mediumint(9) NOT NULL,
-  `title` varchar(64) NOT NULL,
-  `content` varchar(256) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
-INSERT INTO `ad_check_review` (`id`, `part`, `title`, `content`) VALUES
-(1,	1,	'평기기준',	'연구제목의 명료성'),
-(2,	1,	'평기기준',	'연구목적의 명료성'),
-(3,	1,	'평기기준',	'연구방법의 적절성'),
-(4,	1,	'평기기준',	'결과해석 및 논의의 적절성'),
-(5,	1,	'평기기준',	'연구의 독창성'),
-(6,	1,	'평기기준',	'연구결과의 유용성');
-
-DROP TABLE IF EXISTS `ad_config`;
-CREATE TABLE `ad_config` (
-  `content01` text NOT NULL,
-  `content02` text NOT NULL,
-  `content03` text NOT NULL,
-  `content04` text NOT NULL,
-  `regip` varchar(15) DEFAULT '',
-  `service_fdate` date DEFAULT NULL,
-  `service_ldate` date DEFAULT NULL,
-  `regdate` date NOT NULL DEFAULT '0000-00-00'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
-
-DROP TABLE IF EXISTS `ad_mail_log`;
-CREATE TABLE `ad_mail_log` (
+-- 테이블 sm_develop.ad_mail_log 구조 내보내기
+CREATE TABLE IF NOT EXISTS `ad_mail_log` (
   `parent_seq` int(11) NOT NULL,
   `mail_yn` varchar(1) NOT NULL,
   `error_info` varchar(255) NOT NULL,
@@ -66,9 +106,13 @@ CREATE TABLE `ad_mail_log` (
   `regdate` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+-- 테이블 데이터 sm_develop.ad_mail_log:0 rows 내보내기
+DELETE FROM `ad_mail_log`;
+/*!40000 ALTER TABLE `ad_mail_log` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ad_mail_log` ENABLE KEYS */;
 
-DROP TABLE IF EXISTS `ad_mail_text`;
-CREATE TABLE `ad_mail_text` (
+-- 테이블 sm_develop.ad_mail_text 구조 내보내기
+CREATE TABLE IF NOT EXISTS `ad_mail_text` (
   `uid` int(11) NOT NULL,
   `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -76,9 +120,13 @@ CREATE TABLE `ad_mail_text` (
   `adds` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+-- 테이블 데이터 sm_develop.ad_mail_text:0 rows 내보내기
+DELETE FROM `ad_mail_text`;
+/*!40000 ALTER TABLE `ad_mail_text` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ad_mail_text` ENABLE KEYS */;
 
-DROP TABLE IF EXISTS `ad_paper`;
-CREATE TABLE `ad_paper` (
+-- 테이블 sm_develop.ad_paper 구조 내보내기
+CREATE TABLE IF NOT EXISTS `ad_paper` (
   `seq` int(11) NOT NULL AUTO_INCREMENT,
   `mb_id` varchar(100) DEFAULT '',
   `mb_name` varchar(100) DEFAULT '',
@@ -146,9 +194,13 @@ CREATE TABLE `ad_paper` (
   KEY `mb_id` (`mb_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+-- 테이블 데이터 sm_develop.ad_paper:0 rows 내보내기
+DELETE FROM `ad_paper`;
+/*!40000 ALTER TABLE `ad_paper` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ad_paper` ENABLE KEYS */;
 
-DROP TABLE IF EXISTS `ad_paper_auth`;
-CREATE TABLE `ad_paper_auth` (
+-- 테이블 sm_develop.ad_paper_auth 구조 내보내기
+CREATE TABLE IF NOT EXISTS `ad_paper_auth` (
   `auth_seq` int(11) NOT NULL AUTO_INCREMENT,
   `parent_seq` int(11) DEFAULT '0',
   `auth_type` varchar(255) NOT NULL DEFAULT '',
@@ -164,9 +216,13 @@ CREATE TABLE `ad_paper_auth` (
   KEY `mb_id` (`parent_seq`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+-- 테이블 데이터 sm_develop.ad_paper_auth:0 rows 내보내기
+DELETE FROM `ad_paper_auth`;
+/*!40000 ALTER TABLE `ad_paper_auth` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ad_paper_auth` ENABLE KEYS */;
 
-DROP TABLE IF EXISTS `ad_paper_auth_deleted`;
-CREATE TABLE `ad_paper_auth_deleted` (
+-- 테이블 sm_develop.ad_paper_auth_deleted 구조 내보내기
+CREATE TABLE IF NOT EXISTS `ad_paper_auth_deleted` (
   `auth_seq` int(11) NOT NULL,
   `parent_seq` int(11) DEFAULT '0',
   `auth_type` varchar(255) NOT NULL DEFAULT '',
@@ -182,9 +238,13 @@ CREATE TABLE `ad_paper_auth_deleted` (
   KEY `auth_seq` (`auth_seq`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+-- 테이블 데이터 sm_develop.ad_paper_auth_deleted:0 rows 내보내기
+DELETE FROM `ad_paper_auth_deleted`;
+/*!40000 ALTER TABLE `ad_paper_auth_deleted` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ad_paper_auth_deleted` ENABLE KEYS */;
 
-DROP TABLE IF EXISTS `ad_paper_deleted`;
-CREATE TABLE `ad_paper_deleted` (
+-- 테이블 sm_develop.ad_paper_deleted 구조 내보내기
+CREATE TABLE IF NOT EXISTS `ad_paper_deleted` (
   `seq` int(11) NOT NULL,
   `mb_id` varchar(100) DEFAULT '',
   `mb_name` varchar(100) DEFAULT '',
@@ -252,9 +312,13 @@ CREATE TABLE `ad_paper_deleted` (
   KEY `seq` (`seq`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+-- 테이블 데이터 sm_develop.ad_paper_deleted:0 rows 내보내기
+DELETE FROM `ad_paper_deleted`;
+/*!40000 ALTER TABLE `ad_paper_deleted` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ad_paper_deleted` ENABLE KEYS */;
 
-DROP TABLE IF EXISTS `ad_paper_review`;
-CREATE TABLE `ad_paper_review` (
+-- 테이블 sm_develop.ad_paper_review 구조 내보내기
+CREATE TABLE IF NOT EXISTS `ad_paper_review` (
   `rseq` int(11) NOT NULL AUTO_INCREMENT,
   `parent_seq` int(11) DEFAULT '0',
   `type` varchar(1) DEFAULT NULL,
@@ -273,9 +337,13 @@ CREATE TABLE `ad_paper_review` (
   PRIMARY KEY (`rseq`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+-- 테이블 데이터 sm_develop.ad_paper_review:0 rows 내보내기
+DELETE FROM `ad_paper_review`;
+/*!40000 ALTER TABLE `ad_paper_review` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ad_paper_review` ENABLE KEYS */;
 
-DROP TABLE IF EXISTS `ad_paper_total`;
-CREATE TABLE `ad_paper_total` (
+-- 테이블 sm_develop.ad_paper_total 구조 내보내기
+CREATE TABLE IF NOT EXISTS `ad_paper_total` (
   `tseq` int(11) NOT NULL AUTO_INCREMENT,
   `parent_seq` int(11) DEFAULT '0',
   `mb_id` varchar(100) DEFAULT '',
@@ -287,9 +355,13 @@ CREATE TABLE `ad_paper_total` (
   PRIMARY KEY (`tseq`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+-- 테이블 데이터 sm_develop.ad_paper_total:0 rows 내보내기
+DELETE FROM `ad_paper_total`;
+/*!40000 ALTER TABLE `ad_paper_total` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ad_paper_total` ENABLE KEYS */;
 
-DROP TABLE IF EXISTS `ad_reviewer_log`;
-CREATE TABLE `ad_reviewer_log` (
+-- 테이블 sm_develop.ad_reviewer_log 구조 내보내기
+CREATE TABLE IF NOT EXISTS `ad_reviewer_log` (
   `parent_seq` int(11) NOT NULL,
   `review_user` varchar(255) NOT NULL,
   `review_name` varchar(255) NOT NULL,
@@ -298,9 +370,13 @@ CREATE TABLE `ad_reviewer_log` (
   `confirmdate` date NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+-- 테이블 데이터 sm_develop.ad_reviewer_log:0 rows 내보내기
+DELETE FROM `ad_reviewer_log`;
+/*!40000 ALTER TABLE `ad_reviewer_log` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ad_reviewer_log` ENABLE KEYS */;
 
-DROP TABLE IF EXISTS `g4_config`;
-CREATE TABLE `g4_config` (
+-- 테이블 sm_develop.g4_config 구조 내보내기
+CREATE TABLE IF NOT EXISTS `g4_config` (
   `cf_title` varchar(255) NOT NULL DEFAULT '',
   `cf_admin` varchar(255) NOT NULL DEFAULT '',
   `cf_use_point` tinyint(4) NOT NULL DEFAULT '0',
@@ -402,9 +478,13 @@ CREATE TABLE `g4_config` (
   `cf_10` varchar(255) NOT NULL DEFAULT ''
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+-- 테이블 데이터 sm_develop.g4_config:0 rows 내보내기
+DELETE FROM `g4_config`;
+/*!40000 ALTER TABLE `g4_config` DISABLE KEYS */;
+/*!40000 ALTER TABLE `g4_config` ENABLE KEYS */;
 
-DROP TABLE IF EXISTS `g4_member`;
-CREATE TABLE `g4_member` (
+-- 테이블 sm_develop.g4_member 구조 내보내기
+CREATE TABLE IF NOT EXISTS `g4_member` (
   `mb_no` int(11) NOT NULL AUTO_INCREMENT,
   `mb_id` varchar(255) NOT NULL DEFAULT '',
   `mb_password` varchar(255) NOT NULL DEFAULT '',
@@ -461,19 +541,23 @@ CREATE TABLE `g4_member` (
   UNIQUE KEY `mb_id` (`mb_id`),
   KEY `mb_today_login` (`mb_today_login`),
   KEY `mb_datetime` (`mb_datetime`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
+-- 테이블 데이터 sm_develop.g4_member:7 rows 내보내기
+DELETE FROM `g4_member`;
+/*!40000 ALTER TABLE `g4_member` DISABLE KEYS */;
 INSERT INTO `g4_member` (`mb_no`, `mb_id`, `mb_password`, `mb_name`, `mb_nick`, `mb_nick_date`, `mb_email`, `mb_homepage`, `mb_password_q`, `mb_password_a`, `mb_level`, `mb_jumin`, `mb_sex`, `mb_birth`, `mb_tel`, `mb_hp`, `mb_zip1`, `mb_zip2`, `mb_addr1`, `mb_addr2`, `mb_addr3`, `mb_addr_jibeon`, `mb_signature`, `mb_recommend`, `mb_point`, `mb_today_login`, `mb_login_ip`, `mb_datetime`, `mb_ip`, `mb_leave_date`, `mb_intercept_date`, `mb_email_certify`, `mb_memo`, `mb_lost_certify`, `mb_mailling`, `mb_sms`, `mb_open`, `mb_open_date`, `mb_profile`, `mb_memo_call`, `mb_1`, `mb_2`, `mb_3`, `mb_4`, `mb_5`, `mb_6`, `mb_7`, `mb_8`, `mb_9`, `mb_10`, `gb`, `field`) VALUES
-(1,	'admin@site.com',	'*A4B6157319038724E3560894F7F932C8886EBFCF',	'편집위원장',	'',	'0000-00-00',	'admin@site.com',	'',	'',	'',	10,	'*EC2A66B6D554020B8C68D442F5F31E1558D4AE69',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	8700,	'2021-06-30 15:36:27',	'125.129.246.60',	'2013-05-15 16:45:25',	'114.200.239.60',	'',	'',	'2013-05-15 16:45:25',	'',	'',	1,	0,	1,	'0000-00-00',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'normal',	''),
-(2,	'user@site.com',	'*A4B6157319038724E3560894F7F932C8886EBFCF',	'테스터',	'',	'2013-06-06',	'user@site.com',	'',	'',	'',	2,	'',	'M',	'19810609',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	9300,	'2018-12-14 09:43:44',	'125.129.246.69',	'2013-06-06 02:35:38',	'203.234.216.182',	'',	'',	'2013-06-06 02:35:38',	'',	'',	1,	1,	1,	'2013-06-06',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'normal',	''),
-(3,	'a@site.com',	'*A4B6157319038724E3560894F7F932C8886EBFCF',	'심사위원A',	'',	'0000-00-00',	'a@site.com',	'',	'',	'',	4,	'',	'',	'19800611',	'0000-0000-000',	'',	'135',	'806',	'',	'1-1',	'',	'',	'',	'',	3500,	'2021-05-21 14:59:09',	'125.129.246.60',	'2013-06-11 17:52:38',	'1.215.232.34',	'',	'',	'0000-00-00 00:00:00',	'',	'',	0,	0,	0,	'0000-00-00',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'review',	'1'),
-(4,	'b@site.com',	'*A4B6157319038724E3560894F7F932C8886EBFCF',	'심사위원B',	'',	'0000-00-00',	'b@site.com',	'',	'',	'',	4,	'',	'',	'19820609',	'000-0000-0000',	'',	'135',	'807',	'',	'2-2',	'',	'',	'',	'',	1800,	'2018-12-14 10:07:15',	'125.129.246.69',	'2013-06-11 17:53:55',	'1.215.232.34',	'',	'',	'0000-00-00 00:00:00',	'',	'',	0,	0,	0,	'0000-00-00',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'review',	'1'),
-(5,	'c@site.com',	'*A4B6157319038724E3560894F7F932C8886EBFCF',	'심사위원C',	'',	'0000-00-00',	'c@site.com',	'',	'',	'',	4,	'',	'',	'19860319',	'333-3333-3333',	'',	'135',	'806',	'',	'3-3',	'',	'',	'',	'',	1700,	'2018-12-14 10:07:33',	'125.129.246.69',	'2013-06-11 17:55:25',	'1.215.232.34',	'',	'',	'0000-00-00 00:00:00',	'',	'',	0,	0,	0,	'0000-00-00',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'review',	'1'),
-(6,	'd@site.com',	'*A4B6157319038724E3560894F7F932C8886EBFCF',	'심사위원D',	'',	'0000-00-00',	'd@site.com',	'',	'',	'',	4,	'',	'',	'',	'1234',	'1234',	'',	'',	'1234',	'',	'',	'',	'',	'',	0,	'2018-11-09 14:50:14',	'125.129.246.60',	'2017-07-21 17:18:37',	'125.129.246.69',	'',	'',	'0000-00-00 00:00:00',	'',	'',	0,	0,	0,	'0000-00-00',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'review',	''),
-(7,	'hjshyo@hakjisa.co.kr',	'*A4B6157319038724E3560894F7F932C8886EBFCF',	'시스템관리자',	'',	'0000-00-00',	'hjshyo@hakjisa.co.kr',	'',	'',	'',	10,	'',	'',	'',	'02-330-5171',	'1234',	'',	'',	'1234',	'',	'',	'',	'',	'',	0,	'2018-11-09 14:50:14',	'125.129.246.60',	'2017-07-21 17:18:37',	'125.129.246.69',	'',	'',	'0000-00-00 00:00:00',	'',	'',	0,	0,	0,	'0000-00-00',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'',	'review',	'');
+	(1, 'admin@site.com', '*A4B6157319038724E3560894F7F932C8886EBFCF', '편집위원장', '', '0000-00-00', 'admin@site.com', '', '', '', 10, '*EC2A66B6D554020B8C68D442F5F31E1558D4AE69', '', '', '', '', '', '', '', '', '', '', '', '', 8700, '2021-06-30 15:36:27', '125.129.246.60', '2013-05-15 16:45:25', '114.200.239.60', '', '', '2013-05-15 16:45:25', '', '', 1, 0, 1, '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', 'normal', ''),
+	(2, 'user@site.com', '*A4B6157319038724E3560894F7F932C8886EBFCF', '테스터', '', '2013-06-06', 'user@site.com', '', '', '', 2, '', 'M', '19810609', '', '', '', '', '', '', '', '', '', '', 9300, '2018-12-14 09:43:44', '125.129.246.69', '2013-06-06 02:35:38', '203.234.216.182', '', '', '2013-06-06 02:35:38', '', '', 1, 1, 1, '2013-06-06', '', '', '', '', '', '', '', '', '', '', '', '', 'normal', ''),
+	(3, 'a@site.com', '*A4B6157319038724E3560894F7F932C8886EBFCF', '심사위원A', '', '0000-00-00', 'a@site.com', '', '', '', 4, '', '', '19800611', '0000-0000-000', '', '135', '806', '', '1-1', '', '', '', '', 3500, '2021-05-21 14:59:09', '125.129.246.60', '2013-06-11 17:52:38', '1.215.232.34', '', '', '0000-00-00 00:00:00', '', '', 0, 0, 0, '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', 'review', '1'),
+	(4, 'b@site.com', '*A4B6157319038724E3560894F7F932C8886EBFCF', '심사위원B', '', '0000-00-00', 'b@site.com', '', '', '', 4, '', '', '19820609', '000-0000-0000', '', '135', '807', '', '2-2', '', '', '', '', 1800, '2018-12-14 10:07:15', '125.129.246.69', '2013-06-11 17:53:55', '1.215.232.34', '', '', '0000-00-00 00:00:00', '', '', 0, 0, 0, '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', 'review', '1'),
+	(5, 'c@site.com', '*A4B6157319038724E3560894F7F932C8886EBFCF', '심사위원C', '', '0000-00-00', 'c@site.com', '', '', '', 4, '', '', '19860319', '333-3333-3333', '', '135', '806', '', '3-3', '', '', '', '', 1700, '2018-12-14 10:07:33', '125.129.246.69', '2013-06-11 17:55:25', '1.215.232.34', '', '', '0000-00-00 00:00:00', '', '', 0, 0, 0, '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', 'review', '1'),
+	(6, 'd@site.com', '*A4B6157319038724E3560894F7F932C8886EBFCF', '심사위원D', '', '0000-00-00', 'd@site.com', '', '', '', 4, '', '', '', '1234', '1234', '', '', '1234', '', '', '', '', '', 0, '2018-11-09 14:50:14', '125.129.246.60', '2017-07-21 17:18:37', '125.129.246.69', '', '', '0000-00-00 00:00:00', '', '', 0, 0, 0, '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', 'review', ''),
+	(7, 'hjshyo@hakjisa.co.kr', '*A4B6157319038724E3560894F7F932C8886EBFCF', '시스템관리자', '', '0000-00-00', 'hjshyo@hakjisa.co.kr', '', '', '', 10, '', '', '', '02-330-5171', '1234', '', '', '1234', '', '', '', '', '', 0, '2018-11-09 14:50:14', '125.129.246.60', '2017-07-21 17:18:37', '125.129.246.69', '', '', '0000-00-00 00:00:00', '', '', 0, 0, 0, '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', 'review', '');
+/*!40000 ALTER TABLE `g4_member` ENABLE KEYS */;
 
-DROP TABLE IF EXISTS `g4_visit`;
-CREATE TABLE `g4_visit` (
+-- 테이블 sm_develop.g4_visit 구조 내보내기
+CREATE TABLE IF NOT EXISTS `g4_visit` (
   `vi_id` int(11) NOT NULL DEFAULT '0',
   `vi_ip` varchar(255) NOT NULL DEFAULT '',
   `vi_date` date NOT NULL DEFAULT '0000-00-00',
@@ -485,52 +569,37 @@ CREATE TABLE `g4_visit` (
   KEY `index2` (`vi_date`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+-- 테이블 데이터 sm_develop.g4_visit:5 rows 내보내기
+DELETE FROM `g4_visit`;
+/*!40000 ALTER TABLE `g4_visit` DISABLE KEYS */;
 INSERT INTO `g4_visit` (`vi_id`, `vi_ip`, `vi_date`, `vi_time`, `vi_referer`, `vi_agent`) VALUES
-(1,	'',	'2020-05-29',	'11:14:41',	'',	''),
-(2,	'',	'2020-07-23',	'16:37:10',	'',	''),
-(3,	'',	'2020-09-07',	'15:01:23',	'',	''),
-(4,	'',	'2021-05-21',	'14:02:48',	'',	''),
-(5,	'',	'2021-06-30',	'15:09:14',	'',	'');
+	(1, '', '2020-05-29', '11:14:41', '', ''),
+	(2, '', '2020-07-23', '16:37:10', '', ''),
+	(3, '', '2020-09-07', '15:01:23', '', ''),
+	(4, '', '2021-05-21', '14:02:48', '', ''),
+	(5, '', '2021-06-30', '15:09:14', '', '');
+/*!40000 ALTER TABLE `g4_visit` ENABLE KEYS */;
 
-DROP TABLE IF EXISTS `g4_visit_sum`;
-CREATE TABLE `g4_visit_sum` (
+-- 테이블 sm_develop.g4_visit_sum 구조 내보내기
+CREATE TABLE IF NOT EXISTS `g4_visit_sum` (
   `vs_date` date NOT NULL DEFAULT '0000-00-00',
   `vs_count` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`vs_date`),
   KEY `index1` (`vs_count`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+-- 테이블 데이터 sm_develop.g4_visit_sum:5 rows 내보내기
+DELETE FROM `g4_visit_sum`;
+/*!40000 ALTER TABLE `g4_visit_sum` DISABLE KEYS */;
 INSERT INTO `g4_visit_sum` (`vs_date`, `vs_count`) VALUES
-('2020-05-29',	1),
-('2020-07-23',	1),
-('2020-09-07',	1),
-('2021-05-21',	1),
-('2021-06-30',	1);
+	('2020-05-29', 1),
+	('2020-07-23', 1),
+	('2020-09-07', 1),
+	('2021-05-21', 1),
+	('2021-06-30', 1);
+/*!40000 ALTER TABLE `g4_visit_sum` ENABLE KEYS */;
 
-DROP TABLE IF EXISTS `ad_config`;
-CREATE TABLE `ad_config` (
-  `no` int(11) NOT NULL AUTO_INCREMENT,
-  `regip` varchar(15) DEFAULT '',
-  `service_fdate` date DEFAULT NULL,
-  `service_ldate` date DEFAULT NULL,
-  `paper_sample` varchar(255) DEFAULT NULL,
-  `info_form` varchar(255) DEFAULT NULL,
-  `ethic_form` varchar(255) DEFAULT NULL,
-  `revision_form` varchar(255) DEFAULT NULL,
-  `author_checklist` varchar(255) DEFAULT NULL,
-  `copyright_agreement` varchar(255) DEFAULT NULL,
-  `submit_rule` varchar(255) DEFAULT NULL,
-  `ethic_rule` varchar(255) DEFAULT NULL,
-  `review_rule` varchar(255) DEFAULT NULL,
-  `publish_rule` varchar(255) DEFAULT NULL,
-  `author_manual` varchar(255) DEFAULT NULL,
-  `reviewer_manual` varchar(255) DEFAULT NULL,
-  `manual` varchar(255) DEFAULT NULL,
-  `review_form1` varchar(255) DEFAULT NULL,
-  `review_form2` varchar(255) DEFAULT NULL,
-  `review_form3` varchar(255) DEFAULT NULL,
-  `regdate` date NOT NULL DEFAULT '0000-00-00',
-  PRIMARY KEY (`no`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- 2021-06-30 06:52:08
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
