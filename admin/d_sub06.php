@@ -41,7 +41,7 @@ if($_GET['sc_cate']=='category' && $_GET['category']){
 	$where .= " AND review_category = '{$_GET['category']}' ";
 }
 if($_GET['sc_cate']=='journal' && $_GET['journal']){
-	$where .= " AND jourmal = '{$_GET['journal']}' ";
+	$where .= " AND journal = '{$_GET['journal']}' ";
 }
 if($_GET['sc_cate']=='title' && $_GET['sc_text']){
 	$where .= " AND title  like '%{$_GET['sc_text']}%' ";
@@ -86,10 +86,10 @@ if($_GET['sc_cate']=='result' && $_GET['result']){
 	}else if($_GET['order']=='seq' && $_GET['orderColumn2']=='asc'){
 		$sql_order = " order by a.seq asc";
 	}
-	if($_GET['order']=='jourmal' && $_GET['orderColumn3']=='desc'){
-		$sql_order = " order by a.jourmal desc";
-	}else if($_GET['order']=='jourmal' && $_GET['orderColumn3']=='asc'){
-		$sql_order = " order by a.jourmal asc";
+	if($_GET['order']=='journal' && $_GET['orderColumn3']=='desc'){
+		$sql_order = " order by a.journal desc";
+	}else if($_GET['order']=='journal' && $_GET['orderColumn3']=='asc'){
+		$sql_order = " order by a.journal asc";
 	}
 	if($_GET['order']=='manuscript' && $_GET['orderColumn4']=='desc'){
 		$sql_order = " order by a.manuscript desc";
@@ -125,10 +125,10 @@ if($_GET['sc_cate']=='result' && $_GET['result']){
 	}else if($_GET['order']=='seq' && $_GET['orderColumn2']=='asc'){
 		$sql_order = " order by seq asc";
 	}
-	if($_GET['order']=='jourmal' && $_GET['orderColumn3']=='desc'){
-		$sql_order = " order by jourmal desc";
-	}else if($_GET['order']=='jourmal' && $_GET['orderColumn3']=='asc'){
-		$sql_order = " order by jourmal asc";
+	if($_GET['order']=='journal' && $_GET['orderColumn3']=='desc'){
+		$sql_order = " order by journal desc";
+	}else if($_GET['order']=='journal' && $_GET['orderColumn3']=='asc'){
+		$sql_order = " order by journal asc";
 	}
 	if($_GET['order']=='manuscript' && $_GET['orderColumn4']=='desc'){
 		$sql_order = " order by manuscript desc";
@@ -164,10 +164,10 @@ if($_GET['order']=='seq' && $_GET['orderColumn2']=='desc'){
 }else if($_GET['order']=='seq' && $_GET['orderColumn2']=='asc'){
 	$sql_order = " order by seq asc";
 }
-if($_GET['order']=='jourmal' && $_GET['orderColumn3']=='desc'){
-	$sql_order = " order by jourmal desc";
-}else if($_GET['order']=='jourmal' && $_GET['orderColumn3']=='asc'){
-	$sql_order = " order by jourmal asc";
+if($_GET['order']=='journal' && $_GET['orderColumn3']=='desc'){
+	$sql_order = " order by journal desc";
+}else if($_GET['order']=='journal' && $_GET['orderColumn3']=='asc'){
+	$sql_order = " order by journal asc";
 }
 if($_GET['order']=='manuscript' && $_GET['orderColumn4']=='desc'){
 	$sql_order = " order by manuscript desc";
@@ -339,7 +339,7 @@ $write_pages = get_paging(10, $page, $total_page, "./d_sub06.php?sdate={$_GET['s
 				<th width="70" rowspan="2" style="cursor:pointer;" onClick="javascript:orderview('step');"><strong>상태<br/>Status<br/><div id="column1"><?if ($_GET['orderColumn1']=='asc'){?>▲<?}else if($_GET['orderColumn1']=='desc'){?>▼<?}?></div></strong></th>
 				<th width="78" rowspan="2" onClick="javascript:orderview('seq');" style="cursor:pointer;"><strong>논문번호<br/>
 				  Paper Number<br/><div id="column2"><?if ($_GET['orderColumn2']=='asc'){?>▲<?}else if($_GET['orderColumn2']=='desc'){?>▼<?}?></div></div></strong></th>
-				<!--th width="53" rowspan="2" onClick="javascript:orderview('jourmal');" style="cursor:pointer;"><strong>저널명<br/>Journal Title<br/><div id="column3"><?if ($_GET['orderColumn3']=='asc'){?>▲<?}else if($_GET['orderColumn3']=='desc'){?>▼<?}?></div></div></strong></th-->
+				<!--th width="53" rowspan="2" onClick="javascript:orderview('journal');" style="cursor:pointer;"><strong>저널명<br/>Journal Title<br/><div id="column3"><?if ($_GET['orderColumn3']=='asc'){?>▲<?}else if($_GET['orderColumn3']=='desc'){?>▼<?}?></div></div></strong></th-->
 				<!-- <th width="65" rowspan="2" style="cursor:pointer;" onClick="javascript:orderview('manuscript');"><strong>원고종류<br/>Type of Paper<div id="column4"><?if ($_GET['orderColumn4']=='asc'){?>▲<?}else if($_GET['orderColumn4']=='desc'){?>▼<?}?></div></div></strong></th> -->
 				<!--th rowspan="2"><strong>심사성격<br/>Urgent Review</strong></th-->
 				<th width="105" rowspan="2" style="cursor:pointer;" onClick="javascript:orderview('review_category');"><strong>심사요청분야<br/>Review Category<br/><div id="column5"><?if ($_GET['orderColumn5']=='asc'){?>▲<?}else if($_GET['orderColumn5']=='desc'){?>▼<?}?></div></div></strong></th>
@@ -549,7 +549,7 @@ function orderview(order){
 		}else{
 			document.form1.orderColumn2.value='asc'
 		}
-	}else if (order=='jourmal'){
+	}else if (order=='journal'){
 		if (document.form1.orderColumn3.value=='asc'){
 			document.form1.orderColumn3.value='desc'
 		}else if (document.form1.orderColumn3.value=='desc'){

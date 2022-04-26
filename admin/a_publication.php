@@ -23,7 +23,7 @@ if($_GET['sc_cate']=='category' && $_GET['category']){
 	$where .= " AND a.review_category = '{$_GET['category']}' ";
 }
 if($_GET['sc_cate']=='journal' && $_GET['journal']){
-	$where .= " AND a.jourmal = '{$_GET['journal']}' ";
+	$where .= " AND a.journal = '{$_GET['journal']}' ";
 }
 if($_GET['sc_cate']=='title' && $_GET['sc_text']){
 	$where .= " AND a.title  like '%{$_GET['sc_text']}%' ";
@@ -181,7 +181,7 @@ $write_pages = get_paging(10, $page, $total_page, "./a_publication.php?page=");
 				<td>
 					<?=get_status($list[$i]['seq'])?>
 				</td>
-				<td class="textalingL"><?=$list[$i]['jourmal']?></td>
+				<td class="textalingL"><?=$list[$i]['journal']?></td>
 				<td class="textalingL"><? if($list[$i]['review_category']){ ?><?=get_category($list[$i]['review_category'])?><? } ?></td>
 				<td><strong><?=$list[$i]['title']?></strong></td>
 				<td><?=$list[$i]['mb_name']?></td>
@@ -196,7 +196,7 @@ $write_pages = get_paging(10, $page, $total_page, "./a_publication.php?page=");
 					<?}?>
 				</td>
 				<td><?=get_papernum($list[$i])?></td>
-				<td><?=$list[$i]['jourmal']?></td>
+				<td><?=$list[$i]['journal']?></td>
 				<td><? if($list[$i]['review_category']){ ?><?=get_category($list[$i]['review_category'])?><? } ?></td>
 				<td><strong><?=$list[$i]['title']?></strong></td>
 				<td><?=substr($list[$i]['complete_date'],0,10)?></td>

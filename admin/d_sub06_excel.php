@@ -22,7 +22,7 @@ if($_GET['sc_cate']=='category' && $_GET['category']){
 	$where .= " AND review_category_target = '{$_GET['category']}' ";
 }
 if($_GET['sc_cate']=='journal' && $_GET['journal']){
-	$where .= " AND jourmal = '{$_GET['journal']}' ";
+	$where .= " AND journal = '{$_GET['journal']}' ";
 }
 if($_GET['sc_cate']=='title' && $_GET['sc_text']){
 	$where .= " AND title  like '%{$_GET['sc_text']}%' ";
@@ -115,7 +115,7 @@ echo "<meta http-equiv=\"Content-Type\" content=\"application/vnd.ms-excel;chars
 <tr>
 	<td><?=$list[$i]['num']?></td>
 	<td><?=get_papernum($list[$i])?></td>
-	<td class="textalingL"><?=$list[$i]['jourmal']?></td>
+	<td class="textalingL"><?=$list[$i]['journal']?></td>
 	<td><? if($list[$i]['manuscript']){ ?><?=get_manuscript($list[$i]['manuscript'])?><? } ?></td>
 	<td class="textalingL"><? if($list[$i]['review_category_target']){ ?><?=get_category($list[$i]['review_category_target'])?><? } ?></td>
 	<td><a href="./d_sub06_write.php?seq=<?=$list[$i]['seq']?>"><strong><?=$list[$i]['title']?></strong></a></td>

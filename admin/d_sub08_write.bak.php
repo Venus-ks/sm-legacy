@@ -16,7 +16,7 @@ if($_GET['seq']){
 	while ($row = sql_fetch_array($res)){
 		$tmp_arr = explode("|",$row['auth_type']);
 		for($i=0;$i<count($tmp_arr);$i++){
-			if($tmp_arr[$i]=="±³½ÅÀúÀÚ"){
+			if($tmp_arr[$i]=="ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"){
 				$author[]= $row['auth_name'];
 			}
 		}
@@ -46,7 +46,7 @@ if($_GET['seq']){
 
 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
 		<tr>
-			<td class="font_16"><img src="../images/icon.png"  align="absmiddle" class="mr5" />³í¹® ³»¿ë</td>
+			<td class="font_16"><img src="../images/icon.png"  align="absmiddle" class="mr5" />ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½</td>
 		</tr>
 		</table>
 
@@ -60,8 +60,8 @@ if($_GET['seq']){
 				<td><?=$data['regdate']?></td>
 			</tr>
 			<tr>
-				<th width="150"><strong>Jourmal Title</strong></th>
-				<td><?=$data['jourmal']?></td>
+				<th width="150"><strong>Journal Title</strong></th>
+				<td><?=$data['journal']?></td>
 			</tr>
 			<tr>
 				<th>Receipt Number</th>
@@ -156,7 +156,7 @@ if($_GET['seq']){
 
 	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:20px;">
 	<tr>
-		<td class="font_16"><img src="../images/icon.png"  align="absmiddle" class="mr5" />½É»çÀÇ°ß¼­</td>
+		<td class="font_16"><img src="../images/icon.png"  align="absmiddle" class="mr5" />ï¿½É»ï¿½ï¿½Ç°ß¼ï¿½</td>
 	</tr>
 	</table>
 <?
@@ -178,7 +178,7 @@ if($_GET['seq']){
 		<table width="100%" class="boardType01_write" style="margin-top:5px;">
 		<tr>
 			<th width="150" rowspan="4" style="text-align:center;">
-				<strong>½É»çÀ§¿ø A</strong>
+				<strong>ï¿½É»ï¿½ï¿½ï¿½ï¿½ï¿½ A</strong>
 				<div style="padding-top:5px;"><?=get_review_name($data['review_a_user'])?></div>
 				<div style="padding-top:5px;"><?=$data['review_a_date']?></div>
 			</th>
@@ -194,7 +194,7 @@ if($_GET['seq']){
 			<td><?=$review1['comments']?></td>
 		</tr>
 		<tr>
-			<th width="150"><strong>½É»çÀÇ°ß¼­</strong></th>
+			<th width="150"><strong>ï¿½É»ï¿½ï¿½Ç°ß¼ï¿½</strong></th>
 			<td>
 				<? if($review1['rfile']){ ?> 
 				<?=end(explode("/",$review1['rfile']))?> <a href="/down.php?link=<?=$review1['rfile']?>"><img src="../images/btn_download.png"  align="absmiddle" /></a>
@@ -203,7 +203,7 @@ if($_GET['seq']){
 		</tr>
 		<tr>
 			<th width="150" rowspan="4" style="text-align:center;">
-				<strong>½É»çÀ§¿ø B</strong>
+				<strong>ï¿½É»ï¿½ï¿½ï¿½ï¿½ï¿½ B</strong>
 				<div style="padding-top:5px;"><?=get_review_name($data['review_b_user'])?></div>
 				<div style="padding-top:5px;"><?=$data['review_b_date']?></div>
 			</th>
@@ -219,7 +219,7 @@ if($_GET['seq']){
 			<td><?=$review2['comments']?></td>
 		</tr>
 		<tr>
-			<th width="150"><strong>½É»çÀÇ°ß¼­</strong></th>
+			<th width="150"><strong>ï¿½É»ï¿½ï¿½Ç°ß¼ï¿½</strong></th>
 			<td>
 				<? if($review2['rfile']){ ?> 
 				<?=end(explode("/",$review2['rfile']))?> <a href="/down.php?link=<?=$review2['rfile']?>"><img src="../images/btn_download.png"  align="absmiddle" /></a>
@@ -228,7 +228,7 @@ if($_GET['seq']){
 		</tr>
 		<tr>
 			<th width="150" rowspan="4" style="text-align:center;">
-				<strong>½É»çÀ§¿ø C</strong>
+				<strong>ï¿½É»ï¿½ï¿½ï¿½ï¿½ï¿½ C</strong>
 				<div style="padding-top:5px;"><?=get_review_name($data['review_c_user'])?></div>
 				<div style="padding-top:5px;"><?=$data['review_c_date']?></div>
 			</th>
@@ -244,7 +244,7 @@ if($_GET['seq']){
 			<td><?=$review3['comments']?></td>
 		</tr>
 		<tr>
-			<th width="150"><strong>½É»çÀÇ°ß¼­</strong></th>
+			<th width="150"><strong>ï¿½É»ï¿½ï¿½Ç°ß¼ï¿½</strong></th>
 			<td>
 				<? if($review3['rfile']){ ?> 
 				<?=end(explode("/",$review3['rfile']))?> <a href="/down.php?link=<?=$review3['rfile']?>"><img src="../images/btn_download.png"  align="absmiddle" /></a>
@@ -253,7 +253,7 @@ if($_GET['seq']){
 		</tr>
 		<tr>
 			<th width="150" rowspan="4" style="text-align:center;">
-				<strong>½É»çÀ§¿ø D</strong>
+				<strong>ï¿½É»ï¿½ï¿½ï¿½ï¿½ï¿½ D</strong>
 				<div style="padding-top:5px;"><?=get_review_name($data['review_d_user'])?></div>
 				<div style="padding-top:5px;"><?=$data['review_d_date']?></div>
 			</th>
@@ -269,7 +269,7 @@ if($_GET['seq']){
 			<td><?=$review4['comments']?></td>
 		</tr>
 		<tr>
-			<th width="150"><strong>½É»çÀÇ°ß¼­</strong></th>
+			<th width="150"><strong>ï¿½É»ï¿½ï¿½Ç°ß¼ï¿½</strong></th>
 			<td>
 				<? if($review4['rfile']){ ?> 
 				<?=end(explode("/",$review4['rfile']))?> <a href="/down.php?link=<?=$review4['rfile']?>"><img src="../images/btn_download.png"  align="absmiddle" /></a>
@@ -278,7 +278,7 @@ if($_GET['seq']){
 		</tr>
 		<tr>
 			<th width="150" rowspan="4" style="text-align:center;">
-				<strong>½É»çÀ§¿ø E</strong>
+				<strong>ï¿½É»ï¿½ï¿½ï¿½ï¿½ï¿½ E</strong>
 				<div style="padding-top:5px;"><?=get_review_name($data['review_e_user'])?></div>
 				<div style="padding-top:5px;"><?=$data['review_e_date']?></div>
 			</th>
@@ -294,7 +294,7 @@ if($_GET['seq']){
 			<td><?=$review5['comments']?></td>
 		</tr>
 		<tr>
-			<th width="150"><strong>½É»çÀÇ°ß¼­</strong></th>
+			<th width="150"><strong>ï¿½É»ï¿½ï¿½Ç°ß¼ï¿½</strong></th>
 			<td>
 				<? if($review5['rfile']){ ?> 
 				<?=end(explode("/",$review5['rfile']))?> <a href="/down.php?link=<?=$review5['rfile']?>"><img src="../images/btn_download.png"  align="absmiddle" /></a>
@@ -306,7 +306,7 @@ if($_GET['seq']){
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:20px;">
 	<tr>
-		<td class="font_16"><img src="../images/icon.png"  align="absmiddle" class="mr5" />³í¹® ÃÑÆò</td>
+		<td class="font_16"><img src="../images/icon.png"  align="absmiddle" class="mr5" />ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½</td>
 	</tr>
 	</table>
 	<?
@@ -320,7 +320,7 @@ if($_GET['seq']){
 		<? for($i=0;$i<count($review);$i++){ ?>
 			<table width="100%" class="boardType01_write" style="margin-top:5px;">
 			<tr>
-				<th width="150"><strong>µî·ÏÀÏ</strong></th>
+				<th width="150"><strong>ï¿½ï¿½ï¿½ï¿½ï¿½</strong></th>
 				<td><?=$review[$i]['regdate']?></td>
 			</tr>
 			<tr>
@@ -367,7 +367,7 @@ if($_GET['seq']){
 
 <script type="text/javascript">
 function fwrite_submit(f){
-	if(!confirm("µî·ÏÇÏ½Ã°Ú½À´Ï±î?")) return false;
+	if(!confirm("ï¿½ï¿½ï¿½ï¿½Ï½Ã°Ú½ï¿½ï¿½Ï±ï¿½?")) return false;
 	f.action = "./d_process.php"; 
 	return true;
 }

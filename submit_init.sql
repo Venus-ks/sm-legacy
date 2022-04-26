@@ -248,7 +248,7 @@ CREATE TABLE IF NOT EXISTS `ad_paper_deleted` (
   `seq` int(11) NOT NULL,
   `mb_id` varchar(100) DEFAULT '',
   `mb_name` varchar(100) DEFAULT '',
-  `jourmal` varchar(255) NOT NULL DEFAULT '',
+  `journal` varchar(255) NOT NULL DEFAULT '',
   `number` int(11) NOT NULL,
   `title` varchar(255) NOT NULL DEFAULT '',
   `title_eng` varchar(255) NOT NULL DEFAULT '',

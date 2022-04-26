@@ -41,7 +41,7 @@ if($_GET['sc_cate']=='category' && $_GET['category']){
 	$where .= " AND review_category = '{$_GET['category']}' ";
 }
 if($_GET['sc_cate']=='journal' && $_GET['journal']){
-	$where .= " AND jourmal = '{$_GET['journal']}' ";
+	$where .= " AND journal = '{$_GET['journal']}' ";
 }
 if($_GET['sc_cate']=='title' && $_GET['sc_text']){
 	$where .= " AND title  like '%{$_GET['sc_text']}%' ";
@@ -190,7 +190,7 @@ $write_pages = get_paging(10, $page, $total_page, "./d_sub02.php?page=");
 			?>
 			<tr>
 				<!--td><?=$list[$i]['num']?></td>
-				<td class="textalingL"><?=$list[$i]['jourmal']?></td>
+				<td class="textalingL"><?=$list[$i]['journal']?></td>
 
 				<td class="textalingL"><?=$list[$i]['express_publication']?></td>
 
@@ -202,7 +202,7 @@ $write_pages = get_paging(10, $page, $total_page, "./d_sub02.php?page=");
 				<td><a href="./d_sub02_write.php?seq=<?=$list[$i]['seq']?>"><img src="../images/btn_paper_reviewer.png"  /></a></td-->
 				<td><?=$list[$i]['num']?></td>
 				<td><?=get_papernum($list[$i])?></td>
-				<td><?=$list[$i]['jourmal']?></td>
+				<td><?=$list[$i]['journal']?></td>
 				<!-- <td><? if($list[$i]['manuscript']){ ?><?=get_manuscript($list[$i]['manuscript'])?><? } ?></td> -->
 				<!--td><?=$list[$i]['express_publication']?></td-->
 				<td><? if($list[$i]['review_category']){ ?><?=get_category($list[$i]['review_category'])?><? } ?></td>

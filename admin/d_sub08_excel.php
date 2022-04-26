@@ -19,7 +19,7 @@ if($_GET['sc_cate']=='category' && $_GET['category']){
 	$where .= " AND review_category = '{$_GET['category']}' ";
 }
 if($_GET['sc_cate']=='journal' && $_GET['journal']){
-	$where .= " AND jourmal = '{$_GET['journal']}' ";
+	$where .= " AND journal = '{$_GET['journal']}' ";
 }
 if($_GET['sc_cate']=='title' && $_GET['sc_text']){
 	$where .= " AND title  like '%{$_GET['sc_text']}%' ";
@@ -82,7 +82,7 @@ echo "<meta http-equiv=\"Content-Type\" content=\"application/vnd.ms-excel;chars
 ?>
 <tr>
 	<td><?=$list[$i]['num']?></td>
-	<td class="textalingL"><?=$list[$i]['jourmal']?></td>
+	<td class="textalingL"><?=$list[$i]['journal']?></td>
 	<td class="textalingL"><? if($list[$i]['review_category']){ ?><?=get_category($list[$i]['review_category'])?><? } ?></td>
 	<td><strong><?=$list[$i]['title']?></strong></td>
 	<td><?=$list[$i]['mb_name']?></td>

@@ -61,7 +61,7 @@ if($_GET['seq']){
 			</tr>
 			<tr>
 				<th width="150"><strong>저널명<br/>Journal Title</strong></th>
-				<td><?=$data['jourmal']?></td>
+				<td><?=$data['journal']?></td>
 			</tr>
 			<tr>
 				<th>논문번호<br/>Manuscript Number</th>

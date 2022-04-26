@@ -22,7 +22,7 @@ if($_GET['sc_cate']=='category' && $_GET['category']){
 	$where .= " AND review_category = '{$_GET['category']}' ";
 }
 if($_GET['sc_cate']=='journal' && $_GET['journal']){
-	$where .= " AND jourmal = '{$_GET['journal']}' ";
+	$where .= " AND journal = '{$_GET['journal']}' ";
 }
 if($_GET['sc_cate']=='title' && $_GET['sc_text']){
 	$where .= " AND title  like '%{$_GET['sc_text']}%' ";
@@ -162,7 +162,7 @@ $write_pages = get_paging(10, $page, $total_page, "./d_sub08.php?page=");
 			?>
 			<tr>
 				<td><?=$list[$i]['num']?></td>
-				<td class="textalingL"><?=$list[$i]['jourmal']?></td>
+				<td class="textalingL"><?=$list[$i]['journal']?></td>
 				<td class="textalingL"><? if($list[$i]['review_category']){ ?><?=get_category($list[$i]['review_category'])?><? } ?></td>
 				<td><a href="./d_sub08_write.php?seq=<?=$list[$i]['seq']?>"><strong><?=$list[$i]['title']?></strong></a></td>
 				<td><?=$list[$i]['mb_name']?></td>
