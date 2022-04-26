@@ -54,13 +54,13 @@ foreach($loop as $lo) {
 	<tr>
 		<th width="200">저자명<span class="required">*</span><br />Author Name</th>
 		<td>
-			한/Kor : <input type="text" x-model="auth.name" style="width:100%;"/><br/><br/>
+			한/Kor : <input type="text" x-model="auth.name" style="width:100%;" required/><br/><br/>
 			영/Eng : <input type="text" x-model="auth.name_eng" style="width:100%;" required/>
 			
 		</td>
 		<th width="200">전화<br />Tel</th>
 		<td>
-			<input type="text" x-model="auth.tel" -text="auth.tel"  style="width:100%;"/>
+			<input type="text" x-model="auth.tel" -text="auth.tel"  style="width:100%;" required/>
 		</td>
 	</tr>
 	<tr>

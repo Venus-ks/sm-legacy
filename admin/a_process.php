@@ -202,7 +202,8 @@ if($_POST['mode']=="a_sub_reg"){
 	$sql = "DELETE FROM ad_paper_auth WHERE parent_seq = '{$_POST['seq']}'";
 	$sql_result = sql_query($sql);
 	if ($step < 2 || $sql_result){
-
+		// var_dump($sql);
+		// exit;
 		// for($i=0 ; $i<count($_POST['auth_name']) ; $i++){
 		// 	if($_POST['auth_name'][$i]){
 		// 		$tmp = "auth_type".$i;

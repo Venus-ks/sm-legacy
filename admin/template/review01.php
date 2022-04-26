@@ -58,14 +58,14 @@
 					-
 				<?php endif?>
 			</tr>
-			<tr>
+			<!-- <tr>
 				<th>심사결과표</th>
 				<td>
 					<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#review-<?=$row['rseq']?>-Modal" data-whatever="@mdo">
 						보기
 					</button>
 				</td>
-			</tr>
+			</tr> -->
 			<!-- <tr>
 				<th width="150"><strong>심사의견<br/>Comments</strong></th>
 				<td colspan="2">
@@ -140,14 +140,14 @@
 					-
 				<?php endif?>
 			</tr>
-			<tr>
+			<!-- <tr>
 				<th>심사결과표</th>
 				<td>
 					<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#review-<?=$row['rseq']?>-Modal" data-whatever="@mdo">
 						보기
 					</button>
 				</td>
-			</tr>
+			</tr> -->
 					
 			<!-- <tr>
 				<th width="150"><strong>심사의견<br/>Comments</strong></th>

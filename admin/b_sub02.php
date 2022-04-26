@@ -246,7 +246,7 @@ $write_pages = get_paging(10, $page, $total_page, "./b_sub02.php?page=");
 												<?=end(explode("/",substr(strstr($v['rfile'], '^'), 1)))?> <a href="/down.php?link=<?=urlencode($v['rfile'])?>"><img src="../images/btn_download.png"  align="absmiddle" /></a>
 												</p>
 											</div>
-											<div class="form-group">
+											<!-- <div class="form-group">
 												<label for="result">심사결과표</label>
 												<div>
 												<?php 
@@ -257,7 +257,7 @@ $write_pages = get_paging(10, $page, $total_page, "./b_sub02.php?page=");
 													}
 												?>
 												</div>		
-											</div>
+											</div> -->
 											</form>
 										</div>
 										<div class="modal-footer">
