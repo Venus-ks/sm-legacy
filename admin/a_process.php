@@ -253,7 +253,7 @@ if($_POST['mode']=="a_sub_reg"){
 		 		auth_mobile								= '{$auth_mobile}',
 		 		organization							= '{$organization}',
 		 		organization_eng						= '{$organization_eng}',
-		 		address									= '{$address}'
+		 		address									= '{$address}',
 		 		ON DUPLICATE KEY UPDATE parent_seq		= '{$parent_seq}',
 		 		auth_email								= '{$auth_email}'
 		 	";
