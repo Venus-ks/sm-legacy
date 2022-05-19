@@ -72,17 +72,18 @@
 			</td>
 		</tr>
 		<tr>
-			<th width="200">투고논문 파일<span class="required"><?=($data['step']==1 || $data['step']==11 || $data['step']==21)?'':'*'?></span><br/>Paper File</th>
+			<th width="200"><?=$info['file']['paper_sample']['label']?><span class="required"><?=($data['step']==1 || $data['step']==11 || $data['step']==21)?'':'*'?></span><br/>Paper File</th>
 			<td>
 				<input type="file" name="submission_data" style="width:100%;" <?=($data['step']==1 || $data['step']==11 || $data['step']==21)?'':'required'?>/>
 				<? if($data['submission_data']){ ?>
 				<div style="padding-top:5px;"><a href="/down.php?link=<?=$data['submission_data']?>"><?=end(explode("/",substr(strstr($data['submission_data'], '^'), 1)))?></a></div>
 				<? } ?>
-				<?php if($info['file']['info_form']['link']):?>
-				<a href="<?=$info['file']['paper_sample']['link']?>"><strong style="color:#B60000">양식 다운로드</strong></a>
+				<?php if($info['file']['paper_sample']['link'] && !$data['seq']):?>
+				<div style="padding-top:5px;"><a href="/down.php?link=<?=$info['file']['paper_sample']['link']?>"><strong style="color:#B60000">양식 다운로드</strong></a>
+				</div>
+				<?php endif?>
 				<?php if(!$data['seq']):?>
-					<br/>프로그램을 이용하여 작성하되, 원고교정이 완료되어 그대로 출판될 수 있는 완전한 상태로 제출바랍니다.
-				<? endif?>
+				<span>프로그램을 이용하여 작성하되, 원고교정이 완료되어 그대로 출판될 수 있는 완전한 상태로 제출바랍니다.</span>
 				<?php endif?>
 			</td>
 		</tr>

@@ -1,12 +1,12 @@
 <?
 // DB정보
-$mysql_host = 'localhost';
-$mysql_user = '{{ abbr }}';
-$mysql_password = '{{ abbr }}{{ thisyear }}';
-$mysql_db = 'sm_{{ abbr }}';
+$mysql_host = '222.234.3.219';
+$mysql_user = 'develop';
+$mysql_password = 'develop2020';
+$mysql_db = 'sm_develop';
 // 개발모드
 define('__DEV__',TRUE);
-if(defined('__DEV__')) error_reporting(E_WARNING);
+if(defined('__DEV__')) error_reporting(E_ERROR);
 else error_reporting(0);
 // 학회정보
 //// ※실서비스는 직접수정하여야함
@@ -27,15 +27,15 @@ $info['bank_comment'] = "<p>심사료는 ??만원이며, 다음의 계좌로 입
 
 //파일명구분 down, view 201027 hjshyo
 $doc_list = [
-    'paper_sample_url' => "논문샘플.hwp",
-    'info_form_url' => "논문게재신청서.hwp",
-    'ethic_form_url' => "연구윤리준수동의서.hwp",
-    'revision_form_url' => "수정대조표(A).hwp",
-    // 'author_checklist_url' => ".hwp",
-    'copyright_agreement' => "저작권이양동의서.hwp",
-    'review_form_url1' => "심사표.hwp",
-    'review_form_url2' => "심사표.hwp",
-    'review_form_url3' => "심사표.hwp",
+    'paper_sample_url' => "",
+    'info_form_url' => "",
+    'ethic_form_url' => "",
+    'revision_form_url' => "",
+    'author_checklist_url' => "",
+    'copyright_agreement' => "",
+    'review_form_url1' => "",
+    'review_form_url2' => "",
+    'review_form_url3' => "",
 ];
 foreach($doc_list as $k => $v) {
     $filename = urlencode($v);
