@@ -1,9 +1,9 @@
 <?
 // DB정보
-$mysql_host = '222.234.3.219';
-$mysql_user = 'develop';
-$mysql_password = 'develop2020';
-$mysql_db = 'sm_develop';
+$mysql_host = 'localhost';
+$mysql_user = '{{ abbr }}';
+$mysql_password = '{{ abbr }}{{ thisyear }}';
+$mysql_db = 'sm_{{ abbr }}';
 // 개발모드
 define('__DEV__',TRUE);
 if(defined('__DEV__')) error_reporting(E_ERROR);
