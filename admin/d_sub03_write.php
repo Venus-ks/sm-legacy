@@ -192,7 +192,7 @@ function fwrite_submit(f){
 	return true;
 }
 function pop_choice(nm){
-	window.open("./popup_review_03.php?nm="+nm,"","width=640,height=400,scrollbars=yes");
+	window.open("./popup_review_03.php?nm="+nm,"","width=890,height=400,scrollbars=yes");
 }
 function delete_choice(nm){
 	$("#"+nm+"_user").val('');

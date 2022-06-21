@@ -10,25 +10,49 @@ header("Cache-Control: pre-check=0, post-check=0, max-age=0"); // HTTP/1.1
 header("Pragma: no-cache"); // HTTP/1.0
 
 ###
-$sql		= " select * from g4_member where gb = 'review' order by mb_no desc";
-$result		= sql_query($sql);
 
+
+### ORDER BY
+switch($sort) {
+	case 'name'		: $db_sort = 'mb_name';
+		break;
+	case 'sosok'	: $db_sort = 'mb_1';
+		break;
+	case 'email'	: $db_sort = 'mb_email';
+		break;
+	default: $db_sort = 'mb_no';
+}
+$sql_order = " order by {$db_sort} {$so}";
+###
+$sql		= " select * from g4_member where gb = 'review' $sql_order";
+$result		= sql_query($sql);
 $i = 0;
 $k = 0;
+
 while ($row = sql_fetch_array($result)){
 	$list[$i]		= get_list($row, $board, $board_skin_path, 50);
 	$list[$i][num]	= $total_count - ($page - 1) * $board[bo_page_rows] - $k;
 	$i++;
 	$k++;
 }
+
 ?>
+
+
+
+
+
+
+
 <script type="text/javascript" src="<?=$g4['path']?>/js/common.js"></script>
 <link href="/css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 <script type="text/javascript" src="/js/jquery-1.4.2.min.js"></script>
 
-<body style="margin:0px;">
 
+<body style="margin:0px;">
 <div style="border:5px solid #000;padding:10px;">
+
 <table width="98%" height="375" border="0" cellspacing="0" cellpadding="0">
 <tr><td height="30"><b>심사위원 선택</b></td></tr>
 <tr><td height="1" bgcolor="aaaaaa"></td></tr>
@@ -36,45 +60,58 @@ while ($row = sql_fetch_array($result)){
 	<td valign="top">
 		
 	<div style="height:10px;"></div>
-
 	<table class="boardType01">
 	<tr>
-		<th><strong>No</strong></th>
-		<th><strong>심사위원명</strong></th>
-		<th><strong>소속</strong></th>
-		<th><strong>분야</strong></th>
-		<th><strong>이메일</strong></th>
-		<th><strong>핸드폰</strong></th>
+		<th>
+			<strong>No</strong>
+		</th>
+		<th>
+			<strong>심사위원명</strong>
+			&nbsp;
+			<a href="?nm=<?=$_GET['nm']?>&page=<?=$page?>&sort=name&so=<?=($so=='asc')?'desc':'asc'?>">
+				<span class="badge badge-primary">정렬</span>					
+			</a>
+		</th>
+		<th>
+			<strong>소속</strong>
+			<a href="?nm=<?=$_GET['nm']?>&page=<?=$page?>&sort=sosok&so=<?=($so=='asc')?'desc':'asc'?>">
+				<span class="badge badge-primary">정렬</span>							
+			</a>
+		</th>
+		<th>
+			<strong>분야</strong>
+		</th>
+		<th>
+			<strong>이메일</strong>
+			&nbsp;
+			<a href="?nm=<?=$_GET['nm']?>&page=<?=$page?>&sort=email&so=<?=($so=='asc')?'desc':'asc'?>">
+				<span class="badge badge-primary">정렬</span>							
+			</a>
+		</th>
+		<th>
+			<strong>핸드폰</strong>
+		</th>
 	</tr>
-	<?
-		if(count($list)){
-			for ($i=0; $i<count($list); $i++) {  	
-	?>
-	<tr>
-		<td><?=$i+1?></td>
-		<td><a href="javascript:choice_review('<?=$list[$i]['mb_no']?>','<?=$list[$i]['mb_id']?>','<?=$list[$i]['mb_name']?>');"><b><?=$list[$i]['mb_name']?></b></a></td>
-		<td><?=$list[$i]['mb_1']?></td>
-		<td><span style="font-size:11px;"><? if($list[$i]['field']){ ?><?=get_category($list[$i]['field'])?><? } ?></span></td>
-		<td><?=$list[$i]['mb_id']?></td>
-		<td><?=$list[$i]['mb_hp']?></td>
-	</tr>
-	<?
-			}
-		}else{
-	?>
-	<tr>
-		<td colspan="4" class="text-center">
-			해당하는 데이터가 없습니다.
-		</td>
-	</tr>
-	<?
-		}
-	?>
-	</table>
-	
-	
-	</td>
-</tr>
+	<?php if(count($list)):?>
+		<?php foreach($list as $key => $val):?>
+			<tr>
+				<td><?=$val['mb_no']?></td>
+				<td>
+					<a href="javascript:choice_review('<?=$val['mb_no']?>','<?=$val['mb_id']?>','<?=$val['mb_name']?>');"><b><?=$val['mb_name']?></b></a>
+				</td>
+				<td><?=$val['mb_1']?></td>
+				<td><span style="font-size:11px;"><? if($val['field']){ ?><?=get_category($val['field'])?><? } ?></span></td>
+				<td><?=$val['mb_id']?></td>
+				<td><?=$val['mb_hp']?></td>
+			</tr>
+		<?php endforeach?>
+	<?php else:?>
+		<tr>
+			<td colspan="4" class="text-center">
+				해당하는 데이터가 없습니다.
+			</td>
+		</tr>
+	<?php endif?>
 </table>
 </div>
 
