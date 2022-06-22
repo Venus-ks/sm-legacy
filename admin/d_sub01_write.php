@@ -46,7 +46,7 @@ if($_GET['seq']){
 				<tr>
 					<td>
 						<div class="alert alert-primary p-5" role="alert" >
-							<strong style="font-size:1.25rem">현재 페이지에선 수정논문 파일만 수정 가능합니다.</strong>
+							<strong style="font-size:1.25rem">현재 페이지에선 연구종류, 심사요청분야, 수정논문 파일만 수정 가능합니다.</strong>
 						</div>
 					</td>
 				</tr>

@@ -885,7 +885,7 @@ else if($_GET['mode']=="review_confirm"){
 	$row	= sql_fetch($sql);
 	$r_mail = $row["review_{$reviewer_type}_user"];
 	if(empty($r_mail) || empty($row)) {
-		echo "<script>alert('Choise reviewer');parent.location.reload();</script>";
+		echo "<script>alert('Choice reviewer');parent.location.reload();</script>";
 		exit;
 	}
 	// 기본 최종심사날 세팅
