@@ -21,14 +21,23 @@ $ie = isset($_SERVER['HTTP_USER_AGENT']) && (strpos($_SERVER['HTTP_USER_AGENT'],
 
 //     $filepath = iconv("UTF-8","cp949//IGNORE", $filepath);
 // }
-$temp_arr		= explode("/", $filepath);
-$filename		= trim($temp_arr[count($temp_arr)-1]); // 다운로드 받을 파일이름
 
+
+//  DB에 있는 파일 경로를 가져와서 서버에 있는 파일이랑 대조후 다운로드시켜줌 
 try {
+    if(!$filepath){
+        // utf8 - euc-kr 로 변환해주는 거
+        $filepath = iconv("UTF-8","cp949//IGNORE", $filepath);
+    }else{
+        $filepath;
+    }
+    $temp_arr		= explode("/", $filepath);
+    $filename		= trim($temp_arr[count($temp_arr)-1]); // 다운로드 받을 파일이름
     $fileDownload = FileDownload::createFromFilePath($filepath);
     $fileDownload->sendDownload($filename);
 }
 catch(Exception $e){
-    echo "File not exist ({$e->getMessage()})";
+    echo "<script>alert('ㅋㅋㄹㅃㅃ 관리자에게 문의 주세용 ㅋㅋㄹㅃㅃ');</script> ({$e->getMessage('')})";
+    echo "관리자에게 문의 주시기 바랍니당";
 }
 ?>
