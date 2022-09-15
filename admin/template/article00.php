@@ -72,9 +72,9 @@
 			</td>
 		</tr>
 		<tr>
-			<th width="200"><?=$info['file']['paper_sample']['label']?><span class="required"><?=($data['step']==1 || $data['step']==11 || $data['step']==21)?'':'*'?></span><br/>Paper File</th>
+			<th width="200"><?=$info['file']['paper_sample']['label']?><span class="required"><?=($data['step']==1 || $data['step']==11 || $data['step']==21 || $data['step']==33)?'':'*'?></span><br/>Paper File</th>
 			<td>
-				<input type="file" name="submission_data" style="width:100%;" <?=($data['step']==1 || $data['step']==11 || $data['step']==21)?'':'required'?>/>
+				<input type="file" name="submission_data" style="width:100%;" <?=($data['step']==1 || $data['step']==11 || $data['step']==21 || $data['step']==33)?'':'required'?>/>
 				<? if($data['submission_data']){ ?>
 				<div style="padding-top:5px;"><a href="/down.php?link=<?=$data['submission_data']?>"><?=end(explode("/",substr(strstr($data['submission_data'], '^'), 1)))?></a></div>
 				<? } ?>

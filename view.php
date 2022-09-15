@@ -9,7 +9,7 @@ if($_tmp[0]!="" || $_tmp[1]!="data") exit('Wrong access');
 //if (!$_SESSION['ss_mb_id']) exit('Login, first');
 
 $filepath = __DIR__.$filepath;
-$filepath = iconv("UTF-8","cp949//IGNORE", $filepath);
+// $filepath = iconv("UTF-8","cp949//IGNORE", $filepath);
 $temp_arr		= explode("/", $filepath);
 $filename		= trim($temp_arr[count($temp_arr)-1]); // 다운로드 받을 파일이름
 $filename = urldecode($filename);

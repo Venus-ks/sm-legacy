@@ -1658,7 +1658,7 @@ function get_result_temp($num=null){
 
 function get_result2($num=null){
 	$arr[] = array("cvalue"=>1, "ctext"=>"게재승인(Publication Permission)");
-	$arr[] = array("cvalue"=>4, "ctext"=>"게재불가(declined of publication)");
+	$arr[] = array("cvalue"=>4, "ctext"=>"게재불가(Declined of Publication)");
 
 	if($num){
 		foreach($arr as $v) {
